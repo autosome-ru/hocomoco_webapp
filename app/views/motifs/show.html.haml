@@ -1,0 +1,26 @@
+%h1 Motifs#show
+%p Find me in app/views/motifs/show.html.haml
+
+%table#motifs
+  %thead
+    %tr
+      %th= 'full_name'
+      %th= 'logo'
+      %th= 'consensus_string'
+      %th= 'auc'
+      %th= 'max_auc'
+      %th= 'motif_families'
+      %th= 'motif_subfamilies'
+      %th= 'comment'
+
+  %tbody
+    - @models.each do |model|
+      %tr
+        %td= model.full_name
+        %td= image_tag("/final_bundle/HUMAN/mono/logo_small/#{model.full_name}_direct.png")
+        %td= model.consensus_string
+        %td= model.auc
+        %td= model.max_auc
+        %td= model.motif_families
+        %td= model.motif_subfamilies
+        %td= model.comment
