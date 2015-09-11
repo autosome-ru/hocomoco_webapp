@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'motifs/show'
+  root 'motifs#show', {species: 'human', arity: 'mono'}
+  get 'motifs/:species', to: 'motifs#show', {arity: 'mono'}
+  get 'motifs/:species/:arity' => 'motifs#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

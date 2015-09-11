@@ -17,7 +17,7 @@
     - @models.each do |model|
       %tr
         %td= model.full_name
-        %td= image_tag("/final_bundle/HUMAN/mono/logo_small/#{model.full_name}_direct.png")
+        %td= image_tag("/final_bundle/#{@species}/#{@arity}/logo_small/#{model.full_name}_direct.png")
         %td= model.consensus_string
         %td= model.auc
         %td= model.max_auc
