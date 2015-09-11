@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root 'motifs#show', {species: 'human', arity: 'mono'}
-  get '/:species' => 'motifs#show', constraints: {species: /human|mouse/i}, defaults: {arity: 'mono'}
-  get '/:species/:arity' => 'motifs#show', constraints: {species: /human|mouse/i, arity: /mono|di/i}, as: 'motifs'
+  root 'motifs#index', {species: 'human', arity: 'mono'}
+  get '/:species' => 'motifs#index', constraints: {species: /human|mouse/i}, defaults: {arity: 'mono'}
+  get '/:species/:arity' => 'motifs#index', constraints: {species: /human|mouse/i, arity: /mono|di/i}, as: 'motifs'
+  post '/search' => 'hocomoco#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

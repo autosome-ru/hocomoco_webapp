@@ -11,28 +11,27 @@ class MotifDecorator < Draper::Decorator
   #   end
 
 
-  def auc
-    object.auc && object.auc.round(3)
-  end
+  # def auc
+  #   object.auc && object.auc.round(3)
+  # end
 
-  def max_auc
-    object.max_auc && object.max_auc.round(3)
-  end
+  # def max_auc
+  #   object.max_auc && object.max_auc.round(3)
+  # end
 
   def datasets
-    object.datasets.join('<br/>').html_safe
+    object.datasets.join('; <br/>').html_safe
   end
 
   def origin_models
-    object.origin_models.join('<br/>').html_safe
+    object.origin_models.join('; <br/>').html_safe
   end
 
   def motif_families
-    object.motif_families.join('<br/>').html_safe
+    object.motif_families.join('; <br/>').html_safe
   end
 
   def motif_subfamilies
-    object.motif_subfamilies.join('<br/>').html_safe
+    object.motif_subfamilies.join('; <br/>').html_safe
   end
-
 end

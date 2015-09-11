@@ -19,22 +19,26 @@
 
 
   %body
-    = nav_bar do
-      = menu_group do
-        %a.navbar-brand(href="#") HOCOMOCO
-        -# = link_to root_path, class: 'hocomoco_logo' do
-        -#   image_tag 'hocomoco_logo.png'
-      = menu_group do
-        = drop_down 'Human' do
-          = menu_item 'Mononucleotide models', motifs_path(species: 'human', arity: 'mono')
-          = menu_item 'Dinucleotide models', motifs_path(species: 'human', arity: 'di')
-        = drop_down 'Mouse' do
-          = menu_item 'Mononucleotide models', motifs_path(species: 'mouse', arity: 'mono')
-          = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
+    %header
+      = nav_bar do
+        = menu_group do
+          %a.navbar-brand(href="#") HOCOMOCO
+          -# = link_to root_path, class: 'hocomoco_logo' do
+          -#   image_tag 'hocomoco_logo.png'
+        = menu_group do
+          = drop_down 'Human' do
+            = menu_item 'Mononucleotide models', motifs_path(species: 'human', arity: 'mono')
+            = menu_item 'Dinucleotide models', motifs_path(species: 'human', arity: 'di')
+          = drop_down 'Mouse' do
+            = menu_item 'Mononucleotide models', motifs_path(species: 'mouse', arity: 'mono')
+            = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
 
-    .container
-      .row
-        .col-lg-12
-          = bootstrap_flash
-          = yield
-      %footer
+        = form_tag search_path, class: 'pull-right navbar-search' do
+          = label_tag do
+            Search:
+            = text_field_tag 'search', params[:search]
+          = submit_tag 'Search'
+
+    %div{class: ['container', "controller-#{params[:controller]}", "action-#{params[:action]}"] }
+      = yield
+    %footer

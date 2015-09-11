@@ -1,0 +1,102 @@
+footer {
+  height: 20px;
+}
+
+.container.action-index {
+  &.controller-motifs {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    .tablesorter-sticky-wrapper {
+      margin-left: 10px;
+      .tablesorter {
+        margin-left: 0;
+      }
+    }
+    .tablesorter {
+      margin-left: 10px;
+    }
+    .table-actions {
+      margin-left: 10px;
+    }
+  }
+}
+
+.table_caption {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.hocomoco_link {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  img {
+    padding-left: 30px;
+  }
+}
+
+.csv-filename {
+  padding: 2px;
+  margin-left: 4px;
+  height: 24px;
+  width: 200px;
+}
+
+.tooltip {
+  width: 250px;
+}
+
+.loading_table {
+  display: inline-block;
+}
+.loading_figure {
+  display: block;
+}
+
+.loading_logo {
+  display: inline-block;
+  vertical-align: middle;
+  $size: 34px;
+  height: $size;
+  width: $size;
+  background-image: image-url("loading.gif");
+  background-size: $size $size;
+}
+
+.export_uniprot {
+  width: 16px;
+  height: 16px;
+  background-size: 16px 16px;
+  margin-left: 5px;
+  vertical-align: bottom;
+  background-image: image-url("uniprot_favicon.ico");
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.help-icon {
+  width: 16px;
+  height: 16px;
+  background-size: 16px 16px;
+  margin-left: 5px;
+  vertical-align: bottom;
+  background-image: image-url("help-icon.png");
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.help-text {
+  display: none;
+}
+
+.citation {
+  border: 1px solid darkgray;
+  padding: 10px;
+  width: 670px;
+  background-color: lightyellow;
+  border-radius: 15px;
+}

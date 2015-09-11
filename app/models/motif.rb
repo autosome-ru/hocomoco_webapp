@@ -3,6 +3,28 @@ Motif = Struct.new(:full_name, :consensus_string, :quality,
                           :datasets, :origin_models,
                           :motif_families, :motif_subfamilies,
                           :comment) do
+
+  def uniprot; full_name.split('.')[0]; end
+  def bundle_name; full_name.split('.')[1]; end
+  def quality; full_name.split('.')[2]; end
+  def species; uniprot.split('_').last; end
+  def to_s; full_name; end
+
+  def arity
+    case bundle_name[-2,2]
+    when 'MO'
+      'mono'
+    when 'DI'
+      'di'
+    else
+      raise "Unknown bundle #{bundle_name} for model #{full_name}"
+    end
+  end
+
+  def direct_logo_path
+    "/final_bundle/#{species}/#{arity}/logo_small/#{full_name}_direct.png"
+  end
+
   def self.from_string(str)
     full_name, consensus_string, \
       _uniprot, _arity_type, \
@@ -11,8 +33,8 @@ Motif = Struct.new(:full_name, :consensus_string, :quality,
       motif_families, motif_subfamilies, comment = str.chomp.split("\t", 12)
     datasets = datasets.split(', ')
     origin_models = origin_models.split(', ')
-    motif_families = motif_families.split('; ')
-    motif_subfamilies = motif_subfamilies.split('; ')
+    motif_families = motif_families.split(':separator:')
+    motif_subfamilies = motif_subfamilies.split(':separator:')
     auc = auc.empty? ? nil : auc.to_f
     max_auc = max_auc.empty? ? nil : max_auc.to_f
     self.new(full_name, consensus_string, quality, auc, max_auc, datasets, origin_models, motif_families, motif_subfamilies, comment)

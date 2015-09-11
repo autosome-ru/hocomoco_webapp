@@ -1,5 +1,5 @@
 $(function(){
-  $('#motifs').tablesorter({
-    theme: 'blue'
-  });
+  // $('#motifs').tablesorter({
+  //   theme: 'blue'
+  // });
 });

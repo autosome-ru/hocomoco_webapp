@@ -13,5 +13,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require select2
+
 //= require jquery-tablesorter
+//= require jquery-tablesorter/widgets/widget-columns
+//= require jquery-tablesorter/widgets/widget-filter
+//= require jquery-tablesorter/widgets/widget-resizable
+//= require jquery-tablesorter/widgets/widget-saveSort
+//= require jquery-tablesorter/widgets/widget-stickyHeaders
+//= require jquery-tablesorter/widgets/widget-storage 
+//= require jquery-tablesorter/widgets/widget-uitheme
+
+//= require jquery-tablesorter/widgets/widget-filter-formatter-html5
+//= require jquery-tablesorter/widgets/widget-filter-formatter-jui
+//= require jquery-tablesorter/widgets/widget-filter-formatter-select2
+
+//= require jquery-tablesorter/widgets/widget-storage
+//= require jquery-tablesorter/widgets/widget-output
+//= require jquery-tablesorter/widgets/widget-columnSelector
+//= require jquery-tablesorter/widgets/widget-cssStickyHeaders
+//= require jquery-tablesorter/widgets/widget-formatter
+
 //= require_tree .
