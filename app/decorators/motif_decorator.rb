@@ -34,4 +34,8 @@ class MotifDecorator < Draper::Decorator
   def motif_subfamilies
     object.motif_subfamilies.join('; <br/>').html_safe
   end
+
+  def hgnc_ids; object.hgnc_ids.join('; '); end
+  def mgi_ids; object.mgi_ids.join('; '); end
+  def entrezgene_ids; object.entrezgene_ids.join('; '); end
 end

@@ -20,6 +20,11 @@
       = table_header 'Max AUC', hide_by_default: true, class: 'AUC'
       = table_header 'Motif family'
       = table_header 'Motif subfamily'
+      - if species == 'HUMAN'
+        = table_header 'HGNC', dont_sort: true, class: 'hgnc_id'
+      - else 
+        = table_header 'MGI', dont_sort: true, class: 'mgi_id'
+      = table_header 'EntrezGene', dont_sort: true, class: 'gene_id'
       = table_header 'Comment', dont_sort: true, hide_by_default: true
 
   %tbody
@@ -34,4 +39,9 @@
         %td= model.max_auc
         %td= model.motif_families
         %td= model.motif_subfamilies
+        - if species == 'HUMAN'
+          %td= model.hgnc_ids
+        - else 
+          %td= model.mgi_ids
+        %td= model.entrezgene_ids
         %td= model.comment
