@@ -19,32 +19,22 @@
 
 
   %body
-    .navbar.navbar-default.navbar-static-top
-      .container
-        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.navbar-brand(href="#") HocomocoSite
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to "Link 1", "/path1"
-            %li= link_to "Link 2", "/path2"
-            %li= link_to "Link 3", "/path3"
-            %li= link_to "Link 3", "/path3"
+    = nav_bar do
+      = menu_group do
+        %a.navbar-brand(href="#") HOCOMOCO
+        -# = link_to root_path, class: 'hocomoco_logo' do
+        -#   image_tag 'hocomoco_logo.png'
+      = menu_group do
+        = drop_down 'Human' do
+          = menu_item 'Mononucleotide models', motifs_path(species: 'human', arity: 'mono')
+          = menu_item 'Dinucleotide models', motifs_path(species: 'human', arity: 'di')
+        = drop_down 'Mouse' do
+          = menu_item 'Mononucleotide models', motifs_path(species: 'mouse', arity: 'mono')
+          = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
 
     .container
       .row
-        .col-lg-9
+        .col-lg-12
           = bootstrap_flash
           = yield
-        .col-lg-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
       %footer
-        %p &copy; Company 2015
