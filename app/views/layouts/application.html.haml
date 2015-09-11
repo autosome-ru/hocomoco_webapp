@@ -22,9 +22,10 @@
     %header
       = nav_bar do
         = menu_group do
-          %a.navbar-brand(href="#") HOCOMOCO
-          -# = link_to root_path, class: 'hocomoco_logo' do
-          -#   image_tag 'hocomoco_logo.png'
+          = link_to root_path, class: 'hocomoco_logo' do
+            = image_tag 'hocomoco_logo_big.png'
+        = menu_group do
+          .navbar-brand HOCOMOCO
         = menu_group do
           = drop_down 'Human' do
             = menu_item 'Mononucleotide models', motifs_path(species: 'human', arity: 'mono')
