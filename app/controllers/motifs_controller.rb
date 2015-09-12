@@ -25,5 +25,13 @@ protected
   def caption
     ((arity == 'di') ? 'Dinucleotide PWMs' : 'PWMs') + " for #{species} transcription factors"
   end
-  helper_method :species, :arity, :csv_filename
+  def quality_help_text
+    case arity
+    when 'mono'
+      'Only primary high-quality models are shown by default. Use `A to D or S` to view all models.'
+    when 'di'
+      'Only high-quality models are shown by default. Use `A to D` to view all models.'
+    end
+  end
+  helper_method :species, :arity, :csv_filename, :quality_help_text
 end

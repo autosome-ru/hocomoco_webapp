@@ -13,10 +13,10 @@
       = motif_table_header :gene_names, class: 'hgnc_name'
       = motif_table_header :full_name, show_always: true, class: 'motif_name'
       = motif_table_header :logo, dont_sort: true, class: 'sequence_logo filter-false'
-      = motif_table_header :model_length
+      = motif_table_header :model_length, data: {placeholder:'>= 20'}
       = motif_table_header :quality, class: 'filter-match', data: {value:'A to C', placeholder:'A or S'} do |content|
         = content
-        .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Only primary high-quality models are shown by default. Use `A to D or S` to view all models.'} }
+        .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: quality_help_text} }
 
       = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
       = motif_table_header :origin, hide_by_default: true, class: 'origin_dataset_type filter-select'
