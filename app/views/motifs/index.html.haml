@@ -10,7 +10,7 @@
 %table#motifs.tablesorter.attach-column-selector
   %thead
     %tr
-      = motif_table_header :gene_names, class: 'hgnc_name'
+      = motif_table_header :gene_names, class: "#{species.downcase}_gene_name"
       = motif_table_header :full_name, show_always: true, class: 'motif_name'
       = motif_table_header :logo, dont_sort: true, class: 'sequence_logo filter-false'
       = motif_table_header :model_length, data: {placeholder:'>= 20'}
