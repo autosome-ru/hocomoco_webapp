@@ -31,6 +31,7 @@ en:
         model_length:       'Model length'
         quality:            'Quality'
         consensus:          'Consensus'
+        origin:             'Origin'
         auc:                'wAUC'
         max_auc:            'Best AUC'
         num_datasets:       'Benchmark datasets'

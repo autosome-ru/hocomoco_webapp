@@ -64,6 +64,25 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     datasets.size
   end
 
+  def origin
+    collection_names = origin_models.map{|motif| motif.split('~')[1] }
+    raise  unless collection_names.all?{|collection| collection == collection_names.first }
+    collection_name = collection_names.first
+    {
+      'CD' => 'ChIP-Seq',
+      'CM' => 'ChIP-Seq',
+      'PAPAM' => 'ChIP-Seq',
+      'PAPAD' => 'ChIP-Seq',
+      
+      'SMF' => 'HT-SELEX',
+      'SMI' => 'HT-SELEX',
+      'SDF' => 'HT-SELEX',
+      'SDI' => 'HT-SELEX',
+
+      'HL' => 'HOCOMOCO v9',
+    }[collection_name]
+  end
+
   def self.each_in_file(filename, &block)
     File.readlines(filename).drop(1).map{|line| self.from_string(line) }.each(&block)
   end

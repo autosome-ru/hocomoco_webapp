@@ -19,6 +19,7 @@
         .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Only primary high-quality models are shown by default. Use `A to D or S` to view all models.'} }
 
       = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
+      = motif_table_header :origin, hide_by_default: false, class: 'origin_dataset_type filter-select'
       = motif_table_header :auc, hide_by_default: true, class: 'AUC'
       = motif_table_header :max_auc, hide_by_default: true, class: 'AUC'
       = motif_table_header :num_datasets, hide_by_default: true, class: 'num_datasets'
@@ -42,6 +43,7 @@
         %td= model.model_length
         %td= model.quality
         %td= model.consensus
+        %td= model.origin
         %td= model.auc
         %td= model.max_auc
         %td= model.num_datasets
