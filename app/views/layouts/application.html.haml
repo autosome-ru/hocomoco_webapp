@@ -31,10 +31,9 @@
     %header
       = nav_bar do
         = menu_group do
-          = link_to root_path, class: 'hocomoco_logo' do
-            = image_tag 'hocomoco_logo_big.png'
-        = menu_group do
-          .navbar-brand HOCOMOCO
+          = link_to root_path do
+            .hocologo.pull-left
+            .navbar-brand HOCOMOCO
         = menu_group do
           = drop_down 'Human' do
             = menu_item 'Mononucleotide models', motifs_path(species: 'human', arity: 'mono')
@@ -42,6 +41,9 @@
           = drop_down 'Mouse' do
             = menu_item 'Mononucleotide models', motifs_path(species: 'mouse', arity: 'mono')
             = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
+          = menu_item 'Downloads', downloads_path
+        = menu_group do
+          .caption= caption
 
         = form_tag search_path, class: 'pull-right navbar-search' do
           = label_tag do

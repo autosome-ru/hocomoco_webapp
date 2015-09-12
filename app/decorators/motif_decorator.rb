@@ -38,4 +38,7 @@ class MotifDecorator < Draper::Decorator
   def hgnc_ids; object.hgnc_ids.join('; '); end
   def mgi_ids; object.mgi_ids.join('; '); end
   def entrezgene_ids; object.entrezgene_ids.join('; '); end
+  def gene_names; object.gene_names.join('; '); end
+  def uniprot_acs; object.uniprot_acs.join('; '); end
+  def num_datasets; object.num_datasets == 0 ? nil : object.num_datasets; end
 end

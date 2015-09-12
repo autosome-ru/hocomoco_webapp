@@ -1,8 +1,9 @@
-Motif = Struct.new(:full_name, :consensus_string, :quality,
+Motif = Struct.new(:full_name, :model_length, :consensus_string, :quality,
                           :auc, :max_auc,
                           :datasets, :origin_models,
                           :motif_families, :motif_subfamilies,
                           :hgnc_ids, :mgi_ids, :entrezgene_ids,
+                          :gene_names, :uniprot_acs,
                           :comment) do
 
   def uniprot; full_name.split('.')[0]; end
@@ -35,23 +36,30 @@ Motif = Struct.new(:full_name, :consensus_string, :quality,
   end
 
   def self.from_string(str)
-    full_name, consensus_string, \
-      _uniprot, _arity_type, \
+    full_name, model_length, consensus_string, \
+      _uniprot, 
+      uniprot_acs, gene_names,
+      _arity_type, \
       quality, auc, max_auc, \
       datasets, origin_models, \
       motif_families, motif_subfamilies, \
       hgnc_ids, mgi_ids, entrezgene_ids, \
-      comment = str.chomp.split("\t", 15)
+      comment = str.chomp.split("\t", 18)
     datasets = datasets.split(', ')
     origin_models = origin_models.split(', ')
     motif_families = motif_families.split(':separator:')
     motif_subfamilies = motif_subfamilies.split(':separator:')
     auc = auc.empty? ? nil : auc.to_f
     max_auc = max_auc.empty? ? nil : max_auc.to_f
-    self.new(full_name, consensus_string, quality, auc, max_auc,
+    self.new(full_name, model_length.to_i, consensus_string, quality, auc, max_auc,
       datasets, origin_models, motif_families, motif_subfamilies,
       hgnc_ids.split('; '), mgi_ids.split('; '), entrezgene_ids.split('; '),
+      gene_names.split('; '), uniprot_acs.split('; '),
       comment)
+  end
+
+  def num_datasets
+    datasets.size
   end
 
   def self.each_in_file(filename, &block)

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  root 'motifs#index', {species: 'human', arity: 'mono'}
+  root 'hocomoco#home'
   get '/:species' => 'motifs#index', constraints: {species: /human|mouse/i}, defaults: {arity: 'mono'}
   get '/:species/:arity' => 'motifs#index', constraints: {species: /human|mouse/i, arity: /mono|di/i}, as: 'motifs'
   post '/search' => 'hocomoco#search'
+
+  get '/downloads' => 'hocomoco#downloads', as: 'downloads'
+  get '/download', to: redirect('/downloads')
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

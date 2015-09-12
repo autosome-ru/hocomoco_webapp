@@ -1,5 +1,3 @@
-.table_caption= table_caption
-
 .table-actions
   %button.reset{type: 'button'} Reset filters
   %button.select-columns-btn{type: 'button'} Select Columns
@@ -11,32 +9,38 @@
 %table#motifs.tablesorter.attach-column-selector
   %thead
     %tr
-      = table_header 'Motif', show_always: true
-      = table_header 'Logo', dont_sort: true, class: 'sequence_logo filter-false'
-      = table_header 'Uniprot', class: 'uniprot_id'
+      = table_header 'Transcription factor', class: 'hgnc_name'
+      = table_header 'Model', show_always: true
+      = table_header 'Model length'
+      = table_header 'LOGO', dont_sort: true, class: 'sequence_logo filter-false'
       = table_header 'Quality', class: 'filter-match', data: {value:'A to C', placeholder:'A or S'}
       = table_header 'Consensus', dont_sort: true, hide_by_default: true, data: {placeholder: 'CA(C|T|Y)?TG'}
       = table_header 'wAUC', hide_by_default: true, class: 'AUC'
-      = table_header 'Max AUC', hide_by_default: true, class: 'AUC'
-      = table_header 'Motif family'
-      = table_header 'Motif subfamily'
+      = table_header 'Best AUC', hide_by_default: true, class: 'AUC'
+      = table_header 'Benchmark datasets', hide_by_default: true, class: 'num_datasets'
+      = table_header 'TF family', class: 'motif-family'
+      = table_header 'TF subfamily', class: 'motif-subfamily', hide_by_default: true
       - if species == 'HUMAN'
         = table_header 'HGNC', dont_sort: true, class: 'hgnc_id'
       - else 
         = table_header 'MGI', dont_sort: true, class: 'mgi_id'
       = table_header 'EntrezGene', dont_sort: true, class: 'gene_id'
+      = table_header 'UniProt ID', class: 'uniprot_id'
+      = table_header 'UniProt AC', hide_by_default: true, class: 'uniprot_ac'
       = table_header 'Comment', dont_sort: true, hide_by_default: true
 
   %tbody
     - @models.each do |model|
       %tr
+        %td= model.gene_names
         %td= model.full_name
+        %td= model.model_length
         %td= image_tag(model.direct_logo_path)
-        %td= model.uniprot
         %td= model.quality
         %td= model.consensus_string
         %td= model.auc
         %td= model.max_auc
+        %td= model.num_datasets
         %td= model.motif_families
         %td= model.motif_subfamilies
         - if species == 'HUMAN'
@@ -44,4 +48,6 @@
         - else 
           %td= model.mgi_ids
         %td= model.entrezgene_ids
+        %td= model.uniprot
+        %td= model.uniprot_acs
         %td= model.comment

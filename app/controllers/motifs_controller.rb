@@ -10,8 +10,8 @@ protected
   def species; params[:species].upcase;end  
   def arity; params[:arity].downcase; end
   def csv_filename; "#{species}_#{arity}_motifs.tsv"; end
-  def table_caption
+  def caption
     "#{species.capitalize} #{arity}nucleotide models"
   end
-  helper_method :species, :arity, :table_caption, :csv_filename
+  helper_method :species, :arity, :csv_filename
 end

@@ -5,11 +5,18 @@
   };
 
   HocomocoDB.fantom_sstar_gene_link = function(gene_id) {
-    return '<a href="http://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">sstar profile</a>';
+    return '<a href="http://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">SSTAR</a>';
   };
 
   HocomocoDB.hgnc_id_link = function(hgnc) {
     return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
+  };
+
+
+  HocomocoDB.hgnc_name_link = function(hgnc_name) {
+    return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?match=' + hgnc_name + '">' + hgnc_name + '</a>' +
+    '<br/>' + '(<a href="http://www.genecards.org/cgi-bin/carddisp.pl?gene=' + hgnc_name + '">GeneCards</a>)';
+
   };
 
   HocomocoDB.mgi_id_link = function(mgi_name) {
@@ -241,6 +248,7 @@
     '.gene_id'         : HocomocoDB.gene_id_link,
     '.AUC'             : HocomocoDB.round,
     '.ec_number'       : HocomocoDB.ec_number_link,
+    '.hgnc_name'       : HocomocoDB.hgnc_name_link,
     '.hgnc_id'         : HocomocoDB.hgnc_id_link,
     '.mgi_id'          : HocomocoDB.mgi_id_link,
     '.uniprot_ac'      : HocomocoDB.uniprot_ac_link,

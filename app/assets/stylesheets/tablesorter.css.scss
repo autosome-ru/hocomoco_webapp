@@ -18,6 +18,10 @@ table.tablesorter {
         min-width: 350px;
         max-width: 450px;
       }
+      &.motif-family, &.motif-subfamily {
+        min-width: 170px;
+        max-width: 170px;
+      }
       &.splitted_terms_filter, &.uniprot_id_comb {
         min-width: 220px;
         max-width: 250px;
