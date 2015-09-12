@@ -46,7 +46,8 @@
   };
 
   HocomocoDB.uniprot_ac_link = function(uniprot_ac) {
-    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
+    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>' +
+    '<br/>' + '<a href="http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=' + uniprot_ac + '">(TFClass)</a>';
   };
 
   HocomocoDB.refseq_link = function(refseq) {

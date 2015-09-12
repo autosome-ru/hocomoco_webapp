@@ -4,7 +4,7 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "HocomocoSite"
+    %title= content_for?(:title) ? yield(:title) : "HOmo sapiens COmprehensive MOdel COllection"
     = csrf_meta_tags
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -35,12 +35,13 @@
             .hocologo.pull-left
             .navbar-brand HOCOMOCO
         = menu_group do
-          = drop_down 'Human' do
-            = menu_item 'Mononucleotide models', motifs_path(species: 'human', arity: 'mono')
-            = menu_item 'Dinucleotide models', motifs_path(species: 'human', arity: 'di')
-          = drop_down 'Mouse' do
-            = menu_item 'Mononucleotide models', motifs_path(species: 'mouse', arity: 'mono')
-            = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
+          = menu_item 'Home', root_path
+          = drop_down 'Human TFs' do
+            = menu_item 'Mononucleotide PWMs', motifs_path(species: 'human', arity: 'mono')
+            = menu_item 'Dinucleotide PWMs', motifs_path(species: 'human', arity: 'di')
+          = drop_down 'Mouse TFs' do
+            = menu_item 'Mononucleotide PWMs', motifs_path(species: 'mouse', arity: 'mono')
+            = menu_item 'Dinucleotide PWMs', motifs_path(species: 'mouse', arity: 'di')
           = menu_item 'Downloads', downloads_path
         = menu_group do
           .caption= caption
