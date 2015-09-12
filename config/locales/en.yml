@@ -20,4 +20,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      motif:
+        gene_names:         'Transcription factor'
+        full_name:          'Model'
+        logo:               'LOGO'
+        big_logo:           'LOGO'
+        big_logo_revcomp:   'LOGO (reverse complement)'
+        model_length:       'Model length'
+        quality:            'Quality'
+        consensus:          'Consensus'
+        auc:                'wAUC'
+        max_auc:            'Best AUC'
+        num_datasets:       'Benchmark datasets'
+        motif_families:     'TF family'
+        motif_subfamilies:  'TF subfamily'
+        hgnc_ids:           'HGNC'
+        mgi_ids:            'MGI'
+        entrezgene_ids:     'EntrezGene'
+        uniprot_id:         'UniProt ID'
+        uniprot_acs:        'UniProt AC'
+        comment:            'Comment'

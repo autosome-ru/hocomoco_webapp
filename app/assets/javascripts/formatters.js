@@ -23,7 +23,6 @@
   HocomocoDB.hgnc_name_link = function(hgnc_name) {
     return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?match=' + hgnc_name + '">' + hgnc_name + '</a>' +
     '<br/>' + '(<a href="http://www.genecards.org/cgi-bin/carddisp.pl?gene=' + hgnc_name + '">GeneCards</a>)';
-
   };
 
   HocomocoDB.mgi_id_link = function(mgi_name) {
@@ -59,6 +58,10 @@
 
   HocomocoDB.refseq_link = function(refseq) {
     return '<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>';
+  };
+
+  HocomocoDB.motif_link = function(motif) {
+    return '<a href="/motif/' + motif + '">' + motif + '</a>';
   };
 
   HocomocoDB.pmid_link = function(pmid) {
@@ -253,6 +256,7 @@
   };
 
   HocomocoDB.formatters = {
+    '.motif_name'      : HocomocoDB.motif_link,
     '.gene_id'         : HocomocoDB.gene_id_link,
     '.AUC'             : HocomocoDB.round,
     '.ec_number'       : HocomocoDB.ec_number_link,

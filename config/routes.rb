@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/:species' => 'motifs#index', constraints: {species: /human|mouse/i}, defaults: {arity: 'mono'}
   get '/:species/:arity' => 'motifs#index', constraints: {species: /human|mouse/i, arity: /mono|di/i}, as: 'motifs'
   post '/search' => 'hocomoco#search'
+  get '/motif/:motif' => 'motifs#show', constraints: {motif: /\w+_(HUMAN|MOUSE).H10(MO|DI).[ABCDS]/i}, as: 'motif'
 
   get '/downloads' => 'hocomoco#downloads', as: 'downloads'
   get '/download', to: redirect('/downloads')

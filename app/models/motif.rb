@@ -1,4 +1,4 @@
-Motif = Struct.new(:full_name, :model_length, :consensus_string, :quality,
+Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
                           :auc, :max_auc,
                           :datasets, :origin_models,
                           :motif_families, :motif_subfamilies,
@@ -6,10 +6,12 @@ Motif = Struct.new(:full_name, :model_length, :consensus_string, :quality,
                           :gene_names, :uniprot_acs,
                           :comment) do
 
-  def uniprot; full_name.split('.')[0]; end
+  def self.model_name; 'Motif'; end
+
+  def uniprot_id; full_name.split('.')[0]; end
   def bundle_name; full_name.split('.')[1]; end
   def quality; full_name.split('.')[2]; end
-  def species; uniprot.split('_').last; end
+  def species; uniprot_id.split('_').last; end
   def to_s; full_name; end
 
   def arity
@@ -32,11 +34,11 @@ Motif = Struct.new(:full_name, :model_length, :consensus_string, :quality,
   end
 
   def revcomp_big_logo_path
-    "/final_bundle/#{species}/#{arity}/logo/#{full_name}_recomp.png"
+    "/final_bundle/#{species}/#{arity}/logo/#{full_name}_revcomp.png"
   end
 
   def self.from_string(str)
-    full_name, model_length, consensus_string, \
+    full_name, model_length, consensus, \
       _uniprot, 
       uniprot_acs, gene_names,
       _arity_type, \
@@ -51,7 +53,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus_string, :quality,
     motif_subfamilies = motif_subfamilies.split(':separator:')
     auc = auc.empty? ? nil : auc.to_f
     max_auc = max_auc.empty? ? nil : max_auc.to_f
-    self.new(full_name, model_length.to_i, consensus_string, quality, auc, max_auc,
+    self.new(full_name, model_length.to_i, consensus, quality, auc, max_auc,
       datasets, origin_models, motif_families, motif_subfamilies,
       hgnc_ids.split('; '), mgi_ids.split('; '), entrezgene_ids.split('; '),
       gene_names.split('; '), uniprot_acs.split('; '),
@@ -64,5 +66,9 @@ Motif = Struct.new(:full_name, :model_length, :consensus_string, :quality,
 
   def self.each_in_file(filename, &block)
     File.readlines(filename).drop(1).map{|line| self.from_string(line) }.each(&block)
+  end
+
+  def self.in_bundle(species:, arity:)
+    self.each_in_file(Rails.root.join("public/final_bundle/#{species}/#{arity}/final_collection.tsv"))
   end
 end
