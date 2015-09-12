@@ -1,3 +1,7 @@
+require 'bioinform'
+require 'dipm'
+require 'model_kind'
+
 Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
                           :auc, :max_auc,
                           :datasets, :origin_models,
@@ -24,6 +28,28 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
       raise "Unknown bundle #{bundle_name} for model #{full_name}"
     end
   end
+
+  def pcm_url
+    ext = model_kind.pcm_extension
+    "/final_bundle/#{species}/#{arity}/pcm/#{full_name}.#{ext}"
+  end
+
+  def pwm_url
+    ext = model_kind.pwm_extension
+    "/final_bundle/#{species}/#{arity}/pwm/#{full_name}.#{ext}"
+  end
+
+  def pcm_path
+    Rails.root.join("public/final_bundle/#{species}/#{arity}/pcm/#{full_name}.#{model_kind.pcm_extension}")
+  end
+
+  def pwm_path
+    Rails.root.join("public/final_bundle/#{species}/#{arity}/pwm/#{full_name}.#{model_kind.pwm_extension}")
+  end
+
+  def model_kind; ModelKind.get(arity); end
+  def pcm; model_kind.read_pcm(pcm_path); end
+  def pwm; model_kind.read_pwm(pwm_path); end
 
   def direct_logo_path
     "/final_bundle/#{species}/#{arity}/logo_small/#{full_name}_direct.png"

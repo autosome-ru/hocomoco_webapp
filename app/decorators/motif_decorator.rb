@@ -44,5 +44,40 @@ class MotifDecorator < Draper::Decorator
   def logo; helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_path)); end
   def big_logo; helpers.image_tag(object.direct_big_logo_path) end
   def big_logo_revcomp; helpers.image_tag(object.revcomp_big_logo_path) end
-  def model_arity_type; arity == 'mono' ? 'Mononucleotide' : 'Dinucleotide'; end
+  def model_arity_type; arity == 'mono' ? 'Mononucleotide PWM' : 'Dinucleotide PWM'; end
+  def download_pcm; helpers.link_to('pcm', object.pcm_url); end
+  def download_pwm; helpers.link_to('pwm', object.pwm_url); end
+
+  def format_matrix_as_table(matrix, round: nil)
+    nucleotides = ['A', 'C', 'G', 'T']
+    letters = (arity == 'mono') ? nucleotides : nucleotides.product(nucleotides).map(&:join)
+    header = helpers.content_tag(:thead){
+      helpers.content_tag(:tr){
+        [nil, *letters].map{|letter|
+          helpers.content_tag(:th, letter)
+        }.join.html_safe
+      }
+    }
+
+    body = helpers.content_tag(:tbody){
+      matrix.each_with_index.map{|pos, index|
+        helpers.content_tag(:tr){
+          pos_rounded = pos.map{|el| round ? el.round(round) : el}
+          ['%02d' % (index + 1), *pos_rounded].map{|cell|
+            helpers.content_tag(:td, cell)
+          }.join.html_safe
+        }
+      }.join.html_safe
+    }
+
+    helpers.content_tag(:table, (header + body).html_safe, class: 'matrix')
+  end
+
+  def pcm
+    format_matrix_as_table(object.pcm.matrix, round: 3)
+  end
+
+  def pwm
+    format_matrix_as_table(object.pwm.matrix, round: 3)
+  end
 end

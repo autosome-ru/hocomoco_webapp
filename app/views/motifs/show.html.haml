@@ -21,5 +21,17 @@
       = table_info_row @motif, :mgi_ids, html_options: {value_column_html: {class: 'mgi_id'} }
     = table_info_row @motif, :entrezgene_ids, html_options: {value_column_html: {class: 'gene_id'} }
     = table_info_row @motif, :uniprot_id, html_options: {value_column_html: {class: 'uniprot_id'} }
-    = table_info_row @motif, :uniprot_acs, html_options: {value_column_html: {class: 'uniprot_ac'} }
+    = table_info_row @motif, :uniprot_acs, html_options: {value_column_html: {class: 'uniprot_ac_and_tfclass'} }
     = table_info_row @motif, :comment
+    = table_info_row @motif, :downloads, header_cell: 'Downloads' do |motif|
+      = motif.download_pcm
+      %br
+      = motif.download_pwm
+
+.matrix_container
+  %span.title PCM
+  = @motif.pcm
+
+.matrix_container
+  %span.title PWM
+  = @motif.pwm

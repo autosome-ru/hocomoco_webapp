@@ -55,9 +55,16 @@
     return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
   };
 
+  HocomocoDB.tfclass_link = function(uniprot_ac) {
+    return '<a href="http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=' + uniprot_ac + '">TFClass</a>';
+  };
+
   HocomocoDB.uniprot_ac_link = function(uniprot_ac) {
-    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>' +
-    '<br/>' + '<a href="http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=' + uniprot_ac + '">(TFClass)</a>';
+    return '<a href="http://www.uniprot.org/uniprot/' + uniprot_ac + '">' + uniprot_ac + '</a>';
+  };
+
+  HocomocoDB.uniprot_ac_and_tfclass_link = function(uniprot_ac) {
+    return HocomocoDB.uniprot_ac_link(uniprot_ac) + '<br/>' + '(' + HocomocoDB.tfclass_link(uniprot_ac) + ')';
   };
 
   HocomocoDB.refseq_link = function(refseq) {
@@ -269,6 +276,8 @@
     '.hgnc_id'         : HocomocoDB.hgnc_id_link,
     '.mgi_id'          : HocomocoDB.mgi_id_link,
     '.uniprot_ac'      : HocomocoDB.uniprot_ac_link,
+    '.tfclass'         : HocomocoDB.tfclass_link,
+    '.uniprot_ac_and_tfclass' : HocomocoDB.uniprot_ac_and_tfclass_link,
     '.refseq'          : HocomocoDB.refseq_link,
     '.uniprot_id_comb' : HocomocoDB.uniprot_comb_link,
     '.gene_comb'       : HocomocoDB.gene_comb_link,
