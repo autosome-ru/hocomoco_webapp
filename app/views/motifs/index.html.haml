@@ -28,7 +28,7 @@
       - if species == 'HUMAN'
         = motif_table_header :hgnc_ids, dont_sort: true, hide_by_default: true, class: 'hgnc_id'
       - else
-        = motif_table_header :mgi_ids, dont_sort: true, class: 'mgi_id'
+        = motif_table_header :mgi_ids, dont_sort: true, hide_by_default: true, class: 'mgi_id'
       = motif_table_header :entrezgene_ids, dont_sort: true, class: 'gene_id'
       = motif_table_header :uniprot_id, class: 'uniprot_id'
       = motif_table_header :uniprot_acs, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
