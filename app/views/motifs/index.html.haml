@@ -19,14 +19,14 @@
         .help-icon.has-tooltip{data: {toggle: 'tooltip', placement: 'bottom', title: 'Only primary high-quality models are shown by default. Use `A to D or S` to view all models.'} }
 
       = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
-      = motif_table_header :origin, hide_by_default: false, class: 'origin_dataset_type filter-select'
+      = motif_table_header :origin, hide_by_default: true, class: 'origin_dataset_type filter-select'
       = motif_table_header :auc, hide_by_default: true, class: 'AUC'
       = motif_table_header :max_auc, hide_by_default: true, class: 'AUC'
       = motif_table_header :num_datasets, hide_by_default: true, class: 'num_datasets'
       = motif_table_header :motif_families, class: 'motif-family'
       = motif_table_header :motif_subfamilies, class: 'motif-subfamily', hide_by_default: true
       - if species == 'HUMAN'
-        = motif_table_header :hgnc_ids, dont_sort: true, class: 'hgnc_id'
+        = motif_table_header :hgnc_ids, dont_sort: true, hide_by_default: true, class: 'hgnc_id'
       - else
         = motif_table_header :mgi_ids, dont_sort: true, class: 'mgi_id'
       = motif_table_header :entrezgene_ids, dont_sort: true, class: 'gene_id'

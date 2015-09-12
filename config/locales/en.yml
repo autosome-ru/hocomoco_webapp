@@ -43,3 +43,4 @@ en:
         uniprot_id:         'UniProt ID'
         uniprot_acs:        'UniProt AC'
         comment:            'Comment'
+        model_arity_type:   'Model type'

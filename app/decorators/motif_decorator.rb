@@ -44,4 +44,5 @@ class MotifDecorator < Draper::Decorator
   def logo; helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_path)); end
   def big_logo; helpers.image_tag(object.direct_big_logo_path) end
   def big_logo_revcomp; helpers.image_tag(object.revcomp_big_logo_path) end
+  def model_arity_type; arity == 'mono' ? 'Mononucleotide' : 'Dinucleotide'; end
 end

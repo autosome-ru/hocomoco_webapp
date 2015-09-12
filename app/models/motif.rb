@@ -39,7 +39,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
 
   def self.from_string(str)
     full_name, model_length, consensus, \
-      _uniprot, 
+      _uniprot,
       uniprot_acs, gene_names,
       _arity_type, \
       quality, auc, max_auc, \
@@ -69,22 +69,23 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     raise  unless collection_names.all?{|collection| collection == collection_names.first }
     collection_name = collection_names.first
     {
-      'CD' => 'ChIP-Seq',
+      'CD' => 'ChIP-Seq', # Actually these models aren't in collection
       'CM' => 'ChIP-Seq',
       'PAPAM' => 'ChIP-Seq',
       'PAPAD' => 'ChIP-Seq',
-      
+
       'SMF' => 'HT-SELEX',
       'SMI' => 'HT-SELEX',
-      'SDF' => 'HT-SELEX',
-      'SDI' => 'HT-SELEX',
+      'SDF' => 'HT-SELEX', # Actually these models aren't in collection
+      'SDI' => 'HT-SELEX', # Actually these models aren't in collection
 
       'HL' => 'HOCOMOCO v9',
     }[collection_name]
   end
 
   def self.each_in_file(filename, &block)
-    File.readlines(filename).drop(1).map{|line| self.from_string(line) }.each(&block)
+    @cached_motifs ||= {}
+    @cached_motifs[filename] ||= File.readlines(filename).drop(1).map{|line| self.from_string(line) }.each(&block)
   end
 
   def self.in_bundle(species:, arity:)
