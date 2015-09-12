@@ -1,11 +1,18 @@
 ;(function(HocomocoDB, $, undefined) {
 
   HocomocoDB.gene_id_link = function(gene_id) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>' + '<br/>(' + HocomocoDB.fantom_sstar_gene_link(gene_id) + ')';
+    return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>' + 
+    '<br/>(' + HocomocoDB.fantom_sstar_gene_link(gene_id) + ')'/*; +
+    '<br/>(' + HocomocoDB.epifactors_link(gene_id) + ')'*/; // We need to check whether such epifactor exists
+
   };
 
   HocomocoDB.fantom_sstar_gene_link = function(gene_id) {
     return '<a href="http://fantom.gsc.riken.jp/5/sstar/EntrezGene:' + gene_id + '">SSTAR</a>';
+  };
+
+  HocomocoDB.epifactors_link = function(gene_id) {
+    return '<a href="http://epifactors.autosome.ru/genes?search=' + gene_id + '&field=gene_id">EpiFactors</a>';
   };
 
   HocomocoDB.hgnc_id_link = function(hgnc) {
@@ -83,7 +90,7 @@
   }
 
   HocomocoDB.round = function(value) {
-    return Number(value).toFixed(3);
+    return value != '' ? Number(value).toFixed(3) : '';
   }
 
   HocomocoDB.sample_link = function(value, data) {

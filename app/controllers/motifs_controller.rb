@@ -11,7 +11,7 @@ protected
   def arity; params[:arity].downcase; end
   def csv_filename; "#{species}_#{arity}_motifs.tsv"; end
   def caption
-    (((arity == 'di') ? 'Dinucleotide ' : '') + "PWMs for #{species}<br/> transcription factors").html_safe
+    ((arity == 'di') ? 'Dinucleotide PWMs' : 'PWMs') + " for #{species} transcription factors"
   end
   helper_method :species, :arity, :csv_filename
 end

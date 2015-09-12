@@ -37,14 +37,12 @@
         = menu_group do
           = menu_item 'Home', root_path
           = drop_down 'Human TFs' do
-            = menu_item 'Mononucleotide PWMs', motifs_path(species: 'human', arity: 'mono')
-            = menu_item 'Dinucleotide PWMs', motifs_path(species: 'human', arity: 'di')
+            = menu_item 'Mononucleotide models', motifs_path(species: 'human', arity: 'mono')
+            = menu_item 'Dinucleotide models', motifs_path(species: 'human', arity: 'di')
           = drop_down 'Mouse TFs' do
-            = menu_item 'Mononucleotide PWMs', motifs_path(species: 'mouse', arity: 'mono')
-            = menu_item 'Dinucleotide PWMs', motifs_path(species: 'mouse', arity: 'di')
+            = menu_item 'Mononucleotide models', motifs_path(species: 'mouse', arity: 'mono')
+            = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
           = menu_item 'Downloads', downloads_path
-        = menu_group do
-          .caption= caption
 
         = form_tag search_path, class: 'pull-right navbar-search' do
           = label_tag do

@@ -5,14 +5,15 @@
   %input{type: "text", value: csv_filename, class: 'csv-filename'}
   .loading_table
     .loading_logo
+  .caption= caption
 
 %table#motifs.tablesorter.attach-column-selector
   %thead
     %tr
       = table_header 'Transcription factor', class: 'hgnc_name'
       = table_header 'Model', show_always: true
-      = table_header 'Model length'
       = table_header 'LOGO', dont_sort: true, class: 'sequence_logo filter-false'
+      = table_header 'Model length'
       = table_header 'Quality', class: 'filter-match', data: {value:'A to C', placeholder:'A or S'}
       = table_header 'Consensus', dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
       = table_header 'wAUC', hide_by_default: true, class: 'AUC'
@@ -34,8 +35,8 @@
       %tr
         %td= model.gene_names
         %td= model.full_name
-        %td= model.model_length
         %td= image_tag(model.direct_logo_path)
+        %td= model.model_length
         %td= model.quality
         %td= model.consensus_string
         %td= model.auc

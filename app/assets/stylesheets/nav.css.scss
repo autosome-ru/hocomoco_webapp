@@ -26,15 +26,16 @@ nav .container {
 }
 
 .hocologo {
-  background-image: url("hocomoco_logo_big.png");
+  background-image: image-url("hocomoco_logo_big.png");
   margin-right: 5px;
   width: 59px;
   height: 48px;
 }
 
 .caption {
+  display: inline-block;
   padding-top: 4px;
-  padding-left: 30px;
+  padding-left: 20px;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.1;
