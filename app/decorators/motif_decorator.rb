@@ -47,6 +47,7 @@ class MotifDecorator < Draper::Decorator
   def model_arity_type; arity == 'mono' ? 'Mononucleotide PWM' : 'Dinucleotide PWM'; end
   def download_pcm; helpers.link_to('pcm', object.pcm_url); end
   def download_pwm; helpers.link_to('pwm', object.pwm_url); end
+  def download_alignment; helpers.link_to('alignment', object.alignment_url); end
 
   def format_matrix_as_table(matrix, round: nil)
     nucleotides = ['A', 'C', 'G', 'T']

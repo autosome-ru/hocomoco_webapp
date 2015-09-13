@@ -8,6 +8,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
                           :motif_families, :motif_subfamilies,
                           :hgnc_ids, :mgi_ids, :entrezgene_ids,
                           :gene_names, :uniprot_acs,
+                          :num_words_in_alignment,
                           :comment) do
 
   def self.model_name; 'Motif'; end
@@ -39,6 +40,11 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     "/final_bundle/#{species}/#{arity}/pwm/#{full_name}.#{ext}"
   end
 
+  def alignment_url
+    ext = model_kind.pwm_extension
+    "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
+  end
+
   def pcm_path
     Rails.root.join("public/final_bundle/#{species}/#{arity}/pcm/#{full_name}.#{model_kind.pcm_extension}")
   end
@@ -68,11 +74,11 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
       _uniprot,
       uniprot_acs, gene_names,
       _arity_type, \
-      quality, auc, max_auc, \
+      quality, num_words_in_alignment, auc, max_auc, \
       datasets, origin_models, \
       motif_families, motif_subfamilies, \
       hgnc_ids, mgi_ids, entrezgene_ids, \
-      comment = str.chomp.split("\t", 18)
+      comment = str.chomp.split("\t", 19)
     datasets = datasets.split(', ')
     origin_models = origin_models.split(', ')
     motif_families = motif_families.split(':separator:')
@@ -82,7 +88,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     self.new(full_name, model_length.to_i, consensus, quality, auc, max_auc,
       datasets, origin_models, motif_families, motif_subfamilies,
       hgnc_ids.split('; '), mgi_ids.split('; '), entrezgene_ids.split('; '),
-      gene_names.split('; '), uniprot_acs.split('; '),
+      gene_names.split('; '), uniprot_acs.split('; '), num_words_in_alignment.to_i,
       comment)
   end
 

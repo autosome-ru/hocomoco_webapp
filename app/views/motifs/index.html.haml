@@ -23,6 +23,7 @@
       = motif_table_header :auc, hide_by_default: true, class: 'AUC'
       = motif_table_header :max_auc, hide_by_default: true, class: 'AUC'
       = motif_table_header :num_datasets, hide_by_default: true, class: 'num_datasets'
+      = motif_table_header :num_words_in_alignment,hide_by_default: true, class: 'num_words_in_alignment'
       = motif_table_header :motif_families, class: 'motif-family'
       = motif_table_header :motif_subfamilies, class: 'motif-subfamily', hide_by_default: true
       - if species == 'HUMAN'
@@ -47,6 +48,7 @@
         %td= model.auc
         %td= model.max_auc
         %td= model.num_datasets
+        %td= model.num_words_in_alignment
         %td= model.motif_families
         %td= model.motif_subfamilies
         - if species == 'HUMAN'
