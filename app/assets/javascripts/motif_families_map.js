@@ -66,7 +66,8 @@ jQuery(function(){
       });
 
     node.append("circle")
-        .attr("r", function(d) { return Math.pow(d.total_tfs, 0.5); } );
+        .attr("r", function(d) { return Math.pow(d.total_tfs, 0.5); } )
+        .style("fill", "blue");
 
     node.append("circle")
         .attr("r", function(d) { return Math.pow(d.covered_tfs, 0.5); } )
