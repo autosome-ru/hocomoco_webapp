@@ -51,8 +51,14 @@ jQuery(function(){
 
     node
       .on("mouseover", function(d) {
-        var info_text = "<a href=\"http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=" + d.family_id + "\">" +
-                    d.name + "{" + d.family_id + "}</a><br/><br/>" + "Total TFs / HOCOMOCO models:<br/>" +
+        var info_text = '';
+        if (d.name.length > 0) {
+          var family_name = '<span class="family_name">' + d.name + '{' + d.family_id + '}</span>';
+          // info_text = '<a href="http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=' + d.family_id + '">' + family_name + '</a>' + 
+          info_text = family_name
+          info_text += '<br/>';
+        }
+        info_text += '<br/>' + 'Total TFs / HOCOMOCO models:<br/>' +
                     '<span class="total_tfs">' + d.total_tfs + '</span> / <span class="covered_tfs">' + d.covered_tfs + '</span>';
         div.transition()
             .duration(200)
