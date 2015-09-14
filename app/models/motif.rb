@@ -30,6 +30,16 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     end
   end
 
+  def subfamily_ids
+    motif_subfamilies.map{|subfamily| subfamily.match(/\{(.+)\}/)[1] }
+  end
+
+  def is_a_subfamily_member?(subfamily_id_query)
+    subfamily_ids.any?{|subfamily_id|
+      subfamily_id == subfamily_id_query || subfamily_id.start_with?(subfamily_id_query)
+    }
+  end
+
   def pcm_url
     ext = model_kind.pcm_extension
     "/final_bundle/#{species}/#{arity}/pcm/#{full_name}.#{ext}"

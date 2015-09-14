@@ -36,7 +36,7 @@
       = motif_table_header :comment, dont_sort: true, hide_by_default: true
 
   %tbody
-    - @models.each do |model|
+    - models.each do |model|
       %tr
         %td= model.gene_names
         %td= model.full_name

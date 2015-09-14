@@ -35,6 +35,7 @@ gem 'haml-rails'
 
 gem 'jquery-tablesorter'
 gem 'select2-rails'
+gem 'd3-rails'
 
 gem 'therubyracer'
 gem 'less-rails'

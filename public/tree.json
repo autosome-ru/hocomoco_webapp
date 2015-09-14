@@ -1,0 +1,1250 @@
+{
+ "total_tfs": "1548",
+ "size": "1548",
+ "covered_tfs": "591",
+ "name": "",
+ "url": "/search?species=HUMAN&arity=mono&family_id=",
+ "children": [
+  {
+   "total_tfs": "19",
+   "size": "19",
+   "covered_tfs": "2",
+   "name": "Yet undefined DNA-binding domains",
+   "url": "/search?species=HUMAN&arity=mono&family_id=0",
+   "children": [
+    {
+     "total_tfs": "8",
+     "size": "8",
+     "covered_tfs": "2",
+     "name": "Uncharacterized",
+     "url": "/search?species=HUMAN&arity=mono&family_id=0.0",
+     "children": [
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "Nuclear localized protein 1",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.0.1"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "PHF5",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.0.2"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "RFXANK",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.0.3"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "RFXAP",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.0.4"
+      },
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "1",
+       "name": "PUR",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.0.5"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "1",
+       "name": "NRF",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.0.6"
+      }
+     ]
+    },
+    {
+     "total_tfs": "3",
+     "size": "3",
+     "covered_tfs": "0",
+     "name": "AXUD/CSRNP domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=0.1",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "0",
+       "name": "CSRNP factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.1.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "3",
+     "size": "3",
+     "covered_tfs": "0",
+     "name": "NonO domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=0.2",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "0",
+       "name": "NonO-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.2.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "2",
+     "size": "2",
+     "covered_tfs": "0",
+     "name": "Leucine-rich repeat flightless-interacting proteins",
+     "url": "/search?species=HUMAN&arity=mono&family_id=0.3",
+     "children": [
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "0",
+       "name": "LRRFIP factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.3.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "3",
+     "size": "3",
+     "covered_tfs": "0",
+     "name": "NFX1-type putative zinc finger factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=0.4",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "0",
+       "name": "NFX1",
+       "url": "/search?species=HUMAN&arity=mono&family_id=0.4.1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "total_tfs": "174",
+   "size": "174",
+   "covered_tfs": "103",
+   "name": "Basic domains",
+   "url": "/search?species=HUMAN&arity=mono&family_id=1",
+   "children": [
+    {
+     "total_tfs": "58",
+     "size": "58",
+     "covered_tfs": "44",
+     "name": "Basic leucine zipper factors (bZIP)",
+     "url": "/search?species=HUMAN&arity=mono&family_id=1.1",
+     "children": [
+      {
+       "total_tfs": "5",
+       "size": "5",
+       "covered_tfs": "0",
+       "name": "ZIP only",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.1.0"
+      },
+      {
+       "total_tfs": "12",
+       "size": "12",
+       "covered_tfs": "10",
+       "name": "Jun-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.1.1"
+      },
+      {
+       "total_tfs": "6",
+       "size": "6",
+       "covered_tfs": "6",
+       "name": "Fos-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.1.2"
+      },
+      {
+       "total_tfs": "7",
+       "size": "7",
+       "covered_tfs": "7",
+       "name": "Maf-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.1.3"
+      },
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "2",
+       "name": "B-ATF-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.1.4"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "1",
+       "name": "XBP-1-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.1.5"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "1",
+       "name": "ATF-4-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.1.6"
+      },
+      {
+       "total_tfs": "12",
+       "size": "12",
+       "covered_tfs": "7",
+       "name": "CREB-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.1.7"
+      },
+      {
+       "total_tfs": "10",
+       "size": "10",
+       "covered_tfs": "10",
+       "name": "C/EBP-related",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.1.8"
+      }
+     ]
+    },
+    {
+     "total_tfs": "111",
+     "size": "111",
+     "covered_tfs": "55",
+     "name": "Basic helix-loop-helix factors (bHLH)",
+     "url": "/search?species=HUMAN&arity=mono&family_id=1.2",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "3",
+       "name": "E2A-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.2.1"
+      },
+      {
+       "total_tfs": "9",
+       "size": "9",
+       "covered_tfs": "4",
+       "name": "MyoD / ASC-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.2.2"
+      },
+      {
+       "total_tfs": "37",
+       "size": "37",
+       "covered_tfs": "18",
+       "name": "Tal-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.2.3"
+      },
+      {
+       "total_tfs": "13",
+       "size": "13",
+       "covered_tfs": "7",
+       "name": "Hairy-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.2.4"
+      },
+      {
+       "total_tfs": "22",
+       "size": "22",
+       "covered_tfs": "7",
+       "name": "PAS domain factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.2.5"
+      },
+      {
+       "total_tfs": "23",
+       "size": "23",
+       "covered_tfs": "15",
+       "name": "bHLH-ZIP factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.2.6"
+      },
+      {
+       "total_tfs": "4",
+       "size": "4",
+       "covered_tfs": "1",
+       "name": "HLH domain only",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.2.8"
+      }
+     ]
+    },
+    {
+     "total_tfs": "5",
+     "size": "5",
+     "covered_tfs": "4",
+     "name": "Basic helix-span-helix factors (bHSH)",
+     "url": "/search?species=HUMAN&arity=mono&family_id=1.3",
+     "children": [
+      {
+       "total_tfs": "5",
+       "size": "5",
+       "covered_tfs": "4",
+       "name": "AP-2",
+       "url": "/search?species=HUMAN&arity=mono&family_id=1.3.1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "total_tfs": "806",
+   "size": "806",
+   "covered_tfs": "144",
+   "name": "Zinc-coordinating DNA-binding domains",
+   "url": "/search?species=HUMAN&arity=mono&family_id=2",
+   "children": [
+    {
+     "total_tfs": "48",
+     "size": "48",
+     "covered_tfs": "44",
+     "name": "Nuclear receptors with C4 zinc fingers",
+     "url": "/search?species=HUMAN&arity=mono&family_id=2.1",
+     "children": [
+      {
+       "total_tfs": "9",
+       "size": "9",
+       "covered_tfs": "9",
+       "name": "Steroid hormone receptors (NR3)",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.1.1"
+      },
+      {
+       "total_tfs": "19",
+       "size": "19",
+       "covered_tfs": "16",
+       "name": "Thyroid hormone receptor-related factors (NR1)",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.1.2"
+      },
+      {
+       "total_tfs": "12",
+       "size": "12",
+       "covered_tfs": "12",
+       "name": "RXR-related receptors (NR2)",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.1.3"
+      },
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "3",
+       "name": "NGFI-B-related receptors (NR4)",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.1.4"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "2",
+       "name": "FTZ-F1-related receptors (NR5)",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.1.5"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "1",
+       "name": "GCNF-related receptors (NR6)",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.1.6"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "1",
+       "name": "DAX-related receptors (NR0)",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.1.7"
+      }
+     ]
+    },
+    {
+     "total_tfs": "19",
+     "size": "19",
+     "covered_tfs": "6",
+     "name": "Other C4 zinc finger-type factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=2.2",
+     "children": [
+      {
+       "total_tfs": "19",
+       "size": "19",
+       "covered_tfs": "6",
+       "name": "GATA-type zinc fingers",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.2.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "697",
+     "size": "697",
+     "covered_tfs": "92",
+     "name": "C2H2 zinc finger factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=2.3",
+     "children": [
+      {
+       "total_tfs": "30",
+       "size": "30",
+       "covered_tfs": "18",
+       "name": "Three-zinc finger Krüppel-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.3.1"
+      },
+      {
+       "total_tfs": "25",
+       "size": "25",
+       "covered_tfs": "2",
+       "name": "Other factors with up to three adjacent zinc fingers",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.3.2"
+      },
+      {
+       "total_tfs": "488",
+       "size": "488",
+       "covered_tfs": "52",
+       "name": "More than 3 adjacent zinc finger factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.3.3"
+      },
+      {
+       "total_tfs": "148",
+       "size": "148",
+       "covered_tfs": "19",
+       "name": "Factors with multiple dispersed zinc fingers",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.3.4"
+      },
+      {
+       "total_tfs": "6",
+       "size": "6",
+       "covered_tfs": "1",
+       "name": "BED zinc finger factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.3.5"
+      }
+     ]
+    },
+    {
+     "total_tfs": "0",
+     "size": "0",
+     "covered_tfs": "0",
+     "name": "C6 zinc cluster factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=2.4"
+    },
+    {
+     "total_tfs": "8",
+     "size": "8",
+     "covered_tfs": "0",
+     "name": "DM-type intertwined zinc finger factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=2.5",
+     "children": [
+      {
+       "total_tfs": "8",
+       "size": "8",
+       "covered_tfs": "0",
+       "name": "DMRT",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.5.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "7",
+     "size": "7",
+     "covered_tfs": "1",
+     "name": "CXXC zinc finger factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=2.6",
+     "children": [
+      {
+       "total_tfs": "7",
+       "size": "7",
+       "covered_tfs": "1",
+       "name": "CpG-binding proteins",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.6.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "12",
+     "size": "12",
+     "covered_tfs": "0",
+     "name": "C2HC zinc finger factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=2.7",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "0",
+       "name": "Myelin transcription factor-related proteins",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.7.1"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "0",
+       "name": "Friend of GATA proteins",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.7.2"
+      },
+      {
+       "total_tfs": "5",
+       "size": "5",
+       "covered_tfs": "0",
+       "name": "Histone acetyltransferases with C2HC zinc finger",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.7.3"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "Lethal(3)malignant brain tumor-related proteins",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.7.4"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "LYAR-related proteins",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.7.5"
+      }
+     ]
+    },
+    {
+     "total_tfs": "6",
+     "size": "6",
+     "covered_tfs": "0",
+     "name": "C3H zinc finger factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=2.8",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "0",
+       "name": "ZC3H8-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.8.1"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "ZGPAT-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.8.2"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "RC3H-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.8.3"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "CNOT4-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.8.4"
+      }
+     ]
+    },
+    {
+     "total_tfs": "12",
+     "size": "12",
+     "covered_tfs": "1",
+     "name": "C2CH THAP-type zinc finger factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=2.9",
+     "children": [
+      {
+       "total_tfs": "12",
+       "size": "12",
+       "covered_tfs": "1",
+       "name": "THAP-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=2.9.1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "total_tfs": "414",
+   "size": "414",
+   "covered_tfs": "257",
+   "name": "Helix-turn-helix domains",
+   "url": "/search?species=HUMAN&arity=mono&family_id=3",
+   "children": [
+    {
+     "total_tfs": "244",
+     "size": "244",
+     "covered_tfs": "161",
+     "name": "Homeo domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=3.1",
+     "children": [
+      {
+       "total_tfs": "52",
+       "size": "52",
+       "covered_tfs": "41",
+       "name": "HOX-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.1"
+      },
+      {
+       "total_tfs": "20",
+       "size": "20",
+       "covered_tfs": "18",
+       "name": "POU domain factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.10"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "0",
+       "name": "PHTF factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.11"
+      },
+      {
+       "total_tfs": "50",
+       "size": "50",
+       "covered_tfs": "36",
+       "name": "NK-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.2"
+      },
+      {
+       "total_tfs": "54",
+       "size": "54",
+       "covered_tfs": "34",
+       "name": "Paired-related HD factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.3"
+      },
+      {
+       "total_tfs": "22",
+       "size": "22",
+       "covered_tfs": "13",
+       "name": "TALE-type homeo domain factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.4"
+      },
+      {
+       "total_tfs": "12",
+       "size": "12",
+       "covered_tfs": "10",
+       "name": "HD-LIM factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.5"
+      },
+      {
+       "total_tfs": "6",
+       "size": "6",
+       "covered_tfs": "0",
+       "name": "HD-SINE factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.6"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "1",
+       "name": "HD-PROS factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.7"
+      },
+      {
+       "total_tfs": "16",
+       "size": "16",
+       "covered_tfs": "3",
+       "name": "HD-ZF factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.8"
+      },
+      {
+       "total_tfs": "8",
+       "size": "8",
+       "covered_tfs": "5",
+       "name": "HD-CUT factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.1.9"
+      }
+     ]
+    },
+    {
+     "total_tfs": "9",
+     "size": "9",
+     "covered_tfs": "8",
+     "name": "Paired box factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=3.2",
+     "children": [
+      {
+       "total_tfs": "4",
+       "size": "4",
+       "covered_tfs": "4",
+       "name": "Paired plus homeo domain",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.2.1"
+      },
+      {
+       "total_tfs": "5",
+       "size": "5",
+       "covered_tfs": "4",
+       "name": "Paired domain only",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.2.2"
+      }
+     ]
+    },
+    {
+     "total_tfs": "68",
+     "size": "68",
+     "covered_tfs": "40",
+     "name": "Fork head / winged helix factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=3.3",
+     "children": [
+      {
+       "total_tfs": "50",
+       "size": "50",
+       "covered_tfs": "26",
+       "name": "Forkhead box (FOX) factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.3.1"
+      },
+      {
+       "total_tfs": "10",
+       "size": "10",
+       "covered_tfs": "9",
+       "name": "E2F-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.3.2"
+      },
+      {
+       "total_tfs": "8",
+       "size": "8",
+       "covered_tfs": "5",
+       "name": "RFX-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.3.3"
+      }
+     ]
+    },
+    {
+     "total_tfs": "6",
+     "size": "6",
+     "covered_tfs": "4",
+     "name": "Heat shock factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=3.4",
+     "children": [
+      {
+       "total_tfs": "6",
+       "size": "6",
+       "covered_tfs": "4",
+       "name": "HSF factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.4.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "68",
+     "size": "68",
+     "covered_tfs": "39",
+     "name": "Tryptophan cluster factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=3.5",
+     "children": [
+      {
+       "total_tfs": "31",
+       "size": "31",
+       "covered_tfs": "5",
+       "name": "Myb/SANT domain factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.5.1"
+      },
+      {
+       "total_tfs": "28",
+       "size": "28",
+       "covered_tfs": "26",
+       "name": "Ets-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.5.2"
+      },
+      {
+       "total_tfs": "9",
+       "size": "9",
+       "covered_tfs": "8",
+       "name": "Interferon-regulatory factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.5.3"
+      }
+     ]
+    },
+    {
+     "total_tfs": "4",
+     "size": "4",
+     "covered_tfs": "3",
+     "name": "TEA domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=3.6",
+     "children": [
+      {
+       "total_tfs": "4",
+       "size": "4",
+       "covered_tfs": "3",
+       "name": "TEF-1-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.6.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "15",
+     "size": "15",
+     "covered_tfs": "2",
+     "name": "ARID domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=3.7",
+     "children": [
+      {
+       "total_tfs": "15",
+       "size": "15",
+       "covered_tfs": "2",
+       "name": "ARID-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=3.7.1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "total_tfs": "47",
+   "size": "47",
+   "covered_tfs": "24",
+   "name": "Other all-alpha-helical DNA-binding domains",
+   "url": "/search?species=HUMAN&arity=mono&family_id=4",
+   "children": [
+    {
+     "total_tfs": "44",
+     "size": "44",
+     "covered_tfs": "21",
+     "name": "High-mobility group (HMG) domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=4.1",
+     "children": [
+      {
+       "total_tfs": "23",
+       "size": "23",
+       "covered_tfs": "17",
+       "name": "SOX-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=4.1.1"
+      },
+      {
+       "total_tfs": "8",
+       "size": "8",
+       "covered_tfs": "0",
+       "name": "TOX-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=4.1.2"
+      },
+      {
+       "total_tfs": "5",
+       "size": "5",
+       "covered_tfs": "4",
+       "name": "TCF-7-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=4.1.3"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "0",
+       "name": "PBRM1-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=4.1.4"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "0",
+       "name": "WHSC1-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=4.1.5"
+      },
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "0",
+       "name": "UBF-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=4.1.6"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "TFAM",
+       "url": "/search?species=HUMAN&arity=mono&family_id=4.1.7"
+      }
+     ]
+    },
+    {
+     "total_tfs": "3",
+     "size": "3",
+     "covered_tfs": "3",
+     "name": "Heteromeric CCAAT-binding factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=4.2",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "3",
+       "name": "Heteromeric CCAAT-binding factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=4.2.1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "total_tfs": "13",
+   "size": "13",
+   "covered_tfs": "7",
+   "name": "alpha-Helices exposed by beta-structures",
+   "url": "/search?species=HUMAN&arity=mono&family_id=5",
+   "children": [
+    {
+     "total_tfs": "5",
+     "size": "5",
+     "covered_tfs": "5",
+     "name": "MADS box factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=5.1",
+     "children": [
+      {
+       "total_tfs": "4",
+       "size": "4",
+       "covered_tfs": "4",
+       "name": "Regulators of differentiation",
+       "url": "/search?species=HUMAN&arity=mono&family_id=5.1.1"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "1",
+       "name": "Responders to external signals (SRF/RLM1)",
+       "url": "/search?species=HUMAN&arity=mono&family_id=5.1.2"
+      }
+     ]
+    },
+    {
+     "total_tfs": "0",
+     "size": "0",
+     "covered_tfs": "0",
+     "name": "E2-related factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=5.2",
+     "children": [
+      {
+       "total_tfs": "0",
+       "size": "0",
+       "covered_tfs": "0",
+       "name": "E2",
+       "url": "/search?species=HUMAN&arity=mono&family_id=5.2.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "8",
+     "size": "8",
+     "covered_tfs": "2",
+     "name": "SAND domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=5.3",
+     "children": [
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "1",
+       "name": "AIRE",
+       "url": "/search?species=HUMAN&arity=mono&family_id=5.3.1"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "DEAF",
+       "url": "/search?species=HUMAN&arity=mono&family_id=5.3.2"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "1",
+       "name": "GMEB",
+       "url": "/search?species=HUMAN&arity=mono&family_id=5.3.3"
+      },
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "Sp110",
+       "url": "/search?species=HUMAN&arity=mono&family_id=5.3.4"
+      },
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "0",
+       "name": "Sp140/Sp100",
+       "url": "/search?species=HUMAN&arity=mono&family_id=5.3.5"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "total_tfs": "62",
+   "size": "62",
+   "covered_tfs": "41",
+   "name": "Immunoglobulin fold",
+   "url": "/search?species=HUMAN&arity=mono&family_id=6",
+   "children": [
+    {
+     "total_tfs": "25",
+     "size": "25",
+     "covered_tfs": "12",
+     "name": "Rel homology region (RHR) factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=6.1",
+     "children": [
+      {
+       "total_tfs": "5",
+       "size": "5",
+       "covered_tfs": "5",
+       "name": "NF-kappaB-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.1.1"
+      },
+      {
+       "total_tfs": "9",
+       "size": "9",
+       "covered_tfs": "0",
+       "name": "Ankyrin domain-only factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.1.2"
+      },
+      {
+       "total_tfs": "5",
+       "size": "5",
+       "covered_tfs": "5",
+       "name": "NFAT-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.1.3"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "1",
+       "name": "CSL-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.1.4"
+      },
+      {
+       "total_tfs": "4",
+       "size": "4",
+       "covered_tfs": "1",
+       "name": "Early B-Cell Factor-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.1.5"
+      }
+     ]
+    },
+    {
+     "total_tfs": "7",
+     "size": "7",
+     "covered_tfs": "7",
+     "name": "STAT domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=6.2",
+     "children": [
+      {
+       "total_tfs": "7",
+       "size": "7",
+       "covered_tfs": "7",
+       "name": "STAT factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.2.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "3",
+     "size": "3",
+     "covered_tfs": "3",
+     "name": "p53 domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=6.3",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "3",
+       "name": "p53-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.3.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "3",
+     "size": "3",
+     "covered_tfs": "3",
+     "name": "Runt domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=6.4",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "3",
+       "name": "Runt-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.4.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "17",
+     "size": "17",
+     "covered_tfs": "13",
+     "name": "T-Box factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=6.5",
+     "children": [
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "2",
+       "name": "Brachyury-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.5.1"
+      },
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "3",
+       "name": "TBrain-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.5.2"
+      },
+      {
+       "total_tfs": "6",
+       "size": "6",
+       "covered_tfs": "3",
+       "name": "TBX1-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.5.3"
+      },
+      {
+       "total_tfs": "4",
+       "size": "4",
+       "covered_tfs": "4",
+       "name": "TBX2-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.5.4"
+      },
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "1",
+       "name": "TBX6-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.5.5"
+      }
+     ]
+    },
+    {
+     "total_tfs": "1",
+     "size": "1",
+     "covered_tfs": "0",
+     "name": "NDT80 domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=6.6",
+     "children": [
+      {
+       "total_tfs": "1",
+       "size": "1",
+       "covered_tfs": "0",
+       "name": "Myelin gene regulatory factor-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.6.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "6",
+     "size": "6",
+     "covered_tfs": "3",
+     "name": "Grainyhead domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=6.7",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "1",
+       "name": "Grainyhead-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.7.1"
+      },
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "2",
+       "name": "CP2-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=6.7.2"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "total_tfs": "14",
+   "size": "14",
+   "covered_tfs": "10",
+   "name": "beta-Hairpin exposed by an alpha/beta-scaffold",
+   "url": "/search?species=HUMAN&arity=mono&family_id=7",
+   "children": [
+    {
+     "total_tfs": "12",
+     "size": "12",
+     "covered_tfs": "8",
+     "name": "SMAD/NF-1 DNA-binding domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=7.1",
+     "children": [
+      {
+       "total_tfs": "8",
+       "size": "8",
+       "covered_tfs": "4",
+       "name": "SMAD factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=7.1.1"
+      },
+      {
+       "total_tfs": "4",
+       "size": "4",
+       "covered_tfs": "4",
+       "name": "Nuclear factor 1",
+       "url": "/search?species=HUMAN&arity=mono&family_id=7.1.2"
+      }
+     ]
+    },
+    {
+     "total_tfs": "2",
+     "size": "2",
+     "covered_tfs": "2",
+     "name": "GCM domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=7.2",
+     "children": [
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "2",
+       "name": "GCM factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=7.2.1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "total_tfs": "5",
+   "size": "5",
+   "covered_tfs": "3",
+   "name": "beta-Sheet binding to DNA",
+   "url": "/search?species=HUMAN&arity=mono&family_id=8",
+   "children": [
+    {
+     "total_tfs": "3",
+     "size": "3",
+     "covered_tfs": "1",
+     "name": "TATA-binding proteins",
+     "url": "/search?species=HUMAN&arity=mono&family_id=8.1",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "1",
+       "name": "TBP-related factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=8.1.1"
+      }
+     ]
+    },
+    {
+     "total_tfs": "2",
+     "size": "2",
+     "covered_tfs": "2",
+     "name": "A.T hook factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=8.2",
+     "children": [
+      {
+       "total_tfs": "2",
+       "size": "2",
+       "covered_tfs": "2",
+       "name": "HMGA factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=8.2.1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "total_tfs": "3",
+   "size": "3",
+   "covered_tfs": "1",
+   "name": "beta-Barrel DNA-binding domains",
+   "url": "/search?species=HUMAN&arity=mono&family_id=9",
+   "children": [
+    {
+     "total_tfs": "3",
+     "size": "3",
+     "covered_tfs": "1",
+     "name": "Cold-shock domain factors",
+     "url": "/search?species=HUMAN&arity=mono&family_id=9.1",
+     "children": [
+      {
+       "total_tfs": "3",
+       "size": "3",
+       "covered_tfs": "1",
+       "name": "Dbp factors",
+       "url": "/search?species=HUMAN&arity=mono&family_id=9.1.1"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

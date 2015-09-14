@@ -10,4 +10,5 @@ module MotifsHelper
   def link_to_motif(motif, content)
     link_to(content, motif_url(motif))
   end
+
 end
