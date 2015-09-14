@@ -5,7 +5,7 @@ class HocomocoController < ApplicationController
     redirect_to root_path  unless species && arity
     models = Motif.in_bundle(species: species, arity: arity)
 
-    if params[:family_id]
+    if params[:family_id] && !params[:family_id].blank?
       models = models.select{|motif|
         motif.is_a_subfamily_member?(params[:family_id])
       }
@@ -18,8 +18,8 @@ class HocomocoController < ApplicationController
       species: species,
       arity: arity,
       csv_filename: "#{species}_#{arity}_motifs.tsv",
-      caption: caption(arity, species),
-      quality_help_text: quality_help_text(arity)
+      family_id: params[:family_id],
+      disable_default_filters: true
     }
   end
 

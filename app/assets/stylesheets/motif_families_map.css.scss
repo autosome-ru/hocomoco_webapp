@@ -3,6 +3,7 @@ span.family_name {
 }
 
 span.total_tfs {
+  font-weight: bolder;
   color: #0074FF;
 }
 
@@ -35,7 +36,7 @@ span.covered_tfs {
   stroke-width: 1.5px;
 }
 
-div.tooltip {
+div.map-tooltip {
     position: absolute;
     text-align: center;
     width: 210px;

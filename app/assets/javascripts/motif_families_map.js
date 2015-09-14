@@ -1,12 +1,12 @@
 //= require d3
 
 jQuery(function(){
-  var width = 660,
+  var width = 730,
       height = 700,
       tree_url = "/tree_level_2.json";
 
   var tree = d3.layout.tree()
-      .size([height, width - 270])
+      .size([height, width - 300])
       .separation(function(a,b){
         if (Math.max( Math.sqrt(a.total_tfs), Math.sqrt(b.total_tfs) ) > 10) {
           return 4;
@@ -46,7 +46,7 @@ jQuery(function(){
           .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
     var div = d3.select("body").append("div")
-      .attr("class", "tooltip")
+      .attr("class", "map-tooltip")
       .style("opacity", 0);
 
     node
@@ -58,8 +58,8 @@ jQuery(function(){
           info_text = family_name
           info_text += '<br/>';
         }
-        info_text += '<br/>' + 'Total TFs / HOCOMOCO models:<br/>' +
-                    '<span class="total_tfs">' + d.total_tfs + '</span> / <span class="covered_tfs">' + d.covered_tfs + '</span>';
+        info_text += '<br/>' + 'HOCOMOCO models / Total TFs:<br/>' +
+                  '<span class="covered_tfs">' + d.covered_tfs + '</span>' + ' / ' + '<span class="total_tfs">' + d.total_tfs + '</span>';
         div.transition()
             .duration(200)
             .style("opacity", 1);

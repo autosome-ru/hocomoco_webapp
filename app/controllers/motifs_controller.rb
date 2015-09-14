@@ -11,8 +11,8 @@ class MotifsController < ApplicationController
       species: species,
       arity: arity,
       csv_filename: "#{species}_#{arity}_motifs.tsv",
-      caption: caption(arity, species),
-      quality_help_text: quality_help_text(arity)
+      family_id: nil,
+      disable_default_filters: false
     }
   end
 
@@ -28,9 +28,7 @@ class MotifsController < ApplicationController
       motif: motif,
       species: species,
       arity: arity,
-      csv_filename: "#{species}_#{arity}_motifs.tsv",
-      caption: caption(arity, species),
-      quality_help_text: quality_help_text(arity)
+      csv_filename: "#{species}_#{arity}_motifs.tsv"
     }
   end
 
