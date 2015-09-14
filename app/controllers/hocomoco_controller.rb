@@ -25,4 +25,7 @@ class HocomocoController < ApplicationController
 
   def home; end
   def downloads; end
+  def tree
+    render layout: 'bare'
+  end
 end

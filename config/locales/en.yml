@@ -44,4 +44,4 @@ en:
         uniprot_acs:        'UniProt AC'
         comment:            'Comment'
         model_arity_type:   'Model type'
-        num_words_in_alignment: 'Number of words in alignment'
+        num_words_in_alignment: 'Aligned words'

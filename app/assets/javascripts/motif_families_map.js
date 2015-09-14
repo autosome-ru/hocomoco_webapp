@@ -1,16 +1,17 @@
 //= require d3
 
 jQuery(function(){
-  var width = 960,
-      height = 700;
+  var width = 660,
+      height = 700,
+      tree_url = "/tree_level_2.json";
 
   var tree = d3.layout.tree()
       .size([height, width - 270])
       .separation(function(a,b){
         if (Math.max( Math.sqrt(a.total_tfs), Math.sqrt(b.total_tfs) ) > 10) {
-          return 3;
+          return 4;
         } else {
-          return (a.parent == b.parent) ? 1.35 : 2;
+          return (a.parent == b.parent) ? 1.5 : 2;
         }
       });
 
@@ -23,7 +24,7 @@ jQuery(function(){
     .append("g")
       .attr("transform", "translate(40,0)");
 
-  d3.json("/tree.json", function(error, root) {
+  d3.json(tree_url, function(error, root) {
     if (error) throw error;
 
     var nodes = tree.nodes(root),
@@ -50,8 +51,8 @@ jQuery(function(){
 
     node
       .on("mouseover", function(d) {
-        var info_text = "TFs in family total: " + d.total_tfs + "<br/>" +
-                        "TFs in family covered by HOCOMOCO: " + d.covered_tfs;
+        var info_text = "<a href=\"http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=" + d.family_id + "\">" +
+                    d.name + "{" + d.family_id + "}</a><br/><br/>" + "Total TFs / HOCOMOCO models:<br/>" + d.total_tfs + " / " + d.covered_tfs;
         div.transition()
             .duration(200)
             .style("opacity", .9);
@@ -66,16 +67,16 @@ jQuery(function(){
       });
 
     node.append("circle")
-        .attr("r", function(d) { return Math.pow(d.total_tfs, 0.5); } )
+        .attr("r", function(d) { return Math.pow(d.total_tfs, 0.5) + 1; } ) // 1 is an addition to make circles visually more comparable
         .attr("class", "total_tfs");
 
     node.append("circle")
-        .attr("r", function(d) { return Math.pow(d.covered_tfs, 0.5); } )
+        .attr("r", function(d) { return Math.pow(d.covered_tfs, 0.5); } ) // we don't add 1 to inner circle
         .attr("class", "covered_tfs");
 
     node.append("text")
         .attr("dx", function(d) {
-          var radius = Math.pow(d.total_tfs, 0.5);
+          var radius = Math.pow(d.total_tfs, 0.5) + 1;
           return d.children ? -(radius + 5) : (radius + 5); }
         )
         .attr("dy", 3)
