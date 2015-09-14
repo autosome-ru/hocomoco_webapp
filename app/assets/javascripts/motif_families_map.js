@@ -2,7 +2,7 @@
 
 jQuery(function(){
   var width = 960,
-      height = 2200;
+      height = 700;
 
   var tree = d3.layout.tree()
       .size([height, width - 270])
@@ -67,14 +67,17 @@ jQuery(function(){
 
     node.append("circle")
         .attr("r", function(d) { return Math.pow(d.total_tfs, 0.5); } )
-        .style("fill", "blue");
+        .attr("class", "total_tfs");
 
     node.append("circle")
         .attr("r", function(d) { return Math.pow(d.covered_tfs, 0.5); } )
-        .style("fill", "red");
+        .attr("class", "covered_tfs");
 
     node.append("text")
-        .attr("dx", function(d) { return d.children ? -8 : 8; })
+        .attr("dx", function(d) {
+          var radius = Math.pow(d.total_tfs, 0.5);
+          return d.children ? -(radius + 5) : (radius + 5); }
+        )
         .attr("dy", 3)
         .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
         .text(function(d) { return d.name; });

@@ -1,7 +1,13 @@
 .node circle {
-  fill: #fff;
-  stroke: steelblue;
   stroke-width: 1.5px;
+  &.total_tfs {
+    fill: #0074FF;
+    stroke: #0074FF;    
+  }
+  &.covered_tfs {
+    fill: #FFA500;
+    stroke: #FFA500;    
+  }
 }
 
 .node {
