@@ -44,12 +44,6 @@
             = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
           = menu_item 'Downloads', downloads_path
 
-        = form_tag search_path, class: 'pull-right navbar-search' do
-          = label_tag do
-            Search:
-            = text_field_tag 'search', params[:search]
-          = submit_tag 'Search'
-
     %div{class: ['container', "controller-#{params[:controller]}", "action-#{params[:action]}"] }
       = yield
     %footer
