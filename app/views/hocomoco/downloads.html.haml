@@ -3,7 +3,10 @@
 
 %h2 Tools
 %ul
-  %li SPRY-SARUS tool for motif finding (Java): #{link_to 'jar', 'http://autosome.ru/ChIPMunk/sarus.jar'}, #{link_to 'readme', 'http://autosome.ru/ChIPMunk/sarus_readme.txt'}, #{link_to 'example data', 'http://autosome.ru/ChIPMunk/sarus_example.zip'}
+  %li
+    SPRY-SARUS tool for motif finding (Java): #{link_to 'jar', 'http://autosome.ru/ChIPMunk/sarus.jar'}, #{link_to 'readme', 'http://autosome.ru/ChIPMunk/sarus_readme.txt'}, #{link_to 'example data', 'http://autosome.ru/ChIPMunk/sarus_example.zip'}
+  %li
+    MACRO-PERFECTOS-APE tool for motif comparison, P-value and threshold estimation and annotation of variants: #{link_to 'jar', 'http://opera.autosome.ru/downloads/ape-2.0.1.jar'}, #{link_to 'manual', 'http://opera.autosome.ru/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', 'http://opera.autosome.ru'}
 
 %h2 Data
 %ul
@@ -15,3 +18,76 @@
     ChIP-Seq peaks used for benchmark:
     = succeed '.' do
       = link_to 'here', 'https://yadi.sk/d/K4-TjHAtj39iP'
+
+%table#downloads
+  %thead
+    %tr
+      %td{rowspan: 2}
+      %td{colspan: 2} Human
+      %td{colspan: 2} Mouse
+    %tr
+      %td Mononucleotide
+      %td Dinucleotide
+      %td Mononucleotide
+      %td Dinucleotide
+  %tbody
+    %tr
+      %td PWM
+      %td
+        = link_to 'In separate files', '/final_bundle/HUMAN/mono/pwm_HUMAN_mono.tar.gz'
+        %br
+        = link_to 'Single file', '/final_bundle/HUMAN/mono/pwms_HUMAN_mono.txt'
+      %td
+        = link_to 'In separate files', '/final_bundle/HUMAN/di/pwm_HUMAN_di.tar.gz'
+        %br
+        = link_to 'Single file', '/final_bundle/HUMAN/di/pwms_HUMAN_di.txt'
+      %td
+        = link_to 'In separate files', '/final_bundle/MOUSE/mono/pwm_MOUSE_mono.tar.gz'
+        %br
+        = link_to 'Single file', '/final_bundle/MOUSE/mono/pwms_MOUSE_mono.txt'
+      %td
+        = link_to 'In separate files', '/final_bundle/MOUSE/di/pwm_MOUSE_di.tar.gz'
+        %br
+        = link_to 'Single file', '/final_bundle/MOUSE/di/pwms_MOUSE_di.txt'
+    %tr
+      %td PCM
+      %td
+        = link_to 'In separate files', '/final_bundle/HUMAN/mono/pcm_HUMAN_mono.tar.gz'
+        %br
+        = link_to 'Single file', '/final_bundle/HUMAN/mono/pcms_HUMAN_mono.txt'
+      %td
+        = link_to 'In separate files', '/final_bundle/HUMAN/di/pcm_HUMAN_di.tar.gz'
+        %br
+        = link_to 'Single file', '/final_bundle/HUMAN/di/pcms_HUMAN_di.txt'
+      %td
+        = link_to 'In separate files', '/final_bundle/MOUSE/mono/pcm_MOUSE_mono.tar.gz'
+        %br
+        = link_to 'Single file', '/final_bundle/MOUSE/mono/pcms_MOUSE_mono.txt'
+      %td
+        = link_to 'In separate files', '/final_bundle/MOUSE/di/pcm_MOUSE_di.tar.gz'
+        %br
+        = link_to 'Single file', '/final_bundle/MOUSE/di/pcms_MOUSE_di.txt'
+    %tr
+      %td Alignments
+      %td= link_to 'words_HUMAN_mono.tar.gz', '/final_bundle/HUMAN/mono/words_HUMAN_mono.tar.gz'
+      %td= link_to 'words_HUMAN_di.tar.gz', '/final_bundle/HUMAN/di/words_HUMAN_di.tar.gz'
+      %td= link_to 'words_MOUSE_mono.tar.gz', '/final_bundle/MOUSE/mono/words_MOUSE_mono.tar.gz'
+      %td= link_to 'words_MOUSE_di.tar.gz', '/final_bundle/MOUSE/di/words_MOUSE_di.tar.gz'
+    %tr
+      %td Thresholds
+      %td= link_to 'standard_thresholds_HUMAN_mono.txt', '/final_bundle/HUMAN/mono/standard_thresholds_HUMAN_mono.txt'
+      %td= link_to 'standard_thresholds_HUMAN_di.txt', '/final_bundle/HUMAN/di/standard_thresholds_HUMAN_di.txt'
+      %td= link_to 'standard_thresholds_MOUSE_mono.txt', '/final_bundle/MOUSE/mono/standard_thresholds_MOUSE_mono.txt'
+      %td= link_to 'standard_thresholds_MOUSE_di.txt', '/final_bundle/MOUSE/di/standard_thresholds_MOUSE_di.txt'
+    %tr
+      %td Sequence LOGOs
+      %td= link_to 'logo_HUMAN_mono.tar.gz', '/final_bundle/HUMAN/mono/logo_HUMAN_mono.tar.gz'
+      %td= link_to 'logo_HUMAN_di.tar.gz', '/final_bundle/HUMAN/di/logo_HUMAN_di.tar.gz'
+      %td= link_to 'logo_MOUSE_mono.tar.gz', '/final_bundle/MOUSE/mono/logo_MOUSE_mono.tar.gz'
+      %td= link_to 'logo_MOUSE_di.tar.gz', '/final_bundle/MOUSE/di/logo_MOUSE_di.tar.gz'
+     -# %tr
+      %td PCM
+      %td= link_to 'pcm_HUMAN_mono.tar.gz', '/final_bundle/HUMAN/mono/pcm_HUMAN_mono.tar.gz'
+      %td= link_to 'pcm_HUMAN_di.tar.gz', '/final_bundle/HUMAN/di/pcm_HUMAN_di.tar.gz'
+      %td= link_to 'pcm_MOUSE_mono.tar.gz', '/final_bundle/MOUSE/mono/pcm_MOUSE_mono.tar.gz'
+      %td= link_to 'pcm_MOUSE_di.tar.gz', '/final_bundle/MOUSE/di/pcm_MOUSE_di.tar.gz'
