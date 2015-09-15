@@ -48,6 +48,7 @@ class MotifDecorator < Draper::Decorator
   def download_pcm; helpers.link_to('pcm', object.pcm_url); end
   def download_pwm; helpers.link_to('pwm', object.pwm_url); end
   def download_alignment; helpers.link_to('alignment', object.alignment_url); end
+  def download_precalculated_thresholds; helpers.link_to('threshold to P-value grid', object.precalculated_thresholds_url); end
 
   def format_matrix_as_table(matrix, round: nil)
     nucleotides = ['A', 'C', 'G', 'T']

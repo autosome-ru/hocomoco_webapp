@@ -63,6 +63,28 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     Rails.root.join("public/final_bundle/#{species}/#{arity}/pwm/#{full_name}.#{model_kind.pwm_extension}")
   end
 
+  # def standard_thresholds_url
+  #   "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
+  # end
+
+  def standard_thresholds
+    standard_thresholds_path = Rails.root.join("public/final_bundle/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
+    @cached_thresholds ||= {}
+    @cached_thresholds[standard_thresholds_path] ||= begin
+      lines = File.readlines(standard_thresholds_path).map(&:chomp).map{|line| line.split("\t") }
+      pvalues = lines.first.drop(1).map(&:to_f)
+      lines.drop(1).map{|line|
+        motif, *thresholds = *line
+        [motif, pvalues.zip(thresholds).to_h]
+      }.to_h
+    end
+    @cached_thresholds[standard_thresholds_path][full_name]
+  end
+
+  def precalculated_thresholds_url
+    "/final_bundle/#{species}/#{arity}/thresholds/#{full_name}.thr"
+  end
+
   def model_kind; ModelKind.get(arity); end
   def pcm; model_kind.read_pcm(pcm_path); end
   def pwm; model_kind.read_pwm(pwm_path); end

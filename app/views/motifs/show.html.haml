@@ -30,6 +30,19 @@
       = m.download_pwm
       %br
       = m.download_alignment
+      %br
+      = m.download_precalculated_thresholds
+    = table_info_row motif, :thresholds, header_cell: 'Standard thresholds' do |m|
+      %table.thresholds
+        %thead
+          %tr
+            %th P-value
+            %th Threshold
+        %tbody
+          - m.standard_thresholds.each do |pvalue, threshold|
+            %tr
+              %td= pvalue
+              %td= threshold
 
 .matrix_container
   %span.title PCM
