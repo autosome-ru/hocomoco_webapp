@@ -1,6 +1,12 @@
 %p
   %h1 Downloads
 
+.contacts
+  %b Contacts
+  %ul
+    %li Technical questions and suggestions can be addressed to #{link_to 'Ilya Vorontsov', 'mailto:vorontsov.i.e/at/gmail/dot/com'}.
+    %li General questions can be addressed to #{link_to 'Ivan Kulakovskiy', 'mailto:ivan.kulakovskiy/at/gmail/dot/com'} or #{link_to 'Vsevolod Makeev', 'mailto:vsevolod.makeev/at/gmail/dot/com'}.
+
 %h2 Tools
 %ul
   %li
@@ -19,10 +25,14 @@
     = succeed '.' do
       = link_to 'here', 'https://yadi.sk/d/K4-TjHAtj39iP'
 
+%p
+  = link_to '/technical_notes.txt' do
+    %b Technical notes
+
 %table#downloads
   %thead
     %tr
-      %th{rowspan: 2}
+      %th{rowspan: 2, colspan: 2}
       %th{colspan: 2} Human
       %th{colspan: 2} Mouse
     %tr
@@ -32,104 +42,82 @@
       %th Dinucleotide
   %tbody
     %tr
-      %td PWM
-      %td
-        = link_to 'File-per-matrix format', '/final_bundle/HUMAN/mono/pwm_HUMAN_mono.tar.gz'
+      %td.row-hdr{rowspan: 2}
+        PWM
+        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'See technical notes'}}
+      %td.row-hdr
+        One file per matrix
         .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
-        %br
-        or
-        %br
-        = link_to 'Flat file', '/final_bundle/HUMAN/mono/pwms_HUMAN_mono.txt'
-      %td
-        = link_to 'File-per-matrix format', '/final_bundle/HUMAN/di/pwm_HUMAN_di.tar.gz'
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
-        %br
-        or
-        %br
-        = link_to 'Flat file', '/final_bundle/HUMAN/di/pwms_HUMAN_di.txt'
-      %td
-        = link_to 'File-per-matrix format', '/final_bundle/MOUSE/mono/pwm_MOUSE_mono.tar.gz'
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
-        %br
-        or
-        %br
-        = link_to 'Flat file', '/final_bundle/MOUSE/mono/pwms_MOUSE_mono.txt'
-      %td
-        = link_to 'File-per-matrix format', '/final_bundle/MOUSE/di/pwm_MOUSE_di.tar.gz'
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
-        %br
-        or
-        %br
-        = link_to 'Flat file', '/final_bundle/MOUSE/di/pwms_MOUSE_di.txt'
+      %td= link_to 'pwm_HUMAN_mono.tar.gz', '/final_bundle/HUMAN/mono/pwm_HUMAN_mono.tar.gz'
+      %td= link_to 'pwm_HUMAN_di.tar.gz', '/final_bundle/HUMAN/di/pwm_HUMAN_di.tar.gz'
+      %td= link_to 'pwm_MOUSE_mono.tar.gz', '/final_bundle/MOUSE/mono/pwm_MOUSE_mono.tar.gz'
+      %td= link_to 'pwm_MOUSE_di.tar.gz', '/final_bundle/MOUSE/di/pwm_MOUSE_di.tar.gz'
     %tr
-      %td PCM
-      %td
-        = link_to 'File-per-matrix format', '/final_bundle/HUMAN/mono/pcm_HUMAN_mono.tar.gz'
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
-        %br
-        or
-        %br
-        = link_to 'Flat file', '/final_bundle/HUMAN/mono/pcms_HUMAN_mono.txt'
-      %td
-        = link_to 'File-per-matrix format', '/final_bundle/HUMAN/di/pcm_HUMAN_di.tar.gz'
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
-        %br
-        or
-        %br
-        = link_to 'Flat file', '/final_bundle/HUMAN/di/pcms_HUMAN_di.txt'
-      %td
-        = link_to 'File-per-matrix format', '/final_bundle/MOUSE/mono/pcm_MOUSE_mono.tar.gz'
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
-        %br
-        or
-        %br
-        = link_to 'Flat file', '/final_bundle/MOUSE/mono/pcms_MOUSE_mono.txt'
-      %td
-        = link_to 'File-per-matrix format', '/final_bundle/MOUSE/di/pcm_MOUSE_di.tar.gz'
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
-        %br
-        or
-        %br
-        = link_to 'Flat file', '/final_bundle/MOUSE/di/pcms_MOUSE_di.txt'
+      %td.row-hdr Flat file
+      %td= link_to 'pwms_HUMAN_mono.txt', '/final_bundle/HUMAN/mono/pwms_HUMAN_mono.txt'
+      %td= link_to 'pwms_HUMAN_di.txt', '/final_bundle/HUMAN/di/pwms_HUMAN_di.txt'
+      %td= link_to 'pwms_MOUSE_mono.txt', '/final_bundle/MOUSE/mono/pwms_MOUSE_mono.txt'
+      %td= link_to 'pwms_MOUSE_di.txt', '/final_bundle/MOUSE/di/pwms_MOUSE_di.txt'
+
     %tr
-      %td Alignments
+      %td.row-hdr{rowspan: 2} PCM
+      %td.row-hdr
+        One file per matrix
+        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
+      %td= link_to 'pcm_HUMAN_mono.tar.gz', '/final_bundle/HUMAN/mono/pcm_HUMAN_mono.tar.gz'
+      %td= link_to 'pcm_HUMAN_di.tar.gz', '/final_bundle/HUMAN/di/pcm_HUMAN_di.tar.gz'
+      %td= link_to 'pcm_MOUSE_mono.tar.gz', '/final_bundle/MOUSE/mono/pcm_MOUSE_mono.tar.gz'
+      %td= link_to 'pcm_MOUSE_di.tar.gz', '/final_bundle/MOUSE/di/pcm_MOUSE_di.tar.gz'
+    %tr
+      %td.row-hdr Flat file
+      %td= link_to 'pcms_HUMAN_mono.txt', '/final_bundle/HUMAN/mono/pcms_HUMAN_mono.txt'
+      %td= link_to 'pcms_HUMAN_di.txt', '/final_bundle/HUMAN/di/pcms_HUMAN_di.txt'
+      %td= link_to 'pcms_MOUSE_mono.txt', '/final_bundle/MOUSE/mono/pcms_MOUSE_mono.txt'
+      %td= link_to 'pcms_MOUSE_di.txt', '/final_bundle/MOUSE/di/pcms_MOUSE_di.txt'
+
+    %tr
+      %td.row-hdr{colspan: 2} Alignments
       %td= link_to 'words_HUMAN_mono.tar.gz', '/final_bundle/HUMAN/mono/words_HUMAN_mono.tar.gz'
       %td= link_to 'words_HUMAN_di.tar.gz', '/final_bundle/HUMAN/di/words_HUMAN_di.tar.gz'
       %td= link_to 'words_MOUSE_mono.tar.gz', '/final_bundle/MOUSE/mono/words_MOUSE_mono.tar.gz'
       %td= link_to 'words_MOUSE_di.tar.gz', '/final_bundle/MOUSE/di/words_MOUSE_di.tar.gz'
     %tr
-      %td Standard thresholds
+      %td.row-hdr{colspan: 2} Standard thresholds
       %td= link_to 'standard_thresholds_HUMAN_mono.txt', '/final_bundle/HUMAN/mono/standard_thresholds_HUMAN_mono.txt'
       %td= link_to 'standard_thresholds_HUMAN_di.txt', '/final_bundle/HUMAN/di/standard_thresholds_HUMAN_di.txt'
       %td= link_to 'standard_thresholds_MOUSE_mono.txt', '/final_bundle/MOUSE/mono/standard_thresholds_MOUSE_mono.txt'
       %td= link_to 'standard_thresholds_MOUSE_di.txt', '/final_bundle/MOUSE/di/standard_thresholds_MOUSE_di.txt'
     %tr
-      %td
-        Threshold to P-value grid
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'Precalculated thresholds to be utilized by PERFECTOS-APE '}}
+      %td.row-hdr{colspan: 2}
+        Threshold to P-value map
+        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'Precalculated thresholds to be utilized by PERFECTOS-APE (P-value calculated under uniform background model)'}}
       %td= link_to 'thresholds_HUMAN_mono.tar.gz', '/final_bundle/HUMAN/mono/thresholds_HUMAN_mono.tar.gz'
       %td= link_to 'thresholds_HUMAN_di.tar.gz', '/final_bundle/HUMAN/di/thresholds_HUMAN_di.tar.gz'
       %td= link_to 'thresholds_MOUSE_mono.tar.gz', '/final_bundle/MOUSE/mono/thresholds_MOUSE_mono.tar.gz'
       %td= link_to 'thresholds_MOUSE_di.tar.gz', '/final_bundle/MOUSE/di/thresholds_MOUSE_di.tar.gz'
     %tr
-      %td Sequence LOGOs
+      %td.row-hdr{colspan: 2} Sequence LOGOs
       %td= link_to 'logo_HUMAN_mono.tar.gz', '/final_bundle/HUMAN/mono/logo_HUMAN_mono.tar.gz'
       %td= link_to 'logo_HUMAN_di.tar.gz', '/final_bundle/HUMAN/di/logo_HUMAN_di.tar.gz'
       %td= link_to 'logo_MOUSE_mono.tar.gz', '/final_bundle/MOUSE/mono/logo_MOUSE_mono.tar.gz'
       %td= link_to 'logo_MOUSE_di.tar.gz', '/final_bundle/MOUSE/di/logo_MOUSE_di.tar.gz'
+
     %tr
-      %td Collection in other formats
+      %td.row-hdr{rowspan:3} Matrices in other formats
+      %td.row-hdr JASPAR
+      %td= link_to 'H10_HUMAN_mono_jaspar_format.txt', '/final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_jaspar_format.txt'
       %td
-        = link_to 'JASPAR', '/final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_jaspar_format.txt'
-        %br
-        = link_to 'MEME', '/final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_meme_format.meme'
-        %br
-        = link_to 'TRANSFAC', '/final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_transfac_format.txt'
+      %td= link_to 'H10_MOUSE_mono_jaspar_format.txt', '/final_bundle/MOUSE/mono/HOCOMOCOv10_MOUSE_mono_jaspar_format.txt'
       %td
+    %tr
+      %td.row-hdr MEME
+      %td= link_to 'H10_HUMAN_mono_meme_format.meme', '/final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_meme_format.meme'
       %td
-        = link_to 'JASPAR', '/final_bundle/MOUSE/mono/HOCOMOCOv10_MOUSE_mono_jaspar_format.txt'
-        %br
-        = link_to 'MEME', '/final_bundle/MOUSE/mono/HOCOMOCOv10_MOUSE_mono_meme_format.meme'
-        %br
-        = link_to 'TRANSFAC', '/final_bundle/MOUSE/mono/HOCOMOCOv10_MOUSE_mono_transfac_format.txt'
+      %td= link_to 'H10_MOUSE_mono_meme_format.meme', '/final_bundle/MOUSE/mono/HOCOMOCOv10_MOUSE_mono_meme_format.meme'
+      %td
+    %tr
+      %td.row-hdr TRANSFAC
+      %td= link_to 'H10_HUMAN_mono_transfac_format.txt', '/final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_transfac_format.txt'
+      %td
+      %td= link_to 'H10_MOUSE_mono_transfac_format.txt', '/final_bundle/MOUSE/mono/HOCOMOCOv10_MOUSE_mono_transfac_format.txt'
       %td

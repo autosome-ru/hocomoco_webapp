@@ -4,22 +4,16 @@
 
 table#downloads {
   width: 100%;
-  thead, tbody tr td:first-child {
-    font-weight: bold;
-  }
   thead {
-    border-bottom: 2px solid black;
+    tr, th, td {
+      font-weight: bold;
+      border: 2px solid black;
+    }
   }
-  td:first-child, tr:first-child th:first-child {
-    border-right: 2px solid black;
+  tr td.row-hdr {
+    font-weight: bold;
+    border: 2px solid black;
   }
-  thead tr:first-child th:nth-child(2) {
-    border-right: 2px solid black;
-  }
-  thead tr:last-child th:nth-child(2), tbody tr td:nth-child(3) {
-    border-right: 2px solid black;
-  }
-
   tr, td, th {
     border: 1px solid black;
     padding: 2px 4px;
