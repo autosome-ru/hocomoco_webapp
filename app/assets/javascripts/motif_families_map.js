@@ -3,7 +3,7 @@
 jQuery(function(){
   var width = 730,
       height = 700,
-      tree_url = "/tree_level_2.json";
+      tree_url = HocomocoDB.app_prefix + "tree_level_2.json";
 
   var tree = d3.layout.tree()
       .size([height, width - 300])
@@ -40,7 +40,7 @@ jQuery(function(){
         .data(nodes)
       .enter()
         .append("svg:a")
-        .attr('xlink:href', function(d){return d.url;})
+        .attr('xlink:href', function(d){return (HocomocoDB.app_prefix + d.url).replace(/\/+/g,'/');})
         .append("g")
           .attr("class", "node")
           .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });

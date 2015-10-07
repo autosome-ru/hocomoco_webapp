@@ -27,6 +27,6 @@
     = javascript_include_tag "application"
 
 
-  %body
+  %body{data: {'app-prefix' => root_path}}
     %div{class: ['container', "controller-#{params[:controller]}", "action-#{params[:action]}"] }
       = yield

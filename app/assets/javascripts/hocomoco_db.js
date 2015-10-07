@@ -2,6 +2,7 @@
 //= require ./select_columns.js
 
 var page_ready = function() {
+  HocomocoDB.app_prefix = $('body').data('app-prefix');
 
   $('.download').click(function(){
     $('table.tablesorter').get(0).config.widgetOptions.output_saveFileName = $('.csv-filename').val();

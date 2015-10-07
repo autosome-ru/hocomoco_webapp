@@ -41,7 +41,7 @@
     if (!match) { return genename_with_id; }
     gene_name = match[1];
     gene_id = match[2];
-    return '<a href="/genes/' + gene_id +'">' + gene_name + '</a>';
+    return '<a href="' + HocomocoDB.app_prefix + '/genes/' + gene_id +'">' + gene_name + '</a>';
   };
 
   // genename_with_id is `SMARCA4#561` -- a SMARCA4 gene with id 561.
@@ -72,7 +72,7 @@
   };
 
   HocomocoDB.motif_link = function(motif) {
-    return '<a href="/motif/' + motif + '">' + motif + '</a>';
+    return '<a href="' + HocomocoDB.app_prefix + '/motif/' + motif + '">' + motif + '</a>';
   };
 
   HocomocoDB.pmid_link = function(pmid) {
@@ -84,7 +84,7 @@
   };
 
   HocomocoDB.target_complex_link = function(target) {
-    return '<a href="/protein_complexes?search=' + target + '&field=complex_name">' + target + '</a>';
+    return '<a href="' + HocomocoDB.app_prefix + '/protein_complexes?search=' + target + '&field=complex_name">' + target + '</a>';
   };
 
   HocomocoDB.pfam_domain_link = function(pfam_info) {
@@ -114,7 +114,7 @@
     library_id = match[2];
     extract_name = match[3];
     sample_format = data.$header && data.$header.data('sample-format');
-    url = '/samples/' + library_id;
+    url = HocomocoDB.app_prefix + '/samples/' + library_id;
     fantom_sstar_url = 'http://fantom.gsc.riken.jp/5/sstar/FF:' + extract_name;
     if (!sample_format || sample_format == 'short') {
       return '<a href="' + url + '"">' + name + '</a> <span class="fantom-external-link">(<a href="' + fantom_sstar_url + '">FANTOM5 SSTAR</a>)</span>';
