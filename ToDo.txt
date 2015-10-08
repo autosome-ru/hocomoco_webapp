@@ -1,0 +1,2 @@
+Make use of js-routes (in motif_familes.js and formatters.js)
+Fix link_to so that in hadn't ugly root_path + path form

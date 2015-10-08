@@ -42,17 +42,17 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
 
   def pcm_url
     ext = model_kind.pcm_extension
-    "/final_bundle/#{species}/#{arity}/pcm/#{full_name}.#{ext}"
+    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/pcm/#{full_name}.#{ext}"
   end
 
   def pwm_url
     ext = model_kind.pwm_extension
-    "/final_bundle/#{species}/#{arity}/pwm/#{full_name}.#{ext}"
+    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/pwm/#{full_name}.#{ext}"
   end
 
   def alignment_url
     ext = model_kind.pwm_extension
-    "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
+    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
   end
 
   def pcm_path
@@ -64,7 +64,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
   end
 
   # def standard_thresholds_url
-  #   "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
+  #   (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
   # end
 
   def standard_thresholds
@@ -82,23 +82,23 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
   end
 
   def precalculated_thresholds_url
-    "/final_bundle/#{species}/#{arity}/thresholds/#{full_name}.thr"
+    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/thresholds/#{full_name}.thr"
   end
 
   def model_kind; ModelKind.get(arity); end
   def pcm; model_kind.read_pcm(pcm_path); end
   def pwm; model_kind.read_pwm(pwm_path); end
 
-  def direct_logo_path
-    "/final_bundle/#{species}/#{arity}/logo_small/#{full_name}_direct.png"
+  def direct_logo_url
+    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo_small/#{full_name}_direct.png"
   end
 
-  def direct_big_logo_path
-    "/final_bundle/#{species}/#{arity}/logo/#{full_name}_direct.png"
+  def direct_big_logo_url
+    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo/#{full_name}_direct.png"
   end
 
-  def revcomp_big_logo_path
-    "/final_bundle/#{species}/#{arity}/logo/#{full_name}_revcomp.png"
+  def revcomp_big_logo_url
+    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo/#{full_name}_revcomp.png"
   end
 
   def self.from_string(str)

@@ -41,9 +41,9 @@ class MotifDecorator < Draper::Decorator
   def gene_names; object.gene_names.join('; '); end
   def uniprot_acs; object.uniprot_acs.join('; '); end
   def num_datasets; object.num_datasets == 0 ? nil : object.num_datasets; end
-  def logo; helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_path)); end
-  def big_logo; helpers.image_tag(object.direct_big_logo_path) end
-  def big_logo_revcomp; helpers.image_tag(object.revcomp_big_logo_path) end
+  def logo; helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_url)); end
+  def big_logo; helpers.image_tag(object.direct_big_logo_url) end
+  def big_logo_revcomp; helpers.image_tag(object.revcomp_big_logo_url) end
   def model_arity_type; arity == 'mono' ? 'Mononucleotide PWM' : 'Dinucleotide PWM'; end
   def download_pcm; helpers.link_to('pcm', object.pcm_url); end
   def download_pwm; helpers.link_to('pwm', object.pwm_url); end
