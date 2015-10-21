@@ -149,10 +149,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
 
   def match_query?(query)
     pattern = /#{query}/i
-    [:full_name, :consensus,
-      :motif_families, :motif_subfamilies,
-      :gene_names, :uniprot_acs,
-      :comment].any?{|param| self.send(param).to_s.match(pattern) }
+    [:full_name, :motif_families, :gene_names].any?{|param| self.send(param).to_s.match(pattern) }
   end
 
   def self.each_in_file(filename, &block)

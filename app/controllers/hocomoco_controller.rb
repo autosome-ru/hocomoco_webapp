@@ -1,7 +1,15 @@
 class HocomocoController < ApplicationController
   def searchPost
-    hsh = [:species, :arity, :family_id, :query].map{|el| [el, params[el]] }.reject{|k,v| v.nil? }.to_h
-    redirect_to search_path(hsh)
+    match = params[:kind].match(/(?<species>human|mouse);(?<arity>mono|di)/i)
+    species = 'human'
+    arity = 'mono'
+    if match
+      species = match[:species]
+      arity = match[:arity]
+    end
+
+    hsh = [:family_id, :query].map{|el| [el, params[el]] }.reject{|k,v| v.nil? }.to_h
+    redirect_to search_path(hsh.merge(species: species, arity: arity))
   end
 
   def search

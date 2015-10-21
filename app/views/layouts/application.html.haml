@@ -49,7 +49,8 @@
           = label_tag do
             Search:
             = text_field_tag 'query', params[:query]
-          -# = select_tag 'kind', options_for_select({'Genes' => :genes, 'Сomplexes' => :protein_complexes, 'Histones and protamines' => :histones},  [:genes, :protein_complexes, :histones].include?(params[:controller].to_sym) ? params[:controller].to_sym : :genes)
+
+          = select_tag 'kind', options_for_select({'Human mononucleotide' => 'human;mono', 'Human dinucleotide' => 'human;di', 'Mouse mononucleotide' => 'mouse;mono', 'Mouse dinucleotide' => 'mouse;di'},  ['human;mono', 'human;di', 'mouse;mono', 'mouse;di'].include?("#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}") ? "#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}" : 'human;mono')
           = submit_tag 'Search'
 
 
