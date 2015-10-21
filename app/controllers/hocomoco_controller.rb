@@ -1,4 +1,9 @@
 class HocomocoController < ApplicationController
+  def searchPost
+    hsh = [:species, :arity, :family_id, :query].map{|el| [el, params[el]] }.reject{|k,v| v.nil? }.to_h
+    redirect_to search_path(hsh)
+  end
+
   def search
     species = params[:species]
     arity = params[:arity]
@@ -8,6 +13,12 @@ class HocomocoController < ApplicationController
     if params[:family_id] && !params[:family_id].blank?
       models = models.select{|motif|
         motif.is_a_subfamily_member?(params[:family_id])
+      }
+    end
+
+    if params[:query] && !params[:query].blank?
+      models = models.select{|motif|
+        motif.match_query?(params[:query])
       }
     end
 

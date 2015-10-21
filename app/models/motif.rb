@@ -147,12 +147,20 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     }[collection_name]
   end
 
+  def match_query?(query)
+    pattern = /#{query}/i
+    [:full_name, :consensus,
+      :motif_families, :motif_subfamilies,
+      :gene_names, :uniprot_acs,
+      :comment].any?{|param| self.send(param).to_s.match(pattern) }
+  end
+
   def self.each_in_file(filename, &block)
     @cached_motifs ||= {}
     @cached_motifs[filename] ||= File.readlines(filename).drop(1).map{|line| self.from_string(line) }.each(&block)
   end
 
   def self.in_bundle(species:, arity:)
-    self.each_in_file(Rails.root.join("public/final_bundle/#{species}/#{arity}/final_collection.tsv"))
+    self.each_in_file(Rails.root.join("public/final_bundle/#{species.upcase}/#{arity}/final_collection.tsv"))
   end
 end
