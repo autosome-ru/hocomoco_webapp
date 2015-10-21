@@ -50,7 +50,7 @@
             Search:
             = text_field_tag 'query', params[:query]
 
-          = select_tag 'kind', options_for_select({'Human mononucleotide' => 'human;mono', 'Human dinucleotide' => 'human;di', 'Mouse mononucleotide' => 'mouse;mono', 'Mouse dinucleotide' => 'mouse;di'},  ['human;mono', 'human;di', 'mouse;mono', 'mouse;di'].include?("#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}") ? "#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}" : 'human;mono')
+          = select_tag 'kind', options_for_select({'Human PWMs' => 'human;mono', 'Human di-PWMs' => 'human;di', 'Mouse PWMs' => 'mouse;mono', 'Mouse di-PWMs' => 'mouse;di'},  ['human;mono', 'human;di', 'mouse;mono', 'mouse;di'].include?("#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}") ? "#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}" : 'human;mono')
           = submit_tag 'Search'
 
 

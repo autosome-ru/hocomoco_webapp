@@ -1,2 +1,39 @@
 Make use of js-routes (in motif_familes.js and formatters.js)
 Fix link_to so that in hadn't ugly root_path + path form
+
+
+File-per-matrix format -> One-file-per-matrix   
+Ну и нижнюю табличку озаглавить Matrices
+
+    Можешь еще тултип у порогов поправить, чтобы там было отражено, что все пороги относятся к однородному фону. Я тогда повешу это в тултип, который уже есть и в поле стандартных порогов и в карточку мотива
+
+Ivan Kulakovskiy (ivankulakovskiy@gmail.com, ivan.kulakovskiy@gmail.com)
+Threshold to P-value grid -> Threshold to P-value hash или precomputed conversion table
+(P-value calculated under uniform background model)
+   Flat file я бы еще унес в отдельную строку   
+будет как-то аккуратнее
+в смысле строки таблицы
+а PCM и PWM можно rowspan сделать
+
+
+
+
+добавить в корень дерева, в тултип инфу, что часть мотивов unclassified
+
+добавить классификацию мотива в дереве
+
+добавить на сайт opera.autosome.ru поиск по хокомоке
+
+сделать макроэйпу одним из форматов ввода мотива консенсус
+
+
+
+добавить экспрессии
+
+стрелочку вниз на карточке мотива
+
+
+хелп по фильтрам   http://mottie.github.io/tablesorter/docs/example-widget-filter.html
+убить eval   https://github.com/Mottie/tablesorter/issues/796
+
+
