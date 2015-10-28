@@ -103,7 +103,7 @@
       %td= link_to 'logo_MOUSE_di.tar.gz', root_path + 'final_bundle/MOUSE/di/logo_MOUSE_di.tar.gz'
 
     %tr
-      %td.row-hdr{rowspan:3} Matrices in other formats
+      %td.row-hdr{rowspan: 4} Matrices in other formats
       %td.row-hdr JASPAR
       %td= link_to 'H10_HUMAN_mono_jaspar_format.txt', root_path + 'final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_jaspar_format.txt'
       %td
@@ -120,4 +120,16 @@
       %td= link_to 'H10_HUMAN_mono_transfac_format.txt', root_path + 'final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_transfac_format.txt'
       %td
       %td= link_to 'H10_MOUSE_mono_transfac_format.txt', root_path + 'final_bundle/MOUSE/mono/HOCOMOCOv10_MOUSE_mono_transfac_format.txt'
+      %td
+    %tr
+      %td.row-hdr
+        HOMER
+        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'Matrices in HOMER format include score thresholds. We provide the collection with threshold levels corresponding to P-value of 0.001, 0.0005 and 0.0001'}} 
+      %td
+        - ['0.001', '0.0005', '0.0001'].each do |pvalue|
+          .homer_pvalue= link_to "P-value #{pvalue}", root_path + "final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_homer_format_#{pvalue}.motif"
+      %td
+      %td
+        - ['0.001', '0.0005', '0.0001'].each do |pvalue|
+          .homer_pvalue= link_to "P-value #{pvalue}", root_path + "final_bundle/MOUSE/mono/HOCOMOCOv10_MOUSE_mono_homer_format_#{pvalue}.motif"
       %td
