@@ -1,13 +1,31 @@
-.database_description
-  %p
-    HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains transcription factor (TF) binding models obtained by careful integration of data from different sources.
-  %p
-    HOCOMOCO v10 contains non-redundant curated binding models for 601 human and 396 mouse TFs.
-  %p
-    In addition to basic mononucleotide position weight matrices (PWMs), HOCOMOCO now provides a set of dinucleotide position weight matrices based on ChIP-Seq data from #{link_to 'GTRD','http://gtrd.biouml.org/bioumlweb/gtrd.html'} database.
-  %p
-    All the models were produced by the #{link_to 'ChIPMunk', 'http://autosome.ru/ChIPMunk/'} motif discovery tool. Model quality ratings are based on a comprehensive benchmark study or inherited from #{link_to 'HOCOMOCO v9', 'http://autosome.ru/HOCOMOCO/'}. With the last update the matrices for mouse TFs are provided in a systematic way.
-  %p
-    Scan your sequences using #{link_to 'HOCOMOCO in BioUML', 'http://micro.biouml.org/bioumlweb/hocomoco.html'}.
-
-#motif_families_map
+.wrap_description><
+  .citation
+    %b Please cite:
+    %p.title
+      = link_to 'http://nar.oxfordjournals.org/content/early/2015/11/18/nar.gkv1249.abstract' do
+        HOCOMOCO: expansion and enhancement of the collection of transcription factor binding sites models
+    .expand
+      .toggle.show-content Show more
+      .toggle.hide-content Hide
+      .content.hide-content
+        %p.authors
+          Ivan V. Kulakovskiy; Ilya E. Vorontsov; Ivan S. Yevshin; Anastasiia V. Soboleva; Artem S. Kasianov; Haitham Ashoor; Wail Ba-alawi; Vladimir B. Bajic; Yulia A. Medvedeva; Fedor A. Kolpakov; Vsevolod J. Makeev
+        %p.journal
+          Nucleic Acids Research 2015;
+        %p.doi
+          doi: 10.1093/nar/gkv1249
+  .mirrors
+    .mirror= link_to 'Primary URL', 'http://hocomoco.autosome.ru/'
+    .mirror= link_to 'Mirror', 'http://www.cbrc.kaust.edu.sa/hocomoco10'
+  .database_description
+    %p
+      HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains transcription factor (TF) binding models obtained by careful integration of data from different sources.
+    %p
+      HOCOMOCO v10 contains non-redundant curated binding models for 601 human and 396 mouse TFs.
+    %p
+      In addition to basic mononucleotide position weight matrices (PWMs), HOCOMOCO now provides a set of dinucleotide position weight matrices based on ChIP-Seq data from #{link_to 'GTRD','http://gtrd.biouml.org/bioumlweb/gtrd.html'} database.
+    %p
+      All the models were produced by the #{link_to 'ChIPMunk', 'http://autosome.ru/ChIPMunk/'} motif discovery tool. Model quality ratings are based on a comprehensive benchmark study or inherited from #{link_to 'HOCOMOCO v9', 'http://autosome.ru/HOCOMOCO/'}. With the last update the matrices for mouse TFs are provided in a systematic way.
+    %p
+      Scan your sequences using #{link_to 'HOCOMOCO in BioUML', 'http://micro.biouml.org/bioumlweb/hocomoco.html'}.
+#motif_families_map><

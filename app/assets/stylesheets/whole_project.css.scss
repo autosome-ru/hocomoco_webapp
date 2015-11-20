@@ -93,14 +93,6 @@ footer {
   display: none;
 }
 
-.citation {
-  border: 1px solid darkgray;
-  padding: 10px;
-  width: 670px;
-  background-color: lightyellow;
-  border-radius: 15px;
-}
-
 .table-actions .popover > .arrow {
   display: none;
 }
@@ -128,5 +120,13 @@ footer {
   }
   .matrix {
     margin-top: 5px;
+  }
+}
+
+.cite{
+  width: 75%;
+  margin-bottom: 15px;
+  .title, .authors, .journal, .doi{
+    margin: 3px 0 3px 15px;
   }
 }
