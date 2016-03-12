@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/downloads' => 'hocomoco#downloads', as: 'downloads'
   get '/download', to: redirect('/downloads')
 
+  get '/help' => 'hocomoco#help', as: 'help'
+
   get '/tree' => 'hocomoco#tree'
 
   # The priority is based upon order of creation: first created -> highest priority.

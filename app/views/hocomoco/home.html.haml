@@ -2,7 +2,7 @@
   .citation
     %b Please cite:
     %p.title
-      = link_to 'http://nar.oxfordjournals.org/content/early/2015/11/18/nar.gkv1249.abstract' do
+      = link_to 'http://nar.oxfordjournals.org/content/44/D1/D116' do
         HOCOMOCO: expansion and enhancement of the collection of transcription factor binding sites models
     .expand
       .toggle.show-content Show more
@@ -19,13 +19,20 @@
     .mirror= link_to 'Mirror', 'http://www.cbrc.kaust.edu.sa/hocomoco10'
   .database_description
     %p
-      HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains transcription factor (TF) binding models obtained by careful integration of data from different sources.
+      HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) v10 provides
+      transcription factor (TF) binding models for 601 human and 396 mouse
+      TFs.
     %p
-      HOCOMOCO v10 contains non-redundant curated binding models for 601 human and 396 mouse TFs.
+      In addition to basic mononucleotide position weight matrices (PWMs),
+      HOCOMOCO now provides a set of dinucleotide position weight matrices
+      based on ChIP-Seq data.
     %p
-      In addition to basic mononucleotide position weight matrices (PWMs), HOCOMOCO now provides a set of dinucleotide position weight matrices based on ChIP-Seq data from #{link_to 'GTRD','http://gtrd.biouml.org/bioumlweb/gtrd.html'} database.
+      All the models were produced by the #{link_to 'ChIPMunk', 'http://autosome.ru/ChIPMunk/'} motif discovery tool.
+      Model quality ratings are based on a comprehensive benchmark study or
+      inherited from #{link_to 'HOCOMOCO v9', 'http://autosome.ru/HOCOMOCO/'}.
     %p
-      All the models were produced by the #{link_to 'ChIPMunk', 'http://autosome.ru/ChIPMunk/'} motif discovery tool. Model quality ratings are based on a comprehensive benchmark study or inherited from #{link_to 'HOCOMOCO v9', 'http://autosome.ru/HOCOMOCO/'}. With the last update the matrices for mouse TFs are provided in a systematic way.
-    %p
-      Scan your sequences using #{link_to 'HOCOMOCO in BioUML', 'http://micro.biouml.org/bioumlweb/hocomoco.html'}.
+      ChIP-Seq data for motif discovery was extracted from #{link_to 'GTRD','http://gtrd.biouml.org/bioumlweb/gtrd.html'} database of
+      BioUML platform,
+      that also provides an #{link_to 'interface', 'http://micro.biouml.org/bioumlweb/hocomoco.html'} for motif finding (sequence scanning)
+      with HOCOMOCO models.
 #motif_families_map><

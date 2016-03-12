@@ -1,11 +1,10 @@
-Technical notes on presented PWM models
+Minor technical notes on TFBS models presented in HOCOMOCO v10
 
-1. The *.words files provide information on ChIPMunk TFBS alignment used to derive the positional matrices. Please note, that many models were inherited from HOCOMOCO v9 where they were constructed using binding sites, in particular, mined from the proprietary TRANSFAC database. In this case the respective aligned binding sites were masked with X letter.
-
-2. All the matrices were produced by ChIPMunk motif discovery tool. It accounts for prior "quality" information for each sequence in the input set. The resulting words in the alignment are weighted and thus the position count matrix (PCM) may actually contain floating point numbers. They should be treated as counts in any PCM-to-PWM conversion scheme.
-In the case a user requires integer counts, we suggest taking TRANSFAC format (see Downloads) where the counts were carefully converted to integer numbers maintaining consistency of the resulting PCMs.
-
-3. The PCM to PWM conversion used in HOCOMOCO v10 is the same as in v9,
-the exact formula can be found, e.g., in MACRO-APE manual, page 20-21 http://opera.autosome.ru/downloads/MACRO-PERFECTOS-APE_manual.pdf
-
-4. The plain files with matrices use alphabetical order of nucleotides (ACGT) and dinucleotides (AA,AC,AG...TT).
+1.
+  All the matrices were produced by ChIPMunk motif discovery tool. It accounts for prior "quality" information for each sequence in the input set. The resulting words in the alignment are weighted and thus the position count matrix (PCM) is weighted PCM and may contain floating point numbers. These numbers are treated as counts in a PCM-to-PWM conversion scheme. In case integer counts are required, we suggest using HOCOMOCO downloads in TRANSFAC format (see Downloads) where the weighted counts were carefully converted to the nearest integers maintaining consistency of the resulting PCMs.
+2.
+  The PCM to PWM conversion used in HOCOMOCO v10 is the same as in v9, the exact formula can be found, e.g., in MACRO-APE manual, page 20-21 in http://opera.autosome.ru/downloads/MACRO-PERFECTOS-APE_manual.pdf
+3.
+  The plain files with matrices always use alphabetical order of nucleotides (ACGT) and dinucleotides (AA,AC,AG...TT).
+4.
+  The TFBS alignments (*.words) provide information on particular sequence segments used by ChIPMunk to derive the positional matrices. Many models were inherited from HOCOMOCO v9 where some binding sites, in particular, were mined from the proprietary TRANSFAC database. The respective aligned binding sites were masked with 'X's.

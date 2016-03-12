@@ -43,6 +43,7 @@
             = menu_item 'Mononucleotide models', motifs_path(species: 'mouse', arity: 'mono')
             = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
           = menu_item 'Downloads', downloads_path
+          = menu_item 'Help', help_path
         = form_tag search_post_path, class: 'pull-right navbar-search' do
           = hidden_field_tag 'arity', 'mono'
           = hidden_field_tag 'species', 'human'

@@ -1,0 +1,20 @@
+.help_container
+  %p
+    HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains transcription factor (TF) binding models represented as classic #{link_to 'Position Weight Matrices', 'https://en.wikipedia.org/wiki/Position_weight_matrix'} (PWMs, also known as Position-Specific Scoring Matrices, PSSMs) and precalculated score thresholds.
+
+  %p
+    The dinucleotide PWMs provide better TFBS recognition quality and are also available for selected TFs, primarily for those with ChIP-Seq data available (see HOCOMOCO v10 #{link_to 'paper', 'http://nar.oxfordjournals.org/content/44/D1/D116'} for details). 
+
+  %p
+    Currently the HOCOMOCO database provides PWMs and precomputed score thresholds for download. Stand-alone tools, such as #{link_to 'SPRY-SARUS', 'http://autosome.ru/ChIPMunk/'}, should be used to scan a given sequence for putative TFBS. A web-interface in BioUML is also suitable for this task.
+
+  %p
+    PWMs in HOCOMOCO were derived from various types of experimental data using data integration by #{ link_to 'ChIPMunk', 'http://autosome.ru/ChIPMunk/'} motif discovery tool.
+
+  %p#description_quality_score
+    Each PWM has a quality rating from A to D where A represents motifs with the highest confidence, and D motifs only weakly describe the pattern with a limited applications for quantitative analyses. Special S quality marks the single-box motifs. A flowchart on quality assignment used in HOCOMOCO v10 is available as #{link_to 'Supplementary Figure', 'http://nar.oxfordjournals.org/content/suppl/2015/11/18/gkv1249.DC1/nar-02714-data-e-2015-File007.pdf'}.
+    %br
+    The details on quality assignment can be found in '#{link_to 'Assembling the final collection', 'http://nar.oxfordjournals.org/content/44/D1/D116.full#sec-8'}' section of the HOCOMOCO v10 paper.
+    
+  %p
+    The wAUC (weighted area-under-curve for receiver operating characteristic) represents the power of a given model to discriminate true positive ChIP-Seq segments from random noise. Details are given in '#{link_to 'Model and dataset benchmarking', 'http://nar.oxfordjournals.org/content/44/D1/D116.full#sec-7'}' section in the HOCOMOCO v10 paper.

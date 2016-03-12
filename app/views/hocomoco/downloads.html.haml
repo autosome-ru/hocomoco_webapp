@@ -9,34 +9,27 @@
   %li
     SPRY-SARUS tool for motif finding (Java): #{link_to 'jar', 'http://autosome.ru/ChIPMunk/sarus.jar'}, #{link_to 'readme', 'http://autosome.ru/ChIPMunk/sarus_readme.txt'}, #{link_to 'example data', 'http://autosome.ru/ChIPMunk/sarus_example.zip'}
   %li
-    MACRO-PERFECTOS-APE tool for motif comparison, P-value and threshold estimation and annotation of variants: #{link_to 'jar', 'http://opera.autosome.ru/downloads/ape-2.0.1.jar'}, #{link_to 'manual', 'http://opera.autosome.ru/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', 'http://opera.autosome.ru'}
+    MACRO-APE tool for motif comparison, P-value and threshold estimation: #{link_to 'jar', 'http://opera.autosome.ru/downloads/ape-2.0.1.jar'}, #{link_to 'manual', 'http://opera.autosome.ru/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', 'http://opera.autosome.ru/macroape/'}
+  %li
+    PERFECTOS-APE tool for functional annotation of sequence variants overlappint TFBS: #{link_to 'jar', 'http://opera.autosome.ru/downloads/ape-2.0.1.jar'}, #{link_to 'manual', 'http://opera.autosome.ru/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', 'http://opera.autosome.ru/perfectosape/'}
 
-%h2 Data
+%h2 Sequence data
 %ul
-  %li
-    ChIP-Seq peaks used for motif discovery:
-    = succeed '.' do
-      = link_to 'here', 'https://yadi.sk/d/5vA1oBv-j39fc'
-  %li
-    ChIP-Seq peaks used for benchmark:
-    = succeed '.' do
-      = link_to 'here', 'https://yadi.sk/d/K4-TjHAtj39iP'
-
-%p
-  = link_to root_path + 'technical_notes.txt' do
-    %b Technical notes
+  %li ChIP-Seq peaks used for motif discovery, #{link_to 'multifasta/zip', 'https://yadi.sk/d/5vA1oBv-j39fc'} (~200Mb).
+  %li ChIP-Seq peaks used for benchmarking, #{link_to 'multifasta/zip', 'https://yadi.sk/d/K4-TjHAtj39iP'} (~200Mb).
 
 .cite
   %b Citation:
   .title
-    = link_to 'http://nar.oxfordjournals.org/content/early/2015/11/18/nar.gkv1249.abstract' do
+    = link_to 'http://nar.oxfordjournals.org/content/44/D1/D116' do
       HOCOMOCO: expansion and enhancement of the collection of transcription factor binding sites models
   .authors Ivan V. Kulakovskiy; Ilya E. Vorontsov; Ivan S. Yevshin; Anastasiia V. Soboleva; Artem S. Kasianov; Haitham Ashoor; Wail Ba-alawi; Vladimir B. Bajic; Yulia A. Medvedeva; Fedor A. Kolpakov; Vsevolod J. Makeev
   .journal Nucleic Acids Research 2015;
   .doi doi: 10.1093/nar/gkv1249
 
 
-%h4 TFBS models
+%h4
+  TFBS models (#{link_to 'Technical notes', root_path + 'technical_notes.txt', class: 'tech_notes'})
 
 %table#downloads
   %thead
