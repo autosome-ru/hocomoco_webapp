@@ -16,3 +16,11 @@
  *= require select2-bootstrap
  *= require jquery-tablesorter/theme.blue
  */
+
+.grant {
+  font-size: 0.8em;
+  margin-top: 40px;
+  margin-right: 10px;
+  text-align: right;
+  color: #555;
+}
