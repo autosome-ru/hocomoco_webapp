@@ -55,16 +55,19 @@ jQuery(function(){
         if (d.name.length > 0) {
           var family_name = '<span class="family_name">' + d.name + '{' + d.family_id + '}</span>';
           // info_text = '<a href="http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=' + d.family_id + '">' + family_name + '</a>' + 
-          info_text = family_name
+          info_text = family_name;
           info_text += '<br/>';
         }
         info_text += '<br/>' + 'HOCOMOCO models / Total TFs:<br/>' +
                   '<span class="covered_tfs">' + d.covered_tfs + '</span>' + ' / ' + '<span class="total_tfs">' + d.total_tfs + '</span>';
+        if (d.comment) {
+          info_text += '<br/>' + '<i>' + d.comment + '</i>';
+        }
         div.transition()
             .duration(200)
             .style("opacity", 1);
         div.html(info_text)
-           .style("left", (d3.event.pageX - 130) + "px")
+           .style("left", (d3.event.pageX + 15) + "px")
            .style("top", (d3.event.pageY - 30) + "px");
       })
       .on("mouseout", function(d) {
