@@ -65,4 +65,10 @@ module ApplicationHelper
       'Only high-quality models are shown by default. Use `A to D` to view all models.'
     end
   end
+
+  def help_icon(href:, title:)
+    link_to href do
+      content_tag :div, '', class: ['help-icon', 'has-tooltip'], data: {toggle: 'tooltip', placement: 'bottom', title: title}
+    end
+  end
 end
