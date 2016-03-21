@@ -140,20 +140,6 @@
     }
   };
 
-  HocomocoDB.hocomoco_link = function(value) {
-    if (value == '') {
-      return '';
-    }
-    var parts = value.split('_');
-    var tf = parts[0];
-    var model = parts[1];
-    var img_html = '<img src="http://autosome.ru/HOCOMOCO/logos/thumbs/' + value + '_thumb.jpg">';
-    var link_html = '<a href="http://autosome.ru/HOCOMOCO/modelDetails.php?tf=' + tf + '&model=' + model + '">' +
-                    value + img_html +
-                    '</a>';
-    return '<div class="hocomoco_link">' + link_html + '</div>';
-  };
-
   var multiterm,
       formatter_preserving_text,
       make_tablesorter_formatters;
@@ -223,7 +209,6 @@
     '.target_complex'  : multiterm( HocomocoDB.target_complex_link),
     '.uniprot_id'      : multiterm( HocomocoDB.uniprot_id_link ),
     '.pfam_domain'     : multiterm( HocomocoDB.pfam_domain_link, '<br/>' ),
-    '.hocomoco'        : multiterm( HocomocoDB.hocomoco_link, '' ), // hocomoco links with motif logos go on different lines, comma is unnecessary
   };
 
   HocomocoDB.preserveFormatters = { // What to save in cell textAttribute (for CSV output and search facilities)
