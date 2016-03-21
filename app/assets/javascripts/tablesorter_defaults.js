@@ -15,45 +15,9 @@
       filter_useParsedData : false,
       filter_external : '', // Possibly it will replace server-side search (not sure it's a good idea, but leave such a variant)
 
-      filter_formatter : {
-        '.splitted_terms_filter' : function($cell, indx){
-          return $.tablesorter.filterFormatter.select2( $cell, indx, {
-            match : false,
-            multiple: true
-          });
-        }
-      },
-      filter_functions : {
-        '.splitted_terms_filter' : function(exact_text, normalized_text, search_for, column_index, $row) {
-          // `/pattern/` string --> /pattern/ regexp
-          var search_regexp = eval(search_for);
-          var tokens = exact_text.split('; ');
-
-          for(var i = 0; i < tokens.length; ++i) {
-            if (search_regexp.test( $.trim(tokens[i]) )) {
-              return true;
-            }
-          }
-          return false;
-        }
-      },
-      filter_selectSource : {
-        '.splitted_terms_filter' : function(table, column, onlyAvail){
-          // get an array of all table cell contents for a table column
-          var array = $.tablesorter.filter.getOptions(table, column, onlyAvail);
-          // manipulate the array as desired, then return it
-          var tokens = [];
-
-          $.each(array, function(i,el) {
-            var tokens_in_cell = $.map(el.split('; '), $.trim);
-            tokens = tokens.concat( tokens_in_cell );
-          });
-
-          return $.unique(tokens).filter(function(el){
-            return el.length > 0;
-          });
-        }
-      },
+      filter_formatter : {  },
+      filter_functions : {  },
+      filter_selectSource : {  },
     },
 
     formatter: {

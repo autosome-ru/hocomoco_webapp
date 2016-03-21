@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require select2
 
 //= require jquery-tablesorter
 //= require jquery-tablesorter/widgets/widget-columns
@@ -26,7 +25,6 @@
 
 //= require jquery-tablesorter/widgets/widget-filter-formatter-html5
 //= require jquery-tablesorter/widgets/widget-filter-formatter-jui
-//= require jquery-tablesorter/widgets/widget-filter-formatter-select2
 
 //= require jquery-tablesorter/widgets/widget-storage
 //= require jquery-tablesorter/widgets/widget-output

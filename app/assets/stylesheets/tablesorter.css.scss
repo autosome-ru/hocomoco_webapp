@@ -22,11 +22,7 @@ table.tablesorter {
         min-width: 170px;
         max-width: 170px;
       }
-      &.splitted_terms_filter, &.uniprot_id_comb {
-        min-width: 220px;
-        max-width: 250px;
-      }
-      &:not(.comment):not(.splitted_terms_filter):not(.uniprot_id_comb):not(.sequence_logo) {
+      &:not(.comment):not(.sequence_logo) {
         // min-width: 150px;
         // max-width: 300px;
       }

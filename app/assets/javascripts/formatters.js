@@ -1,7 +1,7 @@
 ;(function(HocomocoDB, $, undefined) {
 
   HocomocoDB.gene_id_link = function(gene_id) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>' + 
+    return '<a href="http://www.ncbi.nlm.nih.gov/gene/' + gene_id + '">' + gene_id + '</a>' +
     '<br/>(' + HocomocoDB.fantom_sstar_gene_link(gene_id) + ')'/*; +
     '<br/>(' + HocomocoDB.epifactors_link(gene_id) + ')'*/; // We need to check whether such epifactor exists
 
@@ -154,73 +154,9 @@
     return '<div class="hocomoco_link">' + link_html + '</div>';
   };
 
-  HocomocoDB.comb_span_wrappers = {
-    term:               ['<span class="comb_term">',                '</span>'],
-    multiple:           ['<span class="comb_multiple">',            '+</span>'],
-    optional:           ['<span class="comb_optional">',            '?</span>'],
-    alternative:        ['<span class="comb_alternative">',         '</span>'],
-    alternative_group:  ['<span class="comb_alternative_group">(',  ')</span>'],
-    comb:               ['<span class="comb">',                     '</span>'],
-    join_alternatives:  ' | ',
-    join_enumeration:   ', ',
-  };
-
-  HocomocoDB.comb_plain_wrappers = {
-    term:               ['',  ''],
-    multiple:           ['',  '+'],
-    optional:           ['',  '?'],
-    alternative:        ['',  ''],
-    alternative_group:  ['(', ')'],
-    comb:               ['',  ''],
-    join_alternatives:  '|',
-    join_enumeration:   ', ',
-  };
-
-  var markup_comb_alternatives,
-      markup_comb_term,
-      multiterm,
+  var multiterm,
       formatter_preserving_text,
       make_tablesorter_formatters;
-
-  // 'abc|def' --> '<div class="alternative_uniprot">abc</div><div class="alternative_uniprot">def</div>']
-  markup_comb_alternatives = function(comb_part, term_formatter, wrappers) {
-    var tokens = comb_part.split('|');
-    return $.map(tokens, function(token) {
-      return wrappers.alternative[0] + markup_comb_term($.trim(token), term_formatter, wrappers) + wrappers.alternative[1];
-    }).join(wrappers.join_alternatives);
-  };
-
-  markup_comb_term = function(term, term_formatter, wrappers) {
-    if (term.slice(-1) == '+') {
-      return wrappers.multiple[0] + markup_comb_term(term.slice(0, -1), term_formatter, wrappers) + wrappers.multiple[1];
-    } else if (term.slice(-1) == '?') {
-      return wrappers.optional[0] + markup_comb_term(term.slice(0, -1), term_formatter, wrappers) + wrappers.optional[1];
-    } else if (term.slice(0, 1) == '(' && term.slice(-1) == ')') {
-      return wrappers.alternative_group[0] + markup_comb_alternatives(term.slice(1, -1), term_formatter, wrappers) + wrappers.alternative_group[1];
-    } else {
-      return wrappers.term[0] + term_formatter(term) + wrappers.term[1];
-    }
-  };
-
-  HocomocoDB.markup_comb = function(comb, term_formatter, wrappers) {
-    var tokens = comb.split(',');
-
-    tokens = $.map(tokens, $.trim);
-    return wrappers.comb[0] + $.map(tokens, function(term){
-      return markup_comb_term(term, term_formatter, wrappers);
-    }).join(wrappers.join_enumeration) + wrappers.comb[1];
-  };
-
-  HocomocoDB.uniprot_comb_link = function(txt, data) {
-    return HocomocoDB.markup_comb(txt, HocomocoDB.uniprot_id_link, HocomocoDB.comb_span_wrappers);
-  }
-
-  HocomocoDB.gene_comb_link = function(txt, data) {
-    return HocomocoDB.markup_comb(txt, function(txt) { return HocomocoDB.HocomocoDB_gene_link(txt); }, HocomocoDB.comb_span_wrappers);
-  }
-  HocomocoDB.gene_comb_names_only = function(txt, data) {
-    return HocomocoDB.markup_comb(txt, HocomocoDB.HocomocoDB_gene_name_only, HocomocoDB.comb_plain_wrappers);
-  }
 
   multiterm = function(apply_func, joining_sequence, splitter_pattern) {
     if (typeof(splitter_pattern)==='undefined') splitter_pattern = ', ';
@@ -279,8 +215,6 @@
     '.tfclass'         : HocomocoDB.tfclass_link,
     '.uniprot_ac_and_tfclass' : HocomocoDB.uniprot_ac_and_tfclass_link,
     '.refseq'          : HocomocoDB.refseq_link,
-    '.uniprot_id_comb' : HocomocoDB.uniprot_comb_link,
-    '.gene_comb'       : HocomocoDB.gene_comb_link,
     '.expression_bar'  : HocomocoDB.expression_bar,
     '.quantile'        : HocomocoDB.quantile,
     '.sample_link'     : HocomocoDB.sample_link,
@@ -293,7 +227,6 @@
   };
 
   HocomocoDB.preserveFormatters = { // What to save in cell textAttribute (for CSV output and search facilities)
-    '.gene_comb'       : HocomocoDB.gene_comb_names_only,
   };
 
   HocomocoDB.tablesorter_formatters = make_tablesorter_formatters(HocomocoDB.formatters, HocomocoDB.preserveFormatters);
