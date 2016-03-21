@@ -7,7 +7,7 @@
     .loading_logo
   .caption= caption(arity, species, family_id: family_id)
 
-%table#motifs.tablesorter.attach-column-selector
+%table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2015-03-21-11-00'}}
   %thead
     %tr
       = motif_table_header :full_name, show_always: true, class: 'motif_name'
