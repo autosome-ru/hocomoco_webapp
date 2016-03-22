@@ -145,6 +145,7 @@ ul {
 .help_container {
   width: 60%;
   padding: 20px 0;
+  margin-left: 130px;
   text-align: justify;
 }
 
@@ -152,4 +153,6 @@ ul {
   text-align: center;
   font-style: italic;
   font-weight: bolder;
+  display: block;
+  color: black;
 }

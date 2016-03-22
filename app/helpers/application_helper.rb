@@ -67,8 +67,6 @@ module ApplicationHelper
   end
 
   def help_icon(href:, title:)
-    link_to href do
-      content_tag :div, '', class: ['help-icon', 'has-tooltip'], data: {toggle: 'tooltip', placement: 'bottom', title: title}
-    end
+    content_tag :div, '', class: ['help-icon', 'has-tooltip'], data: {toggle: 'tooltip', placement: 'bottom', title: title, html: 'true', href: href}
   end
 end

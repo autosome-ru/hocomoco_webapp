@@ -35,6 +35,14 @@ var page_ready = function() {
   //   $sample_header.trigger('applyFormatter');
   //   return false;
   // });
+
+  $('.help-icon').on('click mousedown mouseup',function(e){
+    e.stopPropagation();
+  });
+  $('.help-icon').click(function(e){
+    e.stopPropagation();
+    window.location = $(e.target).data('href');
+  });
 };
 
 $(document).ready(page_ready);
