@@ -55,8 +55,19 @@
     return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
   };
 
-  HocomocoDB.tfclass_link = function(uniprot_ac) {
-    return '<a href="http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=' + uniprot_ac + '">TFClass</a>';
+  // identifier can be UniprotAC or TFClass index
+  HocomocoDB.tfclass_link = function(identifier, name) {
+    if (name === undefined) { name = 'TFClass'; }
+    return '<a href="http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=' + identifier + '">' + name + '</a>';
+  };
+
+  HocomocoDB.tfclass_motif_family_link = function(string) {
+    var motif_family_id = string.match(/\{(.+?)\}/);
+    if (motif_family_id && motif_family_id[1]) {
+      return string.replace(/\{.+?\}/, '{' + HocomocoDB.tfclass_link(motif_family_id[1], motif_family_id[1]) + '}');
+    } else {
+      return string
+    }
   };
 
   HocomocoDB.uniprot_ac_link = function(uniprot_ac) {
@@ -199,6 +210,8 @@
     '.mgi_id'          : HocomocoDB.mgi_id_link,
     '.uniprot_ac'      : HocomocoDB.uniprot_ac_link,
     '.tfclass'         : HocomocoDB.tfclass_link,
+    '.motif-family'    : HocomocoDB.tfclass_motif_family_link,
+    '.motif-subfamily' : HocomocoDB.tfclass_motif_family_link,
     '.uniprot_ac_and_tfclass' : HocomocoDB.uniprot_ac_and_tfclass_link,
     '.refseq'          : HocomocoDB.refseq_link,
     '.expression_bar'  : HocomocoDB.expression_bar,
