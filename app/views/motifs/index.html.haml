@@ -1,11 +1,12 @@
 .table-actions
-  %button.reset{type: 'button'} Reset filters
+  %button.reset.resetColumns{type: 'button'} Reset
   %button.select-columns-btn{type: 'button'} Select Columns
   = download_button
   %input{type: "text", value: csv_filename, class: 'csv-filename'}
   .loading_table
     .loading_logo
   .caption= caption(arity, species, family_id: family_id)
+  #hidden_select_columns
 
 %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2015-03-21-11-00'}}
   %thead
