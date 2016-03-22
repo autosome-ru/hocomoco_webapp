@@ -58,7 +58,7 @@ jQuery(function(){
           info_text = family_name;
           info_text += '<br/>';
         }
-        info_text += '<br/>' + 'HOCOMOCO models / Total TFs:<br/>' +
+        info_text += '<br/>' + 'HOCOMOCO / Total TFs:<br/>' +
                   '<span class="covered_tfs">' + d.covered_tfs + '</span>' + ' / ' + '<span class="total_tfs">' + d.total_tfs + '</span>';
         if (d.comment) {
           info_text += '<br/>' + '<i>' + d.comment + '</i>';
