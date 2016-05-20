@@ -30,16 +30,21 @@ class HocomocoController < ApplicationController
       }
     end
 
-    models = MotifDecorator.decorate_collection(models)
 
-    render 'motifs/index', locals: {
-      models: models,
-      species: species,
-      arity: arity,
-      csv_filename: "#{species}_#{arity}_motifs.tsv",
-      family_id: params[:family_id],
-      disable_default_filters: true
-    }
+    respond_to do |format|
+      format.html do
+        models = MotifDecorator.decorate_collection(models)
+        render 'motifs/index', locals: {
+          models: models,
+          species: species,
+          arity: arity,
+          csv_filename: "#{species}_#{arity}_motifs.tsv",
+          family_id: params[:family_id],
+          disable_default_filters: true
+        }
+      end
+      format.json { render json: models.map(&:full_name) }
+    end
   end
 
   def home; end
