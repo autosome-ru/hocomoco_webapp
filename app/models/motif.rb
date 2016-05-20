@@ -63,6 +63,10 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     Rails.root.join("public/final_bundle/#{species}/#{arity}/pwm/#{full_name}.#{model_kind.pwm_extension}")
   end
 
+  def threshold_pvalue_list_path
+    Rails.root.join("public/final_bundle/#{species}/#{arity}/thresholds/#{full_name}.thr")
+  end
+
   # def standard_thresholds_url
   #   (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
   # end
@@ -88,6 +92,11 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
   def model_kind; ModelKind.get(arity); end
   def pcm; model_kind.read_pcm(pcm_path); end
   def pwm; model_kind.read_pwm(pwm_path); end
+  def threshold_pvalue_list
+    File.readlines(threshold_pvalue_list_path).map{|line|
+      line.chomp.split("\t").map(&:to_f)
+    }
+  end
 
   def direct_logo_url
     (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo_small/#{full_name}_direct.png"

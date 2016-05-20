@@ -5,15 +5,20 @@ class MotifsController < ApplicationController
     redirect_to root_path  unless ['HUMAN', 'MOUSE'].include?(species)
     redirect_to root_path  unless ['mono', 'di'].include?(arity)
     models = Motif.in_bundle(species: species, arity: arity)
-    models = MotifDecorator.decorate_collection(models)
-    render locals: {
-      models: models,
-      species: species,
-      arity: arity,
-      csv_filename: "#{species}_#{arity}_motifs.tsv",
-      family_id: nil,
-      disable_default_filters: false
-    }
+    respond_to do |format|
+      format.html do
+        models = MotifDecorator.decorate_collection(models)
+        render locals: {
+          models: models,
+          species: species,
+          arity: arity,
+          csv_filename: "#{species}_#{arity}_motifs.tsv",
+          family_id: nil,
+          disable_default_filters: false
+        }
+      end
+      format.json { render json: models.map(&:full_name) }
+    end
   end
 
   def show
@@ -23,13 +28,18 @@ class MotifsController < ApplicationController
     motif = Motif.in_bundle(species: species, arity: arity).detect{|motif|
       motif.full_name == params[:motif]
     }
-    motif = MotifDecorator.decorate(motif)
-    render locals: {
-      motif: motif,
-      species: species,
-      arity: arity,
-      csv_filename: "#{species}_#{arity}_motifs.tsv"
-    }
+    respond_to do |format|
+      format.html do
+        motif = MotifDecorator.decorate(motif)
+        render locals: {
+          motif: motif,
+          species: species,
+          arity: arity,
+          csv_filename: "#{species}_#{arity}_motifs.tsv"
+        }
+      end
+      format.json { render locals: {motif: motif, with_thresholds: params[:with_thresholds], with_matrices: params[:with_matrices]} }
+    end
   end
 
 protected
