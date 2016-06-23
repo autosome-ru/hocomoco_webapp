@@ -46,10 +46,10 @@
     %tr
       %td.row-hdr{rowspan: 2}
         PWM
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'See technical notes'}}
+        = help_icon(title: 'See technical notes (click to open)', href: root_path + 'technical_notes.txt')
       %td.row-hdr
         One file per matrix
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
+        = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
       %td= link_to 'pwm_HUMAN_mono.tar.gz', root_path + 'final_bundle/HUMAN/mono/pwm_HUMAN_mono.tar.gz'
       %td= link_to 'pwm_HUMAN_di.tar.gz', root_path + 'final_bundle/HUMAN/di/pwm_HUMAN_di.tar.gz'
       %td= link_to 'pwm_MOUSE_mono.tar.gz', root_path + 'final_bundle/MOUSE/mono/pwm_MOUSE_mono.tar.gz'
@@ -65,7 +65,7 @@
       %td.row-hdr{rowspan: 2} PCM
       %td.row-hdr
         One file per matrix
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'MACRO-PERFECTOS-APE compatible format'}}
+        = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
       %td= link_to 'pcm_HUMAN_mono.tar.gz', root_path + 'final_bundle/HUMAN/mono/pcm_HUMAN_mono.tar.gz'
       %td= link_to 'pcm_HUMAN_di.tar.gz', root_path + 'final_bundle/HUMAN/di/pcm_HUMAN_di.tar.gz'
       %td= link_to 'pcm_MOUSE_mono.tar.gz', root_path + 'final_bundle/MOUSE/mono/pcm_MOUSE_mono.tar.gz'
@@ -92,7 +92,7 @@
     %tr
       %td.row-hdr{colspan: 2}
         Threshold to P-value map
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'Precalculated thresholds to be utilized by PERFECTOS-APE (P-value calculated under uniform background model)'}}
+        = help_icon(title: 'Precalculated thresholds to be utilized by PERFECTOS-APE (P-value calculated under uniform background model)')
       %td= link_to 'thresholds_HUMAN_mono.tar.gz', root_path + 'final_bundle/HUMAN/mono/thresholds_HUMAN_mono.tar.gz'
       %td= link_to 'thresholds_HUMAN_di.tar.gz', root_path + 'final_bundle/HUMAN/di/thresholds_HUMAN_di.tar.gz'
       %td= link_to 'thresholds_MOUSE_mono.tar.gz', root_path + 'final_bundle/MOUSE/mono/thresholds_MOUSE_mono.tar.gz'
@@ -126,7 +126,7 @@
     %tr
       %td.row-hdr
         HOMER
-        .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'Matrices in HOMER format include score thresholds. We provide the collection with threshold levels corresponding to P-value of 0.001, 0.0005 and 0.0001'}} 
+        = help_icon(title: 'Matrices in HOMER format include score thresholds. We provide the collection with threshold levels corresponding to P-value of 0.001, 0.0005 and 0.0001')
       %td
         - ['0.001', '0.0005', '0.0001'].each do |pvalue|
           .homer_pvalue= link_to "P-value #{pvalue}", root_path + "final_bundle/HUMAN/mono/HOCOMOCOv10_HUMAN_mono_homer_format_#{pvalue}.motif"

@@ -38,7 +38,7 @@
           %tr
             %th
               P-value
-              .has-tooltip.help-icon{data:{toggle: 'tooltip', placement: 'bottom', title: 'P-value calculated under uniform background model'}}
+              = help_icon(title: 'P-value calculated under uniform background model')
             %th Threshold
         %tbody
           - m.standard_thresholds.each do |pvalue, threshold|

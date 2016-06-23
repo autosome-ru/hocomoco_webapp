@@ -41,7 +41,8 @@ var page_ready = function() {
   });
   $('.help-icon').click(function(e){
     e.stopPropagation();
-    window.location = $(e.target).data('href');
+    var href = $(e.target).data('href');
+    if (href) window.location = href;
   });
 };
 
