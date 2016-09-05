@@ -102,12 +102,21 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo_small/#{full_name}_direct.png"
   end
 
+  # big logo is normal size, large logo is bigger than big and acceptable to insert logo in papers etc
   def direct_big_logo_url
     (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo/#{full_name}_direct.png"
   end
 
   def revcomp_big_logo_url
     (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo/#{full_name}_revcomp.png"
+  end
+
+  def direct_large_logo_url
+    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo_large/#{full_name}_direct.png"
+  end
+
+  def revcomp_large_logo_url
+    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo_large/#{full_name}_revcomp.png"
   end
 
   def self.from_string(str)

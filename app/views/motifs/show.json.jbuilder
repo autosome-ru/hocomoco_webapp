@@ -1,6 +1,6 @@
 json.full_name   motif.full_name
-json.direct_logo_url  motif.direct_big_logo_url
-json.revcomp_logo_url  motif.revcomp_big_logo_url
+json.direct_logo_url  motif.direct_large_logo_url
+json.revcomp_logo_url  motif.revcomp_large_logo_url
 json.gene_names  motif.gene_names
 json.model_length  motif.model_length
 json.quality   motif.quality
