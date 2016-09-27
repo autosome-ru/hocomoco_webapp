@@ -2,7 +2,7 @@ require 'bioinform'
 require 'dipm'
 require 'model_kind'
 
-RetractedMotifs = []
+RetractedMotifs = ['ENOA_HUMAN.H10MO.A', 'ENOA_MOUSE.H10MO.A']
 
 Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
                           :auc, :max_auc,
