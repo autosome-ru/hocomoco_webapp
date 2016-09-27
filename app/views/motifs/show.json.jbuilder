@@ -22,7 +22,7 @@ end
 json.entrezgene_ids  motif.entrezgene_ids
 json.uniprot_id  motif.uniprot_id
 json.uniprot_acs   motif.uniprot_acs
-json.comment   motif.comment
+json.comment   motif.retracted? ? [motif.comment, "Retracted!"].compact.reject(&:empty?).join("\n") : motif.comment
 
 if with_matrices
   json.pwm motif.pwm.matrix
@@ -31,3 +31,5 @@ end
 if with_thresholds
   json.threshold_pvalue_list motif.threshold_pvalue_list
 end
+
+json.retracted(motif.retracted?)

@@ -92,4 +92,11 @@ class MotifDecorator < Draper::Decorator
   def pwm
     format_matrix_as_table(object.pwm.matrix, round: 3)
   end
+
+  def full_name
+    object.retracted? ? (object.full_name + ' ' + 'RETRACTED!!!') : object.full_name
+  end
+  def comment
+    object.retracted? ? ('Retracted motif!' + h.tag('br') + object.comment).html_safe : object.comment
+  end
 end

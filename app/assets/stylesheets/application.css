@@ -22,3 +22,9 @@
   text-align: right;
   color: #555;
 }
+
+.attention {
+  text-align: center;
+  font-size: 2em;
+  color: red;
+}

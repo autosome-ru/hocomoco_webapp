@@ -2,6 +2,8 @@ require 'bioinform'
 require 'dipm'
 require 'model_kind'
 
+RetractedMotifs = []
+
 Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
                           :auc, :max_auc,
                           :datasets, :origin_models,
@@ -18,6 +20,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
   def quality; full_name.split('.')[2]; end
   def species; uniprot_id.split('_').last; end
   def to_s; full_name; end
+  def retracted?; RetractedMotifs.include?(full_name); end
 
   def arity
     case bundle_name[-2,2]
