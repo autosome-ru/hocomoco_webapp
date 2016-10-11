@@ -82,8 +82,15 @@
     return '<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>';
   };
 
-  HocomocoDB.motif_link = function(motif) {
-    return '<a href="' + HocomocoDB.app_prefix + 'motif/' + motif + '">' + motif + '</a>';
+  HocomocoDB.motif_link = function(motif_and_optional_comment) {
+    var infos = motif_and_optional_comment.split(/\s+/);
+    var motif = infos[0];
+    var motif_link = '<a href="' + HocomocoDB.app_prefix + 'motif/' + motif + '">' + motif + '</a>';
+    if (infos.length <= 1) {
+      return motif_link;
+    } else {
+      return motif_link + ' ' + '<span style="color:red;">' + infos[1] + '</span>';
+    }
   };
 
   HocomocoDB.pmid_link = function(pmid) {
