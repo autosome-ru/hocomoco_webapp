@@ -2,8 +2,6 @@ require 'bioinform'
 require 'dipm'
 require 'model_kind'
 
-RetractedMotifs = ['ENOA_HUMAN.H10MO.A', 'ENOA_MOUSE.H10MO.A']
-
 Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
                           :auc, :max_auc,
                           :datasets, :origin_models,
@@ -11,7 +9,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
                           :hgnc_ids, :mgi_ids, :entrezgene_ids,
                           :gene_names, :uniprot_acs,
                           :num_words_in_alignment,
-                          :comment) do
+                          :comment, :retracted) do
 
   def self.model_name; 'Motif'; end
 
@@ -20,7 +18,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
   def quality; full_name.split('.')[2]; end
   def species; uniprot_id.split('_').last; end
   def to_s; full_name; end
-  def retracted?; RetractedMotifs.include?(full_name); end
+  def retracted?; !! retracted; end
 
   def arity
     case bundle_name[-2,2]
@@ -43,35 +41,52 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     }
   end
 
+  def url_in_final_bundle(url_part)
+    url_base = HocomocoSite::Application.config.relative_url_root || ''
+    if retracted?
+      url_base + "/final_bundle/retracted/#{url_part}"
+    else
+      url_base + "/final_bundle/#{url_part}"
+    end
+  end
+
+  def path_in_final_bundle(path_part)
+    if retracted?
+      Rails.root.join("public/final_bundle/retracted/#{path_part}")
+    else
+      Rails.root.join("public/final_bundle/#{path_part}")
+    end
+  end
+
   def pcm_url
     ext = model_kind.pcm_extension
-    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/pcm/#{full_name}.#{ext}"
+    url_in_final_bundle("#{species}/#{arity}/pcm/#{full_name}.#{ext}")
   end
 
   def pwm_url
     ext = model_kind.pwm_extension
-    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/pwm/#{full_name}.#{ext}"
+    url_in_final_bundle("#{species}/#{arity}/pwm/#{full_name}.#{ext}")
   end
 
   def alignment_url
     ext = model_kind.pwm_extension
-    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
+    url_in_final_bundle("#{species}/#{arity}/words/#{full_name}.words")
   end
 
   def pcm_path
-    Rails.root.join("public/final_bundle/#{species}/#{arity}/pcm/#{full_name}.#{model_kind.pcm_extension}")
+    path_in_final_bundle("#{species}/#{arity}/pcm/#{full_name}.#{model_kind.pcm_extension}")
   end
 
   def pwm_path
-    Rails.root.join("public/final_bundle/#{species}/#{arity}/pwm/#{full_name}.#{model_kind.pwm_extension}")
+    path_in_final_bundle("#{species}/#{arity}/pwm/#{full_name}.#{model_kind.pwm_extension}")
   end
 
   def threshold_pvalue_list_path
-    Rails.root.join("public/final_bundle/#{species}/#{arity}/thresholds/#{full_name}.thr")
+    path_in_final_bundle("#{species}/#{arity}/thresholds/#{full_name}.thr")
   end
 
   # def standard_thresholds_url
-  #   (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
+  #   url_in_final_bundle("#{species}/#{arity}/words/#{full_name}.words")
   # end
 
   def self.read_standard_thresholds(filename)
@@ -87,7 +102,10 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     @standard_thresholds_by_motif ||= Hash.new{|species_hash, species|
       species_hash[species] = Hash.new{|arity_hash, arity|
         standard_thresholds_path = Rails.root.join("public/final_bundle/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
-        arity_hash[arity] = read_standard_thresholds(standard_thresholds_path)
+        retracted_standard_thresholds_path = Rails.root.join("public/final_bundle/retracted/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
+        standard_thresholds = read_standard_thresholds(standard_thresholds_path)
+        retracted_standard_thresholds = read_standard_thresholds(retracted_standard_thresholds_path)
+        arity_hash[arity] = standard_thresholds.merge(retracted_standard_thresholds)
       }
     }
   end
@@ -97,7 +115,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
   end
 
   def precalculated_thresholds_url
-    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/thresholds/#{full_name}.thr"
+    url_in_final_bundle("#{species}/#{arity}/thresholds/#{full_name}.thr")
   end
 
   def model_kind; ModelKind.get(arity); end
@@ -110,27 +128,27 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
   end
 
   def direct_logo_url
-    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo_small/#{full_name}_direct.png"
+    url_in_final_bundle("#{species}/#{arity}/logo_small/#{full_name}_direct.png")
   end
 
   # big logo is normal size, large logo is bigger than big and acceptable to insert logo in papers etc
   def direct_big_logo_url
-    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo/#{full_name}_direct.png"
+    url_in_final_bundle("#{species}/#{arity}/logo/#{full_name}_direct.png")
   end
 
   def revcomp_big_logo_url
-    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo/#{full_name}_revcomp.png"
+    url_in_final_bundle("#{species}/#{arity}/logo/#{full_name}_revcomp.png")
   end
 
   def direct_large_logo_url
-    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo_large/#{full_name}_direct.png"
+    url_in_final_bundle("#{species}/#{arity}/logo_large/#{full_name}_direct.png")
   end
 
   def revcomp_large_logo_url
-    (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/logo_large/#{full_name}_revcomp.png"
+    url_in_final_bundle("/#{species}/#{arity}/logo_large/#{full_name}_revcomp.png")
   end
 
-  def self.from_string(str)
+  def self.from_string(str, retracted: false)
     full_name, model_length, consensus, \
       _uniprot,
       uniprot_acs, gene_names,
@@ -150,7 +168,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
       datasets, origin_models, motif_families, motif_subfamilies,
       hgnc_ids.split('; '), mgi_ids.split('; '), entrezgene_ids.split('; '),
       gene_names.split('; '), uniprot_acs.split('; '), num_words_in_alignment.to_i,
-      comment)
+      comment, retracted)
   end
 
   def num_datasets
@@ -181,12 +199,16 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     [:full_name, :motif_families, :gene_names].any?{|param| self.send(param).to_s.match(pattern) }
   end
 
-  def self.each_in_file(filename, &block)
+  def self.each_in_file(filename, retracted: false, &block)
     @cached_motifs ||= {}
-    @cached_motifs[filename] ||= File.readlines(filename).drop(1).map{|line| self.from_string(line) }.each(&block)
+    @cached_motifs[filename] ||= File.readlines(filename).drop(1).map{|line| self.from_string(line, retracted: retracted) }.each(&block)
   end
 
   def self.in_bundle(species:, arity:)
-    self.each_in_file(Rails.root.join("public/final_bundle/#{species.upcase}/#{arity}/final_collection.tsv"))
+    result = self.each_in_file(Rails.root.join("public/final_bundle/#{species.upcase}/#{arity}/final_collection.tsv")).to_a
+    if File.exist?(Rails.root.join("public/final_bundle/retracted/#{species.upcase}/#{arity}/final_collection.tsv"))
+      result += self.each_in_file(Rails.root.join("public/final_bundle/retracted/#{species.upcase}/#{arity}/final_collection.tsv"), retracted: true).to_a
+    end
+    result
   end
 end
