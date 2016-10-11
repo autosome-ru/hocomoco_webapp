@@ -71,18 +71,26 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
   #   (HocomocoSite::Application.config.relative_url_root || '') + "/final_bundle/#{species}/#{arity}/words/#{full_name}.words"
   # end
 
+  def self.read_standard_thresholds(filename)
+    lines = File.readlines(filename).map(&:chomp).map{|line| line.split("\t") }
+    pvalues = lines.first.drop(1).map(&:to_f)
+    lines.drop(1).map{|line|
+      motif, *thresholds = *line
+      [motif, pvalues.zip(thresholds).to_h]
+    }.to_h
+  end
+
+  def self.standard_thresholds_by_motif
+    @standard_thresholds_by_motif ||= Hash.new{|species_hash, species|
+      species_hash[species] = Hash.new{|arity_hash, arity|
+        standard_thresholds_path = Rails.root.join("public/final_bundle/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
+        arity_hash[arity] = read_standard_thresholds(standard_thresholds_path)
+      }
+    }
+  end
+
   def standard_thresholds
-    standard_thresholds_path = Rails.root.join("public/final_bundle/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
-    @cached_thresholds ||= {}
-    @cached_thresholds[standard_thresholds_path] ||= begin
-      lines = File.readlines(standard_thresholds_path).map(&:chomp).map{|line| line.split("\t") }
-      pvalues = lines.first.drop(1).map(&:to_f)
-      lines.drop(1).map{|line|
-        motif, *thresholds = *line
-        [motif, pvalues.zip(thresholds).to_h]
-      }.to_h
-    end
-    @cached_thresholds[standard_thresholds_path][full_name]
+    self.class.standard_thresholds_by_motif[species][arity][full_name]
   end
 
   def precalculated_thresholds_url
