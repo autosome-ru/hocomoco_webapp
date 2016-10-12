@@ -135,3 +135,7 @@
         - ['0.001', '0.0005', '0.0001'].each do |pvalue|
           .homer_pvalue= link_to "P-value #{pvalue}", root_path + "final_bundle/MOUSE/mono/HOCOMOCOv10_MOUSE_mono_homer_format_#{pvalue}.motif"
       %td
+
+%h4 See also:
+.curation_log= link_to 'Curation log', root_path + 'curation.log'
+.retracted_models= link_to 'Retracted models', root_path + 'final_bundle/retracted.tar.gz'
