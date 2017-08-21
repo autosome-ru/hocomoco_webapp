@@ -2,9 +2,10 @@ require 'bioinform'
 require 'dipm'
 require 'model_kind'
 
-Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
-                          :auc, :max_auc,
-                          :datasets, :origin_models,
+Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
+                          :best_auc_human, :best_auc_mouse,
+                          :num_datasets_human, :num_datasets_mouse,
+                          :release, :motif_source,
                           :motif_families, :motif_subfamilies,
                           :hgnc_ids, :mgi_ids, :entrezgene_ids,
                           :gene_names, :uniprot_acs,
@@ -15,7 +16,8 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
 
   def uniprot_id; full_name.split('.')[0]; end
   def bundle_name; full_name.split('.')[1]; end
-  def quality; full_name.split('.')[2]; end
+  def rank; full_name.split('.')[2]; end
+  def quality; full_name.split('.')[3]; end
   def species; uniprot_id.split('_').last; end
   def to_s; full_name; end
   def retracted?; !! retracted; end
@@ -85,10 +87,6 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
     path_in_final_bundle("#{species}/#{arity}/thresholds/#{full_name}.thr")
   end
 
-  # def standard_thresholds_url
-  #   url_in_final_bundle("#{species}/#{arity}/words/#{full_name}.words")
-  # end
-
   def self.read_standard_thresholds(filename)
     lines = File.readlines(filename).map(&:chomp).map{|line| line.split("\t") }
     pvalues = lines.first.drop(1).map(&:to_f)
@@ -104,8 +102,12 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
         standard_thresholds_path = Rails.root.join("public/final_bundle/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
         retracted_standard_thresholds_path = Rails.root.join("public/final_bundle/retracted/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
         standard_thresholds = read_standard_thresholds(standard_thresholds_path)
-        retracted_standard_thresholds = read_standard_thresholds(retracted_standard_thresholds_path)
-        arity_hash[arity] = standard_thresholds.merge(retracted_standard_thresholds)
+        if File.exist?(retracted_standard_thresholds_path)
+          retracted_standard_thresholds = read_standard_thresholds(retracted_standard_thresholds_path)
+          arity_hash[arity] = standard_thresholds.merge(retracted_standard_thresholds)
+        else
+          arity_hash[arity] = standard_thresholds
+        end
       }
     }
   end
@@ -150,48 +152,32 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality,
 
   def self.from_string(str, retracted: false)
     full_name, model_length, consensus, \
-      _uniprot,
-      uniprot_acs, gene_names,
+      _uniprot, \
+      uniprot_acs, gene_names, \
       _arity_type, \
-      quality, num_words_in_alignment, auc, max_auc, \
-      datasets, origin_models, \
+      quality, rank, num_words_in_alignment, \
+      best_auc_human, best_auc_mouse, \
+      num_datasets_human, num_datasets_mouse, \
+      release, motif_source, \
       motif_families, motif_subfamilies, \
       hgnc_ids, mgi_ids, entrezgene_ids, \
-      comment = str.chomp.split("\t", 19)
-    datasets = datasets.split(', ')
-    origin_models = origin_models.split(', ')
+      comment \
+        = str.chomp.split("\t", 22)
     motif_families = motif_families.split(':separator:')
     motif_subfamilies = motif_subfamilies.split(':separator:')
-    auc = auc.empty? ? nil : auc.to_f
-    max_auc = max_auc.empty? ? nil : max_auc.to_f
-    self.new(full_name, model_length.to_i, consensus, quality, auc, max_auc,
-      datasets, origin_models, motif_families, motif_subfamilies,
+    best_auc_human = best_auc_human.empty? ? nil : best_auc_human.to_f
+    best_auc_mouse = best_auc_mouse.empty? ? nil : best_auc_mouse.to_f
+    num_datasets_human = num_datasets_human.empty? ? nil : num_datasets_human.to_i
+    num_datasets_mouse = num_datasets_mouse.empty? ? nil : num_datasets_mouse.to_i
+
+    self.new(full_name, model_length.to_i, consensus, quality, rank.to_i,
+      best_auc_human, best_auc_mouse,
+      num_datasets_human, num_datasets_mouse,
+      release, motif_source,
+      motif_families, motif_subfamilies,
       hgnc_ids.split('; '), mgi_ids.split('; '), entrezgene_ids.split('; '),
       gene_names.split('; '), uniprot_acs.split('; '), num_words_in_alignment.to_i,
       comment, retracted)
-  end
-
-  def num_datasets
-    datasets.size
-  end
-
-  def origin
-    collection_names = origin_models.map{|motif| motif.split('~')[1] }
-    raise  unless collection_names.all?{|collection| collection == collection_names.first }
-    collection_name = collection_names.first
-    {
-      'CD' => 'ChIP-Seq', # Actually these models aren't in collection
-      'CM' => 'ChIP-Seq',
-      'PAPAM' => 'ChIP-Seq',
-      'PAPAD' => 'ChIP-Seq',
-
-      'SMF' => 'HT-SELEX',
-      'SMI' => 'HT-SELEX',
-      'SDF' => 'HT-SELEX', # Actually these models aren't in collection
-      'SDI' => 'HT-SELEX', # Actually these models aren't in collection
-
-      'HL' => 'HOCOMOCO v9',
-    }[collection_name]
   end
 
   def match_query?(query)

@@ -24,7 +24,7 @@ class MotifsController < ApplicationController
   def show
     species = params[:motif].split('.')[0].split('_').last.upcase
     bundle_name = params[:motif].split('.')[1].upcase
-    arity = {'H10MO' => 'mono', 'H10DI' => 'di'}[bundle_name]
+    arity = {'H11MO' => 'mono', 'H11DI' => 'di'}[bundle_name]
     motif = Motif.in_bundle(species: species, arity: arity).detect{|motif|
       motif.full_name == params[:motif]
     }
