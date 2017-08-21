@@ -44,6 +44,16 @@ var page_ready = function() {
     var href = $(e.target).data('href');
     if (href) window.location = href;
   });
+
+  var family_tree_data_url = HocomocoDB.app_prefix + "final_bundle/HUMAN/mono/family_tree_HUMAN_mono.json";
+
+  var family_map_tooltip_div = d3.select("body").append("div")
+    .attr("class", "map-tooltip")
+    .style("opacity", 0);
+
+  if ($('#motif_families_map').length > 0) {
+    draw_families_tree(family_tree_data_url, d3.select("#motif_families_map"));
+  }
 };
 
 $(document).ready(page_ready);
