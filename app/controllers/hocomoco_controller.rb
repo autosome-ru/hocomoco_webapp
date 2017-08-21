@@ -47,7 +47,10 @@ class HocomocoController < ApplicationController
     end
   end
 
-  def home; end
+  def home
+    @species = (params['species'] || 'HUMAN').upcase
+    @arity = (params['arity'] || 'mono').downcase
+  end
   def downloads; end
   def help; end
   def tree
