@@ -5,7 +5,9 @@
   %input{type: "text", value: csv_filename, class: 'csv-filename'}
   .loading_table
     .loading_logo
-  .caption= caption(arity, species, family_id: family_id)
+  .caption= caption(arity, species, family_id: family_id, full: params['full'])
+  = link_to(params['full'] ? motifs_path(species: species, arity: arity) : motifs_path(species: species, arity: arity, full: true)) do
+    %button.full_collection= params['full'] ? 'Show core collection' : 'Show full collection'
   #hidden_select_columns
 
 %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2015-03-22-14-25', table_page: 'hocomoco-motifs-'+species+'-index-2015-03-22-14-25'}}

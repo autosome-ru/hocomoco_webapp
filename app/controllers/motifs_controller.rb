@@ -5,6 +5,9 @@ class MotifsController < ApplicationController
     redirect_to root_path  unless ['HUMAN', 'MOUSE'].include?(species)
     redirect_to root_path  unless ['mono', 'di'].include?(arity)
     models = Motif.in_bundle(species: species, arity: arity)
+    unless params['full']
+      models = models.select{|motif| ['A','B','C'].include?(motif.quality) && motif.rank == 0 }
+    end
     respond_to do |format|
       format.html do
         models = MotifDecorator.decorate_collection(models)
