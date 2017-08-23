@@ -16,7 +16,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
 
   def uniprot_id; full_name.split('.')[0]; end
   def bundle_name; full_name.split('.')[1]; end
-  def rank; full_name.split('.')[2]; end
+  def rank; full_name.split('.')[2].to_i; end
   def quality; full_name.split('.')[3]; end
   def species; uniprot_id.split('_').last; end
   def to_s; full_name; end
