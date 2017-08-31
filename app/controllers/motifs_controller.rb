@@ -22,7 +22,13 @@ class MotifsController < ApplicationController
           disable_default_filters: false
         }
       end
-      format.json { render json: models.map(&:full_name) }
+      format.json {
+        if params[:summary]
+          render locals: {motifs: models.reject(&:retracted?) }, template: 'motifs/summaries.json'
+        else
+          render json: models.map(&:full_name)
+        end
+      }
     end
   end
 
