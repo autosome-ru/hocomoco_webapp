@@ -45,7 +45,8 @@
             = menu_item 'Mononucleotide models', motifs_path(species: 'mouse', arity: 'mono')
             = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
           = drop_down 'Downloads' do
-            = menu_item 'HOCOMOCO v10', downloads_path
+            = menu_item 'HOCOMOCO v11', downloads_v11_path
+            = menu_item 'HOCOMOCO v10', downloads_v10_path
             = menu_item 'HOCOMOCO v9', 'http://autosome.ru/HOCOMOCOS/'
           = menu_item 'Help', help_path
         = form_tag search_post_path, class: 'pull-right navbar-search' do

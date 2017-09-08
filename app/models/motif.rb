@@ -46,17 +46,17 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   def url_in_final_bundle(url_part)
     url_base = HocomocoSite::Application.config.relative_url_root || ''
     if retracted?
-      url_base + "/final_bundle/retracted/#{url_part}"
+      url_base + "/final_bundle/#{HOCOMOCO_VERSION}/retracted/#{url_part}"
     else
-      url_base + "/final_bundle/#{url_part}"
+      url_base + "/final_bundle/#{HOCOMOCO_VERSION}/#{url_part}"
     end
   end
 
   def path_in_final_bundle(path_part)
     if retracted?
-      Rails.root.join("public/final_bundle/retracted/#{path_part}")
+      Rails.root.join("public/final_bundle/#{HOCOMOCO_VERSION}/retracted/#{path_part}")
     else
-      Rails.root.join("public/final_bundle/#{path_part}")
+      Rails.root.join("public/final_bundle/#{HOCOMOCO_VERSION}/#{path_part}")
     end
   end
 
@@ -99,8 +99,8 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   def self.standard_thresholds_by_motif
     @standard_thresholds_by_motif ||= Hash.new{|species_hash, species|
       species_hash[species] = Hash.new{|arity_hash, arity|
-        standard_thresholds_path = Rails.root.join("public/final_bundle/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
-        retracted_standard_thresholds_path = Rails.root.join("public/final_bundle/retracted/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
+        standard_thresholds_path = Rails.root.join("public/final_bundle/#{HOCOMOCO_VERSION}/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
+        retracted_standard_thresholds_path = Rails.root.join("public/final_bundle/#{HOCOMOCO_VERSION}/retracted/#{species}/#{arity}/standard_thresholds_#{species}_#{arity}.txt")
         standard_thresholds = read_standard_thresholds(standard_thresholds_path)
         if File.exist?(retracted_standard_thresholds_path)
           retracted_standard_thresholds = read_standard_thresholds(retracted_standard_thresholds_path)
@@ -191,9 +191,9 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   end
 
   def self.in_bundle(species:, arity:)
-    result = self.each_in_file(Rails.root.join("public/final_bundle/#{species.upcase}/#{arity}/final_collection.tsv")).to_a
-    if File.exist?(Rails.root.join("public/final_bundle/retracted/#{species.upcase}/#{arity}/final_collection.tsv"))
-      result += self.each_in_file(Rails.root.join("public/final_bundle/retracted/#{species.upcase}/#{arity}/final_collection.tsv"), retracted: true).to_a
+    result = self.each_in_file(Rails.root.join("public/final_bundle/#{HOCOMOCO_VERSION}/#{species.upcase}/#{arity}/final_collection.tsv")).to_a
+    if File.exist?(Rails.root.join("public/final_bundle/#{HOCOMOCO_VERSION}/retracted/#{species.upcase}/#{arity}/final_collection.tsv"))
+      result += self.each_in_file(Rails.root.join("public/final_bundle/#{HOCOMOCO_VERSION}/retracted/#{species.upcase}/#{arity}/final_collection.tsv"), retracted: true).to_a
     end
     result
   end

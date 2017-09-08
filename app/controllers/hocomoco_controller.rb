@@ -51,7 +51,8 @@ class HocomocoController < ApplicationController
     @species = (params['species'] || 'HUMAN').upcase
     @arity = (params['arity'] || 'mono').downcase
   end
-  def downloads; end
+  def downloads_v10; end
+  def downloads_v11; end
   def help; end
   def tree
     render layout: 'bare'
