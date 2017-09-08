@@ -1,4 +1,7 @@
 .table-actions
+  - if arity.to_s == 'mono'
+    = link_to(params['full'] ? motifs_path(species: species, arity: arity) : motifs_path(species: species, arity: arity, full: true)) do
+      %button.full_core_collection= params['full'] ? 'Switch to CORE collection' : 'Switch to FULL collection'
   %button.reset.resetColumns{type: 'button'} Reset
   %button.select-columns-btn{type: 'button'} Select Columns
   = download_button
@@ -6,8 +9,6 @@
   .loading_table
     .loading_logo
   .caption= caption(arity, species, family_id: family_id, full: params['full'])
-  = link_to(params['full'] ? motifs_path(species: species, arity: arity) : motifs_path(species: species, arity: arity, full: true)) do
-    %button.full_collection= params['full'] ? 'Show core collection' : 'Show full collection'
   #hidden_select_columns
 
 %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2015-03-22-14-25', table_page: 'hocomoco-motifs-'+species+'-index-2015-03-22-14-25'}}
@@ -42,7 +43,6 @@
       = motif_table_header :entrezgene_ids, dont_sort: true, class: 'gene_id'
       = motif_table_header :uniprot_id, class: 'uniprot_id'
       = motif_table_header :uniprot_acs, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
-      = motif_table_header :comment, dont_sort: true, hide_by_default: true
 
   %tbody
     - models.each do |model|
@@ -70,4 +70,3 @@
         %td= model.entrezgene_ids
         %td= model.uniprot_id
         %td= model.uniprot_acs
-        %td= model.comment
