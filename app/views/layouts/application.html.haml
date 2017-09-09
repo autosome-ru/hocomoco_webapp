@@ -36,13 +36,15 @@
           .navbar-brand HOCOMOCO
         = menu_group do
           = drop_down 'Home' do
-            = menu_item 'Human', root_path
+            = menu_item 'Human', root_path(species: 'human')
             = menu_item 'Mouse', root_path(species: 'mouse')
           = drop_down 'Human TFs' do
-            = menu_item 'Mononucleotide models', motifs_path(species: 'human', arity: 'mono')
+            = menu_item 'Mononucleotide models (core)', motifs_path(species: 'human', arity: 'mono')
+            = menu_item 'Mononucleotide models (full)', motifs_path(species: 'human', arity: 'mono', full: true)
             = menu_item 'Dinucleotide models', motifs_path(species: 'human', arity: 'di')
           = drop_down 'Mouse TFs' do
-            = menu_item 'Mononucleotide models', motifs_path(species: 'mouse', arity: 'mono')
+            = menu_item 'Mononucleotide models (core)', motifs_path(species: 'mouse', arity: 'mono')
+            = menu_item 'Mononucleotide models (full)', motifs_path(species: 'mouse', arity: 'mono', full: true)
             = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
           = drop_down 'Downloads' do
             = menu_item 'HOCOMOCO v11', downloads_v11_path
