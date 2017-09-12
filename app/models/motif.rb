@@ -109,8 +109,8 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   def self.standard_thresholds_by_motif
     @standard_thresholds_by_motif ||= Hash.new{|species_hash, species|
       species_hash[species] = Hash.new{|arity_hash, arity|
-        standard_thresholds_path = HocomocoSite::path_in_final_bundle("full/#{species}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_standard_thresholds_#{species}_#{arity}.txt")
-        retracted_standard_thresholds_path = HocomocoSite::path_in_final_bundle("retracted/#{species}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_standard_thresholds_#{species}_#{arity}.txt")
+        standard_thresholds_path = HocomocoSite::path_in_final_bundle("full/#{species}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_full_standard_thresholds_#{species}_#{arity}.txt")
+        retracted_standard_thresholds_path = HocomocoSite::path_in_final_bundle("retracted/#{species}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_full_standard_thresholds_#{species}_#{arity}.txt")
         standard_thresholds = read_standard_thresholds(standard_thresholds_path)
         if File.exist?(retracted_standard_thresholds_path)
           retracted_standard_thresholds = read_standard_thresholds(retracted_standard_thresholds_path)
@@ -201,9 +201,9 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   end
 
   def self.in_bundle(species:, arity:)
-    result = self.each_in_file(HocomocoSite::path_in_final_bundle("full/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_final_collection_#{species.upcase}_#{arity}.tsv")).to_a
-    if File.exist?(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_final_collection_#{species.upcase}_#{arity}.tsv"))
-      result += self.each_in_file(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
+    result = self.each_in_file(HocomocoSite::path_in_final_bundle("full/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_full_final_collection_#{species.upcase}_#{arity}.tsv")).to_a
+    if File.exist?(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"))
+      result += self.each_in_file(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
     end
     result
   end
