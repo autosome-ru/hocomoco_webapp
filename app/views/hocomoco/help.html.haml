@@ -38,3 +38,12 @@
   %p
     Since v11 the alternative binding models of a particular TF are ranked from 0 (the primary model) to 1 and 2 (the alternative models, including single-box variants).
     The models of 0 rank is the most 'general' variant with the best weighted performance in the cross-validation benchmark (see the HOCOMOCO paper for details).
+
+  %p
+    %a.section_header{href: '#core_full_collections'} [Core/Full collections]
+  %p
+    CORE COLLECTION: primary binding motifs that robustly represent binding sites across multiple experiments.
+    The CORE collection contains models of ABC quality and 0 rank only.
+  %p
+    FULL COLLECTION: core collection plus all the high-quality alternative and lower-reliability binding models built from limited experimental data.
+    The FULL collection contains models of ABCD quality and 0-1-2 ranks.
