@@ -27,8 +27,14 @@
   .journal Nucl. Acids Res. (04 January 2016) 44 (D1): D116-D125.
   .doi doi: 10.1093/nar/gkv1249
 
+%hr
 
 %h4
   TFBS models (#{link_to 'Technical notes', hocomoco11_url('technical_notes.txt'), class: 'tech_notes'})
 
-= render partial: 'download_table', locals: {bundle_url: method(:hocomoco11_bundle_url), technical_notes_url: hocomoco11_url('technical_notes.txt')}
+%h1 Core
+= render partial: 'download_table', locals: {bundle_url: ->(path){ hocomoco11_bundle_url("core/#{path}") }, technical_notes_url: hocomoco11_url('technical_notes.txt'), hocomoco_version_number: 11 }
+
+%hr
+%h1 Full
+= render partial: 'download_table', locals: {bundle_url: ->(path){ hocomoco11_bundle_url("full/#{path}") }, technical_notes_url: hocomoco11_url('technical_notes.txt'), hocomoco_version_number: 11 }

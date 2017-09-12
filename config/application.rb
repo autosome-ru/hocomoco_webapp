@@ -15,7 +15,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-HOCOMOCO_VERSION = 'hocomoco11'
+HOCOMOCO_VERSION_NUMBER = 11
+HOCOMOCO_VERSION = "hocomoco#{HOCOMOCO_VERSION_NUMBER}"
 module HocomocoSite
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
