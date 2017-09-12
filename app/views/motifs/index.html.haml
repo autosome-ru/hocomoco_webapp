@@ -1,7 +1,7 @@
 .table-actions
   - if arity.to_s == 'mono'
-    = link_to(params['full'] ? motifs_path(species: species, arity: arity) : motifs_path(species: species, arity: arity, full: true)) do
-      %button.full_core_collection= params['full'] ? 'Switch to CORE collection' : 'Switch to FULL collection'
+    %button.full_core_collection{data: {href: (params['full'] ? motifs_path(species: species, arity: arity) : motifs_path(species: species, arity: arity, full: true)) } }
+      = params['full'] ? 'Switch to CORE collection' : 'Switch to FULL collection'
   %button.reset.resetColumns{type: 'button'} Reset
   %button.select-columns-btn{type: 'button'} Select Columns
   = download_button
@@ -25,9 +25,6 @@
       = motif_table_header :motif_source, hide_by_default: true, class: 'source_dataset_type filter-select'
       = motif_table_header :best_auc_human, hide_by_default: true, class: 'AUC'
       = motif_table_header :best_auc_mouse, hide_by_default: true, class: 'AUC'
-      -# = motif_table_header :best_auc_mouse, hide_by_default: true, class: 'AUC' do |content|
-      -#   = content
-      -#   = help_icon(href: help_path(anchor: 'description_auc'), title: "The best Area Under Curve for Receiver Operating Characteristic among multiple tested mouse data sets, click the icon for details on AUC.")
       = motif_table_header :num_datasets_human, hide_by_default: true, class: 'num_datasets'
       = motif_table_header :num_datasets_mouse, hide_by_default: true, class: 'num_datasets'
       = motif_table_header :num_words_in_alignment,hide_by_default: true, class: 'num_words_in_alignment'

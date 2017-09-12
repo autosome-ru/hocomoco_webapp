@@ -39,12 +39,11 @@ var page_ready = function() {
   $('.help-icon').on('click mousedown mouseup',function(e){
     e.stopPropagation();
   });
-  $('.help-icon').click(function(e){
+  $('.help-icon, button').click(function(e){
     e.stopPropagation();
     var href = $(e.target).data('href');
     if (href) window.location = href;
   });
-
 
   if ($('#motif_families_map').length > 0) {
     var family_tree_data_url = $('#motif_families_map').data('url');
