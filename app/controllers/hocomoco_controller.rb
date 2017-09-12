@@ -30,7 +30,6 @@ class HocomocoController < ApplicationController
       }
     end
 
-
     respond_to do |format|
       format.html do
         models = MotifDecorator.decorate_collection(models)
@@ -40,7 +39,8 @@ class HocomocoController < ApplicationController
           arity: arity,
           csv_filename: "#{species}_#{arity}_motifs.tsv",
           family_id: params[:family_id],
-          disable_default_filters: true
+          core_full_url: false,
+          disable_default_filters: true,
         }
       end
       format.json { render json: models.map(&:full_name) }

@@ -7,7 +7,9 @@ class MotifsController < ApplicationController
     redirect_to root_path  unless ['mono', 'di'].include?(arity)
     models = Motif.in_bundle(species: species, arity: arity)
 
+    show_full = true
     if !params['full'] || params['full'] && params['full'].to_s.downcase == 'false'
+      show_full = false
       models = models.select{|motif| ['A','B','C'].include?(motif.quality) && motif.rank == 0 }
     end
 
@@ -20,7 +22,9 @@ class MotifsController < ApplicationController
           arity: arity,
           csv_filename: "#{species}_#{arity}_motifs.tsv",
           family_id: nil,
-          disable_default_filters: false
+          disable_default_filters: false,
+          core_full_url: motifs_path(species: species, arity: arity, full: !show_full),
+          switch_to_core_full: show_full ? 'Switch to CORE collection' : 'Switch to FULL collection'
         }
       end
       format.json {

@@ -1,7 +1,7 @@
 .table-actions
-  - if arity.to_s == 'mono'
-    %button.full_core_collection{data: {href: (params['full'] ? motifs_path(species: species, arity: arity) : motifs_path(species: species, arity: arity, full: true)) } }
-      = params['full'] ? 'Switch to CORE collection' : 'Switch to FULL collection'
+  - if arity.to_s == 'mono' && core_full_url
+    %button.full_core_collection{data: {href: core_full_url} }
+      = switch_to_core_full
   %button.reset.resetColumns{type: 'button'} Reset
   %button.select-columns-btn{type: 'button'} Select Columns
   = download_button
