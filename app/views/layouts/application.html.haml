@@ -36,8 +36,8 @@
           .navbar-brand HOCOMOCO
         = menu_group do
           = drop_down 'Home' do
-            = menu_item 'Human', root_path(species: 'human')
-            = menu_item 'Mouse', root_path(species: 'mouse')
+            = menu_item 'Human', root_path(species: 'human', arity: 'mono', full: true)
+            = menu_item 'Mouse', root_path(species: 'mouse', arity: 'mono', full: true)
           = drop_down 'Human TFs' do
             = menu_item 'Mononucleotide models (core)', motifs_path(species: 'human', arity: 'mono')
             = menu_item 'Mononucleotide models (full)', motifs_path(species: 'human', arity: 'mono', full: true)
@@ -51,6 +51,7 @@
             = menu_item 'HOCOMOCO v10', downloads_v10_path
             = menu_item 'HOCOMOCO v9', 'http://autosome.ru/HOCOMOCOS/'
           = menu_item 'Help', help_path
+
         = form_tag search_post_path, class: 'pull-right navbar-search' do
           = hidden_field_tag 'arity', 'mono'
           = hidden_field_tag 'species', 'human'
@@ -61,8 +62,11 @@
           = select_tag 'kind', options_for_select({'Human PWMs' => 'human;mono', 'Human di-PWMs' => 'human;di', 'Mouse PWMs' => 'mouse;mono', 'Mouse di-PWMs' => 'mouse;di'},  ['human;mono', 'human;di', 'mouse;mono', 'mouse;di'].include?("#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}") ? "#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}" : 'human;mono')
           = submit_tag 'Search'
 
+        - if @species
+          = image_tag("#{@species.downcase}_sel.png", class: 'species-indicator pull-right')
+
 
     %div{class: ['container', "controller-#{params[:controller]}", "action-#{params[:action]}"] }
       = yield
     %footer
-      .grant Supported by RFBR grants 16-34-01318, 15-34-20423, 14-04-01838 and RSF grant 14-50-00060.
+      .grant Supported by RFBR grants 16-34-01318, 15-34-20423, 14-04-01838, RSF grants 14-50-00060, 17-74-10188 and Skoltech Systems Biology Fellowship.

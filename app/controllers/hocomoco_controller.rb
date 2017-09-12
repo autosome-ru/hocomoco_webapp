@@ -50,6 +50,11 @@ class HocomocoController < ApplicationController
   def home
     @species = (params['species'] || 'HUMAN').upcase
     @arity = (params['arity'] || 'mono').downcase
+    if params['full']
+      @full_or_core = (params['full'].downcase != 'false') ? 'full' : 'core'
+    else
+      @full_or_core = 'full'
+    end
   end
   def downloads_v10; end
   def downloads_v11; end

@@ -18,19 +18,16 @@
       = motif_table_header :logo, dont_sort: true, class: 'sequence_logo filter-false'
       = motif_table_header :gene_names, class: "#{species.downcase}_gene_name"
       = motif_table_header :model_length, data: {placeholder:'>= 20'}
-      = motif_table_header :quality, class: 'filter-match' do |content|
-        = content
-        = help_icon(href: help_path(anchor: 'description_quality_score'), title: (quality_help_text(arity) + " (click the icon for more details)"))
+      = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: (quality_help_text(arity) + " (click the icon for more details)")) ).html_safe }
       = motif_table_header :rank, hide_by_default: true, class: 'rank_dataset_type'
       = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
       = motif_table_header :release, hide_by_default: true, class: 'release_number filter-select'
       = motif_table_header :motif_source, hide_by_default: true, class: 'source_dataset_type filter-select'
-      = motif_table_header :best_auc_human, hide_by_default: true, class: 'AUC' do |content|
-        = content
-        / = help_icon(href: help_path(anchor: 'description_auc'), title: "The best Area Under Curve for Receiver Operating Characteristic among multiple tested human data sets, click the icon for details on AUC.")      = motif_table_header :best_auc_mouse, hide_by_default: true, class: 'AUC' do |content|
-      = motif_table_header :best_auc_mouse, hide_by_default: true, class: 'AUC' do |content|
-        = content
-        / = help_icon(href: help_path(anchor: 'description_auc'), title: "The best Area Under Curve for Receiver Operating Characteristic among multiple tested mouse data sets, click the icon for details on AUC.")
+      = motif_table_header :best_auc_human, hide_by_default: true, class: 'AUC'
+      = motif_table_header :best_auc_mouse, hide_by_default: true, class: 'AUC'
+      -# = motif_table_header :best_auc_mouse, hide_by_default: true, class: 'AUC' do |content|
+      -#   = content
+      -#   = help_icon(href: help_path(anchor: 'description_auc'), title: "The best Area Under Curve for Receiver Operating Characteristic among multiple tested mouse data sets, click the icon for details on AUC.")
       = motif_table_header :num_datasets_human, hide_by_default: true, class: 'num_datasets'
       = motif_table_header :num_datasets_mouse, hide_by_default: true, class: 'num_datasets'
       = motif_table_header :num_words_in_alignment,hide_by_default: true, class: 'num_words_in_alignment'

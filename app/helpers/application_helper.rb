@@ -44,7 +44,7 @@ module ApplicationHelper
     @tf_ontology ||= {}
     @tf_ontology[species] ||= TFClassification.from_file(Rails.root.join("db/TFOntologies/TFClass_#{species.downcase}.obo"))
     result = ""
-    result += image_tag("#{species.downcase}_sel.png", class: 'species-indicator')
+    # result += image_tag("#{species.downcase}_sel.png", class: 'species-indicator')
     result += ((arity == 'di') ? 'Dinucleotide PWMs' : 'PWMs') + " for #{species} transcription factors"
     result += full ? ' (full)' : ' (core)'  if arity.to_s == 'mono'
     if family_id && !family_id.blank?
@@ -62,10 +62,8 @@ module ApplicationHelper
 
   def quality_help_text(arity)
     case arity
-    when 'mono'
-      'Only primary high-quality models are shown by default. Use `A to D or S` to view all models.'
-    when 'di'
-      'Only high-quality models are shown by default. Use `A to D` to view all models.'
+    when 'mono', 'di'
+      'A - excellent, B - good, C - normal, D - limited reliability'
     end
   end
 
