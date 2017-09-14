@@ -39,12 +39,12 @@
             = menu_item 'Human', root_path(species: 'human', arity: 'mono', full: true)
             = menu_item 'Mouse', root_path(species: 'mouse', arity: 'mono', full: true)
           = drop_down 'Human TFs' do
-            = menu_item 'Mononucleotide models (core)', motifs_path(species: 'human', arity: 'mono', full: false), class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'primary binding models (ABC quality)'}
-            = menu_item 'Mononucleotide models (full)', motifs_path(species: 'human', arity: 'mono', full: true),  class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'primary and alternative binding models'}
+            = menu_item 'Mononucleotide models (core)', motifs_path(species: 'human', arity: 'mono', full: false), class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'Primary binding models (ABC quality)'}
+            = menu_item 'Mononucleotide models (full)', motifs_path(species: 'human', arity: 'mono', full: true),  class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'Primary and alternative binding models'}
             = menu_item 'Dinucleotide models', motifs_path(species: 'human', arity: 'di')
           = drop_down 'Mouse TFs' do
-            = menu_item 'Mononucleotide models (core)', motifs_path(species: 'mouse', arity: 'mono', full: false), class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'primary binding models (ABC quality)'}
-            = menu_item 'Mononucleotide models (full)', motifs_path(species: 'mouse', arity: 'mono', full: true),  class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'primary and alternative binding models'}
+            = menu_item 'Mononucleotide models (core)', motifs_path(species: 'mouse', arity: 'mono', full: false), class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'Primary binding models (ABC quality)'}
+            = menu_item 'Mononucleotide models (full)', motifs_path(species: 'mouse', arity: 'mono', full: true),  class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'Primary and alternative binding models'}
             = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
           = drop_down 'Tools' do
             = menu_item 'MoLoTool', 'http://molotool.autosome.ru', class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'MoLoTool: visual motif finding in short sequences.'}
