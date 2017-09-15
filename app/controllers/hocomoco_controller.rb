@@ -39,8 +39,10 @@ class HocomocoController < ApplicationController
           arity: arity,
           csv_filename: "#{species}_#{arity}_motifs.tsv",
           family_id: params[:family_id],
+          is_full: true,
           core_full_url: false,
           disable_default_filters: true,
+          show_full_core_caption: false,
         }
       end
       format.json { render json: models.map(&:full_name) }

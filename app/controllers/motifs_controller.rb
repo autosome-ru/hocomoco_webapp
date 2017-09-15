@@ -23,8 +23,10 @@ class MotifsController < ApplicationController
           csv_filename: "#{species}_#{arity}_motifs.tsv",
           family_id: nil,
           disable_default_filters: false,
+          is_full: show_full,
           core_full_url: motifs_path(species: species, arity: arity, full: !show_full),
-          switch_to_core_full: show_full ? 'Switch to CORE collection' : 'Switch to FULL collection'
+          switch_to_core_full: show_full ? 'Switch to CORE collection' : 'Switch to FULL collection',
+          show_full_core_caption: (arity.to_s == 'mono'),
         }
       end
       format.json {

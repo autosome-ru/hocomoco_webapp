@@ -40,13 +40,13 @@ module ApplicationHelper
                                           }
   end
 
-  def caption(arity, species, family_id: nil, full: false)
+  def caption(arity, species, family_id: nil, full: false, show_full_core_caption: true)
     @tf_ontology ||= {}
     @tf_ontology[species] ||= TFClassification.from_file(Rails.root.join("db/TFOntologies/TFClass_#{species.downcase}.obo"))
     result = ""
     # result += image_tag("#{species.downcase}_sel.png", class: 'species-indicator')
     result += ((arity == 'di') ? 'Dinucleotide PWMs' : 'PWMs') + " for #{species} transcription factors"
-    result += full ? ' (full)' : ' (core)'  if arity.to_s == 'mono'
+    result += full ? ' (full)' : ' (core)'  if show_full_core_caption
     if family_id && !family_id.blank?
       term = @tf_ontology[species].term(family_id)
       tfclass_name = "#{term.level_name.capitalize} {#{family_id}}"
