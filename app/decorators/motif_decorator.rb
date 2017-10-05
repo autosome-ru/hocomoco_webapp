@@ -94,8 +94,9 @@ class MotifDecorator < Draper::Decorator
   end
 
   def full_name
-    object.retracted? ? (object.full_name + ' ' + 'RETRACTED!!!') : object.full_name
+    helpers.link_to_motif(object, object.retracted? ? (object.full_name + ' ' + 'RETRACTED!!!') : object.full_name)
   end
+
   def comment
     object.retracted? ? ('Retracted motif!' + h.tag('br') + object.comment).html_safe : object.comment
   end

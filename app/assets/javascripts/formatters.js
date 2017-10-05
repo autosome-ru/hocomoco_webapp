@@ -207,7 +207,7 @@
   };
 
   HocomocoDB.formatters = {
-    '.motif_name'      : HocomocoDB.motif_link,
+    //'.motif_name'      : HocomocoDB.motif_link,
     '.gene_id'         : HocomocoDB.gene_id_link,
     '.AUC'             : HocomocoDB.round,
     '.ec_number'       : HocomocoDB.ec_number_link,
