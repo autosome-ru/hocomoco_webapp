@@ -11,6 +11,13 @@
       %th Dinucleotide
   %tbody
     %tr
+      %td.row-hdr{colspan: 2} Complete model annotation (including gene id mapping)
+      %td= link_to 'annotation_HUMAN_mono.tsv', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}annotation_HUMAN_mono.tsv")
+      %td= link_to 'annotation_HUMAN_di.tsv',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}annotation_HUMAN_di.tsv")
+      %td= link_to 'annotation_MOUSE_mono.tsv', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}annotation_MOUSE_mono.tsv")
+      %td= link_to 'annotation_MOUSE_di.tsv',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}annotation_MOUSE_di.tsv")
+
+    %tr
       %td.row-hdr{rowspan: 2}
         PWM
         = help_icon(title: 'See technical notes (click to open)', href: technical_notes_url)
