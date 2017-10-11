@@ -3,3 +3,8 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+
+User-agent: *
+Allow: /
+Host: http://hocomoco10.autosome.ru
+sitemap: http://hocomoco10.autosome.ru/sitemap.txt
