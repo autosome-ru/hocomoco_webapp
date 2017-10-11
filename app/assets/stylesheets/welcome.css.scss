@@ -24,6 +24,25 @@
   border-radius: 20px;
 }
 
+.attention-box {
+  &.help-page {
+    margin-left: 20%;
+    width: 40%;
+  }
+  &.welcome-page {
+    width: 100%;
+  }
+  &.downloads-page {
+    width: 45%;
+  }
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #a7a7a7;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #e55;
+}
+
 .contacts {
   float: right;
   display: inline-block;
