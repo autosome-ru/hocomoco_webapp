@@ -75,7 +75,8 @@
   };
 
   HocomocoDB.uniprot_ac_and_tfclass_link = function(uniprot_ac) {
-    return HocomocoDB.uniprot_ac_link(uniprot_ac) + '<br/>' + '(' + HocomocoDB.tfclass_link(uniprot_ac) + ')';
+    // return HocomocoDB.uniprot_ac_link(uniprot_ac) + '<br/>' + '(' + HocomocoDB.tfclass_link(uniprot_ac) + ')';
+    return HocomocoDB.uniprot_ac_link(uniprot_ac); // TFClass is broken
   };
 
   HocomocoDB.refseq_link = function(refseq) {
@@ -217,8 +218,10 @@
     '.mgi_id'          : HocomocoDB.mgi_id_link,
     '.uniprot_ac'      : HocomocoDB.uniprot_ac_link,
     '.tfclass'         : HocomocoDB.tfclass_link,
-    '.motif-family'    : HocomocoDB.tfclass_motif_family_link,
-    '.motif-subfamily' : HocomocoDB.tfclass_motif_family_link,
+//// TFClass is broken
+//    '.motif-family'    : HocomocoDB.tfclass_motif_family_link,
+//    '.motif-subfamily' : HocomocoDB.tfclass_motif_family_link,
+////
     '.uniprot_ac_and_tfclass' : HocomocoDB.uniprot_ac_and_tfclass_link,
     '.refseq'          : HocomocoDB.refseq_link,
     '.expression_bar'  : HocomocoDB.expression_bar,
