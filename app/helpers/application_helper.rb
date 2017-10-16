@@ -50,13 +50,7 @@ module ApplicationHelper
     if family_id && !family_id.blank?
       term = @tf_ontology[species].term(family_id)
       tfclass_name = "#{term.level_name.capitalize} {#{family_id}}"
-### TFClass is broken
-#      tfclass_link = link_to("http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=#{family_id}", class: 'has-tooltip', data: {toggle: 'tooltip', placement: 'bottom', title: term.name}) do
-#        help_icon = content_tag(:div, '', class: ['help-icon'])
-#        (tfclass_name + help_icon).html_safe
-#      end
-###
-      tfclass_link = content_tag(:span, class: 'has-tooltip', data: {toggle: 'tooltip', placement: 'bottom', title: term.name}) do
+      tfclass_link = link_to("http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{family_id}", class: 'has-tooltip', data: {toggle: 'tooltip', placement: 'bottom', title: term.name}) do
         help_icon = content_tag(:div, '', class: ['help-icon'])
         (tfclass_name + help_icon).html_safe
       end

@@ -53,7 +53,7 @@ draw_families_tree = function(tree_url, svg_container){
         var info_text = '';
         if (d.name.length > 0) {
           var family_name = '<span class="family_name">' + d.name + '{' + d.family_id + '}</span>';
-          // info_text = '<a href="http://tfclass.bioinf.med.uni-goettingen.de/tfclass?uniprot=' + d.family_id + '">' + family_name + '</a>' +
+          // info_text = '<a href="http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=' + d.family_id + '">' + family_name + '</a>' +
           info_text = family_name;
           info_text += '<br/>';
         }
