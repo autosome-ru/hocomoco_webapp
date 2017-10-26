@@ -192,7 +192,15 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
 
   def match_query?(query)
     pattern = /#{query}/i
-    [:full_name, :motif_families, :gene_names].any?{|param| self.send(param).to_s.match(pattern) }
+    [:full_name, :motif_families, :gene_names].any?{|param|
+      val = self.send(param)
+      case val
+      when Array
+        val.any?{|v| v.match(pattern) }
+      else
+        val.to_s.match(pattern)
+      end
+    }
   rescue
     nil
   end
