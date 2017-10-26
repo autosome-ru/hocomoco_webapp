@@ -8,6 +8,7 @@ http://hocomoco11.autosome.ru/mouse/di
 http://hocomoco11.autosome.ru/downloads_v11
 http://hocomoco11.autosome.ru/downloads_v10
 http://hocomoco11.autosome.ru/help
+http://hocomoco11.autosome.ru/api_description
 http://hocomoco11.autosome.ru/?arity=mono&full=true&species=human
 http://hocomoco11.autosome.ru/?arity=mono&full=true&species=mouse
 http://hocomoco11.autosome.ru/?arity=mono&full=false&species=human

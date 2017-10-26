@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/download', to: redirect('/downloads_v11')
 
   get '/help' => 'hocomoco#help', as: 'help'
+  get '/api_description' => 'hocomoco#api_description', as: 'api_description'
 
   get '/tree' => 'hocomoco#tree'
 
