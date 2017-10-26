@@ -13,15 +13,21 @@
   send a request
   %code hocomoco.autosome.ru/motif/{MotifID}.json
 %p
-  If you need to get PCM / PWM add 
-  %code with_matrices
-  parameter.
-  %code with_thresholds
-  parameter gives you additionally a list of precalculated P-values for different PWM scores.
+  If you need to get PWM / PCM use
+  %code hocomoco11.autosome.ru/motif/{MotifID}/pwm.json
+  and
+  %code hocomoco11.autosome.ru/motif/{MotifID}/pcm.json
+  URLs.
 %p
-  Try
-  %code hocomoco11.autosome.ru/motif/{MotifID}.json?with_matrices=true&with_thresholds=true
-  to get a full list of motif information.
+  %code hocomoco11.autosome.ru/motif/{MotifID}/thresholds.json
+  gives you additionally a list of precalculated P-values for different PWM scores.
+%p
+  (deprecated) Alternatively you can add
+  %code with_matrices=true
+  and
+  %code with_thresholds=true
+  parameters to a general motif request:
+  %code hocomoco.autosome.ru/motif/{MotifID}.json?with_matrices=true&with_thresholds=true
 
 %h4 Get motif list
 %p

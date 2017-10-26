@@ -40,13 +40,9 @@ class MotifsController < ApplicationController
   end
 
   def show
-    species = params[:motif].split('.')[0].split('_').last.upcase
+    motif, species, arity = motif_by_name(params[:motif])
     @species = species
-    bundle_name = params[:motif].split('.')[1].upcase
-    arity = {'H11MO' => 'mono', 'H11DI' => 'di'}[bundle_name]
-    motif = Motif.in_bundle(species: species, arity: arity).detect{|motif|
-      motif.full_name == params[:motif]
-    }
+
     respond_to do |format|
       format.html do
         motif = MotifDecorator.decorate(motif)
@@ -61,7 +57,44 @@ class MotifsController < ApplicationController
     end
   end
 
+  def pwm
+    motif, species, arity = motif_by_name(params[:motif])
+    respond_to do |format|
+      format.json {
+       render json: motif.pwm.model.matrix
+      }
+    end
+  end
+
+  def pcm
+    motif, species, arity = motif_by_name(params[:motif])
+    respond_to do |format|
+      format.json {
+       render json: motif.pcm.model.matrix
+      }
+    end
+  end
+
+  def thresholds
+    motif, species, arity = motif_by_name(params[:motif])
+    respond_to do |format|
+      format.json {
+       render json: motif.threshold_pvalue_list
+      }
+    end
+  end
+
 protected
+  def motif_by_name(motif_name)
+    species = motif_name.split('.')[0].split('_').last.upcase
+    bundle_name = motif_name.split('.')[1].upcase
+    arity = {'H11MO' => 'mono', 'H11DI' => 'di'}[bundle_name]
+    motif = Motif.in_bundle(species: species, arity: arity).detect{|motif|
+      motif.full_name == motif_name
+    }
+    [motif, species, arity]
+  end
+
   # def species; species; end
   # def arity; arity; end
   # def csv_filename; "#{species}_#{arity}_motifs.tsv"; end

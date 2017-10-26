@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     "http://hocomoco10.autosome.ru/motif/#{path_params[:motif]}"
   }
   get '/motif/:motif' => 'motifs#show', constraints: {motif: /\w+_(HUMAN|MOUSE).H11(MO|DI).\d.[ABCD]/i}, as: 'motif'
+  get '/motif/:motif/pcm' => 'motifs#pcm', constraints: {motif: /\w+_(HUMAN|MOUSE).H11(MO|DI).\d.[ABCD]/i}, as: 'motif_pcm'
+  get '/motif/:motif/pwm' => 'motifs#pwm', constraints: {motif: /\w+_(HUMAN|MOUSE).H11(MO|DI).\d.[ABCD]/i}, as: 'motif_pwm'
+  get '/motif/:motif/thresholds' => 'motifs#thresholds', constraints: {motif: /\w+_(HUMAN|MOUSE).H11(MO|DI).\d.[ABCD]/i}, as: 'motif_thresholds'
 
   get '/downloads_v10' => 'hocomoco#downloads_v10', as: 'downloads_v10'
   get '/downloads_v11' => 'hocomoco#downloads_v11', as: 'downloads_v11'
