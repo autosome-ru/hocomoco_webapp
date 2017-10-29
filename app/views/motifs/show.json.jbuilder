@@ -35,4 +35,12 @@ if with_thresholds
   json.threshold_pvalue_list motif.threshold_pvalue_list
 end
 
+# json.remap_url motif.remap_api_url # not yet working: remap doesn't have json-API
+
+json.gtex_url motif.gtex_api_url
+json.jaspar_urls motif.jaspar_api_links do |title, url|
+  json.title title
+  json.url url
+end
+
 json.retracted(motif.retracted?)

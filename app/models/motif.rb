@@ -32,6 +32,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   def species; uniprot_id.split('_').last; end
   def to_s; full_name; end
   def retracted?; !! retracted; end
+  def gene_name; gene_names.first; end
 
   def arity
     case bundle_name[-2,2]
@@ -95,6 +96,59 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
 
   def threshold_pvalue_list_path
     path_in_final_bundle("#{species}/#{arity}/thresholds/#{full_name}.thr")
+  end
+
+  def remap_url
+    "http://tagc.univ-mrs.fr/remap/factor.php?TF=#{gene_name}&page=overview"
+  end
+
+  def remap_api_url
+  end
+
+  def gtex_url
+    "https://gtexportal.org/home/gene/#{gene_name}"
+  end
+
+  def gtex_api_url
+    # "https://gtexportal.org/rest/v1/reference/geneId?geneId=#{gene_name}"
+    "https://gtexportal.org/rest/v1/dataset/expression?gene_id=#{gene_name}&boxplot=true&isoforms=true"
+  end
+
+
+  def self.jaspar_matrices
+    @jaspar_matrices ||= begin
+      File.readlines(Rails.root.join('public/hocomoco_jaspar_mapping.txt')).map{|line|
+        hocomoco_motif, *jaspar_infos = line.chomp.split("\t")
+        [hocomoco_motif, jaspar_infos.map{|json_obj| JSON.parse(json_obj) }]
+      }.to_h
+    end
+  end
+
+  def jaspar_links
+    self.class.jaspar_matrices[full_name].map{|info|
+      species = info['species'].map{|sp| sp['name'] }.join('/') rescue nil
+      if species
+        ["#{info['matrix_id']} (#{info['name']}; #{species})", "http://jaspar.genereg.net/matrix/#{info['matrix_id']}/"]
+      else
+        ["#{info['matrix_id']} (#{info['name']})", "http://jaspar.genereg.net/matrix/#{info['matrix_id']}/"]
+      end
+    }
+  end
+
+  def jaspar_api_links
+    self.class.jaspar_matrices[full_name].map{|info|
+      species = info['species'].map{|sp| sp['name'] }.join('/') rescue nil
+      if species
+        ["#{info['matrix_id']} (#{info['name']}; #{species})", "http://jaspar.genereg.net/api/v1/matrix/#{info['matrix_id']}/"]
+      else
+        ["#{info['matrix_id']} (#{info['name']})", "http://jaspar.genereg.net/api/v1/matrix/#{info['matrix_id']}/"]
+      end
+    }
+  end
+
+  def jaspar_api_url
+    # "http://jaspar.genereg.net/api/v1/matrix/?collection=CORE&tax_group=Vertebrates&version=latest&name=#{gene_name}&format=json" # not yet working API
+    "http://jaspar.genereg.net/api/v1/matrix/?collection=CORE&tax_group=Vertebrates&version=latest&search=#{gene_name}&format=json"
   end
 
   def self.read_standard_thresholds(filename)

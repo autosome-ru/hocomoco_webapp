@@ -54,6 +54,17 @@
             %tr
               %td= pvalue
               %td= threshold
+    %tr
+      %td GTEx tissue expression atlas
+      %td= link_to "#{motif.gene_name} expression", motif.gtex_url
+    %tr
+      %td ReMap ChIP-seq dataset list
+      %td= link_to "#{motif.gene_name} datasets", motif.remap_url
+    %tr
+      %td Motifs in JASPAR
+      %td
+        - motif.jaspar_links.each do |title, url|
+          .jaspar_link= link_to title, url
 
 .matrix_container
   %span.title PCM
