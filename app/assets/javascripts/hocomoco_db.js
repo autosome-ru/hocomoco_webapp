@@ -21,21 +21,6 @@ var page_ready = function() {
 
   HocomocoDB.ui.applyColumnSelector();
 
-  // $('.toggle-sample-format').click(function(e){
-  //   var $table = $('.toggle-sample-format-target')
-  //       $sample_header = $table.find('thead th.sample_link'),
-  //       sample_format = $sample_header.data('sample-format');
-  //   e.preventDefault();
-  //   if (!sample_format || sample_format == 'short') {
-  //     $sample_header.data('sample-format', 'full')
-  //   } else {
-  //     $sample_header.data('sample-format', 'short')
-  //   }
-
-  //   $sample_header.trigger('applyFormatter');
-  //   return false;
-  // });
-
   $('.help-icon').on('click mousedown mouseup',function(e){
     e.stopPropagation();
   });

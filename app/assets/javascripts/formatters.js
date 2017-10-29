@@ -34,23 +34,6 @@
     return '<a href="http://www.informatics.jax.org/marker/MGI:' + mgi_name + '">' + mgi_name + '</a>';
   };
 
-  // genename_with_id is `SMARCA4#561` -- a SMARCA4 gene with id 561.
-  HocomocoDB.HocomocoDB_gene_link = function(genename_with_id) {
-    var gene_name, gene_id,
-        match = /^(.+)#(\d+)$/.exec(genename_with_id);
-    if (!match) { return genename_with_id; }
-    gene_name = match[1];
-    gene_id = match[2];
-    return '<a href="' + HocomocoDB.app_prefix + 'genes/' + gene_id +'">' + gene_name + '</a>';
-  };
-
-  // genename_with_id is `SMARCA4#561` -- a SMARCA4 gene with id 561.
-  HocomocoDB.HocomocoDB_gene_name_only = function(genename_with_id) {
-    var match = /^(.+)#(\d+)$/.exec(genename_with_id);
-    if (!match) { return genename_with_id; }
-    return match[1];
-  };
-
   HocomocoDB.uniprot_id_link = function(uniprot_id) {
     return '<a href="http://www.uniprot.org/uniprot/' + uniprot_id +'">' + uniprot_id + '</a>';
   };
@@ -78,10 +61,6 @@
     return HocomocoDB.uniprot_ac_link(uniprot_ac) + '<br/>' + '(' + HocomocoDB.tfclass_link(uniprot_ac) + ')';
   };
 
-  HocomocoDB.refseq_link = function(refseq) {
-    return '<a href="http://www.ncbi.nlm.nih.gov/nucleotide/' + refseq + '">' + refseq + '</a>';
-  };
-
   HocomocoDB.motif_link = function(motif_and_optional_comment) {
     var infos = motif_and_optional_comment.split(/\s+/);
     var motif = infos[0];
@@ -101,62 +80,9 @@
     }
   };
 
-  HocomocoDB.target_complex_link = function(target) {
-    return '<a href="' + HocomocoDB.app_prefix + 'protein_complexes?search=' + target + '&field=complex_name">' + target + '</a>';
-  };
-
-  HocomocoDB.pfam_domain_link = function(pfam_info) {
-    var infos = $.trim(pfam_info).split(/\s+/);
-    return '<a href="http://pfam.xfam.org/family/' + infos[1] + '">' + infos.slice(0, 2).join('&nbsp;') + '</a> (' + infos.slice(2).join(', ') + ')';
-  };
-
-  HocomocoDB.expression_bar = function(value, data) {
-    var tbodyIndex      = data.config.$tbodies.index( data.$cell.parents('tbody').filter(':first') ),
-        max_expression  = data.config.cache[tbodyIndex].colMax[data.columnIndex],
-        percentage      = 100.0 * value / max_expression;
-    return Number(value).toFixed(1) + '<div class="expression-bar" style="width:' + percentage + '%;">' + '</div>';
-  };
-
-  HocomocoDB.quantile = function(value, data) {
-    return Number(value).toFixed(4);
-  }
-
   HocomocoDB.round = function(value) {
     return value != '' ? Number(value).toFixed(3) : '';
   }
-
-  HocomocoDB.sample_link = function(value, data) {
-    var match, name, library_id, extract_name, sample_format, url;
-    match = /^(.+)\.(CNhs\w+)\.(\w+-\w+)?$/.exec(value);
-    name = match[1];
-    library_id = match[2];
-    extract_name = match[3];
-    sample_format = data.$header && data.$header.data('sample-format');
-    url = HocomocoDB.app_prefix + 'samples/' + library_id;
-    fantom_sstar_url = 'http://fantom.gsc.riken.jp/5/sstar/FF:' + extract_name;
-    if (!sample_format || sample_format == 'short') {
-      return '<a href="' + url + '"">' + name + '</a> <span class="fantom-external-link">(<a href="' + fantom_sstar_url + '">FANTOM5 SSTAR</a>)</span>';
-    } else if (sample_format == 'full') {
-      return '<a href="' + url + '">' + value + '</a> <span class="fantom-external-link">(<a href="' + fantom_sstar_url + '">FANTOM5 SSTAR</a>)</span>';
-    } else {
-      return value;
-    }
-  };
-
-  HocomocoDB.ec_number_link = function(ec) {
-    var ec_parts = ec.split('.');
-    var ec_query = [];
-    $.each(ec_parts, function(ec_part_index, ec_part) {
-      if (Number(ec_part)) {
-        ec_query.push('field' + (1 + ec_part_index) + '=' + ec_part);
-      }
-    });
-    if (ec_query.length > 0) {
-      return '<a href="http://enzyme.expasy.org/cgi-bin/enzyme/enzyme-search-ec?' + ec_query.join('&') + '">' + ec + '</a>';
-    } else {
-      return ec;
-    }
-  };
 
   var multiterm,
       formatter_preserving_text,
@@ -210,7 +136,6 @@
 //    '.motif_name'      : HocomocoDB.motif_link,
     '.gene_id'         : HocomocoDB.gene_id_link,
     '.AUC'             : HocomocoDB.round,
-    '.ec_number'       : HocomocoDB.ec_number_link,
     '.human_gene_name' : HocomocoDB.human_gene_name_link,
     '.mouse_gene_name' : HocomocoDB.mouse_gene_name_link,
     '.hgnc_id'         : HocomocoDB.hgnc_id_link,
@@ -220,15 +145,9 @@
     '.motif-family'    : HocomocoDB.tfclass_motif_family_link,
     '.motif-subfamily' : HocomocoDB.tfclass_motif_family_link,
     '.uniprot_ac_and_tfclass' : HocomocoDB.uniprot_ac_and_tfclass_link,
-    '.refseq'          : HocomocoDB.refseq_link,
-    '.expression_bar'  : HocomocoDB.expression_bar,
-    '.quantile'        : HocomocoDB.quantile,
-    '.sample_link'     : HocomocoDB.sample_link,
     '.fantom_sstar_gene' : HocomocoDB.fantom_sstar_gene_link,
     '.pmid'            : multiterm( HocomocoDB.pmid_link ),
-    '.target_complex'  : multiterm( HocomocoDB.target_complex_link),
     '.uniprot_id'      : multiterm( HocomocoDB.uniprot_id_link ),
-    '.pfam_domain'     : multiterm( HocomocoDB.pfam_domain_link, '<br/>' ),
   };
 
   HocomocoDB.preserveFormatters = { // What to save in cell textAttribute (for CSV output and search facilities)
