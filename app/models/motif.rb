@@ -125,7 +125,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   end
 
   def jaspar_links
-    self.class.jaspar_matrices[full_name].map{|info|
+    self.class.jaspar_matrices.fetch(full_name, []).map{|info|
       species = info['species'].map{|sp| sp['name'] }.join('/') rescue nil
       if species
         ["#{info['matrix_id']} (#{info['name']}; #{species})", "http://jaspar.genereg.net/matrix/#{info['matrix_id']}/"]
@@ -136,7 +136,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   end
 
   def jaspar_api_links
-    self.class.jaspar_matrices[full_name].map{|info|
+    self.class.jaspar_matrices.fetch(full_name,[]).map{|info|
       species = info['species'].map{|sp| sp['name'] }.join('/') rescue nil
       if species
         ["#{info['matrix_id']} (#{info['name']}; #{species})", "http://jaspar.genereg.net/api/v1/matrix/#{info['matrix_id']}/"]
@@ -164,7 +164,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     @standard_thresholds_by_motif ||= Hash.new{|species_hash, species|
       species_hash[species] = Hash.new{|arity_hash, arity|
         standard_thresholds_path = HocomocoSite::path_in_final_bundle("full/#{species}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_full_standard_thresholds_#{species}_#{arity}.txt")
-        retracted_standard_thresholds_path = HocomocoSite::path_in_final_bundle("retracted/#{species}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_full_standard_thresholds_#{species}_#{arity}.txt")
+        retracted_standard_thresholds_path = HocomocoSite::path_in_final_bundle("retracted/#{species}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_standard_thresholds_#{species}_#{arity}.txt")
         standard_thresholds = read_standard_thresholds(standard_thresholds_path)
         if File.exist?(retracted_standard_thresholds_path)
           retracted_standard_thresholds = read_standard_thresholds(retracted_standard_thresholds_path)

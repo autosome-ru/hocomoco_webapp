@@ -10,7 +10,13 @@ class MotifsController < ApplicationController
     show_full = true
     if !params['full'] || params['full'] && params['full'].to_s.downcase == 'false'
       show_full = false
-      models = models.select{|motif| ['A','B','C'].include?(motif.quality) && motif.rank == 0 }
+      models = models.select{|motif| ['A','B','C'].include?(motif.quality) }.reject(&:retracted?)
+      models = models.select{|motif| ['A','B','C'].include?(motif.quality) }
+                     .reject(&:retracted?)
+                     .group_by(&:uniprot_id)
+                     .map{|uniprot_id, tf_models|
+                       tf_models.sort_by(&:rank).first
+                     }
     end
 
     respond_to do |format|
