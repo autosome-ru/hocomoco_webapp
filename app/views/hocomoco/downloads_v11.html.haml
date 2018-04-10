@@ -49,3 +49,7 @@
   %sup>< *
 %p *Available dinucleotide models are fully represented by the CORE dinucleotide collection (see above).
 = render partial: 'download_table', locals: {bundle_url: ->(path){ hocomoco11_bundle_url("full/#{path}") }, technical_notes_url: hocomoco11_url('technical_notes.txt'), hocomoco_prefix: 'HOCOMOCOv11_full_', hocomoco_version_number: 11, skip_dinucleotide: true }
+
+%h4 See also:
+.curation_log= link_to 'Curation log', hocomoco11_url('curation.log')
+.retracted_models= link_to 'Retracted models', hocomoco11_bundle_url('retracted.tar.gz')

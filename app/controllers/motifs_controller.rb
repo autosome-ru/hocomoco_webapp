@@ -5,7 +5,7 @@ class MotifsController < ApplicationController
     arity = params[:arity].downcase
     redirect_to root_path  unless ['HUMAN', 'MOUSE'].include?(species)
     redirect_to root_path  unless ['mono', 'di'].include?(arity)
-    models = Motif.in_bundle(species: species, arity: arity)
+    models = Motif.in_bundle(species: species, arity: arity).reject(&:retracted?)
 
     show_full = true
     if !params['full'] || params['full'] && params['full'].to_s.downcase == 'false'

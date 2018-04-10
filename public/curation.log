@@ -1,0 +1,2 @@
+HOCOMOCO v11 update
+(Apr, 2018) NFKB1_HUMAN.H11MO.0.A and NFKB1_HUMAN.H11DI.0.A - removed (incorrect motifs were selected due to low-quality ChIP-seq datasets for HUMAN TF; NFKB1_MOUSE motifs were assigned instead as NFKB1_HUMAN.H11MO.1.B and NFKB1_HUMAN.H11DI.1.B)
