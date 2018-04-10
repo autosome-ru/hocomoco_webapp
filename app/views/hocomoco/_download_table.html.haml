@@ -1,21 +1,29 @@
 %table.downloads
   %thead
-    %tr
-      %th{rowspan: 2, colspan: 2}
-      %th{colspan: 2} Human
-      %th{colspan: 2} Mouse
-    %tr
-      %th Mononucleotide
-      %th Dinucleotide
-      %th Mononucleotide
-      %th Dinucleotide
+    -if skip_dinucleotide
+      %tr
+        %th{colspan: 2}
+        %th Human mononucleotide
+        %th Mouse mononucleotide
+    -else
+      %tr
+        %th{rowspan: 2, colspan: 2}
+        %th{colspan: 2} Human
+        %th{colspan: 2} Mouse
+      %tr
+        %th Mononucleotide
+        %th Dinucleotide
+        %th Mononucleotide
+        %th Dinucleotide
   %tbody
     %tr
       %td.row-hdr{colspan: 2} Complete model annotation (including gene id mapping)
       %td= link_to 'annotation_HUMAN_mono.tsv', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}annotation_HUMAN_mono.tsv")
-      %td= link_to 'annotation_HUMAN_di.tsv',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}annotation_HUMAN_di.tsv")
+      -unless skip_dinucleotide
+        %td= link_to 'annotation_HUMAN_di.tsv',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}annotation_HUMAN_di.tsv")
       %td= link_to 'annotation_MOUSE_mono.tsv', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}annotation_MOUSE_mono.tsv")
-      %td= link_to 'annotation_MOUSE_di.tsv',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}annotation_MOUSE_di.tsv")
+      -unless skip_dinucleotide
+        %td= link_to 'annotation_MOUSE_di.tsv',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}annotation_MOUSE_di.tsv")
 
     %tr
       %td.row-hdr{rowspan: 2}
@@ -25,15 +33,19 @@
         One file per matrix
         = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
       %td= link_to 'pwm_HUMAN_mono.tar.gz', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}pwm_HUMAN_mono.tar.gz")
-      %td= link_to 'pwm_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}pwm_HUMAN_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'pwm_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}pwm_HUMAN_di.tar.gz")
       %td= link_to 'pwm_MOUSE_mono.tar.gz', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}pwm_MOUSE_mono.tar.gz")
-      %td= link_to 'pwm_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}pwm_MOUSE_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'pwm_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}pwm_MOUSE_di.tar.gz")
     %tr
       %td.row-hdr Flat file
       %td= link_to 'pwms_HUMAN_mono.txt', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}pwms_HUMAN_mono.txt")
-      %td= link_to 'pwms_HUMAN_di.txt',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}pwms_HUMAN_di.txt")
+      -unless skip_dinucleotide
+        %td= link_to 'pwms_HUMAN_di.txt',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}pwms_HUMAN_di.txt")
       %td= link_to 'pwms_MOUSE_mono.txt', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}pwms_MOUSE_mono.txt")
-      %td= link_to 'pwms_MOUSE_di.txt',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}pwms_MOUSE_di.txt")
+      -unless skip_dinucleotide
+        %td= link_to 'pwms_MOUSE_di.txt',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}pwms_MOUSE_di.txt")
 
     %tr
       %td.row-hdr{rowspan: 2} PCM
@@ -41,62 +53,80 @@
         One file per matrix
         = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
       %td= link_to 'pcm_HUMAN_mono.tar.gz', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}pcm_HUMAN_mono.tar.gz")
-      %td= link_to 'pcm_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}pcm_HUMAN_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'pcm_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}pcm_HUMAN_di.tar.gz")
       %td= link_to 'pcm_MOUSE_mono.tar.gz', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}pcm_MOUSE_mono.tar.gz")
-      %td= link_to 'pcm_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}pcm_MOUSE_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'pcm_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}pcm_MOUSE_di.tar.gz")
     %tr
       %td.row-hdr Flat file
       %td= link_to 'pcms_HUMAN_mono.txt', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}pcms_HUMAN_mono.txt")
-      %td= link_to 'pcms_HUMAN_di.txt',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}pcms_HUMAN_di.txt")
+      -unless skip_dinucleotide
+        %td= link_to 'pcms_HUMAN_di.txt',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}pcms_HUMAN_di.txt")
       %td= link_to 'pcms_MOUSE_mono.txt', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}pcms_MOUSE_mono.txt")
-      %td= link_to 'pcms_MOUSE_di.txt',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}pcms_MOUSE_di.txt")
+      -unless skip_dinucleotide
+        %td= link_to 'pcms_MOUSE_di.txt',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}pcms_MOUSE_di.txt")
 
     %tr
       %td.row-hdr{colspan: 2} Alignments
       %td= link_to 'words_HUMAN_mono.tar.gz', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}words_HUMAN_mono.tar.gz")
-      %td= link_to 'words_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}words_HUMAN_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'words_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}words_HUMAN_di.tar.gz")
       %td= link_to 'words_MOUSE_mono.tar.gz', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}words_MOUSE_mono.tar.gz")
-      %td= link_to 'words_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}words_MOUSE_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'words_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}words_MOUSE_di.tar.gz")
     %tr
       %td.row-hdr{colspan: 2} Standard thresholds
       %td= link_to 'standard_thresholds_HUMAN_mono.txt', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}standard_thresholds_HUMAN_mono.txt")
-      %td= link_to 'standard_thresholds_HUMAN_di.txt',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}standard_thresholds_HUMAN_di.txt")
+      -unless skip_dinucleotide
+        %td= link_to 'standard_thresholds_HUMAN_di.txt',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}standard_thresholds_HUMAN_di.txt")
       %td= link_to 'standard_thresholds_MOUSE_mono.txt', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}standard_thresholds_MOUSE_mono.txt")
-      %td= link_to 'standard_thresholds_MOUSE_di.txt',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}standard_thresholds_MOUSE_di.txt")
+      -unless skip_dinucleotide
+        %td= link_to 'standard_thresholds_MOUSE_di.txt',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}standard_thresholds_MOUSE_di.txt")
     %tr
       %td.row-hdr{colspan: 2}
         Threshold to P-value map
         = help_icon(title: 'Precalculated thresholds to be utilized by PERFECTOS-APE (genome-wide dinucleotide frequencies were used for P-value estimation)')
       %td= link_to 'thresholds_HUMAN_mono.tar.gz', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}thresholds_HUMAN_mono.tar.gz")
-      %td= link_to 'thresholds_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}thresholds_HUMAN_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'thresholds_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}thresholds_HUMAN_di.tar.gz")
       %td= link_to 'thresholds_MOUSE_mono.tar.gz', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}thresholds_MOUSE_mono.tar.gz")
-      %td= link_to 'thresholds_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}thresholds_MOUSE_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'thresholds_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}thresholds_MOUSE_di.tar.gz")
     %tr
       %td.row-hdr{colspan: 2} Sequence LOGOs
       %td= link_to 'logo_HUMAN_mono.tar.gz', bundle_url.call("HUMAN/mono/#{hocomoco_prefix}logo_HUMAN_mono.tar.gz")
-      %td= link_to 'logo_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}logo_HUMAN_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'logo_HUMAN_di.tar.gz',   bundle_url.call("HUMAN/di/#{hocomoco_prefix}logo_HUMAN_di.tar.gz")
       %td= link_to 'logo_MOUSE_mono.tar.gz', bundle_url.call("MOUSE/mono/#{hocomoco_prefix}logo_MOUSE_mono.tar.gz")
-      %td= link_to 'logo_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}logo_MOUSE_di.tar.gz")
+      -unless skip_dinucleotide
+        %td= link_to 'logo_MOUSE_di.tar.gz',   bundle_url.call("MOUSE/di/#{hocomoco_prefix}logo_MOUSE_di.tar.gz")
 
     %tr
       %td.row-hdr{rowspan: 4} Matrices in other formats
       %td.row-hdr JASPAR
       %td= link_to "H#{hocomoco_version_number}_HUMAN_mono_jaspar_format.txt", bundle_url.call("HUMAN/mono/#{hocomoco_prefix}HUMAN_mono_jaspar_format.txt")
-      %td
+      -unless skip_dinucleotide
+        %td
       %td= link_to "H#{hocomoco_version_number}_MOUSE_mono_jaspar_format.txt", bundle_url.call("MOUSE/mono/#{hocomoco_prefix}MOUSE_mono_jaspar_format.txt")
-      %td
+      -unless skip_dinucleotide
+        %td
     %tr
       %td.row-hdr MEME
       %td= link_to "H#{hocomoco_version_number}_HUMAN_mono_meme_format.meme", bundle_url.call("HUMAN/mono/#{hocomoco_prefix}HUMAN_mono_meme_format.meme")
-      %td
+      -unless skip_dinucleotide
+        %td
       %td= link_to "H#{hocomoco_version_number}_MOUSE_mono_meme_format.meme", bundle_url.call("MOUSE/mono/#{hocomoco_prefix}MOUSE_mono_meme_format.meme")
-      %td
+      -unless skip_dinucleotide
+        %td
     %tr
       %td.row-hdr TRANSFAC
       %td= link_to "H#{hocomoco_version_number}_HUMAN_mono_transfac_format.txt", bundle_url.call("HUMAN/mono/#{hocomoco_prefix}HUMAN_mono_transfac_format.txt")
-      %td
+      -unless skip_dinucleotide
+        %td
       %td= link_to "H#{hocomoco_version_number}_MOUSE_mono_transfac_format.txt", bundle_url.call("MOUSE/mono/#{hocomoco_prefix}MOUSE_mono_transfac_format.txt")
-      %td
+      -unless skip_dinucleotide
+        %td
     %tr
       %td.row-hdr
         HOMER
@@ -104,8 +134,10 @@
       %td
         - ['0.001', '0.0005', '0.0001'].each do |pvalue|
           .homer_pvalue= link_to "P-value #{pvalue}", bundle_url.call("HUMAN/mono/#{hocomoco_prefix}HUMAN_mono_homer_format_#{pvalue}.motif")
-      %td
+      -unless skip_dinucleotide
+        %td
       %td
         - ['0.001', '0.0005', '0.0001'].each do |pvalue|
           .homer_pvalue= link_to "P-value #{pvalue}", bundle_url.call("MOUSE/mono/#{hocomoco_prefix}MOUSE_mono_homer_format_#{pvalue}.motif")
-      %td
+      -unless skip_dinucleotide
+        %td

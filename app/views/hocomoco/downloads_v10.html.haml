@@ -37,7 +37,7 @@
 %h4
   TFBS models (#{link_to 'Technical notes', hocomoco10_url('technical_notes.txt'), class: 'tech_notes'})
 
-= render partial: 'download_table', locals: {bundle_url: method(:hocomoco10_bundle_url), technical_notes_url: hocomoco10_url('technical_notes.txt'), hocomoco_prefix: 'HOCOMOCOv10_', hocomoco_version_number: 10}
+= render partial: 'download_table', locals: {bundle_url: method(:hocomoco10_bundle_url), technical_notes_url: hocomoco10_url('technical_notes.txt'), hocomoco_prefix: 'HOCOMOCOv10_', hocomoco_version_number: 10, skip_dinucleotide: false }
 
 %h4 See also:
 .curation_log= link_to 'Curation log', hocomoco10_url('curation.log')
