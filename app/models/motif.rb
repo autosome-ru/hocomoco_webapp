@@ -214,6 +214,13 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     url_in_final_bundle("#{species}/#{arity}/logo_large/#{full_name}_revcomp.png")
   end
 
+  def motif_families_links
+    motif_families.map{|fam|
+      match = fam.match(/^(?<name>.+)\{(?<family_id>[\d.]+)\}$/)
+      [fam, "http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{match[:family_id]}"]
+    }
+  end
+
   def self.from_string(str, retracted: false)
     full_name, model_length, consensus, \
       _uniprot, \
