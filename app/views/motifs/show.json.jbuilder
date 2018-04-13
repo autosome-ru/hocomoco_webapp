@@ -68,7 +68,7 @@ json.related_urls do
 #      motif
 #    end
 
-    # json.remap_url motif.remap_api_url # not yet working: remap doesn't have json-API
+    # json.remap_url motif.remap_api_url  if motif.species == 'HUMAN' # not yet working: remap doesn't have json-API
   end
 end
 
