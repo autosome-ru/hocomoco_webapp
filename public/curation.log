@@ -1,2 +1,4 @@
 HOCOMOCO v11 update
 (Apr, 2018) NFKB1_HUMAN.H11MO.0.A and NFKB1_HUMAN.H11DI.0.A - removed (incorrect motifs were selected due to low-quality ChIP-seq datasets for HUMAN TF; NFKB1_MOUSE motifs were assigned instead as NFKB1_HUMAN.H11MO.1.B and NFKB1_HUMAN.H11DI.1.B)
+(Jun, 2018) All motifs for EVX1 and EVX2 were removed (ChIP-seq datasets for different motifs were incorrectly annotated as EVX1 and EVX2 while there were no correct datasets for these factors)
+(Jun, 2018) Due to annotation error ChIP-seq datasets for murine gene Hoxc9 were incorrectly named as Cdx4. Thus CDX4_MOUSE motifs removed and the same motif was added as HXC9_MOUSE.

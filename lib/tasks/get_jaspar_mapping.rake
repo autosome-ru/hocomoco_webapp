@@ -59,3 +59,12 @@ task :hocomoco2jaspar_mappping => :environment do
     }
   end
 end
+
+# One can run command to add motif to hocomoco-jaspar mapping like here:
+#   bundler.ruby2.1 exec rake 'hocomoco2jaspar_single[HXC9_MOUSE.H11MO.0.A]' >> public/hocomoco_jaspar_mapping.txt 
+#
+desc 'get single matrix id from JASPAR corresponding to HOCOMOCO TFs'
+task :hocomoco2jaspar_single, [:motif] => :environment do |t, args|
+  motif = Motif.by_name(args[:motif])
+  puts [motif.full_name, jaspar_matrix_for_gene(motif.gene_name).map(&:to_json)].join("\t")
+end
