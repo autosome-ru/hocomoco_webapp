@@ -46,17 +46,17 @@ class MotifsController < ApplicationController
   end
 
   def show
-    motif, species, arity = motif_by_name(params[:motif])
-    @species = species
+    motif = Motif.by_name(params[:motif])
+    @species = motif.species
 
     respond_to do |format|
       format.html do
         motif = MotifDecorator.decorate(motif)
         render locals: {
           motif: motif,
-          species: species,
-          arity: arity,
-          csv_filename: "#{species}_#{arity}_motifs.tsv"
+          species: motif.species,
+          arity: motif.arity,
+          csv_filename: "#{motif.species}_#{motif.arity}_motifs.tsv"
         }
       end
       format.json { render locals: {motif: motif, with_thresholds: params[:with_thresholds], with_matrices: params[:with_matrices]} }
@@ -64,7 +64,7 @@ class MotifsController < ApplicationController
   end
 
   def pwm
-    motif, species, arity = motif_by_name(params[:motif])
+    motif = Motif.by_name(params[:motif])
     respond_to do |format|
       format.json {
        render json: motif.pwm.model.matrix
@@ -73,7 +73,7 @@ class MotifsController < ApplicationController
   end
 
   def pcm
-    motif, species, arity = motif_by_name(params[:motif])
+    motif = Motif.by_name(params[:motif])
     respond_to do |format|
       format.json {
        render json: motif.pcm.model.matrix
@@ -82,7 +82,7 @@ class MotifsController < ApplicationController
   end
 
   def thresholds
-    motif, species, arity = motif_by_name(params[:motif])
+    motif = Motif.by_name(params[:motif])
     respond_to do |format|
       format.json {
        render json: motif.threshold_pvalue_list
@@ -91,15 +91,6 @@ class MotifsController < ApplicationController
   end
 
 protected
-  def motif_by_name(motif_name)
-    species = motif_name.split('.')[0].split('_').last.upcase
-    bundle_name = motif_name.split('.')[1].upcase
-    arity = {'H11MO' => 'mono', 'H11DI' => 'di'}[bundle_name]
-    motif = Motif.in_bundle(species: species, arity: arity).detect{|motif|
-      motif.full_name == motif_name
-    }
-    [motif, species, arity]
-  end
 
   # def species; species; end
   # def arity; arity; end
