@@ -63,3 +63,9 @@
         %td= model.uniprot_id
         %td= model.uniprot_acs
         %td= model.comment
+
+- content_for(:title) do
+  - if arity.to_s.downcase == 'mono'
+    = "Mononucleotide #{species.downcase} motifs - HOmo sapiens COmprehensive MOdel COllection"
+  - else
+    = "Dinucleotide #{species.downcase} motifs - HOmo sapiens COmprehensive MOdel COllection"
