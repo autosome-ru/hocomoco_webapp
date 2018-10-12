@@ -74,3 +74,6 @@
 .matrix_container
   %span.title PWM
   = motif.pwm
+
+- content_for(:meta_description) do
+  = "Motif #{motif.object.full_name} for #{motif.gene_name} #{motif.species.downcase} transcription factor (#{motif.uniprot_id} in UniProt)"
