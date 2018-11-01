@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   post '/search_post' => 'hocomoco#searchPost', as: 'search_post'
   get '/search' => 'hocomoco#search', as: 'search'
   get '/motif/:motif', constraints: {motif: /\w+_(HUMAN|MOUSE).H10(MO|DI).[ABCDS]/i}, to: redirect{|path_params, req|
-    "http://hocomoco10.autosome.ru/motif/#{path_params[:motif]}"
+    if path_params[:format]
+      "http://hocomoco10.autosome.ru/motif/#{path_params[:motif]}.#{path_params[:format]}"
+    else
+      "http://hocomoco10.autosome.ru/motif/#{path_params[:motif]}"
+    end
   }
   get '/motif/:motif' => 'motifs#show', constraints: {motif: /\w+_(HUMAN|MOUSE).H11(MO|DI).\d.[ABCD]/i}, as: 'motif'
   get '/motif/:motif/pcm' => 'motifs#pcm', constraints: {motif: /\w+_(HUMAN|MOUSE).H11(MO|DI).\d.[ABCD]/i}, as: 'motif_pcm'
