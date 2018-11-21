@@ -19,6 +19,11 @@ HOCOMOCO_VERSION_NUMBER = 11
 HOCOMOCO_VERSION = "hocomoco#{HOCOMOCO_VERSION_NUMBER}"
 module HocomocoSite
   class Application < Rails::Application
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'env.yaml')
+      next  unless File.exists?(env_file)
+      YAML.load_file(env_file).each{|k,v| ENV[k] = v }
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

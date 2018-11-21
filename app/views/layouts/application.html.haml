@@ -49,9 +49,9 @@
             = menu_item 'Mononucleotide models (full)', motifs_path(species: 'mouse', arity: 'mono', full: true),  class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'Primary and alternative binding models'}
             = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
           = drop_down 'Tools' do
-            = menu_item 'MoLoTool', 'http://molotool.autosome.ru', class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'MoLoTool: visual motif finding in short sequences.'}
-            = menu_item 'MACRO-APE', 'http://opera.autosome.ru/macroape', class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'MACRO-APE: model comparison and search for similar motifs.'}
-            = menu_item 'PERFECTOS-APE', 'http://opera.autosome.ru/perfectosape', class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'PERFECTOS-APE: functional annotation of rSNPs.'}
+            = menu_item 'MoLoTool', ENV['MOLOTOOL_URL'], class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'MoLoTool: visual motif finding in short sequences.'}
+            = menu_item 'MACRO-APE', ENV['MACROAPE_URL'], class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'MACRO-APE: model comparison and search for similar motifs.'}
+            = menu_item 'PERFECTOS-APE', ENV['PERFECTOSAPE_URL'], class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'PERFECTOS-APE: functional annotation of rSNPs.'}
           = drop_down 'Downloads' do
             = menu_item 'HOCOMOCO v11', downloads_v11_path
             = menu_item 'HOCOMOCO v10', downloads_v10_path

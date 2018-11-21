@@ -1,10 +1,10 @@
 module HocomocoHelper
   def hocomoco10_url(path)
-    "http://hocomoco10.autosome.ru/#{path}"
+    "#{ENV['HOCOMOCO10_URL']}#{path}"
   end
 
   def hocomoco10_bundle_url(path)
-    "http://hocomoco10.autosome.ru/final_bundle/#{path}"
+    "#{ENV['HOCOMOCO10_URL']}final_bundle/#{path}"
   end
 
   def hocomoco11_url(path)
