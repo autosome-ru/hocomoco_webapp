@@ -51,7 +51,7 @@
   HocomocoDB.tfclass_motif_family_link = function(string) {
     var motif_family_id = string.match(/\{(.+?)\}/);
     if (motif_family_id && motif_family_id[1]) {
-      return string.replace(/\{.+?\}/, '{' + HocomocoDB.tfclass_family_link(motif_family_id[1], motif_family_id[1]) + '}');
+      return string.replace(/\{.+?\}/, ' {' + HocomocoDB.tfclass_family_link(motif_family_id[1], motif_family_id[1]) + '}');
     } else {
       return string
     }
@@ -73,14 +73,6 @@
       return motif_link;
     } else {
       return motif_link + ' ' + '<span style="color:red;">' + infos[1] + '</span>';
-    }
-  };
-
-  HocomocoDB.pmid_link = function(pmid) {
-    if (isNaN(pmid)) {
-      return pmid; // Some PMIDs look like "Uniprot", "by similarity" and "Uniprot (by similarity)"
-    } else {
-      return '<a href="http://www.ncbi.nlm.nih.gov/pubmed/' + pmid + '">' + pmid + '</a>';
     }
   };
 
@@ -137,7 +129,6 @@
   };
 
   HocomocoDB.formatters = {
-    //'.motif_name'      : HocomocoDB.motif_link,
     '.gene_id'         : HocomocoDB.gene_id_link,
     '.AUC'             : HocomocoDB.round,
     '.human_gene_name' : HocomocoDB.human_gene_name_link,
@@ -146,11 +137,10 @@
     '.mgi_id'          : HocomocoDB.mgi_id_link,
     '.uniprot_ac'      : HocomocoDB.uniprot_ac_link,
     '.tfclass'         : HocomocoDB.tfclass_link,
-    '.motif-family'    : HocomocoDB.tfclass_motif_family_link,
-    '.motif-subfamily' : HocomocoDB.tfclass_motif_family_link,
+    '.motif-family'    : multiterm(HocomocoDB.tfclass_motif_family_link, '<br/>', '; '),
+    '.motif-subfamily' : multiterm(HocomocoDB.tfclass_motif_family_link, '<br/>', '; '),
     '.uniprot_ac_and_tfclass' : HocomocoDB.uniprot_ac_and_tfclass_link,
     '.fantom_sstar_gene' : HocomocoDB.fantom_sstar_gene_link,
-    '.pmid'            : multiterm( HocomocoDB.pmid_link ),
     '.uniprot_id'      : multiterm( HocomocoDB.uniprot_id_link ),
   };
 
@@ -158,21 +148,5 @@
   };
 
   HocomocoDB.tablesorter_formatters = make_tablesorter_formatters(HocomocoDB.formatters, HocomocoDB.preserveFormatters);
-
-  // apply formatters outside of tablesorter
-  HocomocoDB.apply_formatters = function(jquery_selector) {
-    var selector, formatter;
-    for (selector in HocomocoDB.formatters) {
-      formatter = formatter_ignoring_sharp(HocomocoDB.formatters[selector]);
-
-      $(jquery_selector).filter(selector).each(function(ind, elem) {
-        var data = { // mimic table cell
-          $cell: $(elem).eq(0),
-        };
-        window.dat = data;
-        $(elem).html( formatter($(elem).text(), data) );
-      });
-    };
-  };
 
 })(window.HocomocoDB = window.HocomocoDB || {}, jQuery);

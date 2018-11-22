@@ -100,4 +100,7 @@ class MotifDecorator < Draper::Decorator
   def comment
     object.retracted? ? ('Retracted motif!' + h.tag('br') + object.comment).html_safe : object.comment
   end
+
+  def best_auc_human; object.best_auc_human&.round(3); end
+  def best_auc_mouse; object.best_auc_mouse&.round(3); end
 end

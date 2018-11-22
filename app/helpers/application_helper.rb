@@ -113,4 +113,65 @@ module ApplicationHelper
   def gene_id_links(gene_ids)
     decorate_list(gene_ids){|gene_id| gene_id_link(gene_id) }
   end
+
+  def human_gene_name_link(gene_name)
+    [
+      link_to(gene_name, "http://www.genenames.org/cgi-bin/gene_symbol_report?match=#{gene_name}"),
+      '<br/>',
+      '(',
+      link_to('GeneCards', "http://www.genecards.org/cgi-bin/carddisp.pl?gene=#{gene_name}"),
+      ')'
+    ].join.html_safe
+  end
+
+  def human_gene_name_links(gene_names)
+    decorate_list(gene_names){|gene_name| human_gene_name_link(gene_name) }
+  end
+
+  def mouse_gene_name_link(gene_name)
+    link_to(gene_name, "http://www.informatics.jax.org/searchtool/Search.do?query=#{gene_name}")
+  end
+
+  def mouse_gene_name_links(gene_names)
+    decorate_list(gene_names){|gene_name| mouse_gene_name_link(gene_name) }
+  end
+
+  def tfclass_uniprot_link(uniprot_ac, title: 'TFClass')
+    link_to(title, "http://tfclass.bioinf.med.uni-goettingen.de/?uniprot=#{uniprot_ac}")
+  end
+
+  def tfclass_family_link(family_id, title: 'TFClass')
+    link_to(title, "http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{family_id}")
+  end
+
+  def tfclass_motif_family_link(family)
+    tfclass = family[/\{(.+?)\}/, 1]
+    if tfclass
+      from = '{' + tfclass + '}'
+      to = ' {' + tfclass_family_link(tfclass, title: tfclass) + '}'
+      family.sub(from, to);
+    else
+      family
+    end
+  end
+
+  def tfclass_motif_family_links(families)
+    decorate_list(families, splitter: '; <br/>', joiner: '<br/>'){|family| tfclass_motif_family_link(family) }
+  end
+
+  def uniprot_id_link(uniprot_id)
+    link_to uniprot_id, "http://www.uniprot.org/uniprot/#{uniprot_id}"
+  end
+
+  def uniprot_ac_link(uniprot_ac)
+    link_to(uniprot_ac, "http://www.uniprot.org/uniprot/#{uniprot_ac}")
+  end
+
+  def uniprot_ac_and_tfclass_link(uniprot_ac)
+    [
+      uniprot_ac_link(uniprot_ac),
+      '<br/>',
+      '(' + tfclass_uniprot_link(uniprot_ac) + ')'
+    ].join.html_safe
+  end
 end

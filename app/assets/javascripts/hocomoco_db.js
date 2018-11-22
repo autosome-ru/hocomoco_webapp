@@ -9,8 +9,6 @@ var page_ready = function() {
     $('table.tablesorter').trigger('outputTable');
   });
 
-  HocomocoDB.apply_formatters( $('table:not(.tablesorter) tbody td') );
-
   $("#motifs").filter('table.tablesorter').tablesorter(
     $.extend(true, {},
       HocomocoDB.defaultConfig,
