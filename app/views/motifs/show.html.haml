@@ -26,10 +26,10 @@
     = table_info_row motif, :motif_families, html_options: {value_column_html: {class: 'motif-family'} }
     = table_info_row motif, :motif_subfamilies, html_options: {value_column_html: {class: 'motif-subfamily'} }
     - if species == 'HUMAN'
-      = table_info_row motif, :hgnc_ids, html_options: {value_column_html: {class: 'hgnc_id'} }
+      = table_info_row(motif, :hgnc_ids){|motif| hgnc_id_links(motif.hgnc_ids) }
     - else
-      = table_info_row motif, :mgi_ids, html_options: {value_column_html: {class: 'mgi_id'} }
-    = table_info_row motif, :entrezgene_ids, html_options: {value_column_html: {class: 'gene_id'} }
+      = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
+    = table_info_row(motif, :entrezgene_ids){|motif| gene_id_links(motif.entrezgene_ids) }
     = table_info_row motif, :uniprot_id, html_options: {value_column_html: {class: 'uniprot_id'} }
     = table_info_row motif, :uniprot_acs, html_options: {value_column_html: {class: 'uniprot_ac_and_tfclass'} }
     = table_info_row motif, :comment

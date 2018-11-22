@@ -73,4 +73,44 @@ module ApplicationHelper
     data_options[:href] = href  if href
     content_tag(:div, '', class: ['help-icon', 'has-tooltip'], data: data_options)
   end
+
+  # "abc, def" --> "{decorated abc}, {decorated def}"
+  def decorate_list(str, splitter: ", ", joiner: ", ", &decorating_block)
+    str.split(splitter).map(&decorating_block).join(joiner).html_safe
+  end
+
+  def hgnc_id_url(hgnc_id)
+    "http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=#{hgnc_id}"
+  end
+  def hgnc_id_link(hgnc_id, name: nil)
+    link_to((name || "HGNC:#{hgnc_id}"), hgnc_id_url(hgnc_id))
+  end
+  def hgnc_id_links(hgnc_ids)
+    decorate_list(hgnc_ids){|hgnc_id| hgnc_id_link(hgnc_id) }
+  end
+
+  def mgi_url(mgi_id)
+    # "http://www.informatics.jax.org/searchtool/Search.do?query=MGI:#{mgi_id}"
+    "http://www.informatics.jax.org/marker/MGI:#{mgi_id}"
+  end
+  def mgi_id_link(mgi_id, name: nil)
+    link_to((name || "MGI:#{mgi_id}"), mgi_url(mgi_id))
+  end
+  def mgi_id_links(mgi_ids)
+    decorate_list(mgi_ids){|mgi_id| mgi_id_link(mgi_id) }
+  end
+
+  def fantom_sstar_gene_link(gene_id)
+    link_to('SSTAR profile', "http://fantom.gsc.riken.jp/5/sstar/EntrezGene:#{gene_id}")
+  end
+  def gene_id_link(gene_id)
+    [
+      link_to("GeneID:#{gene_id}", "http://www.ncbi.nlm.nih.gov/gene/#{gene_id}"),
+      '<br/>',
+      "(#{ fantom_sstar_gene_link(gene_id) })"
+    ].join.html_safe
+  end
+  def gene_id_links(gene_ids)
+    decorate_list(gene_ids){|gene_id| gene_id_link(gene_id) }
+  end
 end
