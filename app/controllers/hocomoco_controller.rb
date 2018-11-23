@@ -13,6 +13,12 @@ class HocomocoController < ApplicationController
   end
 
   def search
+    validator = /^[ ,.;\-\/_a-z0-9ü&\[\]{}()]+$/i
+    unless validator.match(params[:query])
+      redirect_to :back
+      flash[:error] = 'Some of the characters in your search request are not allowed'
+      return
+    end
     species = params[:species]
     arity = params[:arity]
     redirect_to root_path  unless species && arity
