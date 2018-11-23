@@ -22,7 +22,7 @@ var page_ready = function() {
   $('.help-icon').on('click mousedown mouseup',function(e){
     e.stopPropagation();
   });
-  $('.help-icon, button').click(function(e){
+  $('.help-icon, button.work_as_link').click(function(e){
     e.stopPropagation();
     var href = $(e.target).data('href');
     if (href) window.location = href;

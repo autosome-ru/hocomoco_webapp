@@ -1,6 +1,6 @@
 .table-actions
   - if arity.to_s == 'mono' && core_full_url
-    %button.full_core_collection{data: {href: core_full_url} }
+    %button.work_as_link.full_core_collection{data: {href: core_full_url} }
       = switch_to_core_full
   %button.reset.resetColumns{type: 'button'} Reset
   %button.select-columns-btn{type: 'button'} Select Columns
