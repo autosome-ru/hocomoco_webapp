@@ -81,5 +81,7 @@
 
 - content_for(:meta_description) do
   = "Motif #{motif.object.full_name} for #{motif.gene_name} #{motif.species.downcase} transcription factor (#{motif.uniprot_id} in UniProt)"
+- content_for(:meta_thumbnail) do
+  = request.base_url + motif.direct_logo_url
 - content_for(:title) do
   = "#{motif.object.full_name} motif - HOmo sapiens COmprehensive MOdel COllection"

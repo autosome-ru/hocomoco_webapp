@@ -7,6 +7,7 @@
     %title= content_for?(:title) ? yield(:title) : "HOmo sapiens COmprehensive MOdel COllection"
     - if content_for?(:meta_description)
       %meta{name: 'description', content: yield(:meta_description)}
+      %meta{name: 'thumbnail', content: yield(:meta_thumbnail)}
     = csrf_meta_tags
     :plain
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-27550943-2"></script>
