@@ -8,4 +8,9 @@ User-agent: *
 Allow: /
 Host: http://hocomoco11.autosome.ru
 sitemap: http://hocomoco11.autosome.ru/sitemap.txt
-
+Disallow: *.pcm
+Disallow: *.pwm
+Disallow: *.dpcm
+Disallow: *.dpwm
+Disallow: *.thr
+Disallow: *.words
