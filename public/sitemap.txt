@@ -9,14 +9,6 @@ http://hocomoco11.autosome.ru/downloads_v11
 http://hocomoco11.autosome.ru/downloads_v10
 http://hocomoco11.autosome.ru/help
 http://hocomoco11.autosome.ru/api_description
-http://hocomoco11.autosome.ru/?arity=mono&full=true&species=human
-http://hocomoco11.autosome.ru/?arity=mono&full=true&species=mouse
-http://hocomoco11.autosome.ru/?arity=mono&full=false&species=human
-http://hocomoco11.autosome.ru/?arity=mono&full=false&species=mouse
-http://hocomoco11.autosome.ru/?arity=di&full=true&species=human
-http://hocomoco11.autosome.ru/?arity=di&full=true&species=mouse
-http://hocomoco11.autosome.ru/?arity=di&full=false&species=human
-http://hocomoco11.autosome.ru/?arity=di&full=false&species=mouse
 http://hocomoco11.autosome.ru/motif/AHR_HUMAN.H11MO.0.B
 http://hocomoco11.autosome.ru/motif/AHR_MOUSE.H11MO.0.B
 http://hocomoco11.autosome.ru/motif/AIRE_HUMAN.H11MO.0.C
