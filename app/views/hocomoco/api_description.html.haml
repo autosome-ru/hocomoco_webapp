@@ -63,6 +63,9 @@
   %code #{root_url}search.json?arity={arity}&species={species}&query={query}
   to search for a motif across `full_name` (MotifID), `motif_families` and `gene_names` fields.
   Any regexp can be given as a query.
+  Add 
+  %code &summary=true
+  if you want detailed information.
 %p
   %code #{root_url}search?family_id={TFClass id}
   returns a list of motifs from a TFClass group specified by TFClass id.

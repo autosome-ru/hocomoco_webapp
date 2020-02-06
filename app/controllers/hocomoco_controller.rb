@@ -48,7 +48,11 @@ class HocomocoController < ApplicationController
       end
       format.json do
         models = models.reject(&:retracted?)
-        render json: models.map(&:full_name)
+        if params[:summary]
+          render locals: {motifs: models}, template: 'motifs/summaries.json'
+        else
+          render json: models.map(&:full_name)
+        end
       end
     end
   end
