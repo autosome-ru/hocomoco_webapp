@@ -36,8 +36,9 @@ class MotifsController < ApplicationController
         }
       end
       format.json {
+        models = models.reject(&:retracted?)
         if params[:summary]
-          render locals: {motifs: models.reject(&:retracted?) }, template: 'motifs/summaries.json'
+          render locals: {motifs: models}, template: 'motifs/summaries.json'
         else
           render json: models.map(&:full_name)
         end

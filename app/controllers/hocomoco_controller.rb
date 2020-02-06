@@ -18,6 +18,7 @@ class HocomocoController < ApplicationController
     redirect_to root_path  unless species && arity
     models = Motif.in_bundle(species: species, arity: arity)
 
+
     if params[:family_id] && !params[:family_id].blank?
       models = models.select{|motif|
         motif.is_a_subfamily_member?(params[:family_id])
@@ -45,7 +46,10 @@ class HocomocoController < ApplicationController
           show_full_core_caption: false,
         }
       end
-      format.json { render json: models.map(&:full_name) }
+      format.json do
+        models = models.reject(&:retracted?)
+        render json: models.map(&:full_name)
+      end
     end
   end
 
