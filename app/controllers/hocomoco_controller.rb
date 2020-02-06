@@ -13,11 +13,11 @@ class HocomocoController < ApplicationController
   end
 
   def search
+    models = Motif.all
     species = params[:species]
     arity = params[:arity]
-    redirect_to root_path  unless species && arity
-    models = Motif.in_bundle(species: species, arity: arity)
-
+    models = models.select{|model| model.species == species.upcase } if species
+    models = models.select{|model| model.arity == arity.downcase } if arity
 
     if params[:family_id] && !params[:family_id].blank?
       models = models.select{|motif|

@@ -279,6 +279,14 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     result
   end
 
+  def self.all
+    [:human, :mouse].flat_map{|species|
+      [:mono, :di].flat_map{|arity|
+        self.in_bundle(species: species, arity: arity)
+      }
+    }
+  end
+
   def self.by_name(motif_name)
     species = motif_name.split('.')[0].split('_').last.upcase
     bundle_name = motif_name.split('.')[1].upcase
