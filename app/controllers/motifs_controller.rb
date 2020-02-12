@@ -35,14 +35,24 @@ class MotifsController < ApplicationController
           show_full_core_caption: (arity.to_s == 'mono'),
         }
       end
-      format.json {
+      format.json do
         models = models.reject(&:retracted?)
-        if params[:summary]
-          render locals: {motifs: models}, template: 'motifs/summaries.json'
+        if params[:detailed]
+          infos = {
+            motifs: models,
+            with_thresholds: params[:with_thresholds],
+            with_matrices: params[:with_matrices],
+          }
+          render locals: infos, template: 'motifs/detailed_collection.json'
+        elsif params[:summary]
+          infos = {
+            motifs: models,
+          }
+          render locals: infos, template: 'motifs/summaries.json'
         else
           render json: models.map(&:full_name)
         end
-      }
+      end
     end
   end
 
@@ -60,7 +70,14 @@ class MotifsController < ApplicationController
           csv_filename: "#{motif.species}_#{motif.arity}_motifs.tsv"
         }
       end
-      format.json { render locals: {motif: motif, with_thresholds: params[:with_thresholds], with_matrices: params[:with_matrices]} }
+      format.json do
+        infos = {
+          motif: motif,
+          with_thresholds: params[:with_thresholds],
+          with_matrices: params[:with_matrices],
+        }
+        render locals: infos
+      end
     end
   end
 
