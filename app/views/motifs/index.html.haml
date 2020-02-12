@@ -8,7 +8,7 @@
   %input{type: "text", value: csv_filename, class: 'csv-filename'}
   .loading_table
     .loading_logo
-  .caption= caption(arity, species, family_id: family_id, full: is_full, show_full_core_caption: show_full_core_caption)
+  .caption= caption(arity: arity, species: species, family_id: family_id, full: is_full, show_full_core_caption: show_full_core_caption)
   #hidden_select_columns
 
 %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2015-03-22-14-25', table_page: 'hocomoco-motifs-'+species+'-index-2015-03-22-14-25'}}

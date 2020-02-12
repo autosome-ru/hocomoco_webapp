@@ -40,15 +40,21 @@ module ApplicationHelper
                                           }
   end
 
-  def caption(arity, species, family_id: nil, full: false, show_full_core_caption: true)
+  def tfclass_term(family_id, species)
+    return nil  unless family_id && !family_id.blank?
+    return nil  unless species && !species.blank?
     @tf_ontology ||= {}
     @tf_ontology[species] ||= TFClassification.from_file(Rails.root.join("db/TFOntologies/TFClass_#{species.downcase}.obo"))
+    return @tf_ontology[species].term(family_id)
+  end
+
+  def caption(arity: nil, species: nil, family_id: nil, full: false, show_full_core_caption: true)
     result = ""
     # result += image_tag("#{species.downcase}_sel.png", class: 'species-indicator')
     result += ((arity == 'di') ? 'Dinucleotide PWMs' : 'PWMs') + " for #{species} transcription factors"
     result += full ? ' (full)' : ' (core)'  if show_full_core_caption
-    if family_id && !family_id.blank?
-      term = @tf_ontology[species].term(family_id)
+    term = tfclass_term(family_id, species)
+    if term
       tfclass_name = "#{term.level_name.capitalize} {#{family_id}}"
       tfclass_link = link_to("http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{family_id}", class: 'has-tooltip', data: {toggle: 'tooltip', placement: 'bottom', title: term.name}) do
         help_icon = content_tag(:div, '', class: ['help-icon'])
