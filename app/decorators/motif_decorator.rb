@@ -39,6 +39,7 @@ class MotifDecorator < Draper::Decorator
   def mgi_ids; object.mgi_ids.join('; '); end
   def entrezgene_ids; object.entrezgene_ids.join('; '); end
   def gene_names; object.gene_names.join('; '); end
+  def species_prefixed_gene_names; object.gene_names.map{|gene_name| "#{object.species}:#{gene_name}" }.join('; '); end
   def uniprot_acs; object.uniprot_acs.join('; '); end
   def num_datasets; object.num_datasets == 0 ? nil : object.num_datasets; end
   def logo; helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_url)); end

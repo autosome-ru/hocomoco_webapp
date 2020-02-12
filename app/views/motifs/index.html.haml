@@ -11,12 +11,12 @@
   .caption= caption(arity: arity, species: species, family_id: family_id, full: is_full, show_full_core_caption: show_full_core_caption)
   #hidden_select_columns
 
-%table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2015-03-22-14-25', table_page: 'hocomoco-motifs-'+species+'-index-2015-03-22-14-25'}}
+%table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2020-02-12-14-55', table_page: "hocomoco-motifs-#{species}-index-2020-02-12-14-55"}}
   %thead
     %tr
       = motif_table_header :full_name, show_always: true, class: 'motif_name'
       = motif_table_header :logo, dont_sort: true, class: 'sequence_logo filter-false'
-      = motif_table_header :gene_names, class: "#{species.downcase}_gene_name"
+      = motif_table_header :gene_names, class: 'gene_name'
       = motif_table_header :model_length, data: {placeholder:'>= 20'}
       = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: (quality_help_text(arity) + " (click the icon for more details)")) ).html_safe }
       = motif_table_header :rank, hide_by_default: true, class: 'rank_dataset_type'
@@ -32,7 +32,10 @@
       = motif_table_header :motif_subfamilies, class: 'motif-subfamily', hide_by_default: true
       - if species == 'HUMAN'
         = motif_table_header :hgnc_ids, dont_sort: true, hide_by_default: true, class: 'hgnc_id'
+      - elsif species == 'MOUSE'
+        = motif_table_header :mgi_ids, dont_sort: true, hide_by_default: true, class: 'mgi_id'
       - else
+        = motif_table_header :hgnc_ids, dont_sort: true, hide_by_default: true, class: 'hgnc_id'
         = motif_table_header :mgi_ids, dont_sort: true, hide_by_default: true, class: 'mgi_id'
       = motif_table_header :entrezgene_ids, dont_sort: true, class: 'gene_id'
       = motif_table_header :uniprot_id, class: 'uniprot_id'
@@ -43,7 +46,7 @@
       %tr
         %td= model.full_name
         %td= model.logo
-        %td= model.gene_names
+        %td= model.species_prefixed_gene_names
         %td= model.model_length
         %td= model.quality
         %td= model.rank
@@ -59,14 +62,19 @@
         %td= model.motif_subfamilies
         - if species == 'HUMAN'
           %td= model.hgnc_ids
+        - elsif species == 'MOUSE'
+          %td= model.mgi_ids
         - else
+          %td= model.hgnc_ids
           %td= model.mgi_ids
         %td= model.entrezgene_ids
         %td= model.uniprot_id
         %td= model.uniprot_acs
 
 - content_for(:title) do
-  - if arity.to_s.downcase == 'mono'
-    = "Mononucleotide #{species.downcase} motifs - HOmo sapiens COmprehensive MOdel COllection"
-  - else
-    = "Dinucleotide #{species.downcase} motifs - HOmo sapiens COmprehensive MOdel COllection"
+  - if !arity
+    = "Motifs - HOmo sapiens COmprehensive MOdel COllection"
+  - elsif arity.to_s.downcase == 'mono'
+    = "Mononucleotide #{species&.downcase} motifs - HOmo sapiens COmprehensive MOdel COllection"
+  - elsif arity.to_s.downcase == 'di'
+    = "Dinucleotide #{species&.downcase} motifs - HOmo sapiens COmprehensive MOdel COllection"
