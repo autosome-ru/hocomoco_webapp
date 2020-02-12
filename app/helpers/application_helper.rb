@@ -68,10 +68,7 @@ module ApplicationHelper
   end
 
   def quality_help_text(arity)
-    case arity
-    when 'mono', 'di'
-      'A - excellent, B - good, C - normal, D - limited reliability'
-    end
+    'A - excellent, B - good, C - normal, D - limited reliability'
   end
 
   def help_icon(title:, href: nil)
