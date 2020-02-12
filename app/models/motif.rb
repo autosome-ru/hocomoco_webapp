@@ -252,6 +252,9 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   end
 
   def match_query?(query)
+    return hgnc_ids.include?(match[1])  if match = query.match(/\bHGNC:(\d+)\b/i)
+    return mgi_ids.include?(match[1])  if match = query.match(/\bMGI:(\d+)\b/i)
+
     pattern = /#{query}/i
     [:full_name, :motif_families, :gene_names].any?{|param|
       val = self.send(param)
