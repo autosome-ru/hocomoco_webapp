@@ -43,5 +43,7 @@ module HocomocoSite
     config.action_dispatch.default_headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
     config.action_dispatch.default_headers['Access-Control-Request-Method'] = '*'
     config.action_dispatch.default_headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+
+    config.i18n.fallbacks = [I18n.default_locale]
   end
 end

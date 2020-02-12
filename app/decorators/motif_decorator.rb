@@ -1,4 +1,4 @@
-class MotifDecorator < Draper::Decorator
+class MotifDecorator < ApplicationDecorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through
