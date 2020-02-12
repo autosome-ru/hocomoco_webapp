@@ -63,7 +63,8 @@
   HocomocoDB.tfclass_motif_family_link = function(string) {
     var motif_family_id = string.match(/\{(.+?)\}/);
     if (motif_family_id && motif_family_id[1]) {
-      return string.replace(/\{.+?\}/, ' {' + HocomocoDB.tfclass_family_link(motif_family_id[1], motif_family_id[1]) + '}');
+      return string.replace(/\{.+?\}/, ' {<a href="/search?family_id=' + motif_family_id[1] + '">' + motif_family_id[1] + '</a>}') +
+             ' (' + HocomocoDB.tfclass_family_link(motif_family_id[1], 'TFClass') + ')';
     } else {
       return string
     }
