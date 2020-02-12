@@ -7,7 +7,7 @@ module MotifsHelper
     motif_path(motif.full_name)
   end
 
-  def link_to_motif(motif, content)
-    link_to(content, motif_url(motif))
+  def link_to_motif(motif, content, **kwargs)
+    link_to(content, motif_url(motif), **kwargs)
   end
 end
