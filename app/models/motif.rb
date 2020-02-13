@@ -255,6 +255,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     match = nil # postfix-if work incorrectly with undefined local-variable (https://bugs.ruby-lang.org/issues/16631)
     return hgnc_ids.include?(match[1])  if match = query.match(/\bHGNC:?\s*(\d+)\b/i)
     return mgi_ids.include?(match[1])  if match = query.match(/\bMGI:?\s*(\d+)\b/i)
+    return entrezgene_ids.include?(match[2])  if match = query.match(/\bEntrez(\s*gene)?:?\s*(\d+)\b/i)
 
     pattern = /#{query}/i
     [:full_name, :motif_families, :gene_names].any?{|param|
