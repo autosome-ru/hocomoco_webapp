@@ -2,6 +2,14 @@ require 'bioinform'
 require 'dipm'
 require 'model_kind'
 
+
+TF_CLASSIFICATION_HUMAN = WingenderTFClass::OBO::TFClassification.from_file(WingenderTFClass::FilePaths::TFOntologyHuman)
+TF_CLASSIFICATION_MOUSE = WingenderTFClass::OBO::TFClassification.from_file(WingenderTFClass::FilePaths::TFOntologyMouse)
+
+def tfclass_term_names(id)
+  [TF_CLASSIFICATION_HUMAN, TF_CLASSIFICATION_MOUSE].map{|tf_clsf| tf_clsf.term(id) }.uniq
+end
+
 module HocomocoSite
   def self.url_in_final_bundle(url_part)
     url_base = HocomocoSite::Application.config.relative_url_root || ''
@@ -214,10 +222,33 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     url_in_final_bundle("#{species}/#{arity}/logo_large/#{full_name}_revcomp.png")
   end
 
+  def motif_subfamily_ids
+    motif_families.map{|fam|
+      match = fam.match(/^(?<name>.+)\{(?<family_id>[\d.]+)\}$/)
+      match[:family_id]
+    }
+  end
+
   def motif_families_links
     motif_families.map{|fam|
       match = fam.match(/^(?<name>.+)\{(?<family_id>[\d.]+)\}$/)
       [fam, "http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{match[:family_id]}"]
+    }
+  end
+
+  def motif_classes
+    motif_subfamily_ids.map{|id|
+      id.split('.').first(2).join('.')
+    }.uniq.flat_map{|class_id|
+      tfclass_term_names(class_id)
+    }
+  end
+
+  def motif_superclasses
+    motif_subfamily_ids.map{|id|
+      id.split('.').first(2).join('.')
+    }.uniq.flat_map{|class_id|
+      tfclass_term_names(class_id)
     }
   end
 
@@ -259,11 +290,11 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     return entrezgene_ids.include?(match[2])  if match = query.match(/\bGene(\s*Id)?:?\s*(\d+)\b/i)
 
     pattern = /#{query}/i
-    [:full_name, :motif_families, :gene_names].any?{|param|
+    [:full_name, :motif_subfamilies, :motif_families, :motif_classes, :motif_superclasses, :gene_names].any?{|param|
       val = self.send(param)
       case val
       when Array
-        val.any?{|v| v.match(pattern) }
+        val.any?{|v| v.to_s.match(pattern) }
       else
         val.to_s.match(pattern)
       end

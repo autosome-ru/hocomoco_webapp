@@ -56,3 +56,4 @@ group :development do
 end
 
 gem 'bioinform', '~>0.2.2'
+gem 'WingenderTFClass'

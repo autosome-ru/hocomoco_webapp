@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    WingenderTFClass (0.1.2)
     actioncable (5.2.4.1)
       actionpack (= 5.2.4.1)
       nio4r (~> 2.0)
@@ -213,6 +214,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  WingenderTFClass
   bioinform (~> 0.2.2)
   bootsnap (>= 1.1.0)
   byebug
