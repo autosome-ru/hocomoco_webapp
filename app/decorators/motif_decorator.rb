@@ -42,7 +42,7 @@ class MotifDecorator < ApplicationDecorator
   def species_prefixed_gene_names; object.gene_names.map{|gene_name| "#{object.species}:#{gene_name}" }.join('; '); end
   def uniprot_acs; object.uniprot_acs.join('; '); end
   def num_datasets; object.num_datasets == 0 ? nil : object.num_datasets; end
-  def logo; helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_url), target: '_blank'); end
+  def logo(**kwargs); helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_url), **kwargs); end
   def big_logo
     helpers.link_to(
       helpers.image_tag(object.direct_big_logo_url),
@@ -94,8 +94,8 @@ class MotifDecorator < ApplicationDecorator
     format_matrix_as_table(object.pwm.matrix, round: 3)
   end
 
-  def full_name
-    helpers.link_to_motif(object, object.retracted? ? (object.full_name + ' ' + 'RETRACTED!!!') : object.full_name, target: '_blank')
+  def full_name(**kwargs)
+    helpers.link_to_motif(object, object.retracted? ? (object.full_name + ' ' + 'RETRACTED!!!') : object.full_name, **kwargs)
   end
 
   def comment
