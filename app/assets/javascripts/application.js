@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+
+//= require popper-1.14.3.min.js
+//= require bootstrap-4.1.3.min.js
 
 //= require jquery-tablesorter/jquery.tablesorter
 //= require jquery-tablesorter/widgets/widget-columns

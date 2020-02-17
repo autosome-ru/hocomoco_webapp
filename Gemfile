@@ -36,7 +36,6 @@ gem 'd3-rails'
 
 gem 'therubyracer'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

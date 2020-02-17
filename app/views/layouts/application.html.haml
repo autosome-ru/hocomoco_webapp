@@ -18,56 +18,83 @@
         gtag('config', 'UA-27550943-2');
       </script>
 
+    = stylesheet_link_tag "application", :media => "all"
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
-    = stylesheet_link_tag "application", :media => "all"
-    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
 
   %body{data: {'app-prefix' => root_path}}
     %header
-      = nav_bar do
-        = menu_group do
-          = link_to root_path do
-            .hocologo.pull-left
-          .navbar-brand HOCOMOCO
-        = menu_group do
-          = drop_down 'Home' do
-            = menu_item 'Human', root_path(species: 'human', arity: 'mono', full: true)
-            = menu_item 'Mouse', root_path(species: 'mouse', arity: 'mono', full: true)
-          = drop_down 'Human TFs' do
-            = menu_item 'Mononucleotide models (core)', motifs_path(species: 'human', arity: 'mono', full: false), class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'Primary binding models (ABC quality)'}
-            = menu_item 'Mononucleotide models (full)', motifs_path(species: 'human', arity: 'mono', full: true),  class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'Primary and alternative binding models'}
-            = menu_item 'Dinucleotide models', motifs_path(species: 'human', arity: 'di')
-          = drop_down 'Mouse TFs' do
-            = menu_item 'Mononucleotide models (core)', motifs_path(species: 'mouse', arity: 'mono', full: false), class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'Primary binding models (ABC quality)'}
-            = menu_item 'Mononucleotide models (full)', motifs_path(species: 'mouse', arity: 'mono', full: true),  class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'Primary and alternative binding models'}
-            = menu_item 'Dinucleotide models', motifs_path(species: 'mouse', arity: 'di')
-          = drop_down 'Tools' do
-            = menu_item 'MoLoTool', ENV['MOLOTOOL_URL'], class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'MoLoTool: visual motif finding in short sequences.'}
-            = menu_item 'MACRO-APE', ENV['MACROAPE_URL'], class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'MACRO-APE: model comparison and search for similar motifs.'}
-            = menu_item 'PERFECTOS-APE', ENV['PERFECTOSAPE_URL'], class: 'has-tooltip', data: { toggle: 'tooltip', placement: 'right', title: 'PERFECTOS-APE: functional annotation of rSNPs.'}
-          = drop_down 'Downloads' do
-            = menu_item 'HOCOMOCO v11', downloads_v11_path
-            = menu_item 'HOCOMOCO v10', downloads_v10_path
-            = menu_item 'HOCOMOCO v9', 'http://autosome.ru/HOCOMOCOS/'
-          = menu_item 'Help', help_path
+      %nav.navbar.navbar-light.bg-gray.navbar-expand-lg.py-0
+        %a.navbar-brand.ml-0.mr-2{href: root_path}
+          %img.hocologo.d-inline-block{src: asset_url("hocomoco_logo_big.png")}
+          %span.d-inline-block HOCOMOCO
+        %button.navbar-toggler{type: 'button', data: {toggle: 'collapse', target: "#navbarNav"}}
+          / aria: {controls: 'navbarTogglerDemo03' expanded: 'false', label: 'Toggle navigation'}
+          %span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarNav
+          %ul.navbar-nav.px-1.d-flex.align-items-end
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
+                Home
+              .dropdown-menu
+                %a.dropdown-item{href: root_path(species: 'human', arity: 'mono', full: true)} Human
+                %a.dropdown-item{href: root_path(species: 'mouse', arity: 'mono', full: true)} Mouse
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
+                Human TFs
+              .dropdown-menu
+                %a.dropdown-item.has-tooltip{href: motifs_path(species: 'human', arity: 'mono', full: false), data: { toggle: 'tooltip', placement: 'right', title: 'Primary binding models (ABC quality)'}}
+                  Mononucleotide models (core)
+                %a.dropdown-item.has-tooltip{href: motifs_path(species: 'human', arity: 'mono', full: true), data: { toggle: 'tooltip', placement: 'right', title: 'Primary and alternative binding models'}}
+                  Mononucleotide models (full)
+                %a.dropdown-item{href: motifs_path(species: 'human', arity: 'di')}
+                  Dinucleotide models
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
+                Mouse TFs
+              .dropdown-menu
+                %a.dropdown-item.has-tooltip{href: motifs_path(species: 'mouse', arity: 'mono', full: false), data: { toggle: 'tooltip', placement: 'right', title: 'Primary binding models (ABC quality)'}}
+                  Mononucleotide models (core)
+                %a.dropdown-item.has-tooltip{href: motifs_path(species: 'mouse', arity: 'mono', full: true), data: { toggle: 'tooltip', placement: 'right', title: 'Primary and alternative binding models'}}
+                  Mononucleotide models (full)
+                %a.dropdown-item{href: motifs_path(species: 'mouse', arity: 'di')}
+                  Dinucleotide models
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
+                Tools
+              .dropdown-menu
+                %a.dropdown-item.has-tooltip{href: ENV['MOLOTOOL_URL'], data: { toggle: 'tooltip', placement: 'right', title: 'MoLoTool: visual motif finding in short sequences.'}}
+                  MoLoTool
+                %a.dropdown-item.has-tooltip{href: ENV['MACROAPE_URL'], data: { toggle: 'tooltip', placement: 'right', title: 'MACRO-APE: model comparison and search for similar motifs.'}}
+                  MACRO-APE
+                %a.dropdown-item.has-tooltip{href: ENV['PERFECTOSAPE_URL'], data: { toggle: 'tooltip', placement: 'right', title: 'PERFECTOS-APE: functional annotation of rSNPs.'}}
+                  PERFECTOS-APE
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
+                Downloads
+              .dropdown-menu
+                %a.dropdown-item{href: downloads_v11_path} HOCOMOCO v11
+                %a.dropdown-item{href: downloads_v10_path} HOCOMOCO v10
+                %a.dropdown-item{href: 'http://autosome.ru/HOCOMOCOS/'} HOCOMOCO v9
+            %li.nav-item
+              %a.nav-link{href: help_path} Help
 
-        = form_tag search_post_path, class: 'pull-right navbar-search' do
-          = hidden_field_tag 'arity', 'mono'
-          = hidden_field_tag 'species', 'human'
-          = label_tag do
-            Search:
-            = text_field_tag 'query', params[:query]
+            - if @species
+              %li.nav-item.ml-auto
+                %img.species-indicator.mr-2{src: asset_url("#{@species.downcase}_sel.png")}
 
-          = select_tag 'kind', options_for_select({'Human PWMs' => 'human;mono', 'Human di-PWMs' => 'human;di', 'Mouse PWMs' => 'mouse;mono', 'Mouse di-PWMs' => 'mouse;di'},  ['human;mono', 'human;di', 'mouse;mono', 'mouse;di'].include?("#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}") ? "#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}" : 'human;mono')
-          = submit_tag 'Search'
+            %li.nav-item{class: @species ? '' : 'ml-auto'}
+              %form.form-inline.navbar-search.align-items-end{action: search_post_path, method: 'POST'}
+                %input{type: 'hidden', name: 'arity', value: 'mono'}
+                %input{type: 'hidden', name: 'species', value: 'human'}
 
-        - if @species
-          = image_tag("#{@species.downcase}_sel.png", class: 'species-indicator pull-right')
-
+                %input.form-control.mr-sm-2{type:"search", placeholder: "Search", name: 'query', value: params[:query]}
+                = select_tag 'kind', options_for_select({'Human PWMs' => 'human;mono', 'Human di-PWMs' => 'human;di', 'Mouse PWMs' => 'mouse;mono', 'Mouse di-PWMs' => 'mouse;di'},  ['human;mono', 'human;di', 'mouse;mono', 'mouse;di'].include?("#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}") ? "#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}" : 'human;mono'), {class: 'custom-select mr-2'}
+                %button.btn.btn-hocomoco-search.btn-outline-secondary{type: "submit"} Search
 
     %div{class: ['container', "controller-#{params[:controller]}", "action-#{params[:action]}"] }
       = yield
