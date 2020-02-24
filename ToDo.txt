@@ -1,42 +1,18 @@
-Сделать плагин для FAIR biomed https://elifesciences.org/labs/8c7cc651/fair-biomed-on-demand-research-information (мб заодно для викидаты плагин + сортировку ресурсов сделать, чтобы ресурсы, помеченные звездочкой шли раньше)
+- replace search_post with search ((a) duplication; (b) chrome search engine is buggy with this url)
 
-Добавить API поиска выдающего детали
-Добавить поиск по всем видам сразу
-Добавить поиск по hgnc:1234 итп
+- Use solr / ElasticSearch as a search engine
 
+- (?) Make use of js-routes (in motif_familes.js and formatters.js)
+- Fix link_to so that in hadn't ugly root_path + path form
 
-Make use of js-routes (in motif_familes.js and formatters.js)
-Fix link_to so that in hadn't ugly root_path + path form
+- add info about number of unclassified motifs to a tooltip on a tree root
 
+- add more TFClass hierarchy levels
 
+- add TF expressions
+- button at a motif page which moves user to a section with matrices
 
-Ivan Kulakovskiy (ivankulakovskiy@gmail.com, ivan.kulakovskiy@gmail.com)
-Threshold to P-value grid -> Threshold to P-value hash или precomputed conversion table
-(P-value calculated under uniform background model)
-   Flat file я бы еще унес в отдельную строку   
-будет как-то аккуратнее
-в смысле строки таблицы
-а PCM и PWM можно rowspan сделать
-
-
-
-
-добавить в корень дерева, в тултип инфу, что часть мотивов unclassified
-
-добавить классификацию мотива в дереве
-
-добавить на сайт opera.autosome.ru поиск по хокомоке
-
-сделать макроэйпу одним из форматов ввода мотива консенсус
-
-
-
-добавить экспрессии
-
-стрелочку вниз на карточке мотива -- перемещающую к матрицам
-
-
-хелп по фильтрам   http://mottie.github.io/tablesorter/docs/example-widget-filter.html
-убить eval   https://github.com/Mottie/tablesorter/issues/796
-
-
+------------------
+Tablesorter:
+  * help about filters:  http://mottie.github.io/tablesorter/docs/example-widget-filter.html
+  * drop eval:  https://github.com/Mottie/tablesorter/issues/796
