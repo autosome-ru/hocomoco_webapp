@@ -23,13 +23,13 @@
 # log_file   = "#{rails_root}/log/unicorn.log"
 # err_log    = "#{rails_root}/log/unicorn_error.log"
 # old_pid    = pid_file + '.oldbin'
-
+app_name = 'hocomoco11'
 deploy_to  = File.absolute_path('../../', __FILE__)
 rails_root = "#{deploy_to}"
-pid_file   = "#{rails_root}/tmp/pids/unicorn.pid"
+pid_file   = "/run/unicorn/#{app_name}.pid"
 socket_file= "#{rails_root}/tmp/sockets/unicorn.sock"
-log_file   = "#{rails_root}/log/unicorn.log"
-err_log    = "#{rails_root}/log/unicorn_error.log"
+log_file   = "/var/log/unicorn/#{app_name}.log"
+err_log    = "/var/log/unicorn/#{app_name}.error.log"
 old_pid    = pid_file + '.oldbin'
 
 timeout 30
