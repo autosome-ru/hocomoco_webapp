@@ -6,27 +6,17 @@
 # See also http://unicorn.bogomips.org/examples/unicorn.conf.rb for
 # a more verbose configuration using more features.
 
-# SIMPLE
+rails_root  = File.absolute_path('../', __dir__)
 
+# SIMPLE
 # listen 3000 # by default Unicorn listens on port 8080
 # worker_processes 3 # this should be >= nr_cpus
-# pid "/home/ilya/opera_webface/shared/pids/unicorn.pid"
-# stderr_path "/home/ilya/opera_webface/log/unicorn.log"
-# stdout_path "/home/ilya/opera_webface/log/unicorn.log"
-
+# pid "#{rails_root}/tmp/pids/unicorn.pid"
+# stderr_path "#{rails_root}/log/unicorn.log"
+# stdout_path "#{rails_root}/log/unicorn.log"
 
 # ZERO-DOWNTIME
-# deploy_to  = "/srv/myapp"
-# rails_root = "#{deploy_to}/current"
-# pid_file   = "#{deploy_to}/shared/pids/unicorn.pid"
-# socket_file= "#{deploy_to}/shared/unicorn.sock"
-# log_file   = "#{rails_root}/log/unicorn.log"
-# err_log    = "#{rails_root}/log/unicorn_error.log"
-# old_pid    = pid_file + '.oldbin'
-
 app_name = 'hocomoco11'
-deploy_to  = File.absolute_path('../../', __FILE__)
-rails_root = "#{deploy_to}"
 pid_file   = "/run/unicorn/#{app_name}.pid"
 socket_file= "/run/unicorn/#{app_name}.sock"
 log_file   = "/var/log/unicorn/#{app_name}.log"
