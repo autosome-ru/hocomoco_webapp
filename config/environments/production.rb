@@ -104,5 +104,5 @@ Rails.application.configure do
 
   config.action_controller.default_url_options ||= {}
   config.action_controller.default_url_options[:protocol] = 'https'
-  config.action_controller.asset_host = 'https://hocomoco.autosome.ru'
+  config.action_controller.asset_host = 'https://hocomoco11.autosome.ru'
 end
