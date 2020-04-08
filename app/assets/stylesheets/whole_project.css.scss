@@ -158,3 +158,12 @@ h1.downloads_header {
   max-width: 30vw;
   align: center;
 }
+
+table.tablesorter {
+  th {
+    font-size: smaller;
+  }
+  td {
+    font-size: medium;
+  }
+}
