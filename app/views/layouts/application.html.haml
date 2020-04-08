@@ -96,7 +96,7 @@
               = select_tag 'kind', options_for_select({'Human PWMs' => 'human;mono', 'Human di-PWMs' => 'human;di', 'Mouse PWMs' => 'mouse;mono', 'Mouse di-PWMs' => 'mouse;di'},  ['human;mono', 'human;di', 'mouse;mono', 'mouse;di'].include?("#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}") ? "#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}" : 'human;mono'), {class: 'custom-select mr-2'}
               %button.btn.btn-hocomoco-search.btn-outline-secondary{type: "submit"} Search
 
-    %div{class: ['container', "controller-#{params[:controller]}", "action-#{params[:action]}"] }
+    %div{class: ['container-fluid', "controller-#{params[:controller]}", "action-#{params[:action]}"] }
       = yield
     %footer
       .grant Supported by RFBR grants 16-34-01318, 15-34-20423, 14-04-01838, RSF grants 14-50-00060, 17-74-10188 and Skoltech Systems Biology Fellowship.
