@@ -1,57 +1,60 @@
-.help_container
-  %p
-    %a.section_header{href: '#pwm'} [PWM]
-    HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains transcription factor (TF) binding models represented as classic
-    #{link_to 'Position Weight Matrices', 'https://en.wikipedia.org/wiki/Position_weight_matrix'} (PWMs, also known as Position-Specific Scoring Matrices, PSSMs)
-    and precalculated score thresholds.
-  %p
-    The dinucleotide PWMs provide better TFBS recognition quality and are also available for selected TFs, primarily for those with ChIP-Seq data available
-    (see #{link_to 'diChIPMunk', 'http://www.ncbi.nlm.nih.gov/pubmed/23427986'} and #{link_to 'HOCOMOCO', 'http://nar.oxfordjournals.org/content/44/D1/D116'} papers
-    for details).
-  %p
-    PWMs in HOCOMOCO v9 were derived from various types of experimental data using data integration by #{link_to 'ChIPMunk', 'http://autosome.ru/ChIPMunk/'}
-    motif discovery tool. HOCOMOCO v10 and v11 updates were primarily based on high-throughput sequencing data.
+.row
+  .col-md-1
+  .col-lg-7
+    .help_container
+      %p
+        %a.section_header{href: '#pwm'} [PWM]
+        HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains transcription factor (TF) binding models represented as classic
+        #{link_to 'Position Weight Matrices', 'https://en.wikipedia.org/wiki/Position_weight_matrix'} (PWMs, also known as Position-Specific Scoring Matrices, PSSMs)
+        and precalculated score thresholds.
+      %p
+        The dinucleotide PWMs provide better TFBS recognition quality and are also available for selected TFs, primarily for those with ChIP-Seq data available
+        (see #{link_to 'diChIPMunk', 'http://www.ncbi.nlm.nih.gov/pubmed/23427986'} and #{link_to 'HOCOMOCO', 'http://nar.oxfordjournals.org/content/44/D1/D116'} papers
+        for details).
+      %p
+        PWMs in HOCOMOCO v9 were derived from various types of experimental data using data integration by #{link_to 'ChIPMunk', 'http://autosome.ru/ChIPMunk/'}
+        motif discovery tool. HOCOMOCO v10 and v11 updates were primarily based on high-throughput sequencing data.
 
-  %p
-    %a.section_header{href: '#motif_finding'} [Motif finding; Sequence scanning]
-  %p
-    HOCOMOCO provides mono- and dinucleotide PWMs and precomputed score thresholds for download. To visualize predicted TFBS in a small set of
-    sequences we provide #{link_to 'MoLoTool', 'http://molotool.autosome.ru/'}.
-    A dedicated #{link_to 'web-interface', 'http://micro.biouml.org/bioumlweb/hocomoco.html'} in BioUML is also suitable for this task.
-    For large-scale analysis we suggest to use command-line tools, such as #{link_to 'SPRY-SARUS', 'http://github.com/vorontsovie/sarus'}.
+      %p
+        %a.section_header{href: '#motif_finding'} [Motif finding; Sequence scanning]
+      %p
+        HOCOMOCO provides mono- and dinucleotide PWMs and precomputed score thresholds for download. To visualize predicted TFBS in a small set of
+        sequences we provide #{link_to 'MoLoTool', 'http://molotool.autosome.ru/'}.
+        A dedicated #{link_to 'web-interface', 'http://micro.biouml.org/bioumlweb/hocomoco.html'} in BioUML is also suitable for this task.
+        For large-scale analysis we suggest to use command-line tools, such as #{link_to 'SPRY-SARUS', 'http://github.com/vorontsovie/sarus'}.
 
-  %p
-    %a.section_header{href: '#description_quality_score'} [Quality score]
-  %p
-    Each model in the collection has a quality rating from A to D where A represents motifs with the highest confidence, and models down to C quality are suitable
-    for quantitative analyses. A motif of D quality provides only rough description of a binding pattern and should be used primarily in exploration studies.
-    The details on quality assignment can be found in the most recent HOCOMOCO paper.
+      %p
+        %a.section_header{href: '#description_quality_score'} [Quality score]
+      %p
+        Each model in the collection has a quality rating from A to D where A represents motifs with the highest confidence, and models down to C quality are suitable
+        for quantitative analyses. A motif of D quality provides only rough description of a binding pattern and should be used primarily in exploration studies.
+        The details on quality assignment can be found in the most recent HOCOMOCO paper.
 
-  %p
-    %a.section_header{href: '#description_auc'} [auROC]
-  %p
-    auROC (Area Under for ROC curve) represents the power of a given model to discriminate true positive ChIP-Seq segments from random noise.
-    The best AUC across all peak sets shows the highest value reachable for the selected transcription factor.
+      %p
+        %a.section_header{href: '#description_auc'} [auROC]
+      %p
+        auROC (Area Under for ROC curve) represents the power of a given model to discriminate true positive ChIP-Seq segments from random noise.
+        The best AUC across all peak sets shows the highest value reachable for the selected transcription factor.
 
-  %p
-    %a.section_header{href: '#description_rank'} [Motif rank]
-  %p
-    Since v11 the alternative binding models of a particular TF are ranked from 0 (the primary model) to 1 and 2 (the alternative models, including single-box variants).
-    The models of 0 rank is the most 'general' variant with the best weighted performance in the cross-validation benchmark (see the HOCOMOCO paper for details).
+      %p
+        %a.section_header{href: '#description_rank'} [Motif rank]
+      %p
+        Since v11 the alternative binding models of a particular TF are ranked from 0 (the primary model) to 1 and 2 (the alternative models, including single-box variants).
+        The models of 0 rank is the most 'general' variant with the best weighted performance in the cross-validation benchmark (see the HOCOMOCO paper for details).
 
-  %p
-    %a.section_header{href: '#core_full_collections'} [Core/Full collections]
-  %p
-    CORE COLLECTION: primary binding motifs that robustly represent binding sites across multiple experiments.
-    The CORE collection contains models of ABC quality and 0 rank only.
-  %p
-    FULL COLLECTION: core collection plus all the high-quality alternative and lower-reliability binding models built from limited experimental data.
-    The FULL collection contains models of ABCD quality and 0-1-2 ranks.
+      %p
+        %a.section_header{href: '#core_full_collections'} [Core/Full collections]
+      %p
+        CORE COLLECTION: primary binding motifs that robustly represent binding sites across multiple experiments.
+        The CORE collection contains models of ABC quality and 0 rank only.
+      %p
+        FULL COLLECTION: core collection plus all the high-quality alternative and lower-reliability binding models built from limited experimental data.
+        The FULL collection contains models of ABCD quality and 0-1-2 ranks.
 
-  %p
-    %a.section_header{href: '#api_description'} [API description]
-  %p
-    HOCOMOCO provides JSON-API in order to programmatically get information about a motif. See API #{link_to 'help page', api_description_path} for details.
+      %p
+        %a.section_header{href: '#api_description'} [API description]
+      %p
+        HOCOMOCO provides JSON-API in order to programmatically get information about a motif. See API #{link_to 'help page', api_description_path} for details.
 
 - content_for(:title) do
   Help - HOmo sapiens COmprehensive MOdel COllection

@@ -1,76 +1,90 @@
-%h4 HOCOMOCO API (experimental; not stable)
+.row
+  .col-1
+  .col-8
+    %h4 HOCOMOCO API (experimental; not stable)
+    %p
+      HOCOMOCO allows for JSON APIs requests. Basically it's enough to add 
+      %b .json
+      extension to an URL.
 
-%p
-  HOCOMOCO allows for JSON APIs requests. Basically it's enough to add 
-  %b .json
-  extension to an URL.
+.row
+  .col-1
+  .col-8
+    %hr
+    %h4 Get motif details
+    %p
+      To get information about a motif
+      = succeed ',' do
+        %code MotifID
+      send a request
+      %code #{root_url}motif/{MotifID}.json
+    %p
+      If you need to get PWM / PCM use
+      %code #{root_url}motif/{MotifID}/pwm.json
+      and
+      %code #{root_url}motif/{MotifID}/pcm.json
+      URLs.
+    %p
+      %code #{root_url}motif/{MotifID}/thresholds.json
+      gives you additionally a list of precalculated P-values for different PWM scores.
+    %p
+      (deprecated) Alternatively you can add
+      %code with_matrices=true
+      and
+      %code with_thresholds=true
+      parameters to a general motif request:
+      %code #{root_url}motif/{MotifID}.json?with_matrices=true&with_thresholds=true
 
-%h4 Get motif details
-%p
-  To get information about a motif
-  = succeed ',' do
-    %code MotifID
-  send a request
-  %code #{root_url}motif/{MotifID}.json
-%p
-  If you need to get PWM / PCM use
-  %code #{root_url}motif/{MotifID}/pwm.json
-  and
-  %code #{root_url}motif/{MotifID}/pcm.json
-  URLs.
-%p
-  %code #{root_url}motif/{MotifID}/thresholds.json
-  gives you additionally a list of precalculated P-values for different PWM scores.
-%p
-  (deprecated) Alternatively you can add
-  %code with_matrices=true
-  and
-  %code with_thresholds=true
-  parameters to a general motif request:
-  %code #{root_url}motif/{MotifID}.json?with_matrices=true&with_thresholds=true
+.row
+  .col-1
+  .col-8
+    %hr
+    %h4 Get motif list
+    %p
+      One can get a list of all motifs (only MotifIDs) in a collection by sending a request
+      %code #{root_url}{species}/{arity}.json
+    %p
+      %code species
+      can be either
+      %code human
+      or
+      %code mouse
+      \.
+    %p
+      %code arity
+      can be either
+      %code mono
+      for mononucleotide models
+      or
+      %code di
+      for dinucleotide.
+    %p
+      By default only core high-quality models are shown. Add 
+      %code ?full=true
+      if you want D-quality models and alternative binding motifs to be listed.
+    %p  
+      Request
+      %code #{root_url}{species}/{arity}.json?summary=true
+      gives some additional information which can be useful to organize search through motif and gene names, TF family and subfamily names.
 
-%h4 Get motif list
-%p
-  One can get a list of all motifs (only MotifIDs) in a collection by sending a request
-  %code #{root_url}{species}/{arity}.json
-%p
-  %code species
-  can be either
-  %code human
-  or
-  %code mouse
-  \.
-%p
-  %code arity
-  can be either
-  %code mono
-  for mononucleotide models
-  or
-  %code di
-  for dinucleotide.
-%p
-  By default only core high-quality models are shown. Add 
-  %code ?full=true
-  if you want D-quality models and alternative binding motifs to be listed.
-%p  
-  Request
-  %code #{root_url}{species}/{arity}.json?summary=true
-  gives some additional information which can be useful to organize search through motif and gene names, TF family and subfamily names.
-
-%h4 Motif search
-%p
-  Use the following request
-  %code #{root_url}search.json?arity={arity}&species={species}&query={query}
-  to search for a motif across `full_name` (MotifID), `motif_families` and `gene_names` fields.
-  Any regexp can be given as a query.
-  Add 
-  %code &summary=true
-  or
-  %code &detailed=true
-  if you want detailed information.
-%p
-  %code #{root_url}search?family_id={TFClass id}
-  returns a list of motifs from a TFClass group specified by TFClass id.
+.row
+  .col-1
+  .col-8
+    %hr
+    %h4 Motif search
+    %p
+      Use the following request
+      %code #{root_url}search.json?arity={arity}&species={species}&query={query}
+      to search for a motif across `full_name` (MotifID), `motif_families` and `gene_names` fields.
+      Any regexp can be given as a query.
+      Add 
+      %code &summary=true
+      or
+      %code &detailed=true
+      if you want detailed information.
+    %p
+      %code #{root_url}search?family_id={TFClass id}
+      returns a list of motifs from a TFClass group specified by TFClass id.
 
 - content_for(:title) do
   HOCOMOCO API description - HOmo sapiens COmprehensive MOdel COllection

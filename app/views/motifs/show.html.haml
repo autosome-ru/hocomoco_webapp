@@ -1,83 +1,90 @@
 - if motif.retracted?
-  .attention
-    Retracted!
-    %br
-    Do not use this motif!
-
-.table_caption Model info
-%table.key_value_info
-  %tbody
-    = table_info_row(motif, :gene_names) do |motif|
-      - if species.downcase == 'human'
-        = human_gene_name_links(motif.gene_names)
-      - else
-        = mouse_gene_name_links(motif.gene_names)
-    = table_info_row motif, :full_name
-    = table_info_row motif, :model_arity_type
-    = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
-    = table_info_row motif, :big_logo_revcomp, html_options: {value_column_html: {class: 'sequence_logo'} }
-    = table_info_row motif, :motif_source
-    = table_info_row motif, :release
-    = table_info_row motif, :model_length
-    = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
-    = table_info_row motif, :rank, header_cell: ('Motif rank' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
-    = table_info_row motif, :consensus
-    = table_info_row motif, :best_auc_human #, html_options: {value_column_html: {class: 'AUC'} }, header_cell: ('wAUC' + help_icon(href: help_path(anchor: 'description_auc'), title: 'Weighted Area Under Curve for Receiver Operating Characteristic estimate, click the icon for details on AUC.')).html_safe
-    = table_info_row motif, :best_auc_mouse #, html_options: {value_column_html: {class: 'AUC'} }, header_cell: ('wAUC' + help_icon(href: help_path(anchor: 'description_auc'), title: 'Weighted Area Under Curve for Receiver Operating Characteristic estimate, click the icon for details on AUC.')).html_safe
-    = table_info_row motif, :num_datasets_human
-    = table_info_row motif, :num_datasets_mouse
-    = table_info_row motif, :num_words_in_alignment
-    = table_info_row(motif, :motif_families){|motif| tfclass_motif_family_links(motif.motif_families) }
-    = table_info_row(motif, :motif_subfamilies){|motif| tfclass_motif_family_links(motif.motif_subfamilies) }
-    - if species == 'HUMAN'
-      = table_info_row(motif, :hgnc_ids){|motif| hgnc_id_links(motif.hgnc_ids) }
-    - else
-      = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
-    = table_info_row(motif, :entrezgene_ids){|motif| gene_id_links(motif.entrezgene_ids) }
-    = table_info_row(motif, :uniprot_id){|motif| uniprot_id_link(motif.uniprot_id) }
-    = table_info_row(motif, :uniprot_acs){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_acs) }
-    = table_info_row motif, :comment
-    = table_info_row motif, :downloads, header_cell: 'Downloads' do |m|
-      = m.download_pcm
-      %br
-      = m.download_pwm
-      %br
-      = m.download_alignment
-      %br
-      = m.download_precalculated_thresholds
-    = table_info_row motif, :thresholds, header_cell: 'Standard thresholds' do |m|
-      %table.thresholds
-        %thead
+  .row
+    .col-12
+      .attention
+        Retracted!
+        %br
+        Do not use this motif!
+.row
+  .col-12
+    .table_caption Model info
+.row
+  .col-12
+    %table.key_value_info
+      %tbody
+        = table_info_row(motif, :gene_names) do |motif|
+          - if species.downcase == 'human'
+            = human_gene_name_links(motif.gene_names)
+          - else
+            = mouse_gene_name_links(motif.gene_names)
+        = table_info_row motif, :full_name
+        = table_info_row motif, :model_arity_type
+        = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
+        = table_info_row motif, :big_logo_revcomp, html_options: {value_column_html: {class: 'sequence_logo'} }
+        = table_info_row motif, :motif_source
+        = table_info_row motif, :release
+        = table_info_row motif, :model_length
+        = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
+        = table_info_row motif, :rank, header_cell: ('Motif rank' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
+        = table_info_row motif, :consensus
+        = table_info_row motif, :best_auc_human #, html_options: {value_column_html: {class: 'AUC'} }, header_cell: ('wAUC' + help_icon(href: help_path(anchor: 'description_auc'), title: 'Weighted Area Under Curve for Receiver Operating Characteristic estimate, click the icon for details on AUC.')).html_safe
+        = table_info_row motif, :best_auc_mouse #, html_options: {value_column_html: {class: 'AUC'} }, header_cell: ('wAUC' + help_icon(href: help_path(anchor: 'description_auc'), title: 'Weighted Area Under Curve for Receiver Operating Characteristic estimate, click the icon for details on AUC.')).html_safe
+        = table_info_row motif, :num_datasets_human
+        = table_info_row motif, :num_datasets_mouse
+        = table_info_row motif, :num_words_in_alignment
+        = table_info_row(motif, :motif_families){|motif| tfclass_motif_family_links(motif.motif_families) }
+        = table_info_row(motif, :motif_subfamilies){|motif| tfclass_motif_family_links(motif.motif_subfamilies) }
+        - if species == 'HUMAN'
+          = table_info_row(motif, :hgnc_ids){|motif| hgnc_id_links(motif.hgnc_ids) }
+        - else
+          = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
+        = table_info_row(motif, :entrezgene_ids){|motif| gene_id_links(motif.entrezgene_ids) }
+        = table_info_row(motif, :uniprot_id){|motif| uniprot_id_link(motif.uniprot_id) }
+        = table_info_row(motif, :uniprot_acs){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_acs) }
+        = table_info_row motif, :comment
+        = table_info_row motif, :downloads, header_cell: 'Downloads' do |m|
+          = m.download_pcm
+          %br
+          = m.download_pwm
+          %br
+          = m.download_alignment
+          %br
+          = m.download_precalculated_thresholds
+        = table_info_row motif, :thresholds, header_cell: 'Standard thresholds' do |m|
+          %table.thresholds
+            %thead
+              %tr
+                %th
+                  P-value
+                  = help_icon(title: 'Genome-wide dinucleotide frequencies were used for P-value estimation')
+                %th Threshold
+            %tbody
+              - m.standard_thresholds.each do |pvalue, threshold|
+                %tr
+                  %td= pvalue
+                  %td= threshold
+        %tr
+          %td GTEx tissue expression atlas
+          %td= link_to "#{motif.gene_name} expression", motif.gtex_url
+        - if motif.species == 'HUMAN'
           %tr
-            %th
-              P-value
-              = help_icon(title: 'Genome-wide dinucleotide frequencies were used for P-value estimation')
-            %th Threshold
-        %tbody
-          - m.standard_thresholds.each do |pvalue, threshold|
-            %tr
-              %td= pvalue
-              %td= threshold
-    %tr
-      %td GTEx tissue expression atlas
-      %td= link_to "#{motif.gene_name} expression", motif.gtex_url
-    - if motif.species == 'HUMAN'
-      %tr
-        %td ReMap ChIP-seq dataset list
-        %td= link_to "#{motif.gene_name} datasets", motif.remap_url
-    %tr
-      %td Motifs in JASPAR
-      %td
-        - motif.jaspar_links.each do |title, url|
-          .jaspar_link= link_to title, url
+            %td ReMap ChIP-seq dataset list
+            %td= link_to "#{motif.gene_name} datasets", motif.remap_url
+        %tr
+          %td Motifs in JASPAR
+          %td
+            - motif.jaspar_links.each do |title, url|
+              .jaspar_link= link_to title, url
 
-.matrix_container
-  %span.title PCM
-  = motif.pcm
+.row
+  .col-12
+    .matrix_container.pcm-matrix
+      %span.title PCM
+      = motif.pcm
 
-.matrix_container
-  %span.title PWM
-  = motif.pwm
+    .matrix_container.pwm-matrix
+      %span.title PWM
+      = motif.pwm
 
 - content_for(:meta_description) do
   = "Motif #{motif.object.full_name} for #{motif.gene_name} #{motif.species.downcase} transcription factor (#{motif.uniprot_id} in UniProt)"
