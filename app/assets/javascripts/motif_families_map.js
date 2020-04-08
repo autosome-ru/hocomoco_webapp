@@ -19,8 +19,7 @@ draw_families_tree = function(tree_url, svg_container){
     .y(function(d) { return d.x; });
 
   var svg = svg_container.append("svg")
-      .attr("width", width)
-      .attr("height", height)
+      .attr("viewBox", [0, 0, width, height].join(' ') )
     .append("g")
       .attr("transform", "translate(40,0)");
 
