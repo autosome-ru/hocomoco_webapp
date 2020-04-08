@@ -5,7 +5,7 @@ draw_families_tree = function(tree_url, svg_container){
       height = 700;
 
   var treeLayout = d3.tree()
-      .size([height, width - 300])
+      .size([height, width - 270])
       .separation(function(a,b){
         if (Math.max( Math.sqrt(a.data.total_tfs), Math.sqrt(b.data.total_tfs) ) > 10) {
           return 4;
