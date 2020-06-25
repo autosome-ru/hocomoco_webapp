@@ -1,14 +1,17 @@
 #column-selector-target {
   label {
+    input[type="checkbox"] {
+      margin-right: 3px;
+    }
     text-align: left;
     display: block;
     width: 100%;
   }
 }
 
-a button.full_core_collection {
-  color: black;
-}
+// a button.full_core_collection {
+//   color: black;
+// }
 
 table.tablesorter {
   // box-sizing: content-box; // resizable widget requires this option

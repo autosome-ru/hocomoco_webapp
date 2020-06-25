@@ -1,17 +1,18 @@
 .row
   .col-12
     .table-actions
-      - if arity.to_s == 'mono' && core_full_url
-        %button.work_as_link.full_core_collection{data: {href: core_full_url} }
-          = switch_to_core_full
-      %button.reset.resetColumns{type: 'button'} Reset
-      %button.select-columns-btn{type: 'button'} Select Columns
-      = download_button
-      %input{type: "text", value: csv_filename, class: 'csv-filename'}
-      .loading_table
-        .loading_logo
-      .caption= caption(arity: arity, species: species, family_id: family_id, full: is_full, show_full_core_caption: show_full_core_caption)
-      #hidden_select_columns
+      %form.form-inline.motif-table-controls
+        - if arity.to_s == 'mono' && core_full_url
+          %button.work_as_link.full_core_collection.btn.btn-sm.btn-outline-secondary{data: {href: core_full_url} }
+            = switch_to_core_full
+        %button.btn.btn-sm.btn-outline-secondary.reset.resetColumns{type: 'button'} Reset
+        %button.btn.btn-sm.btn-outline-secondary.select-columns-btn{type: 'button'} Select Columns
+        = download_button
+        %input.form-control.form-control-sm.csv-filename{type: "text", value: csv_filename}
+        .loading_table
+          .loading_logo
+        .caption= caption(arity: arity, species: species, family_id: family_id, full: is_full, show_full_core_caption: show_full_core_caption)
+        #hidden_select_columns
 .row
   .col-12
     %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2020-02-12-14-55', table_page: "hocomoco-motifs-#{species}-index-2020-02-12-14-55"}}
