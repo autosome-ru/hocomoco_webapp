@@ -1,7 +1,7 @@
 .row
   .col-12
     .table-actions
-      %form.form-inline.motif-table-controls
+      .form-inline.motif-table-controls
         - if arity.to_s == 'mono' && core_full_url
           %button.work_as_link.full_core_collection.btn.btn-sm.btn-outline-secondary{data: {href: core_full_url} }
             = switch_to_core_full
