@@ -23,7 +23,7 @@
   };
 
   HocomocoDB.epifactors_link = function(gene_id) {
-    return '<a href="http://epifactors.autosome.ru/genes?search=' + gene_id + '&field=gene_id" target="_blank">EpiFactors</a>';
+    return '<a href="http://epifactors.autosome.org/genes?search=' + gene_id + '&field=gene_id" target="_blank">EpiFactors</a>';
   };
 
   HocomocoDB.hgnc_id_link = function(hgnc) {
