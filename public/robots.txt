@@ -6,8 +6,8 @@
 
 User-agent: *
 Allow: /
-Host: https://hocomoco10.autosome.ru
-sitemap: https://hocomoco10.autosome.ru/sitemap.txt
+Host: https://hocomoco10.autosome.org
+sitemap: https://hocomoco10.autosome.org/sitemap.txt
 Disallow: *.pcm
 Disallow: *.pwm
 Disallow: *.dpcm

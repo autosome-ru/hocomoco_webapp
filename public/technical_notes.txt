@@ -12,7 +12,7 @@ converted to the nearest integers maintaining consistency of the resulting PCMs.
 
 2. The PCM to PWM conversion used in HOCOMOCO-v10 is the same as in v9, 
 the exact formula can be found, e.g., in MACRO-APE manual, page 20-21 
-in http://opera.autosome.ru/downloads/MACRO-PERFECTOS-APE_manual.pdf
+in http://opera.autosome.org/downloads/MACRO-PERFECTOS-APE_manual.pdf
 
 3. The plain files with matrices always use alphabetical 
 order of nucleotides (ACGT) and dinucleotides (AA,AC,AG...TT).
