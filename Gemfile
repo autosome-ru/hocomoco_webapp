@@ -32,7 +32,7 @@ gem 'draper'
 gem 'haml-rails'
 
 gem 'jquery-tablesorter'
-gem 'd3-rails'
+gem 'd3-rails', '~>5.7'
 
 gem 'therubyracer'
 gem 'less-rails'

@@ -57,7 +57,7 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
-    d3-rails (7.0.0)
+    d3-rails (5.7.0)
       railties (>= 3.1)
     draper (4.0.2)
       actionpack (>= 5.0)
@@ -216,7 +216,7 @@ DEPENDENCIES
   bioinform (~> 0.2.2)
   bootsnap (>= 1.1.0)
   byebug
-  d3-rails
+  d3-rails (~> 5.7)
   draper
   haml-rails
   jbuilder (~> 2.0)
@@ -234,4 +234,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.3.8
+   2.3.9
