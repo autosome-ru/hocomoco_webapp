@@ -28,24 +28,22 @@
 
 
   %body{data: {'app-prefix' => root_path}}
-    .stop-the-war
-      We, Russian scientists of the <i>autosome</i> team, are depressed by the dire events 
-      caused by Russian military actions in Ukraine. 
-      %br
-      We express our condolences to all affected people and sincerely hope for a prompt transition to peace.
+    / .stop-the-war
+    /   We, Russian scientists of the <i>autosome</i> team, are depressed by the dire events 
+    /   caused by Russian military actions in Ukraine. 
+    /   %br
+    /   We express our condolences to all affected people and sincerely hope for a prompt transition to peace.
     %nav.navbar.navbar-light.bg-gray.navbar-expand-lg.py-0
       %a.navbar-brand.ml-0.mr-2{href: root_path}
         %img.hocologo.d-inline-block{src: asset_url("hocomoco_logo_big.png")}
-        %span.d-inline-block HOCOMOCO
+        %span.d-inline-block HOCOMOCO v12
       %button.navbar-toggler{type: 'button', data: {toggle: 'collapse', target: "#navbarNav"}}
         / aria: {controls: 'navbarTogglerDemo03' expanded: 'false', label: 'Toggle navigation'}
         %span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarNav
         %ul.navbar-nav.px-1.d-flex.align-items-end
           %li.nav-item
-            %a.nav-link{href: root_path} Home
-          %li.nav-item
-            %a.nav-link{href: motifs_path(collection: 'H12CORE')} TF Collection
+            %a.nav-link{href: motifs_path(collection: 'H12CORE')} Browse
           / %li.nav-item.dropdown
           /   %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
           /     TF Collection

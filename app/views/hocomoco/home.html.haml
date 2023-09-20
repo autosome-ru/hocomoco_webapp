@@ -17,34 +17,14 @@
               Nucl. Acids Res., Database issue, gkx1106 (11 November 2017)
             %p.doi
               doi: 10.1093/nar/gkx1106
-      .mirrors
-        .mirror= link_to 'Primary URL', 'http://hocomoco.autosome.org/'
-        .mirror= link_to 'Mirror', 'http://www.cbrc.kaust.edu.sa/hocomoco11/'
+
       .database_description
         %p
-          HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) v11 provides
-          transcription factor (TF) binding models for 680 human and 453 mouse
-          TFs.
+          HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) v12 provides 1443 transcription factor (TF) binding models including secondary motif subtypes for 949 human TFs and 716 mouse orthologs.
         %p
-          Since v11, HOCOMOCO is complemented by
-          #{link_to 'MoLoTool', 'http://molotool.autosome.org/'},
-          an interactive web tool to mark motif occurrences in a given set of
-          DNA sequences.
+          The HOCOMOCO motif models are derived from ChIP-Seq and HT-SELEX data by DNA motif discovery with #{link_to 'ChIPMunk', 'http://autosome.org/ChIPMunk/'}. The resulting motifs were manually curated and rigorously benchmarked. The preprocessed ChIP-Seq data was extracted from the #{link_to 'GTRD', 'http://gtrd.biouml.org/bioumlweb/gtrd.html'} database of the BioUML platform.
         %p
-          In addition to basic mononucleotide position weight matrices (PWMs),
-          HOCOMOCO provides dinucleotide position weight matrices based on
-          ChIP-Seq data.
-        %p
-          All the models were produced by the
-          #{link_to 'ChIPMunk', 'http://autosome.org/ChIPMunk/'}
-          motif discovery tool.
-          Model quality ratings are results of a comprehensive cross-validation
-          benchmark.
-        %p
-          ChIP-Seq data for motif discovery was extracted from
-          #{link_to 'GTRD', 'http://gtrd.biouml.org/bioumlweb/gtrd.html'} database
-          of BioUML platform, that also provides an
-          #{link_to 'interface', 'http://micro.biouml.org/bioumlweb/hocomoco.html'}
-          for motif finding (sequence scanning) with HOCOMOCO models.
+          #{link_to 'MoLoTool', 'http://molotool.autosome.org/'} provides an interactive web GUI for sequence scanning to identify HOCOMOCO motif occurrences in a given set of DNA sequences.
+
   .col-8
     #motif_families_map{data: {url: "#{root_url}final_bundle/#{HOCOMOCO_VERSION}/#{@full_or_core}/#{@species}/#{@arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_#{@full_or_core}_family_tree_#{@species}_#{@arity}.json" } }><

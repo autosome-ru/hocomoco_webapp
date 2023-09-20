@@ -78,6 +78,7 @@ class HocomocoController < ApplicationController
   end
   def downloads_v10; end
   def downloads_v11; end
+  def downloads_v12; end
   def help; end
   def api_description; end
   def tree

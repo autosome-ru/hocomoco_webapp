@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   get '/downloads_v10' => 'hocomoco#downloads_v10', as: 'downloads_v10'
   get '/downloads_v11' => 'hocomoco#downloads_v11', as: 'downloads_v11'
   get '/downloads_v12' => 'hocomoco#downloads_v12', as: 'downloads_v12'
-  get '/downloads', to: redirect('/downloads_v11'), as: 'downloads'
-  get '/download', to: redirect('/downloads_v11')
+  get '/downloads', to: redirect('/downloads_v12'), as: 'downloads'
+  get '/download', to: redirect('/downloads_v12')
 
   get '/help' => 'hocomoco#help', as: 'help'
   get '/api_description' => 'hocomoco#api_description', as: 'api_description'
