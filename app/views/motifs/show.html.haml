@@ -13,12 +13,11 @@
     %table.key_value_info
       %tbody
         = table_info_row(motif, :gene_names) do |motif|
-          - if species.downcase == 'human'
-            = human_gene_name_links(motif.gene_names)
-          - else
-            = mouse_gene_name_links(motif.gene_names)
+          / - if species.downcase == 'human'
+          = human_gene_name_links(motif.gene_names)
+          / - else
+          = mouse_gene_name_links(motif.gene_names)
         = table_info_row motif, :full_name
-        = table_info_row motif, :model_arity_type
         = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
         = table_info_row motif, :big_logo_revcomp, html_options: {value_column_html: {class: 'sequence_logo'} }
         = table_info_row motif, :motif_source
@@ -34,10 +33,10 @@
         = table_info_row motif, :num_words_in_alignment
         = table_info_row(motif, :motif_families){|motif| tfclass_motif_family_links(motif.motif_families) }
         = table_info_row(motif, :motif_subfamilies){|motif| tfclass_motif_family_links(motif.motif_subfamilies) }
-        - if species == 'HUMAN'
-          = table_info_row(motif, :hgnc_ids){|motif| hgnc_id_links(motif.hgnc_ids) }
-        - else
-          = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
+        / - if species == 'HUMAN'
+        = table_info_row(motif, :hgnc_ids){|motif| hgnc_id_links(motif.hgnc_ids) }
+        / - else
+        = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
         = table_info_row(motif, :entrezgene_ids){|motif| gene_id_links(motif.entrezgene_ids) }
         = table_info_row(motif, :uniprot_id){|motif| uniprot_id_link(motif.uniprot_id) }
         = table_info_row(motif, :uniprot_acs){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_acs) }
@@ -66,7 +65,7 @@
         %tr
           %td GTEx tissue expression atlas
           %td= link_to "#{motif.gene_name} expression", motif.gtex_url
-        - if motif.species == 'HUMAN'
+        - if true # motif.species == 'HUMAN'
           %tr
             %td ReMap ChIP-seq dataset list
             %td= link_to "#{motif.gene_name} datasets", motif.remap_url

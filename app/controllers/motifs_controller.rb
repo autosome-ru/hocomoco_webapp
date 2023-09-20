@@ -1,17 +1,10 @@
 class MotifsController < ApplicationController
   def index
-    # species = params[:species].upcase
     collection = params.fetch(:collection, 'H12CORE').upcase
-    species = 'HUMAN'
-    @species = species
-    arity = 'mono'
-    redirect_to root_path  unless ['HUMAN', 'MOUSE'].include?(species)
-    redirect_to root_path  unless ['mono', 'di'].include?(arity)
     models = Motif.in_bundle(collection: collection).reject(&:retracted?)
     show_full = true
-    if !params['full'] || params['full'] && params['full'].to_s.downcase == 'false'
+    if params.fetch('full', 'true').to_s.downcase == 'false'
       show_full = false
-      models = models.select{|motif| ['A','B','C'].include?(motif.quality) }.reject(&:retracted?)
       models = models.select{|motif| ['A','B','C'].include?(motif.quality) }
                      .reject(&:retracted?)
                      .group_by(&:uniprot_id)
@@ -25,15 +18,14 @@ class MotifsController < ApplicationController
         models = MotifDecorator.decorate_collection(models)
         render locals: {
           models: models,
-          species: species,
-          arity: arity,
-          csv_filename: "#{species}_#{arity}_motifs.tsv",
+          collection: collection,
+          csv_filename: "#{collection}_motifs.tsv",
           family_id: nil,
           disable_default_filters: false,
           is_full: show_full,
-          core_full_url: motifs_path(species: species, arity: arity, full: !show_full),
+          core_full_url: motifs_path(full: !show_full),
           switch_to_core_full: show_full ? 'Switch to CORE collection' : 'Switch to FULL collection',
-          show_full_core_caption: (arity.to_s == 'mono'),
+          show_full_core_caption: true,
         }
       end
       format.json do
@@ -59,16 +51,13 @@ class MotifsController < ApplicationController
 
   def show
     motif = Motif.by_name(params[:motif])
-    @species = motif.species
 
     respond_to do |format|
       format.html do
         motif = MotifDecorator.decorate(motif)
         render locals: {
           motif: motif,
-          species: motif.species,
-          arity: motif.arity,
-          csv_filename: "#{motif.species}_#{motif.arity}_motifs.tsv"
+          csv_filename: "#{motif.collection}_motifs.tsv"
         }
       end
       format.json do
@@ -111,9 +100,7 @@ class MotifsController < ApplicationController
 
 protected
 
-  # def species; species; end
-  # def arity; arity; end
-  # def csv_filename; "#{species}_#{arity}_motifs.tsv"; end
+  # def csv_filename; "#{collection}_motifs.tsv"; end
 
-  # helper_method :species, :arity, :csv_filename, :quality_help_text
+  # helper_method :csv_filename, :quality_help_text
 end

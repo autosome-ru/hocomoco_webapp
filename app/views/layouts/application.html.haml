@@ -51,7 +51,7 @@
           /     TF Collection
           /   .dropdown-menu
           /     %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12CORE'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of universal binding models'}}
-          /       Core collection
+          /       Main collection
           /     %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVIVO'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for in vivo data'}}
           /       In vivo collection
           /     %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVITRO'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for in vitro data'}}
@@ -85,10 +85,9 @@
 
           %li.nav-item{class: @collection ? '' : 'ml-auto'}
             %form.form-inline.navbar-search.align-items-end{action: search_post_path, method: 'POST'}
-              %input{type: 'hidden', name: 'collection', value: 'H12CORE'}
-
               %input.form-control.mr-sm-2{type:"search", placeholder: "Search", name: 'query', value: params[:query]}
-              / = select_tag 'kind', options_for_select({'Core' => 'H12CORE', 'In vivo' => 'H12INVIVO', 'In vitro' => 'H12INVITRO', 'rSNP' => 'H12RSNP'},  params.fetch(:collection, 'H12CORE')), {class: 'custom-select mr-2'}
+              %input{type: 'hidden', name: 'collection', value: 'H12CORE'}
+              / = select_tag 'collection', options_for_select({'Core' => 'H12CORE', 'In vivo' => 'H12INVIVO', 'In vitro' => 'H12INVITRO', 'rSNP' => 'H12RSNP'},  params.fetch(:collection, 'H12CORE')), {class: 'custom-select mr-2'}
               %button.btn.btn-hocomoco-search.btn-outline-secondary{type: "submit"} Search
 
     %div{class: ['container-fluid', "controller-#{params[:controller]}", "action-#{params[:action]}"] }

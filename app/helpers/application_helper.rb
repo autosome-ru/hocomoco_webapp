@@ -48,12 +48,17 @@ module ApplicationHelper
     return @tf_ontology[species].term(family_id)
   end
 
-  def caption(arity: nil, species: nil, family_id: nil, full: false, show_full_core_caption: true)
+  def caption(collection: nil, family_id: nil, full: false, show_full_core_caption: true)
     result = ""
     # result += image_tag("#{species.downcase}_sel.png", class: 'species-indicator')
-    result += ((arity == 'di') ? 'Dinucleotide PWMs' : 'PWMs') + " for #{species} transcription factors"
+    result += {
+      'H12CORE' => 'Main collection',
+      'H12INVIVO' => 'In vivo collection',
+      'H12INVITRO' => 'In vitro collection',
+      'H12RSNP' => 'rSNP collection',
+    }.fetch(collection, '')
     result += full ? ' (full)' : ' (core)'  if show_full_core_caption
-    term = tfclass_term(family_id, species)
+    term = tfclass_term(family_id, 'HUMAN')
     if term
       tfclass_name = "#{term.level_name.capitalize} {#{family_id}}"
       tfclass_link = link_to("http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{family_id}", class: 'has-tooltip', data: {toggle: 'tooltip', placement: 'bottom', title: term.name}) do
@@ -67,8 +72,8 @@ module ApplicationHelper
     end
   end
 
-  def quality_help_text(arity)
-    'A - excellent, B - good, C - normal, D - limited reliability'
+  def quality_help_text
+    "A - reproducible in distinct datatypes, B - reproducible in a single datatype, C - comes from a single dataset, D - can't verify of ChIP-seq/SELEX data"
   end
 
   def help_icon(title:, href: nil)

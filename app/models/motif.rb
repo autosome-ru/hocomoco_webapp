@@ -257,8 +257,8 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     motif_source = data['datatype'].each_char.map{|k|
       {'P' => 'ChIP-Seq', 'S' => 'SELEX', 'M' => 'Methyl-SELEX'}.fetch(k){|k| $stderr.puts "Error: datatype `#{k}` unknown" }
     }.join(' + ')
-    hgnc_ids = data.dig('masterlist_info', 'species', 'HUMAN', 'hgnc')
-    mgi_ids = data.dig('masterlist_info', 'species', 'MOUSE', 'mgi')
+    hgnc_ids = data.dig('masterlist_info', 'species', 'HUMAN', 'hgnc') || []
+    mgi_ids = data.dig('masterlist_info', 'species', 'MOUSE', 'mgi') || []
     entrezgene_ids = [
       data.dig('masterlist_info', 'species', 'HUMAN', 'entrez'),
       data.dig('masterlist_info', 'species', 'MOUSE', 'entrez'),
