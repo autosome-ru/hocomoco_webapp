@@ -80,6 +80,7 @@ class HocomocoController < ApplicationController
   def downloads_v11; end
   def downloads_v12; end
   def help; end
+  def faq; end
   def api_description; end
   def tree
     render layout: 'bare'

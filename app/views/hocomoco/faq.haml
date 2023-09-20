@@ -1,0 +1,44 @@
+.row
+  .col-md-1
+  .col-lg-7
+    .help_container
+      %p
+        %a.section_header{href: '#faq'} FAQ
+      .qa-section
+        .question
+          <b>Q:</b> Can you explain the structure of motif IDs?
+        .answer
+          <b>A:</b> Let's use #{link_to 'AHR.H12CORE.0.P.B', motif_path('AHR.H12CORE.0.P.B')} as an example.
+          %br
+          Here <u>AHR</u> denotes the UniProt AC prefix (most of the time identical between human and mouse orthologs, e.g. AHR_HUMAN and AHR_MOUSE). 
+          %br
+          <u>H12CORE</u> denotes the subcollection, and can also be H12RSNP/H12INVIVO/H12INVITRO in downloadable motifs sets.
+          %br
+          <u>0</u> is the subtype number, where 0 denotes the most common motifs scoring the best across all benchmarking datasets.
+          %br
+          <u>P</u> is the type of the experiment that yielded motifs that were assigned to the subtype during expert curation. Can be P (ChI<b>P</b>-Seq), S (HT-<b>S</b>ELEX), or M (<b>M</b>ethyl-HT-SELEX), or any combination of those three for motifs found in several types of experiments. 
+          %br
+          <u>B</u> is the motif quality on the ABCD scale, see below.
+
+      .qa-section
+        .question
+          <b>Q:</b> In HOCOMOCO v11 there were separate mouse and human collections, why is there only one joint collection in v12?
+        .answer
+          <b>A:</b> Even in HOCOMOCO v11 we were relying on cross-validation between human and mouse datasets. As human and mouse TFs share highly similar and often identical DNA-binding domains, we have taken the next step and selected the most reliable motif well-performing across the whole range of available data for both species. Based on benchmarking results, we consider v12 motifs to be generally more informative and more reliable than in the previous releases. Please check the HOCOMOCO v12 paper for more details.
+
+      .qa-section
+        .question
+          <b>Q:</b> Where is the dinucleotide motif collection of HOCOMOCO v11?
+        .answer
+          <b>A:</b> In this release, we have focused our efforts on expanding the fraction of TFs covered by reliable motifs, rigorous benchmarking, and comprehensive annotation of motif subtypes. Dinucleotide motifs will continue to be available in HOCOMOCO v11.
+
+      .qa-section
+        .question
+          <b>Q:</b> There are four motif subcollections, right? Which I am browsing online and which I should use in my analysis?
+        .answer
+          <b>A:</b> The website catalog is devoted to the primary and the most universal core collection providing the motifs that excel across the whole set of benchmarking protocols and datasets. In case of doubt, you may safely use v12-core collection.
+          %br
+          However, in particular usage scenarios, you may prefer v12-invivo (for genomic TFBS), v12-invitro (for high-affinity oligos), or v12-rSNP (for analyzing regulatory variation) sets.
+
+- content_for(:title) do
+  FAQ - HOmo sapiens COmprehensive MOdel COllection
