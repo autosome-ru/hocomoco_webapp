@@ -42,32 +42,22 @@
         %span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarNav
         %ul.navbar-nav.px-1.d-flex.align-items-end
-          %li.nav-item.dropdown
-            %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
-              Home
-            .dropdown-menu
-              %a.dropdown-item{href: root_path(species: 'human', arity: 'mono', full: true)} Human
-              %a.dropdown-item{href: root_path(species: 'mouse', arity: 'mono', full: true)} Mouse
-          %li.nav-item.dropdown
-            %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
-              Human TFs
-            .dropdown-menu
-              %a.dropdown-item.has-tooltip{href: motifs_path(species: 'human', arity: 'mono', full: false), data: { toggle: 'tooltip', placement: 'right', title: 'Primary binding models (ABC quality)'}}
-                Mononucleotide models (core)
-              %a.dropdown-item.has-tooltip{href: motifs_path(species: 'human', arity: 'mono', full: true), data: { toggle: 'tooltip', placement: 'right', title: 'Primary and alternative binding models'}}
-                Mononucleotide models (full)
-              %a.dropdown-item{href: motifs_path(species: 'human', arity: 'di')}
-                Dinucleotide models
-          %li.nav-item.dropdown
-            %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
-              Mouse TFs
-            .dropdown-menu
-              %a.dropdown-item.has-tooltip{href: motifs_path(species: 'mouse', arity: 'mono', full: false), data: { toggle: 'tooltip', placement: 'right', title: 'Primary binding models (ABC quality)'}}
-                Mononucleotide models (core)
-              %a.dropdown-item.has-tooltip{href: motifs_path(species: 'mouse', arity: 'mono', full: true), data: { toggle: 'tooltip', placement: 'right', title: 'Primary and alternative binding models'}}
-                Mononucleotide models (full)
-              %a.dropdown-item{href: motifs_path(species: 'mouse', arity: 'di')}
-                Dinucleotide models
+          %li.nav-item
+            %a.nav-link{href: root_path} Home
+          %li.nav-item
+            %a.nav-link{href: motifs_path(collection: 'H12CORE')} TF Collection
+          / %li.nav-item.dropdown
+          /   %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
+          /     TF Collection
+          /   .dropdown-menu
+          /     %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12CORE'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of universal binding models'}}
+          /       Core collection
+          /     %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVIVO'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for in vivo data'}}
+          /       In vivo collection
+          /     %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVITRO'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for in vitro data'}}
+          /       In vitro collection
+          /     %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12RSNP'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for measuring regulatory SNP effects'}}
+          /       rSNP collection
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
               Tools
@@ -82,23 +72,23 @@
             %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
               Downloads
             .dropdown-menu
+              %a.dropdown-item{href: downloads_v12_path} HOCOMOCO v12
               %a.dropdown-item{href: downloads_v11_path} HOCOMOCO v11
               %a.dropdown-item{href: downloads_v10_path} HOCOMOCO v10
               %a.dropdown-item{href: 'http://autosome.org/HOCOMOCOS/'} HOCOMOCO v9
           %li.nav-item
             %a.nav-link{href: help_path} Help
 
-          - if @species
-            %li.nav-item.ml-auto
-              %img.species-indicator.mr-2{src: asset_url("#{@species.downcase}_sel.png")}
+          / - if @collection
+          /   %li.nav-item.ml-auto
+          /     %img.species-indicator.mr-2{src: asset_url("#{@collection}_sel.png")}
 
-          %li.nav-item{class: @species ? '' : 'ml-auto'}
+          %li.nav-item{class: @collection ? '' : 'ml-auto'}
             %form.form-inline.navbar-search.align-items-end{action: search_post_path, method: 'POST'}
-              %input{type: 'hidden', name: 'arity', value: 'mono'}
-              %input{type: 'hidden', name: 'species', value: 'human'}
+              %input{type: 'hidden', name: 'collection', value: 'H12CORE'}
 
               %input.form-control.mr-sm-2{type:"search", placeholder: "Search", name: 'query', value: params[:query]}
-              = select_tag 'kind', options_for_select({'Human PWMs' => 'human;mono', 'Human di-PWMs' => 'human;di', 'Mouse PWMs' => 'mouse;mono', 'Mouse di-PWMs' => 'mouse;di'},  ['human;mono', 'human;di', 'mouse;mono', 'mouse;di'].include?("#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}") ? "#{params[:species].try(&:downcase)};#{params[:arity].try(&:downcase)}" : 'human;mono'), {class: 'custom-select mr-2'}
+              / = select_tag 'kind', options_for_select({'Core' => 'H12CORE', 'In vivo' => 'H12INVIVO', 'In vitro' => 'H12INVITRO', 'rSNP' => 'H12RSNP'},  params.fetch(:collection, 'H12CORE')), {class: 'custom-select mr-2'}
               %button.btn.btn-hocomoco-search.btn-outline-secondary{type: "submit"} Search
 
     %div{class: ['container-fluid', "controller-#{params[:controller]}", "action-#{params[:action]}"] }

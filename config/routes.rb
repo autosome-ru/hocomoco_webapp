@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'hocomoco#home'
-  get '/:species' => 'motifs#index', constraints: {species: /human|mouse/i}, defaults: {arity: 'mono'}
-  get '/:species/:arity' => 'motifs#index', constraints: {species: /human|mouse/i, arity: /mono|di/i}, as: 'motifs'
+  get '/:collection' => 'motifs#index', constraints: {collection: /H12(CORE|INVIVO|INVITRO|RSNP)/i}, defaults: {collection: 'H12CORE'}, as: 'motifs'
   post '/search_post' => 'hocomoco#searchPost', as: 'search_post'
   get '/search' => 'hocomoco#search', as: 'search'
   get '/motif/:motif', constraints: {motif: /\w+_(HUMAN|MOUSE).H10(MO|DI).[ABCDS]/i}, to: redirect{|path_params, req|
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
 
   get '/downloads_v10' => 'hocomoco#downloads_v10', as: 'downloads_v10'
   get '/downloads_v11' => 'hocomoco#downloads_v11', as: 'downloads_v11'
+  get '/downloads_v12' => 'hocomoco#downloads_v12', as: 'downloads_v12'
   get '/downloads', to: redirect('/downloads_v11'), as: 'downloads'
   get '/download', to: redirect('/downloads_v11')
 
