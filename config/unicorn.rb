@@ -17,7 +17,7 @@ rails_root  = File.absolute_path('../', __dir__)
 # stdout_path "#{rails_root}/log/unicorn.log"
 
 # ZERO-DOWNTIME
-app_name = 'hocomoco11'
+app_name = 'hocomoco12'
 pid_file   = "/run/unicorn/#{app_name}.pid"
 socket_file= "/run/unicorn/#{app_name}.sock"
 log_file   = "/var/log/unicorn/#{app_name}.log"
