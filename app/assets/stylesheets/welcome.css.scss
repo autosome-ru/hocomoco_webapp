@@ -138,12 +138,27 @@ ul {
 
 .help_container {
   text-align: justify;
+  .section_header {
+    text-align: center;
+    font-style: italic;
+    font-weight: bolder;
+    display: block;
+    color: black;
+    font-size: 1.5em;
+  }
 }
 
-.section_header {
+.section_subheader {
   text-align: center;
   font-style: italic;
   font-weight: bolder;
   display: block;
   color: black;
+}
+
+.qa-section {
+  margin: 30px 0;
+  .question, .answer {
+    margin: 5px 0;
+  }
 }
