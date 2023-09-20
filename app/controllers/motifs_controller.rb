@@ -1,12 +1,13 @@
 class MotifsController < ApplicationController
   def index
-    species = params[:species].upcase
+    # species = params[:species].upcase
+    collection = params.fetch(:collection, 'H12CORE').upcase
+    species = 'HUMAN'
     @species = species
-    arity = params[:arity].downcase
+    arity = 'mono'
     redirect_to root_path  unless ['HUMAN', 'MOUSE'].include?(species)
     redirect_to root_path  unless ['mono', 'di'].include?(arity)
-    models = Motif.in_bundle(species: species, arity: arity).reject(&:retracted?)
-
+    models = Motif.in_bundle(collection: collection).reject(&:retracted?)
     show_full = true
     if !params['full'] || params['full'] && params['full'].to_s.downcase == 'false'
       show_full = false

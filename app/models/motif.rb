@@ -34,23 +34,18 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   def self.model_name; 'Motif'; end
 
   def uniprot_id; full_name.split('.')[0]; end
-  def bundle_name; full_name.split('.')[1]; end
-  def rank; full_name.split('.')[2].to_i; end
-  def quality; full_name.split('.')[3]; end
+  def collection; full_name.split('.')[1]; end
+  def bundle_name; collection; end
+  # def rank; full_name.split('.')[2].to_i; end
+  # def datatypes; full_name.split('.')[3]; end
+  # def quality; full_name.split('.')[4]; end
   def species; uniprot_id.split('_').last; end
   def to_s; full_name; end
   def retracted?; !! retracted; end
   def gene_name; gene_names.first; end
 
   def arity
-    case bundle_name[-2,2]
-    when 'MO'
-      'mono'
-    when 'DI'
-      'di'
-    else
-      raise "Unknown bundle #{bundle_name} for model #{full_name}"
-    end
+    'mono'
   end
 
   def subfamily_ids
@@ -67,7 +62,7 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     if retracted?
       HocomocoSite::url_in_final_bundle("retracted/#{url_part}")
     else
-      HocomocoSite::url_in_final_bundle("full/#{url_part}")
+      HocomocoSite::url_in_final_bundle("#{url_part}")
     end
   end
 
@@ -75,35 +70,35 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     if retracted?
       HocomocoSite::path_in_final_bundle("retracted/#{path_part}")
     else
-      HocomocoSite::path_in_final_bundle("full/#{path_part}")
+      HocomocoSite::path_in_final_bundle("#{path_part}")
     end
   end
 
   def pcm_url
     ext = model_kind.pcm_extension
-    url_in_final_bundle("#{species}/#{arity}/pcm/#{full_name}.#{ext}")
+    url_in_final_bundle("#{collection}/pcm/#{full_name}.#{ext}")
   end
 
   def pwm_url
     ext = model_kind.pwm_extension
-    url_in_final_bundle("#{species}/#{arity}/pwm/#{full_name}.#{ext}")
+    url_in_final_bundle("#{collection}/pwm/#{full_name}.#{ext}")
   end
 
   def alignment_url
     ext = model_kind.pwm_extension
-    url_in_final_bundle("#{species}/#{arity}/words/#{full_name}.words")
+    url_in_final_bundle("#{collection}/words/#{full_name}.words")
   end
 
   def pcm_path
-    path_in_final_bundle("#{species}/#{arity}/pcm/#{full_name}.#{model_kind.pcm_extension}")
+    path_in_final_bundle("#{collection}/pcm/#{full_name}.#{model_kind.pcm_extension}")
   end
 
   def pwm_path
-    path_in_final_bundle("#{species}/#{arity}/pwm/#{full_name}.#{model_kind.pwm_extension}")
+    path_in_final_bundle("#{collection}/pwm/#{full_name}.#{model_kind.pwm_extension}")
   end
 
   def threshold_pvalue_list_path
-    path_in_final_bundle("#{species}/#{arity}/thresholds/#{full_name}.thr")
+    path_in_final_bundle("#{collection}/thresholds/#{full_name}.thr")
   end
 
   def remap_url
@@ -169,27 +164,28 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   end
 
   def self.standard_thresholds_by_motif
-    @standard_thresholds_by_motif ||= Hash.new{|species_hash, species|
-      species_hash[species] = Hash.new{|arity_hash, arity|
-        standard_thresholds_path = HocomocoSite::path_in_final_bundle("full/#{species}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_full_standard_thresholds_#{species}_#{arity}.txt")
-        retracted_standard_thresholds_path = HocomocoSite::path_in_final_bundle("retracted/#{species}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_standard_thresholds_#{species}_#{arity}.txt")
-        standard_thresholds = read_standard_thresholds(standard_thresholds_path)
-        if File.exist?(retracted_standard_thresholds_path)
-          retracted_standard_thresholds = read_standard_thresholds(retracted_standard_thresholds_path)
-          arity_hash[arity] = standard_thresholds.merge(retracted_standard_thresholds)
-        else
-          arity_hash[arity] = standard_thresholds
-        end
-      }
-    }
+    # @standard_thresholds_by_motif ||= Hash.new{|species_hash, species|
+    #   species_hash[species] = Hash.new{|arity_hash, arity|
+    #     standard_thresholds_path = HocomocoSite::path_in_final_bundle("full/#{collection}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_full_standard_thresholds_#{species}_#{arity}.txt")
+    #     retracted_standard_thresholds_path = HocomocoSite::path_in_final_bundle("retracted/#{collection}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_standard_thresholds_#{species}_#{arity}.txt")
+    #     standard_thresholds = read_standard_thresholds(standard_thresholds_path)
+    #     if File.exist?(retracted_standard_thresholds_path)
+    #       retracted_standard_thresholds = read_standard_thresholds(retracted_standard_thresholds_path)
+    #       arity_hash[arity] = standard_thresholds.merge(retracted_standard_thresholds)
+    #     else
+    #       arity_hash[arity] = standard_thresholds
+    #     end
+    #   }
+    # }
+    {}
   end
 
   def standard_thresholds
-    self.class.standard_thresholds_by_motif[species][arity][full_name]
+    self.class.standard_thresholds_by_motif.dig(collection, full_name) || {}
   end
 
   def precalculated_thresholds_url
-    url_in_final_bundle("#{species}/#{arity}/thresholds/#{full_name}.thr")
+    url_in_final_bundle("#{collection}/thresholds/#{full_name}.thr")
   end
 
   def model_kind; ModelKind.get(arity); end
@@ -202,24 +198,24 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
   end
 
   def direct_logo_url
-    url_in_final_bundle("#{species}/#{arity}/logo_small/#{full_name}_direct.png")
+    url_in_final_bundle("#{collection}/logo_small/#{full_name}_direct.png")
   end
 
   # big logo is normal size, large logo is bigger than big and acceptable to insert logo in papers etc
   def direct_big_logo_url
-    url_in_final_bundle("#{species}/#{arity}/logo/#{full_name}_direct.png")
+    url_in_final_bundle("#{collection}/logo/#{full_name}_direct.png")
   end
 
   def revcomp_big_logo_url
-    url_in_final_bundle("#{species}/#{arity}/logo/#{full_name}_revcomp.png")
+    url_in_final_bundle("#{collection}/logo/#{full_name}_revcomp.png")
   end
 
   def direct_large_logo_url
-    url_in_final_bundle("#{species}/#{arity}/logo_large/#{full_name}_direct.png")
+    url_in_final_bundle("#{collection}/logo_large/#{full_name}_direct.png")
   end
 
   def revcomp_large_logo_url
-    url_in_final_bundle("#{species}/#{arity}/logo_large/#{full_name}_revcomp.png")
+    url_in_final_bundle("#{collection}/logo_large/#{full_name}_revcomp.png")
   end
 
   def motif_subfamily_ids
@@ -252,35 +248,60 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     }
   end
 
-  def self.from_string(str, retracted: false)
-    full_name, model_length, consensus, \
-      _uniprot, \
-      uniprot_acs, gene_names, \
-      _arity_type, \
-      quality, rank, num_words_in_alignment, \
-      best_auc_human, best_auc_mouse, \
-      num_datasets_human, num_datasets_mouse, \
-      release, motif_source, \
-      motif_families, motif_subfamilies, \
-      hgnc_ids, mgi_ids, entrezgene_ids, \
-      comment \
-        = str.chomp.split("\t", 22)
-    motif_families = motif_families.split(':separator:')
-    motif_subfamilies = motif_subfamilies.split(':separator:')
-    best_auc_human = best_auc_human.empty? ? nil : best_auc_human.to_f
-    best_auc_mouse = best_auc_mouse.empty? ? nil : best_auc_mouse.to_f
-    num_datasets_human = num_datasets_human.empty? ? nil : num_datasets_human.to_i
-    num_datasets_mouse = num_datasets_mouse.empty? ? nil : num_datasets_mouse.to_i
+  def self.from_json(data, retracted: false)
+    full_name = data['final_name']
+    num_datasets_human = data.dig('original_motif', 'species_counts', 'HUMAN') || 0
+    num_datasets_mouse = data.dig('original_motif', 'species_counts', 'MOUSE') || 0    
+    motif_families = [data.dig('masterlist_info', 'tfclass_family')]
+    motif_subfamilies = [data.dig('masterlist_info', 'tfclass_subfamily')]
+    motif_source = data['datatype'].each_char.map{|k|
+      {'P' => 'ChIP-Seq', 'S' => 'SELEX', 'M' => 'Methyl-SELEX'}.fetch(k){|k| $stderr.puts "Error: datatype `#{k}` unknown" }
+    }.join(' + ')
+    hgnc_ids = data.dig('masterlist_info', 'species', 'HUMAN', 'hgnc')
+    mgi_ids = data.dig('masterlist_info', 'species', 'MOUSE', 'mgi')
+    entrezgene_ids = [
+      data.dig('masterlist_info', 'species', 'HUMAN', 'entrez'),
+      data.dig('masterlist_info', 'species', 'MOUSE', 'entrez'),
+    ]
+    gene_names = [
+      data.dig('masterlist_info', 'species', 'HUMAN', 'gene_symbol'),
+      data.dig('masterlist_info', 'species', 'MOUSE', 'gene_symbol'),
+      *data.dig('masterlist_info', 'species', 'HUMAN', 'gene_synonyms')&.split(' '),
+      *data.dig('masterlist_info', 'species', 'MOUSE', 'gene_synonyms')&.split(' '),
+    ]
 
-    self.new(full_name, model_length.to_i, consensus, quality, rank.to_i,
+    uniprot_acs = [] # TODO
+    num_words_in_alignment = data['num_words']
+    comment = data.fetch('comment', '')
+
+# TODO in bundle
+# consensus_string → consensus
+# subtype_order → to int
+# mark ChIP-Seq as P, not C in datatype_overrides
+
+# TODO:
+    best_auc_human = nil #best_auc_human.empty? ? nil : best_auc_human.to_f
+    best_auc_mouse = nil #best_auc_mouse.empty? ? nil : best_auc_mouse.to_f
+
+    self.new(full_name, data['length'], data['consensus'], data['quality'], data['subtype_order'].to_i,
       best_auc_human, best_auc_mouse,
       num_datasets_human, num_datasets_mouse,
-      release, motif_source,
+      'HOCOMOCOv12', motif_source,
       motif_families, motif_subfamilies,
-      hgnc_ids.split('; '), mgi_ids.split('; '), entrezgene_ids.split('; '),
-      gene_names.split('; '), uniprot_acs.split('; '), num_words_in_alignment.to_i,
+      hgnc_ids, mgi_ids, entrezgene_ids,
+      gene_names, uniprot_acs, num_words_in_alignment,
       comment, retracted)
   end
+
+# :full_name, :model_length, :consensus, :quality, :rank,
+#                           :best_auc_human, :best_auc_mouse,
+#                           :num_datasets_human, :num_datasets_mouse,
+#                           :release, :motif_source,
+#                           :motif_families, :motif_subfamilies,
+#                           :hgnc_ids, :mgi_ids, :entrezgene_ids,
+#                           :gene_names, :uniprot_acs,
+#                           :num_words_in_alignment,
+#                           :comment, :retracted
 
   def match_query?(query)
     match = nil # postfix-if work incorrectly with undefined local-variable (https://bugs.ruby-lang.org/issues/16631)
@@ -305,30 +326,26 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
 
   def self.each_in_file(filename, retracted: false, &block)
     @cached_motifs ||= {}
-    @cached_motifs[filename] ||= File.readlines(filename).drop(1).map{|line| self.from_string(line, retracted: retracted) }.each(&block)
+    @cached_motifs[filename] ||= File.readlines(filename).map{|line| self.from_json(JSON.parse(line)) }.each(&block)
   end
 
-  def self.in_bundle(species:, arity:)
-    result = self.each_in_file(HocomocoSite::path_in_final_bundle("full/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_full_final_collection_#{species.upcase}_#{arity}.tsv")).to_a
-    if File.exist?(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"))
-      result += self.each_in_file(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
-    end
+  def self.in_bundle(collection: 'H12CORE')
+    result = self.each_in_file(HocomocoSite::path_in_final_bundle("#{collection}/#{collection}_annotation.jsonl")).to_a
+    # if File.exist?(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"))
+    #   result += self.each_in_file(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
+    # end
     result
   end
 
   def self.all
-    [:human, :mouse].flat_map{|species|
-      [:mono, :di].flat_map{|arity|
-        self.in_bundle(species: species, arity: arity)
-      }
+    ['H12CORE', 'H12INVIVO', 'H12INVITRO', 'H12RSNP'].flat_map{|collection|
+      self.in_bundle(collection: collection)
     }
   end
 
   def self.by_name(motif_name)
-    species = motif_name.split('.')[0].split('_').last.upcase
-    bundle_name = motif_name.split('.')[1].upcase
-    arity = {'H11MO' => 'mono', 'H11DI' => 'di'}[bundle_name]
-    Motif.in_bundle(species: species, arity: arity).detect{|motif|
+    collection = motif_name.split('.')[1]
+    Motif.in_bundle(collection: collection).detect{|motif|
       motif.full_name == motif_name
     }
   end
