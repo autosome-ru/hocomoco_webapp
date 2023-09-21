@@ -93,4 +93,10 @@ class MotifDecorator < ApplicationDecorator
 
   def best_auc_human; object.best_auc_human&.round(3); end
   def best_auc_mouse; object.best_auc_mouse&.round(3); end
+
+  def motif_source_full
+    object.motif_source.each_char.map{|k|
+      {'P' => 'ChIP-Seq', 'S' => 'HT-SELEX', 'M' => 'Methyl-HT-SELEX'}.fetch(k){|k| $stderr.puts "Error: datatype `#{k}` unknown" }
+    }.join(' + ')
+  end
 end

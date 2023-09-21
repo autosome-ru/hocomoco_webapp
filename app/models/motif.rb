@@ -248,9 +248,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     num_datasets_mouse = data.dig('original_motif', 'species_counts', 'MOUSE') || 0
     motif_families = [data.dig('masterlist_info', 'tfclass_family')]
     motif_subfamilies = [data.dig('masterlist_info', 'tfclass_subfamily')]
-    motif_source = data['datatype'].each_char.map{|k|
-      {'P' => 'ChIP-Seq', 'S' => 'SELEX', 'M' => 'Methyl-SELEX'}.fetch(k){|k| $stderr.puts "Error: datatype `#{k}` unknown" }
-    }.join(' + ')
+    motif_source = data['datatype']
     hgnc_ids = data.dig('masterlist_info', 'species', 'HUMAN', 'hgnc') || []
     mgi_ids = data.dig('masterlist_info', 'species', 'MOUSE', 'mgi') || []
 

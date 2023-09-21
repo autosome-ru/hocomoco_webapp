@@ -61,7 +61,7 @@
             %td= model.quality
             %td= model.rank
             %td= model.consensus
-            %td= model.motif_source
+            %td= model.motif_source.chars.join('+')
             %td= model.best_auc_human
             %td= model.best_auc_mouse
             %td= model.num_datasets_human
