@@ -52,14 +52,15 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     'mono'
   end
 
-  def subfamily_ids
-    motif_subfamilies.map{|subfamily| subfamily.match(/\{(.+)\}/)[1] }
-  end
+  # def subfamily_ids
+  #   motif_subfamilies.map{|subfamily| subfamily.match(/\{(.+)\}/)[1] }
+  # end
 
   def is_a_subfamily_member?(subfamily_id_query)
-    subfamily_ids.any?{|subfamily_id|
-      subfamily_id == subfamily_id_query || subfamily_id.start_with?(subfamily_id_query)
-    }
+    "#{tfclass_id}.".start_with?("#{subfamily_id_query}.")
+    # subfamily_ids.any?{|subfamily_id|
+      # subfamily_id == subfamily_id_query || subfamily_id.start_with?(subfamily_id_query)
+    # }
   end
 
   def url_in_final_bundle(url_part)
@@ -222,12 +223,12 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     url_in_final_bundle("#{collection}/logo_large/#{full_name}_revcomp.png")
   end
 
-  def motif_subfamily_ids
-    motif_families.map{|fam|
-      match = fam.match(/^(?<name>.+)\{(?<family_id>[\d.]+)\}$/)
-      match[:family_id]
-    }
-  end
+  # def motif_subfamily_ids
+  #   motif_families.map{|fam|
+  #     match = fam.match(/^(?<name>.+)\{(?<family_id>[\d.]+)\}$/)
+  #     match[:family_id]
+  #   }
+  # end
 
   def motif_families_links
     motif_families.map{|fam|
