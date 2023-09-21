@@ -34,8 +34,11 @@
           = motif_table_header :num_datasets_human, hide_by_default: true, class: 'num_datasets'
           = motif_table_header :num_datasets_mouse, hide_by_default: true, class: 'num_datasets'
           = motif_table_header :num_words_in_alignment,hide_by_default: true, class: 'num_words_in_alignment'
-          = motif_table_header :motif_families, class: 'motif-family'
-          = motif_table_header :motif_subfamilies, class: 'motif-subfamily', hide_by_default: true
+          = motif_table_header :tfclass_superclass, class: 'motif-superclass'
+          = motif_table_header :tfclass_class, class: 'motif-class'
+          = motif_table_header :tfclass_family, class: 'motif-family'
+          = motif_table_header :tfclass_subfamily, class: 'motif-subfamily', hide_by_default: true
+          = motif_table_header :tfclass_id, class: 'tfclass-id', hide_by_default: true
           = motif_table_header :hgnc_ids, dont_sort: true, hide_by_default: true, class: 'hgnc_id'
           = motif_table_header :mgi_ids, dont_sort: true, hide_by_default: true, class: 'mgi_id'
           = motif_table_header :entrezgene_ids_human, dont_sort: true, class: 'gene_id'
@@ -64,8 +67,11 @@
             %td= model.num_datasets_human
             %td= model.num_datasets_mouse
             %td= model.num_words_in_alignment
-            %td= model.motif_families
-            %td= model.motif_subfamilies
+            %td= model.tfclass_superclass
+            %td= model.tfclass_class
+            %td= model.tfclass_family
+            %td= model.tfclass_subfamily
+            %td= model.tfclass_id
             %td= model.hgnc_ids
             %td= model.mgi_ids
             %td= model.entrezgene_ids_human

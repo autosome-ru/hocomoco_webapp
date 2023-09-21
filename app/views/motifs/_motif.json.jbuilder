@@ -15,8 +15,13 @@ json.best_auc_mouse   motif.best_auc_mouse
 json.num_datasets_human  motif.num_datasets_human
 json.num_datasets_mouse  motif.num_datasets_mouse
 json.num_words_in_alignment  motif.num_words_in_alignment
-json.motif_families  motif.motif_families
-json.motif_subfamilies   motif.motif_subfamilies
+json.tfclass do
+  json.superclass  motif.tfclass_superclass
+  json.class  motif.tfclass_class
+  json.family  motif.tfclass_family
+  json.subfamily   motif.tfclass_subfamily
+  json.id   motif.tfclass_id
+end
 
 if motif.species == 'HUMAN'
   json.hgnc_ids(motif.hgnc_ids)

@@ -5,8 +5,13 @@ json.array! motifs do |motif|
   json.gene_synonyms_human  motif.gene_synonyms_human
   json.gene_synonyms_mouse  motif.gene_synonyms_mouse
 
-  json.motif_families  motif.motif_families
-  json.motif_subfamilies   motif.motif_subfamilies
+  json.tfclass do
+    json.superclass  motif.tfclass_superclass
+    json.class  motif.tfclass_class
+    json.family  motif.tfclass_family
+    json.subfamily   motif.tfclass_subfamily
+    json.id   motif.tfclass_id
+  end
 
   json.uniprot_id_human  motif.uniprot_id_human
   json.uniprot_id_mouse  motif.uniprot_id_mouse

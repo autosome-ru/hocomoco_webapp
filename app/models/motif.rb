@@ -2,14 +2,6 @@ require 'bioinform'
 require 'dipm'
 require 'model_kind'
 
-
-TF_CLASSIFICATION_HUMAN = WingenderTFClass::OBO::TFClassification.from_file(WingenderTFClass::FilePaths::TFOntologyHuman)
-TF_CLASSIFICATION_MOUSE = WingenderTFClass::OBO::TFClassification.from_file(WingenderTFClass::FilePaths::TFOntologyMouse)
-
-def tfclass_term_names(id)
-  [TF_CLASSIFICATION_HUMAN, TF_CLASSIFICATION_MOUSE].map{|tf_clsf| tf_clsf.term(id) }.uniq
-end
-
 module HocomocoSite
   def self.url_in_final_bundle(url_part)
     url_base = HocomocoSite::Application.config.relative_url_root || ''
@@ -244,21 +236,11 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     }
   end
 
-  def motif_classes
-    motif_subfamily_ids.map{|id|
-      id.split('.').first(2).join('.')
-    }.uniq.flat_map{|class_id|
-      tfclass_term_names(class_id)
-    }
-  end
-
-  def motif_superclasses
-    motif_subfamily_ids.map{|id|
-      id.split('.').first(2).join('.')
-    }.uniq.flat_map{|class_id|
-      tfclass_term_names(class_id)
-    }
-  end
+  def tfclass_superclass; data.dig('masterlist_info', 'tfclass_superclass'); end
+  def tfclass_class; data.dig('masterlist_info', 'tfclass_class'); end
+  def tfclass_family; data.dig('masterlist_info', 'tfclass_family'); end
+  def tfclass_subfamily; data.dig('masterlist_info', 'tfclass_subfamily'); end
+  def tfclass_id; data.dig('masterlist_info', 'tfclass_id'); end
 
   def self.from_json(data, retracted: false)
     full_name = data['final_name']
@@ -299,7 +281,11 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     return entrezgene_ids_mouse.include?(match[2])  if match = query.match(/\bGene(\s*Id)?:?\s*(\d+)\b/i)
 
     pattern = /#{query}/i
-    [:full_name, :motif_subfamilies, :motif_families, :motif_classes, :motif_superclasses, :gene_name_human, :gene_name_mouse, :gene_synonyms_human, :gene_synonyms_mouse].any?{|param|
+    [
+      :full_name,
+      :tfclass_superclass, :tfclass_class, :tfclass_family, :tfclass_subfamily, #:tfclass_id,
+      :gene_name_human, :gene_name_mouse, :gene_synonyms_human, :gene_synonyms_mouse
+    ].any?{|param|
       val = self.send(param)
       case val
       when Array

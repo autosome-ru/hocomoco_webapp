@@ -27,14 +27,6 @@ class MotifDecorator < ApplicationDecorator
     object.origin_models.join('; <br/>').html_safe
   end
 
-  def motif_families
-    object.motif_families.join('; <br/>').html_safe
-  end
-
-  def motif_subfamilies
-    object.motif_subfamilies.join('; <br/>').html_safe
-  end
-
   def hgnc_ids; object.hgnc_ids.join('; '); end
   def mgi_ids; object.mgi_ids.join('; '); end
   def entrezgene_ids_human; object.entrezgene_ids_human.join('; '); end
