@@ -48,9 +48,9 @@
           %tr
             %td= model.full_name(target: '_blank')
             %td= model.logo(target: '_blank', class: 'inline_sequence_logo')
-            %td= model.human_prefixed_gene_name
+            %td HUMAN:#{model.gene_name_human}
             %td= model.gene_synonyms_human.join(', ')
-            %td= model.mouse_prefixed_gene_name
+            %td MOUSE:#{model.gene_name_mouse}
             %td= model.gene_synonyms_mouse.join(', ')
             %td= model.model_length
             %td= model.quality
