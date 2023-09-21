@@ -84,6 +84,7 @@ module ApplicationHelper
 
   # "abc, def" --> "{decorated abc}, {decorated def}"
   def decorate_list(str, splitter: ", ", joiner: ", ", &decorating_block)
+    return nil  if !str
     str.split(splitter).map(&decorating_block).join(joiner).html_safe
   end
 
