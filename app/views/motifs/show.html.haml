@@ -41,8 +41,10 @@
         / - else
         = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
         = table_info_row(motif, :entrezgene_ids){|motif| gene_id_links(motif.entrezgene_ids) }
-        = table_info_row(motif, :uniprot_id){|motif| uniprot_id_link(motif.uniprot_id) }
-        = table_info_row(motif, :uniprot_acs){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_acs) }
+        = table_info_row(motif, :uniprot_id_human){|motif| uniprot_id_link(motif.uniprot_id_human) }
+        = table_info_row(motif, :uniprot_id_mouse){|motif| uniprot_id_link(motif.uniprot_id_mouse) }
+        = table_info_row(motif, :uniprot_ac_human){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_ac_human) }
+        = table_info_row(motif, :uniprot_ac_mouse){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_ac_mouse) }
         = table_info_row motif, :comment
         = table_info_row motif, :downloads, header_cell: 'Downloads' do |m|
           = m.download_pcm
@@ -89,7 +91,7 @@
       = motif.pwm
 
 - content_for(:meta_description) do
-  = "Motif #{motif.object.full_name} for #{motif.gene_name} #{motif.species.downcase} transcription factor (#{motif.uniprot_id} in UniProt)"
+  = "Motif #{motif.object.full_name} for #{motif.gene_name} #{motif.species.downcase} transcription factor (#{motif.uniprot_id_human} in UniProt)"
 - content_for(:meta_thumbnail) do
   = request.base_url + motif.direct_logo_url
 - content_for(:title) do

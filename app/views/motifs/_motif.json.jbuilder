@@ -26,8 +26,10 @@ else
 end
 
 json.entrezgene_ids  motif.entrezgene_ids
-json.uniprot_id  motif.uniprot_id
-json.uniprot_acs   motif.uniprot_acs
+json.uniprot_id_human  motif.uniprot_id_human
+json.uniprot_id_mouse  motif.uniprot_id_mouse
+json.uniprot_ac_human   motif.uniprot_ac_human
+json.uniprot_ac_mouse   motif.uniprot_ac_mouse
 json.comment   motif.retracted? ? [motif.comment, "Retracted!"].compact.reject(&:empty?).join("\n") : motif.comment
 
 if with_matrices

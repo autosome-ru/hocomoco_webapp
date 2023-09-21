@@ -33,16 +33,11 @@ en:
   activerecord:
     attributes:
       motif:
-        gene_name_human:   'Gene (human)'
-        gene_name_mouse:   'Gene (mouse)'
+        gene_name_human:    'Gene (human)'
+        gene_name_mouse:    'Gene (mouse)'
+        gene_synonyms_human: 'Gene aliases (human)'
+        gene_synonyms_mouse: 'Gene aliases (mouse)'
 
-        gene_synonyms_human:   'Gene aliases (human)'
-        gene_synonyms_mouse:   'Gene aliases (mouse)'
-
-        gene_names_human:   'Gene (human)'
-        gene_names_mouse:   'Gene (mouse)'
-
-        gene_names:         'Transcription factor'
         full_name:          'Model'
         logo:               'LOGO'
         big_logo:           'LOGO'
@@ -62,7 +57,9 @@ en:
         hgnc_ids:           'HGNC'
         mgi_ids:            'MGI'
         entrezgene_ids:     'EntrezGene'
-        uniprot_id:         'UniProt ID'
-        uniprot_acs:        'UniProt AC'
+        uniprot_id_human:   'UniProt ID (human)'
+        uniprot_id_mouse:   'UniProt ID (mouse)'
+        uniprot_ac_human:   'UniProt AC (human)'
+        uniprot_ac_mouse:   'UniProt AC (mouse)'
         comment:            'Comment'
         num_words_in_alignment: 'Aligned words'

@@ -27,16 +27,19 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
                           :release, :motif_source,
                           :motif_families, :motif_subfamilies,
                           :hgnc_ids, :mgi_ids, :entrezgene_ids,
-                          :uniprot_acs,
                           :num_words_in_alignment,
                           :comment, :retracted) do
 
   def self.model_name; 'Motif'; end
 
   def tf; full_name.split('.')[0]; end
-  def uniprot_id; uniprot_id_human; end
+
   def uniprot_id_human; data.dig('masterlist_info', 'species', 'HUMAN', 'uniprot_id'); end
   def uniprot_id_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'uniprot_id'); end
+
+  def uniprot_ac_human; data.dig('masterlist_info', 'species', 'HUMAN', 'uniprot_ac'); end
+  def uniprot_ac_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'uniprot_ac'); end
+
   def collection; full_name.split('.')[1]; end
   def bundle_name; collection; end
   # def rank; full_name.split('.')[2].to_i; end
@@ -259,7 +262,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
   def self.from_json(data, retracted: false)
     full_name = data['final_name']
     num_datasets_human = data.dig('original_motif', 'species_counts', 'HUMAN') || 0
-    num_datasets_mouse = data.dig('original_motif', 'species_counts', 'MOUSE') || 0    
+    num_datasets_mouse = data.dig('original_motif', 'species_counts', 'MOUSE') || 0
     motif_families = [data.dig('masterlist_info', 'tfclass_family')]
     motif_subfamilies = [data.dig('masterlist_info', 'tfclass_subfamily')]
     motif_source = data['datatype'].each_char.map{|k|
@@ -272,7 +275,6 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
       data.dig('masterlist_info', 'species', 'MOUSE', 'entrez'),
     ]
 
-    uniprot_acs = [] # TODO
     num_words_in_alignment = data['num_words']
     comment = data.fetch('comment', '')
 
@@ -286,19 +288,9 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
       'HOCOMOCOv12', motif_source,
       motif_families, motif_subfamilies,
       hgnc_ids, mgi_ids, entrezgene_ids,
-      uniprot_acs, num_words_in_alignment,
+      num_words_in_alignment,
       comment, retracted)
   end
-
-# :full_name, :model_length, :consensus, :quality, :rank,
-#                           :best_auc_human, :best_auc_mouse,
-#                           :num_datasets_human, :num_datasets_mouse,
-#                           :release, :motif_source,
-#                           :motif_families, :motif_subfamilies,
-#                           :hgnc_ids, :mgi_ids, :entrezgene_ids,
-#                           :uniprot_acs,
-#                           :num_words_in_alignment,
-#                           :comment, :retracted
 
   def match_query?(query)
     match = nil # postfix-if work incorrectly with undefined local-variable (https://bugs.ruby-lang.org/issues/16631)

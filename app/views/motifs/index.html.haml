@@ -40,8 +40,10 @@
           = motif_table_header :hgnc_ids, dont_sort: true, hide_by_default: true, class: 'hgnc_id'
           = motif_table_header :mgi_ids, dont_sort: true, hide_by_default: true, class: 'mgi_id'
           = motif_table_header :entrezgene_ids, dont_sort: true, class: 'gene_id'
-          = motif_table_header :uniprot_id, class: 'uniprot_id'
-          = motif_table_header :uniprot_acs, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
+          = motif_table_header :uniprot_id_human, class: 'uniprot_id'
+          = motif_table_header :uniprot_id_mouse, class: 'uniprot_id'
+          = motif_table_header :uniprot_ac_human, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
+          = motif_table_header :uniprot_ac_mouse, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
 
       %tbody
         - models.each do |model|
@@ -68,8 +70,10 @@
             %td= model.hgnc_ids
             %td= model.mgi_ids
             %td= model.entrezgene_ids
-            %td= model.uniprot_id
-            %td= model.uniprot_acs
+            %td= model.uniprot_id_human
+            %td= model.uniprot_id_mouse
+            %td= model.uniprot_ac_human
+            %td= model.uniprot_ac_mouse
 
 - content_for(:title) do
   Motifs - HOmo sapiens COmprehensive MOdel COllection

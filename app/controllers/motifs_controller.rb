@@ -7,8 +7,8 @@ class MotifsController < ApplicationController
       show_full = false
       models = models.select{|motif| ['A','B','C'].include?(motif.quality) }
                      .reject(&:retracted?)
-                     .group_by(&:uniprot_id)
-                     .map{|uniprot_id, tf_models|
+                     .group_by(&:tf)
+                     .map{|tf, tf_models|
                        tf_models.sort_by(&:rank).first
                      }
     end
