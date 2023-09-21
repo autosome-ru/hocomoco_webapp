@@ -27,7 +27,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
                           :release, :motif_source,
                           :motif_families, :motif_subfamilies,
                           :hgnc_ids, :mgi_ids, :entrezgene_ids,
-                          :gene_names, :uniprot_acs,
+                          :uniprot_acs,
                           :num_words_in_alignment,
                           :comment, :retracted) do
 
@@ -47,10 +47,8 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
   def retracted?; !! retracted; end
   def gene_name_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_symbol') ; end
   def gene_synonyms_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_synonyms')&.split(' ') || []; end
-  # def gene_names_human; [gene_name_human, *gene_synonyms_human] ; end
   def gene_name_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_symbol') ; end
   def gene_synonyms_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_synonyms')&.split(' ') || []; end
-  # def gene_names_mouse; [gene_name_mouse, *gene_synonyms_mouse] ; end
 
   def gene_name; gene_name_human.first; end
 
@@ -273,12 +271,6 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
       data.dig('masterlist_info', 'species', 'HUMAN', 'entrez'),
       data.dig('masterlist_info', 'species', 'MOUSE', 'entrez'),
     ]
-    gene_names = [
-      data.dig('masterlist_info', 'species', 'HUMAN', 'gene_symbol'),
-      data.dig('masterlist_info', 'species', 'MOUSE', 'gene_symbol'),
-      *data.dig('masterlist_info', 'species', 'HUMAN', 'gene_synonyms')&.split(' '),
-      *data.dig('masterlist_info', 'species', 'MOUSE', 'gene_synonyms')&.split(' '),
-    ]
 
     uniprot_acs = [] # TODO
     num_words_in_alignment = data['num_words']
@@ -294,7 +286,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
       'HOCOMOCOv12', motif_source,
       motif_families, motif_subfamilies,
       hgnc_ids, mgi_ids, entrezgene_ids,
-      gene_names, uniprot_acs, num_words_in_alignment,
+      uniprot_acs, num_words_in_alignment,
       comment, retracted)
   end
 
@@ -304,7 +296,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
 #                           :release, :motif_source,
 #                           :motif_families, :motif_subfamilies,
 #                           :hgnc_ids, :mgi_ids, :entrezgene_ids,
-#                           :gene_names, :uniprot_acs,
+#                           :uniprot_acs,
 #                           :num_words_in_alignment,
 #                           :comment, :retracted
 
@@ -316,7 +308,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     return entrezgene_ids.include?(match[2])  if match = query.match(/\bGene(\s*Id)?:?\s*(\d+)\b/i)
 
     pattern = /#{query}/i
-    [:full_name, :motif_subfamilies, :motif_families, :motif_classes, :motif_superclasses, :gene_names].any?{|param|
+    [:full_name, :motif_subfamilies, :motif_families, :motif_classes, :motif_superclasses, :gene_name_human, :gene_name_mouse, :gene_synonyms_human, :gene_synonyms_mouse].any?{|param|
       val = self.send(param)
       case val
       when Array

@@ -1,7 +1,10 @@
 json.full_name   motif.full_name
 json.direct_logo_url  motif.direct_large_logo_url
 json.revcomp_logo_url  motif.revcomp_large_logo_url
-json.gene_names  motif.gene_names
+json.gene_name_human  motif.gene_name_human
+json.gene_name_mouse  motif.gene_name_mouse
+json.gene_synonyms_human  motif.gene_synonyms_human
+json.gene_synonyms_mouse  motif.gene_synonyms_mouse
 json.model_length  motif.model_length
 json.rank   motif.rank
 json.quality   motif.quality

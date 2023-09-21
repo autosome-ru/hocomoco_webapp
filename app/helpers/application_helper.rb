@@ -133,7 +133,6 @@ module ApplicationHelper
   end
 
   def human_gene_name_links(gene_names)
-    # decorate_list(gene_names){|gene_name| human_gene_name_link(gene_name) }
     gene_names.map{|gene_name| human_gene_name_link(gene_name) }.join('<br/>').html_safe
   end
 
