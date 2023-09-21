@@ -28,7 +28,6 @@
           = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: (quality_help_text + " (click the icon for more details)")) ).html_safe }
           = motif_table_header :rank, hide_by_default: true, class: 'rank_dataset_type'
           = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
-          = motif_table_header :release, hide_by_default: true, class: 'release_number filter-select'
           = motif_table_header :motif_source, hide_by_default: true, class: 'source_dataset_type filter-select'
           = motif_table_header :best_auc_human, hide_by_default: true, class: 'AUC'
           = motif_table_header :best_auc_mouse, hide_by_default: true, class: 'AUC'
@@ -59,7 +58,6 @@
             %td= model.quality
             %td= model.rank
             %td= model.consensus
-            %td= model.release
             %td= model.motif_source
             %td= model.best_auc_human
             %td= model.best_auc_mouse
