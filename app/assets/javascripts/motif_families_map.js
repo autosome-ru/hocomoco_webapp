@@ -52,7 +52,12 @@ draw_families_tree = function(tree_url, svg_container){
       .on("mouseover", function(d) {
         var info_text = '';
         if (d.data.name.length > 0) {
-          var family_name = '<span class="family_name">' + d.data.name + '{' + d.data.family_id + '}</span>';
+          var family_name
+          if (String(d.data.family_id).length > 0) {
+            family_name = '<span class="family_name">' + d.data.name + '{' + d.data.family_id + '}</span>';
+          } else {
+            family_name = '<span class="family_name">' + d.data.name + '</span>';
+          }
           // info_text = '<a href="http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=' + d.data.family_id + '">' + family_name + '</a>' +
           info_text = family_name;
           info_text += '<br/>';
