@@ -36,11 +36,10 @@
         = table_info_row motif, :num_words_in_alignment
         = table_info_row(motif, :motif_families){|motif| tfclass_motif_family_links(motif.motif_families) }
         = table_info_row(motif, :motif_subfamilies){|motif| tfclass_motif_family_links(motif.motif_subfamilies) }
-        / - if species == 'HUMAN'
         = table_info_row(motif, :hgnc_ids){|motif| hgnc_id_links(motif.hgnc_ids) }
-        / - else
         = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
-        = table_info_row(motif, :entrezgene_ids){|motif| gene_id_links(motif.entrezgene_ids) }
+        = table_info_row(motif, :entrezgene_ids_human){|motif| gene_id_links(motif.entrezgene_ids_human) }
+        = table_info_row(motif, :entrezgene_ids_mouse){|motif| gene_id_links(motif.entrezgene_ids_mouse) }
         = table_info_row(motif, :uniprot_id_human){|motif| uniprot_id_link(motif.uniprot_id_human) }
         = table_info_row(motif, :uniprot_id_mouse){|motif| uniprot_id_link(motif.uniprot_id_mouse) }
         = table_info_row(motif, :uniprot_ac_human){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_ac_human) }

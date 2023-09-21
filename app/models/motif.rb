@@ -26,7 +26,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
                           :num_datasets_human, :num_datasets_mouse,
                           :release, :motif_source,
                           :motif_families, :motif_subfamilies,
-                          :hgnc_ids, :mgi_ids, :entrezgene_ids,
+                          :hgnc_ids, :mgi_ids,
                           :num_words_in_alignment,
                           :comment, :retracted) do
 
@@ -49,10 +49,11 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
   def to_s; full_name; end
   def retracted?; !! retracted; end
   def gene_name_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_symbol') ; end
-  def gene_synonyms_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_synonyms')&.split(' ') || []; end
+  def gene_synonyms_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_synonyms') || []; end
   def gene_name_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_symbol') ; end
-  def gene_synonyms_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_synonyms')&.split(' ') || []; end
-
+  def gene_synonyms_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_synonyms') || []; end
+  def entrezgene_ids_human; data.dig('masterlist_info', 'species', 'HUMAN', 'entrez') || []; end
+  def entrezgene_ids_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'entrez') || []; end
   def gene_name; gene_name_human.first; end
 
   def arity
@@ -270,10 +271,6 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     }.join(' + ')
     hgnc_ids = data.dig('masterlist_info', 'species', 'HUMAN', 'hgnc') || []
     mgi_ids = data.dig('masterlist_info', 'species', 'MOUSE', 'mgi') || []
-    entrezgene_ids = [
-      data.dig('masterlist_info', 'species', 'HUMAN', 'entrez'),
-      data.dig('masterlist_info', 'species', 'MOUSE', 'entrez'),
-    ]
 
     num_words_in_alignment = data['num_words']
     comment = data.fetch('comment', '')
@@ -287,7 +284,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
       num_datasets_human, num_datasets_mouse,
       'HOCOMOCOv12', motif_source,
       motif_families, motif_subfamilies,
-      hgnc_ids, mgi_ids, entrezgene_ids,
+      hgnc_ids, mgi_ids,
       num_words_in_alignment,
       comment, retracted)
   end
@@ -296,8 +293,10 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     match = nil # postfix-if work incorrectly with undefined local-variable (https://bugs.ruby-lang.org/issues/16631)
     return hgnc_ids.include?(match[1])  if match = query.match(/\bHGNC:?\s*(\d+)\b/i)
     return mgi_ids.include?(match[1])  if match = query.match(/\bMGI:?\s*(\d+)\b/i)
-    return entrezgene_ids.include?(match[2])  if match = query.match(/\bEntrez(\s*gene)?:?\s*(\d+)\b/i)
-    return entrezgene_ids.include?(match[2])  if match = query.match(/\bGene(\s*Id)?:?\s*(\d+)\b/i)
+    return entrezgene_ids_human.include?(match[2])  if match = query.match(/\bEntrez(\s*gene)?:?\s*(\d+)\b/i)
+    return entrezgene_ids_mouse.include?(match[2])  if match = query.match(/\bEntrez(\s*gene)?:?\s*(\d+)\b/i)
+    return entrezgene_ids_human.include?(match[2])  if match = query.match(/\bGene(\s*Id)?:?\s*(\d+)\b/i)
+    return entrezgene_ids_mouse.include?(match[2])  if match = query.match(/\bGene(\s*Id)?:?\s*(\d+)\b/i)
 
     pattern = /#{query}/i
     [:full_name, :motif_subfamilies, :motif_families, :motif_classes, :motif_superclasses, :gene_name_human, :gene_name_mouse, :gene_synonyms_human, :gene_synonyms_mouse].any?{|param|

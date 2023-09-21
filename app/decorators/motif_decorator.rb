@@ -37,7 +37,8 @@ class MotifDecorator < ApplicationDecorator
 
   def hgnc_ids; object.hgnc_ids.join('; '); end
   def mgi_ids; object.mgi_ids.join('; '); end
-  def entrezgene_ids; object.entrezgene_ids.join('; '); end
+  def entrezgene_ids_human; object.entrezgene_ids_human.join('; '); end
+  def entrezgene_ids_mouse; object.entrezgene_ids_mouse.join('; '); end
   def num_datasets; object.num_datasets == 0 ? nil : object.num_datasets; end
   def logo(**kwargs); helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_url), **kwargs); end
   def big_logo
