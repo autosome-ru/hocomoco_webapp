@@ -21,7 +21,7 @@ module HocomocoSite
   end
 end
 
-Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
+Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank,
                           :best_auc_human, :best_auc_mouse,
                           :num_datasets_human, :num_datasets_mouse,
                           :release, :motif_source,
@@ -33,16 +33,26 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
 
   def self.model_name; 'Motif'; end
 
-  def uniprot_id; full_name.split('.')[0]; end
+  def tf; full_name.split('.')[0]; end
+  def uniprot_id; uniprot_id_human; end
+  def uniprot_id_human; data.dig('masterlist_info', 'species', 'HUMAN', 'uniprot_id'); end
+  def uniprot_id_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'uniprot_id'); end
   def collection; full_name.split('.')[1]; end
   def bundle_name; collection; end
   # def rank; full_name.split('.')[2].to_i; end
   # def datatypes; full_name.split('.')[3]; end
   # def quality; full_name.split('.')[4]; end
-  def species; uniprot_id.split('_').last; end
+  def species; 'HUMAN'; end
   def to_s; full_name; end
   def retracted?; !! retracted; end
-  def gene_name; gene_names.first; end
+  def gene_name_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_symbol') ; end
+  def gene_synonyms_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_synonyms')&.split(' ') || []; end
+  # def gene_names_human; [gene_name_human, *gene_synonyms_human] ; end
+  def gene_name_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_symbol') ; end
+  def gene_synonyms_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_synonyms')&.split(' ') || []; end
+  # def gene_names_mouse; [gene_name_mouse, *gene_synonyms_mouse] ; end
+
+  def gene_name; gene_name_human.first; end
 
   def arity
     'mono'
@@ -274,16 +284,11 @@ Motif = Struct.new(:full_name, :model_length, :consensus, :quality, :rank,
     num_words_in_alignment = data['num_words']
     comment = data.fetch('comment', '')
 
-# TODO in bundle
-# consensus_string → consensus
-# subtype_order → to int
-# mark ChIP-Seq as P, not C in datatype_overrides
-
 # TODO:
     best_auc_human = nil #best_auc_human.empty? ? nil : best_auc_human.to_f
     best_auc_mouse = nil #best_auc_mouse.empty? ? nil : best_auc_mouse.to_f
 
-    self.new(full_name, data['length'], data['consensus'], data['quality'], data['subtype_order'].to_i,
+    self.new(data, full_name, data['length'], data['consensus'], data['quality'], data['subtype_order'].to_i,
       best_auc_human, best_auc_mouse,
       num_datasets_human, num_datasets_mouse,
       'HOCOMOCOv12', motif_source,

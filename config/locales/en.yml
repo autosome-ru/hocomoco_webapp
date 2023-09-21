@@ -33,6 +33,15 @@ en:
   activerecord:
     attributes:
       motif:
+        gene_name_human:   'Gene (human)'
+        gene_name_mouse:   'Gene (mouse)'
+
+        gene_synonyms_human:   'Gene aliases (human)'
+        gene_synonyms_mouse:   'Gene aliases (mouse)'
+
+        gene_names_human:   'Gene (human)'
+        gene_names_mouse:   'Gene (mouse)'
+
         gene_names:         'Transcription factor'
         full_name:          'Model'
         logo:               'LOGO'

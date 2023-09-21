@@ -7,9 +7,9 @@ module ApplicationHelper
     end
     value_column = content_tag(:td, html_options[:value_column_html]) do
       if block_given?
-        block.call(obj).to_s
+        block.call(obj)
       else
-        obj.send(attrib).to_s
+        obj.send(attrib)
       end
     end
     content_tag(:tr, html_options[:row_html]) do
@@ -133,7 +133,8 @@ module ApplicationHelper
   end
 
   def human_gene_name_links(gene_names)
-    decorate_list(gene_names){|gene_name| human_gene_name_link(gene_name) }
+    # decorate_list(gene_names){|gene_name| human_gene_name_link(gene_name) }
+    gene_names.map{|gene_name| human_gene_name_link(gene_name) }.join('<br/>').html_safe
   end
 
   def mouse_gene_name_link(gene_name)
@@ -141,7 +142,7 @@ module ApplicationHelper
   end
 
   def mouse_gene_name_links(gene_names)
-    decorate_list(gene_names){|gene_name| mouse_gene_name_link(gene_name) }
+    gene_names.map{|gene_name| mouse_gene_name_link(gene_name) }.join('<br/>').html_safe
   end
 
   def tfclass_uniprot_link(uniprot_ac, title: 'TFClass')

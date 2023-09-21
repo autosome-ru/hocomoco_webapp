@@ -20,7 +20,10 @@
         %tr
           = motif_table_header :full_name, show_always: true, class: 'motif_name'
           = motif_table_header :logo, dont_sort: true, class: 'sequence_logo filter-false'
-          = motif_table_header :gene_names, class: 'gene_name'
+          = motif_table_header :gene_name_human, class: 'gene_name'
+          = motif_table_header :gene_synonyms_human, class: 'gene_name'
+          = motif_table_header :gene_name_mouse, class: 'gene_name'
+          = motif_table_header :gene_synonyms_mouse, class: 'gene_name'
           = motif_table_header :model_length, data: {placeholder:'>= 20'}
           = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: (quality_help_text + " (click the icon for more details)")) ).html_safe }
           = motif_table_header :rank, hide_by_default: true, class: 'rank_dataset_type'
@@ -45,7 +48,10 @@
           %tr
             %td= model.full_name(target: '_blank')
             %td= model.logo(target: '_blank', class: 'inline_sequence_logo')
-            %td= model.species_prefixed_gene_names
+            %td= model.human_prefixed_gene_name
+            %td= model.human_prefixed_gene_synonyms
+            %td= model.mouse_prefixed_gene_name
+            %td= model.mouse_prefixed_gene_synonyms
             %td= model.model_length
             %td= model.quality
             %td= model.rank
