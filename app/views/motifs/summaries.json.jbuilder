@@ -12,4 +12,7 @@ json.array! motifs do |motif|
   json.uniprot_id_mouse  motif.uniprot_id_mouse
   json.uniprot_ac_human   motif.uniprot_ac_human
   json.uniprot_ac_mouse   motif.uniprot_ac_mouse
+
+  json.entrezgene_ids_human   motif.entrezgene_ids_human
+  json.entrezgene_ids_mouse   motif.entrezgene_ids_mouse
 end
