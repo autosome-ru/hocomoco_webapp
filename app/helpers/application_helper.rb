@@ -98,8 +98,7 @@ module ApplicationHelper
   end
 
   def mgi_url(mgi_id)
-    # "http://www.informatics.jax.org/searchtool/Search.do?query=MGI:#{mgi_id}"
-    "http://www.informatics.jax.org/marker/MGI:#{mgi_id}"
+    "https://www.informatics.jax.org/marker/MGI:#{mgi_id}"
   end
   def mgi_id_link(mgi_id, name: nil)
     link_to((name || "MGI:#{mgi_id}"), mgi_url(mgi_id))
@@ -137,7 +136,7 @@ module ApplicationHelper
   end
 
   def mouse_gene_name_link(gene_name)
-    link_to(gene_name, "http://www.informatics.jax.org/searchtool/Search.do?query=#{gene_name}")
+    link_to(gene_name, "https://www.informatics.jax.org/marker/summary?nomen=#{gene_name}")
   end
 
   def mouse_gene_name_links(gene_names)

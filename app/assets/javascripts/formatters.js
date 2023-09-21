@@ -49,12 +49,11 @@
   };
 
   HocomocoDB.mouse_gene_name_link = function(gene_name) {
-    return '<a href="http://www.informatics.jax.org/searchtool/Search.do?query=' + gene_name + '" target="_blank">' + gene_name + '</a>';
+    return '<a href="https://www.informatics.jax.org/marker/summary?nomen=' + gene_name + '" target="_blank">' + gene_name + '</a>';
   };
 
   HocomocoDB.mgi_id_link = function(mgi_name) {
-    // return '<a href="http://www.informatics.jax.org/searchtool/Search.do?query=MGI:' + mgi_name + '" target="_blank">' + mgi_name + '</a>';
-    return '<a href="http://www.informatics.jax.org/marker/MGI:' + mgi_name + '" target="_blank">' + mgi_name + '</a>';
+    return '<a href="https://www.informatics.jax.org/marker/MGI:' + mgi_name + '" target="_blank">' + mgi_name + '</a>';
   };
 
   HocomocoDB.uniprot_id_link = function(uniprot_id) {
