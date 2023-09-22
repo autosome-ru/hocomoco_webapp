@@ -53,8 +53,3 @@
         = help_icon(title: 'Precalculated thresholds to be utilized by PERFECTOS-APE (genome-wide dinucleotide frequencies were used for P-value estimation)')
       - collections.each do |collection|
         %td= link_to "#{collection}_thresholds.tar.gz", bundle_url.call("#{collection}/#{collection}_thresholds.tar.gz")
-
-    %tr
-      %td.row-hdr{colspan: 2} Sequence LOGOs
-      - collections.each do |collection|
-        %td= link_to "#{collection}_logo.tar.gz", bundle_url.call("#{collection}/#{collection}_logo_large.tar.gz")
