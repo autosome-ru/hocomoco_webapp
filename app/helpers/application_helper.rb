@@ -53,12 +53,12 @@ module ApplicationHelper
     result = ""
     # result += image_tag("#{species.downcase}_sel.png", class: 'species-indicator')
     result += {
-      'H12CORE' => 'Main collection',
+      'H12CORE' => 'v12 Core collection',
       'H12INVIVO' => 'In vivo collection',
       'H12INVITRO' => 'In vitro collection',
       'H12RSNP' => 'rSNP collection',
     }.fetch(collection, '')
-    result += full ? ' (full)' : ' (core)'  if show_full_core_caption
+    result += full ? ' (complete)' : ' (primary subtypes)'  if show_full_core_caption
     term = tfclass_term(family_id, 'HUMAN')
     if term
       tfclass_name = "#{term.level_name.capitalize} {#{family_id}}"

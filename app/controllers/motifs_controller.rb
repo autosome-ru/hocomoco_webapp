@@ -5,12 +5,7 @@ class MotifsController < ApplicationController
     show_full = true
     if params.fetch('full', 'true').to_s.downcase == 'false'
       show_full = false
-      models = models.select{|motif| ['A','B','C'].include?(motif.quality) }
-                     .reject(&:retracted?)
-                     .group_by(&:tf)
-                     .map{|tf, tf_models|
-                       tf_models.sort_by(&:rank).first
-                     }
+      models = models.reject(&:retracted?).select{|model| model.rank == 0 }
     end
 
     respond_to do |format|
@@ -24,7 +19,7 @@ class MotifsController < ApplicationController
           disable_default_filters: false,
           is_full: show_full,
           core_full_url: motifs_path(full: !show_full),
-          switch_to_core_full: show_full ? 'Switch to CORE collection' : 'Switch to FULL collection',
+          switch_to_core_full: show_full ? 'Show primary subtypes' : 'Show complete collection',
           show_full_core_caption: true,
         }
       end
