@@ -242,6 +242,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
   def tfclass_family; data.dig('masterlist_info', 'tfclass_family'); end
   def tfclass_subfamily; data.dig('masterlist_info', 'tfclass_subfamily'); end
   def tfclass_id; data.dig('masterlist_info', 'tfclass_id'); end
+  def tfclass_id_part(k); (tfclass_id || '').split('.').first(k).join('.'); end
 
   def self.from_json(data, retracted: false)
     full_name = data['final_name']

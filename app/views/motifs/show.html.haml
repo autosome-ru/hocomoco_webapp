@@ -33,10 +33,11 @@
         = table_info_row motif, :num_datasets_human
         = table_info_row motif, :num_datasets_mouse
         = table_info_row motif, :num_words_in_alignment
-        = table_info_row(motif, :tfclass_superclass){|motif| tfclass_motif_family_links(motif.tfclass_superclass) }
-        = table_info_row(motif, :tfclass_class){|motif| tfclass_motif_family_links(motif.tfclass_class) }
-        = table_info_row(motif, :tfclass_family){|motif| tfclass_motif_family_links(motif.tfclass_family) }
-        = table_info_row(motif, :tfclass_subfamily){|motif| tfclass_motif_family_links(motif.tfclass_subfamily) }
+        = table_info_row(motif, :tfclass_superclass){|motif| "#{motif.tfclass_superclass} {#{ tfclass_family_inner_link(motif.tfclass_id_part(1)) }}".html_safe }
+        = table_info_row(motif, :tfclass_class){|motif| "#{motif.tfclass_class} {#{ tfclass_family_inner_link(motif.tfclass_id_part(2)) }}".html_safe }
+        = table_info_row(motif, :tfclass_family){|motif| "#{motif.tfclass_family} {#{ tfclass_family_inner_link(motif.tfclass_id_part(3)) }}".html_safe }
+        = table_info_row(motif, :tfclass_subfamily){|motif| "#{motif.tfclass_subfamily} {#{ tfclass_family_inner_link(motif.tfclass_id_part(4)) }}".html_safe }
+        = table_info_row(motif, :tfclass_id){|motif| 'TFClass: '.html_safe + tfclass_family_link(motif.tfclass_id, title: motif.tfclass_id) }
         = table_info_row(motif, :hgnc_ids){|motif| hgnc_id_links(motif.hgnc_ids) }
         = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
         = table_info_row(motif, :entrezgene_ids_human){|motif| gene_id_links(motif.entrezgene_ids_human) }

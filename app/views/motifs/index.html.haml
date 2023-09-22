@@ -67,10 +67,10 @@
             %td= model.num_datasets_human
             %td= model.num_datasets_mouse
             %td= model.num_words_in_alignment
-            %td= model.tfclass_superclass
-            %td= model.tfclass_class
-            %td= model.tfclass_family
-            %td= model.tfclass_subfamily
+            %td= "#{model.tfclass_superclass} {#{ tfclass_family_inner_link(model.tfclass_id_part(1)) }}".html_safe
+            %td= "#{model.tfclass_class} {#{ tfclass_family_inner_link(model.tfclass_id_part(2)) }}".html_safe
+            %td= "#{model.tfclass_family} {#{ tfclass_family_inner_link(model.tfclass_id_part(3)) }}".html_safe
+            %td= "#{model.tfclass_subfamily} {#{ tfclass_family_inner_link(model.tfclass_id_part(4)) }}".html_safe
             %td= model.tfclass_id
             %td= model.hgnc_ids
             %td= model.mgi_ids

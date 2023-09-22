@@ -40,6 +40,7 @@ module ApplicationHelper
                                           }
   end
 
+# TODO
   def tfclass_term(family_id, species)
     return nil  unless family_id && !family_id.blank?
     return nil  unless species && !species.blank?
@@ -150,6 +151,10 @@ module ApplicationHelper
 
   def tfclass_family_link(family_id, title: 'TFClass')
     link_to(title, "http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{family_id}")
+  end
+
+  def tfclass_family_inner_link(family_id, collection: 'H12CORE')
+    link_to("#{family_id}", "/search?collection=#{collection}&family_id=#{family_id}")
   end
 
   def tfclass_motif_family_link(family)
