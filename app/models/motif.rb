@@ -16,7 +16,7 @@ end
 Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank,
                           :best_auc_human, :best_auc_mouse,
                           :num_datasets_human, :num_datasets_mouse,
-                          :motif_source,
+                          :data_sources,
                           :motif_families, :motif_subfamilies,
                           :hgnc_ids, :mgi_ids,
                           :num_words_in_alignment,
@@ -250,7 +250,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     num_datasets_mouse = data.dig('original_motif', 'species_counts', 'MOUSE') || 0
     motif_families = [data.dig('masterlist_info', 'tfclass_family')]
     motif_subfamilies = [data.dig('masterlist_info', 'tfclass_subfamily')]
-    motif_source = data['datatype']
+    data_sources = data['datatype']
     hgnc_ids = data.dig('masterlist_info', 'species', 'HUMAN', 'hgnc') || []
     mgi_ids = data.dig('masterlist_info', 'species', 'MOUSE', 'mgi') || []
 
@@ -264,7 +264,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
     self.new(data, full_name, data['length'], data['consensus'], data['quality'], data['subtype_order'].to_i,
       best_auc_human, best_auc_mouse,
       num_datasets_human, num_datasets_mouse,
-      motif_source,
+      data_sources,
       motif_families, motif_subfamilies,
       hgnc_ids, mgi_ids,
       num_words_in_alignment,

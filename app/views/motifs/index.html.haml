@@ -21,24 +21,24 @@
           = motif_table_header :full_name, show_always: true, class: 'motif_name'
           = motif_table_header :logo, dont_sort: true, class: 'sequence_logo filter-false'
           = motif_table_header :gene_name_human, class: 'gene_name'
-          = motif_table_header :gene_synonyms_human
+          = motif_table_header :gene_synonyms_human, hide_by_default: true
           = motif_table_header :gene_name_mouse, class: 'gene_name'
-          = motif_table_header :gene_synonyms_mouse
-          = motif_table_header :model_length, data: {placeholder:'>= 20'}
+          = motif_table_header :gene_synonyms_mouse, hide_by_default: true
+          = motif_table_header :model_length, data: {placeholder:'>= 20'}, hide_by_default: true
           = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: (quality_help_text + " (click the icon for more details)")) ).html_safe }
-          = motif_table_header :rank, hide_by_default: true, class: 'rank_dataset_type'
+          = motif_table_header :rank, class: 'rank_dataset_type'
           = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
-          = motif_table_header :motif_source, hide_by_default: true, class: 'source_dataset_type filter-select'
+          = motif_table_header :data_sources, class: 'source_dataset_type filter-select'
           = motif_table_header :num_words_in_alignment,hide_by_default: true, class: 'num_words_in_alignment'
-          = motif_table_header :tfclass_superclass, class: 'motif-superclass'
-          = motif_table_header :tfclass_class, class: 'motif-class'
+          = motif_table_header :tfclass_superclass, class: 'motif-superclass', hide_by_default: true
+          = motif_table_header :tfclass_class, class: 'motif-class', hide_by_default: true
           = motif_table_header :tfclass_family, class: 'motif-family'
           = motif_table_header :tfclass_subfamily, class: 'motif-subfamily', hide_by_default: true
           = motif_table_header :tfclass_id, class: 'tfclass-id', hide_by_default: true
           = motif_table_header :hgnc_ids, dont_sort: true, hide_by_default: true, class: 'hgnc_id'
           = motif_table_header :mgi_ids, dont_sort: true, hide_by_default: true, class: 'mgi_id'
-          = motif_table_header :entrezgene_ids_human, dont_sort: true, class: 'gene_id'
-          = motif_table_header :entrezgene_ids_mouse, dont_sort: true, class: 'gene_id'
+          = motif_table_header :entrezgene_ids_human, dont_sort: true, hide_by_default: true, class: 'gene_id'
+          = motif_table_header :entrezgene_ids_mouse, dont_sort: true, hide_by_default: true, class: 'gene_id'
           = motif_table_header :uniprot_id_human, class: 'uniprot_id'
           = motif_table_header :uniprot_id_mouse, class: 'uniprot_id'
           = motif_table_header :uniprot_ac_human, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
@@ -57,7 +57,7 @@
             %td= model.quality
             %td= model.rank
             %td= model.consensus
-            %td= model.motif_source.chars.join('+')
+            %td= model.data_sources.chars.join('+')
             %td= model.num_words_in_alignment
             %td= "#{model.tfclass_superclass} {#{ tfclass_family_inner_link(model.tfclass_id_part(1)) }}".html_safe
             %td= "#{model.tfclass_class} {#{ tfclass_family_inner_link(model.tfclass_id_part(2)) }}".html_safe

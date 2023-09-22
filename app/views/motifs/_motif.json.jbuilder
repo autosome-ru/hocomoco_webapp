@@ -9,7 +9,7 @@ json.model_length  motif.model_length
 json.rank   motif.rank
 json.quality   motif.quality
 json.consensus   motif.consensus
-json.motif_source  motif.motif_source
+json.data_sources  motif.data_sources
 json.best_auc_human   motif.best_auc_human
 json.best_auc_mouse   motif.best_auc_mouse
 json.num_datasets_human  motif.num_datasets_human

@@ -7,7 +7,7 @@
         Do not use this motif!
 .row
   .col-12
-    .table_caption Model info
+    .table_caption Motif info
 .row
   .col-12
     %table.key_value_info
@@ -23,7 +23,7 @@
         = table_info_row motif, :full_name
         = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
         = table_info_row motif, :big_logo_revcomp, html_options: {value_column_html: {class: 'sequence_logo'} }
-        = table_info_row motif, :motif_source_full
+        = table_info_row motif, :data_sources_full
         = table_info_row motif, :model_length
         = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
         = table_info_row motif, :rank, header_cell: ('Motif rank' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
