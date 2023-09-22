@@ -67,7 +67,7 @@ module ApplicationHelper
         (tfclass_name + help_icon).html_safe
       end
 
-      (result + " from #{tfclass_link}").html_safe
+      (result + ", #{tfclass_link}").html_safe
     else
       result.html_safe
     end
