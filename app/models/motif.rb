@@ -245,7 +245,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
   def tfclass_id_part(k); (tfclass_id || '').split('.').first(k).join('.'); end
 
   def self.from_json(data, retracted: false)
-    full_name = data['final_name']
+    full_name = data['name']
     num_datasets_human = data.dig('original_motif', 'species_counts', 'HUMAN') || 0
     num_datasets_mouse = data.dig('original_motif', 'species_counts', 'MOUSE') || 0
     motif_families = [data.dig('masterlist_info', 'tfclass_family')]
