@@ -39,5 +39,12 @@
       HOCOMOCO motif collection is distributed under #{link_to 'WTFPL', 'https://en.wikipedia.org/wiki/WTFPL'}.
       If you prefer more standard licenses, feel free to treat WTFPL as CC-BY.
 
+.row
+  .col-12
+    %hr
+    %h1.downloads_header H12CORE COLLECTION: universally applicable motifs
+    = render partial: 'download_table_v12', locals: {bundle_url: ->(path){ hocomoco12_bundle_url(path) }, collections: ['H12CORE', 'H12INVIVO', 'H12INVITRO', 'H12RSNP'] }
+
+
 - content_for(:title) do
   HOCOMOCO-v12 Downloads - HOmo sapiens COmprehensive MOdel COllection

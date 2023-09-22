@@ -9,76 +9,52 @@
   %tbody
     %tr
       %td.row-hdr{colspan: 2} Complete model annotation (including gene id mapping)
-      %td= link_to 'H12CORE_annotation.jsonl', bundle_url.call("H12CORE/H12CORE_annotation.jsonl")
-      %td= link_to 'H12INVIVO_annotation.jsonl', bundle_url.call("H12INVIVO/H12INVIVO_annotation.jsonl")
-      %td= link_to 'H12INVITRO_annotation.jsonl', bundle_url.call("H12INVITRO/H12INVITRO_annotation.jsonl")
-      %td= link_to 'H12RSNP_annotation.jsonl', bundle_url.call("H12RSNP/H12RSNP_annotation.jsonl")
+      - collections.each do |collection|
+        %td= link_to "#{collection}_annotation.jsonl", bundle_url.call("#{collection}/#{collection}_annotation.jsonl")
 
     %tr
-      %td.row-hdr{rowspan: 2}
+      %td.row-hdr
         PWM
-        / = help_icon(title: 'See technical notes (click to open)', href: technical_notes_url)
       %td.row-hdr
         One file per matrix
         = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
-      %td= link_to 'pwm_HUMAN_mono.tar.gz', bundle_url.call("H12CORE/pwm_HUMAN_mono.tar.gz")
-      %td= link_to 'pwm_MOUSE_mono.tar.gz', bundle_url.call("H12CORE/pwm_MOUSE_mono.tar.gz")
-    %tr
-      %td.row-hdr Flat file
-      %td= link_to 'pwms_HUMAN_mono.txt', bundle_url.call("H12CORE/pwms_HUMAN_mono.txt")
-      %td= link_to 'pwms_MOUSE_mono.txt', bundle_url.call("H12CORE/pwms_MOUSE_mono.txt")
+      - collections.each do |collection|
+        %td= link_to "#{collection}_pwm.tar.gz", bundle_url.call("#{collection}/#{collection}_pwm.tar.gz")
 
     %tr
-      %td.row-hdr{rowspan: 2} PCM
+      %td.row-hdr
+        PCM
       %td.row-hdr
         One file per matrix
         = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
-      %td= link_to 'pcm_HUMAN_mono.tar.gz', bundle_url.call("H12CORE/pcm_HUMAN_mono.tar.gz")
-      %td= link_to 'pcm_MOUSE_mono.tar.gz', bundle_url.call("H12CORE/pcm_MOUSE_mono.tar.gz")
-    %tr
-      %td.row-hdr Flat file
-      %td= link_to 'pcms_HUMAN_mono.txt', bundle_url.call("H12CORE/pcms_HUMAN_mono.txt")
-      %td= link_to 'pcms_MOUSE_mono.txt', bundle_url.call("H12CORE/pcms_MOUSE_mono.txt")
+      - collections.each do |collection|
+        %td= link_to "#{collection}_pcm.tar.gz", bundle_url.call("#{collection}/#{collection}_pcm.tar.gz")
 
     %tr
-      %td.row-hdr{colspan: 2} Alignments
-      %td= link_to 'words_HUMAN_mono.tar.gz', bundle_url.call("H12CORE/words_HUMAN_mono.tar.gz")
-      %td= link_to 'words_MOUSE_mono.tar.gz', bundle_url.call("H12CORE/words_MOUSE_mono.tar.gz")
-    %tr
-      %td.row-hdr{colspan: 2} Standard thresholds
-      %td= link_to 'standard_thresholds_HUMAN_mono.txt', bundle_url.call("H12CORE/standard_thresholds_HUMAN_mono.txt")
-      %td= link_to 'standard_thresholds_MOUSE_mono.txt', bundle_url.call("H12CORE/standard_thresholds_MOUSE_mono.txt")
+      %td.row-hdr
+        PFM
+      %td.row-hdr
+        One file per matrix
+        = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
+      - collections.each do |collection|
+        %td= link_to "#{collection}_pfm.tar.gz", bundle_url.call("#{collection}/#{collection}_pfm.tar.gz")
+
+    / %tr
+    /   %td.row-hdr{colspan: 2} Alignments
+    /   %td= link_to 'words_HUMAN_mono.tar.gz', bundle_url.call("H12CORE/words_HUMAN_mono.tar.gz")
+    /   %td= link_to 'words_MOUSE_mono.tar.gz', bundle_url.call("H12CORE/words_MOUSE_mono.tar.gz")
+    / %tr
+    /   %td.row-hdr{colspan: 2} Standard thresholds
+    /   %td= link_to 'standard_thresholds_HUMAN_mono.txt', bundle_url.call("H12CORE/standard_thresholds_HUMAN_mono.txt")
+    /   %td= link_to 'standard_thresholds_MOUSE_mono.txt', bundle_url.call("H12CORE/standard_thresholds_MOUSE_mono.txt")
     %tr
       %td.row-hdr{colspan: 2}
         Threshold to P-value map
         = help_icon(title: 'Precalculated thresholds to be utilized by PERFECTOS-APE (genome-wide dinucleotide frequencies were used for P-value estimation)')
-      %td= link_to 'thresholds_HUMAN_mono.tar.gz', bundle_url.call("H12CORE/thresholds_HUMAN_mono.tar.gz")
-      %td= link_to 'thresholds_MOUSE_mono.tar.gz', bundle_url.call("H12CORE/thresholds_MOUSE_mono.tar.gz")
-    %tr
-      %td.row-hdr{colspan: 2} Sequence LOGOs
-      %td= link_to 'logo_HUMAN_mono.tar.gz', bundle_url.call("H12CORE/logo_HUMAN_mono.tar.gz")
-      %td= link_to 'logo_MOUSE_mono.tar.gz', bundle_url.call("H12CORE/logo_MOUSE_mono.tar.gz")
+      - collections.each do |collection|
+        %td= link_to "#{collection}_thresholds.tar.gz", bundle_url.call("#{collection}/#{collection}_thresholds.tar.gz")
 
     %tr
-      %td.row-hdr{rowspan: 4} Matrices in other formats
-      %td.row-hdr JASPAR
-      %td= link_to "H12CORE_HUMAN_mono_jaspar_format.txt", bundle_url.call("H12CORE/HUMAN_mono_jaspar_format.txt")
-      %td= link_to "H12CORE_MOUSE_mono_jaspar_format.txt", bundle_url.call("H12CORE/MOUSE_mono_jaspar_format.txt")
-    %tr
-      %td.row-hdr MEME
-      %td= link_to "H12CORE_HUMAN_mono_meme_format.meme", bundle_url.call("H12CORE/HUMAN_mono_meme_format.meme")
-      %td= link_to "H12CORE_MOUSE_mono_meme_format.meme", bundle_url.call("H12CORE/MOUSE_mono_meme_format.meme")
-    %tr
-      %td.row-hdr TRANSFAC
-      %td= link_to "H12CORE_HUMAN_mono_transfac_format.txt", bundle_url.call("H12CORE/HUMAN_mono_transfac_format.txt")
-      %td= link_to "H12CORE_MOUSE_mono_transfac_format.txt", bundle_url.call("H12CORE/MOUSE_mono_transfac_format.txt")
-    %tr
-      %td.row-hdr
-        HOMER
-        = help_icon(title: 'Matrices in HOMER format include score thresholds. We provide the collection with threshold levels corresponding to P-value of 0.001, 0.0005 and 0.0001')
-      %td
-        - ['0.001', '0.0005', '0.0001'].each do |pvalue|
-          .homer_pvalue= link_to "P-value #{pvalue}", bundle_url.call("H12CORE/HUMAN_mono_homer_format_#{pvalue}.motif")
-      %td
-        - ['0.001', '0.0005', '0.0001'].each do |pvalue|
-          .homer_pvalue= link_to "P-value #{pvalue}", bundle_url.call("H12CORE/MOUSE_mono_homer_format_#{pvalue}.motif")
+      %td.row-hdr{colspan: 2} Sequence LOGOs
+      - collections.each do |collection|
+        %td= link_to "#{collection}_logo.tar.gz", bundle_url.call("#{collection}/#{collection}_logo_large.tar.gz")
