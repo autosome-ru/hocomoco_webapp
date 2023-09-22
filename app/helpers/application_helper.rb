@@ -77,8 +77,8 @@ module ApplicationHelper
     "A - reproducible in distinct datatypes, B - reproducible in a single datatype, C - comes from a single dataset, D - can't verify of ChIP-seq/SELEX data"
   end
 
-  def help_icon(title:, href: nil)
-    data_options = {toggle: 'tooltip', placement: 'bottom', title: title}
+  def help_icon(title:, href: nil, **options)
+    data_options = options.merge({toggle: 'tooltip', placement: 'bottom', title: title})
     data_options[:href] = href  if href
     content_tag(:div, '', class: ['help-icon', 'has-tooltip'], data: data_options)
   end
