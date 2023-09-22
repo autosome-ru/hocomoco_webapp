@@ -29,10 +29,6 @@
           = motif_table_header :rank, hide_by_default: true, class: 'rank_dataset_type'
           = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
           = motif_table_header :motif_source, hide_by_default: true, class: 'source_dataset_type filter-select'
-          = motif_table_header :best_auc_human, hide_by_default: true, class: 'AUC'
-          = motif_table_header :best_auc_mouse, hide_by_default: true, class: 'AUC'
-          = motif_table_header :num_datasets_human, hide_by_default: true, class: 'num_datasets'
-          = motif_table_header :num_datasets_mouse, hide_by_default: true, class: 'num_datasets'
           = motif_table_header :num_words_in_alignment,hide_by_default: true, class: 'num_words_in_alignment'
           = motif_table_header :tfclass_superclass, class: 'motif-superclass'
           = motif_table_header :tfclass_class, class: 'motif-class'
@@ -62,10 +58,6 @@
             %td= model.rank
             %td= model.consensus
             %td= model.motif_source.chars.join('+')
-            %td= model.best_auc_human
-            %td= model.best_auc_mouse
-            %td= model.num_datasets_human
-            %td= model.num_datasets_mouse
             %td= model.num_words_in_alignment
             %td= "#{model.tfclass_superclass} {#{ tfclass_family_inner_link(model.tfclass_id_part(1)) }}".html_safe
             %td= "#{model.tfclass_class} {#{ tfclass_family_inner_link(model.tfclass_id_part(2)) }}".html_safe
