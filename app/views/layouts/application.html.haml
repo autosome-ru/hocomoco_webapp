@@ -28,11 +28,13 @@
 
 
   %body{data: {'app-prefix' => root_path}}
-    .stop-the-war
-      We, Russian scientists of the <i>autosome</i> team, are depressed by the dire events 
-      caused by Russian military actions in Ukraine. 
-      %br
-      We express our condolences to all affected people and sincerely hope for a prompt transition to peace.
+    .announcement
+      Check the newest #{link_to 'release v12', 'https://hocomoco12.autosome.org/'}
+    / .stop-the-war
+    /   We, Russian scientists of the <i>autosome</i> team, are depressed by the dire events 
+    /   caused by Russian military actions in Ukraine. 
+    /   %br
+    /   We express our condolences to all affected people and sincerely hope for a prompt transition to peace.
     %nav.navbar.navbar-light.bg-gray.navbar-expand-lg.py-0
       %a.navbar-brand.ml-0.mr-2{href: root_path}
         %img.hocologo.d-inline-block{src: asset_url("hocomoco_logo_big.png")}
