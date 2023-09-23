@@ -68,3 +68,6 @@ en:
         uniprot_ac_mouse:   'UniProt AC (mouse)'
         comment:            'Comment'
         num_words_in_alignment: 'Aligned words'
+  tips:
+    quality_html:       "A - found both in ChIP-Seq and HT-SELEX;<br/>B - reproducible in ChIP-Seq or HT-SELEX;<br/>C - found in a single dataset;<br/>D - inherited from v11"
+    data_sources_html:  "P: ChI<b>P</b>-Seq,<br/>S: HT-<b>S</b>ELEX,<br/>M: <b>M</b>ethyl-HT-SELEX"

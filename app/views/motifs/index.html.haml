@@ -25,10 +25,10 @@
           = motif_table_header :gene_name_mouse, class: 'gene_name'
           = motif_table_header :gene_synonyms_mouse, hide_by_default: true
           = motif_table_header :model_length, data: {placeholder:'>= 20'}, hide_by_default: true
-          = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: "A - found both in ChIP-Seq and HT-SELEX;<br/>B - reproducible in ChIP-Seq or HT-SELEX;<br/>C - found in a single dataset;<br/>D - inherited from v11", html: true) ).html_safe }
+          = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: t('tips.quality_html'), html: true) ).html_safe }
           = motif_table_header :motif_subtype, class: 'motif_subtype'
           = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
-          = motif_table_header(:data_sources, class: 'source_dataset_type filter-select'){|content| (content + help_icon(title: 'P: ChI<b>P</b>-Seq,<br/>S: HT-<b>S</b>ELEX,<br/>M: <b>M</b>ethyl-HT-SELEX', html: true)).html_safe }
+          = motif_table_header(:data_sources, class: 'source_dataset_type filter-select'){|content| (content + help_icon(title: t('tips.data_sources_html'), html: true, href: help_path(anchor: 'experimental_data_types'))).html_safe }
           = motif_table_header :num_words_in_alignment, hide_by_default: true, class: 'num_words_in_alignment'
           = motif_table_header :tfclass_superclass, class: 'motif-superclass', hide_by_default: true
           = motif_table_header :tfclass_class, class: 'motif-class', hide_by_default: true

@@ -20,16 +20,21 @@
           = motif.gene_synonyms_mouse.join(', ')
         = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
         = table_info_row motif, :big_logo_revcomp, html_options: {value_column_html: {class: 'sequence_logo'} }
-        = table_info_row motif, :motif_subtype, header_cell: ('Motif subtype' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
-        = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
+        = table_info_row motif, :motif_subtype #, header_cell: ('Motif subtype' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
+        = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: t('tips.quality_html'), html: true)).html_safe
 %br
 .row
   .col-12
     %table.key_value_info
       %tbody
-        = table_info_row motif, :data_sources_full
         = table_info_row motif, :model_length
         = table_info_row motif, :consensus
+        = table_info_row motif, :data_sources_full, header_cell: ('Data sources' + help_icon(href: help_path(anchor: 'experimental_data_types'), title: t('tips.data_sources_html'), html: true)).html_safe
+%br
+.row
+  .col-12
+    %table.key_value_info
+      %tbody
         = table_info_row motif, :best_auc_human #, html_options: {value_column_html: {class: 'AUC'} }, header_cell: ('wAUC' + help_icon(href: help_path(anchor: 'description_auc'), title: 'Weighted Area Under Curve for Receiver Operating Characteristic estimate, click the icon for details on AUC.')).html_safe
         = table_info_row motif, :best_auc_mouse #, html_options: {value_column_html: {class: 'AUC'} }, header_cell: ('wAUC' + help_icon(href: help_path(anchor: 'description_auc'), title: 'Weighted Area Under Curve for Receiver Operating Characteristic estimate, click the icon for details on AUC.')).html_safe
         = table_info_row motif, :num_datasets_human
@@ -49,14 +54,6 @@
         = table_info_row(motif, :uniprot_ac_human){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_ac_human) }
         = table_info_row(motif, :uniprot_ac_mouse){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_ac_mouse) }
         = table_info_row motif, :comment
-        = table_info_row motif, :downloads, header_cell: 'Downloads' do |m|
-          = m.download_pcm
-          %br
-          = m.download_pwm
-          %br
-          = m.download_alignment
-          %br
-          = m.download_precalculated_thresholds
         = table_info_row motif, :thresholds, header_cell: 'Standard thresholds' do |m|
           %table.thresholds
             %thead
@@ -82,6 +79,14 @@
           %td
             - motif.jaspar_links.each do |title, url|
               .jaspar_link= link_to title, url
+        = table_info_row motif, :downloads, header_cell: 'Downloads' do |m|
+          = m.download_pcm
+          %br
+          = m.download_pwm
+          %br
+          = m.download_alignment
+          %br
+          = m.download_precalculated_thresholds
 
 .row
   .col-12
