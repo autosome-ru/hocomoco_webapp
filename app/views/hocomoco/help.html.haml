@@ -3,34 +3,34 @@
   .col-lg-10
     .help_container
       %p
-        %a.section_header{href: '#technical_terms'} Technical Terms and Acronyms
+        %a.section_header#technical_terms{href: '#technical_terms'} Technical Terms and Acronyms
       %p
-        %a.section_subheader{href: '#pwm'} [PWM]
+        %a.section_subheader#pwm{href: '#pwm'} [PWM]
       %p
         HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains transcription factor (TF) binding motifs represented as classic #{link_to 'Position Weight Matrices', 'https://en.wikipedia.org/wiki/Position_weight_matrix'} (PWMs, also known as Position-Specific Scoring Matrices, PSSMs).
       %p
-        %a.section_subheader{href: '#motif_discovery'} [Motif discovery]
+        %a.section_subheader#motif_discovery{href: '#motif_discovery'} [Motif discovery]
       %p
         HOCOMOCO #{link_to 'motifs', 'https://en.wikipedia.org/wiki/Sequence_motif'} were constructed with #{link_to 'ChIPMunk', 'https://autosome.org/ChIPMunk/'} by systematic motif discovery from thousands of ChIP-Seq and HT-SELEX datasets. Please refer to the HOCOMOCO v12 paper for more details on the motif discovery procedure.
       %p
-        %a.section_subheader{href: '#motif_finding'} [Motif finding; Sequence scanning]
+        %a.section_subheader#motif_finding{href: '#motif_finding'} [Motif finding; Sequence scanning]
       %p
         HOCOMOCO provides PWMs accompanied by precomputed score thresholds. The thresholds and P-value for HOCOMOCO v12 motifs are estimated against uniform background probabilities. To interactively visualize predicted TFBS in a small set of sequences we provide #{link_to 'MoLoTool', 'https://molotool.autosome.org/'}. For large-scale analysis, we suggest using command-line tools, such as our #{link_to 'SPRY-SARUS', 'https://github.com/autosome-ru/sarus'} or MEME's #{link_to 'FIMO', 'https://meme-suite.org/meme/doc/fimo.html'}.
 
       %p
-        %a.section_subheader{href: '#motif_benchmarking'} [Motif benchmarking; Performance metrics]
+        %a.section_subheader#motif_benchmarking{href: '#motif_benchmarking'} [Motif benchmarking; Performance metrics]
       %p
         To assemble the motif collection of HOCOMOCO v12 we have used multiple benchmarking protocols evaluating the motif performance for TFBS recognition in genomic regions (in vivo data, ChIP-Seq), in artificial oligonucleotides (in vitro data, HT-SELEX), and for predicting regulatory single-nucleotide variants and polymorphisms (rSNPs). Please refer to the HOCOMOCO v12 paper for more details on benchmarking protocols and resulting performance metrics.
       %p
-        %a.section_subheader{href: '#description_quality_score'} [Quality ratings]
+        %a.section_subheader#description_quality_score{href: '#description_quality_score'} [Quality ratings]
       %p
         Each model in the collection has a quality rating from A to D where A represents motifs with the highest confidence. A quality motifs are found in both HT-SELEX and ChIP-Seq, B quality motifs are found in at least two different experiments of the same type, and C quality motifs are found in a single experiment but passed expert curation. In the core collection, D marks motifs inherited from HOCOMOCO v11, and there are only a few D quality motifs. In sub-collections, D quality denotes all motifs not tested in the respective benchmarks (ChIP-Seq for v12-invivo, HT-SELEX for v12-invitro, rSNP for v12-rsnp).
       %p
-        %a.section_subheader{href: '#motif_subtypes'} [Motif subtypes]
+        %a.section_subheader#motif_subtypes{href: '#motif_subtypes'} [Motif subtypes]
       %p
         Since v11 the alternative binding motifs of a particular TF are ranked from 0 (the primary model) to 1,2,.. (the alternative motifs). The motifs of 0 rank are the most 'general' variants with the best performance across available data in the benchmark (see the HOCOMOCO v12 paper for details).
       %p
-        %a.section_subheader{href: '#experimental_data_types'} [Experimental data types]
+        %a.section_subheader#experimental_data_types{href: '#experimental_data_types'} [Experimental data types]
       %p
         HOCOMOCO v12 used two data types for motif discovery: ChIP-Seq and HT-SELEX. The latter came in two variants: traditional HT-SELEX and methyl-HT-SELEX with mCpGs. Additionally, in benchmarking, we used information on differential transcription factor binding to single-nucleotide variants obtained in SNP-SELEX and identified from ChIP-Seq (the allele-specific binding, see #{link_to 'ADASTRA', 'https://adastra.autosome.org/'}).
 
