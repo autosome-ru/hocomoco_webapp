@@ -7,9 +7,9 @@ module ApplicationHelper
     end
     value_column = content_tag(:td, html_options[:value_column_html]) do
       if block_given?
-        block.call(obj)
+        block.call(obj).to_s
       else
-        obj.send(attrib)
+        obj.send(attrib).to_s
       end
     end
     content_tag(:tr, html_options[:row_html]) do
