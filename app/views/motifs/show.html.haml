@@ -76,31 +76,31 @@
     %table.key_value_info
       %tbody
         / = table_info_row motif, :comment
-        = table_info_row motif, :thresholds, header_cell: 'Standard thresholds' do |m|
-          %table.thresholds
-            %thead
-              %tr
-                %th
-                  P-value
-                  = help_icon(title: 'Genome-wide dinucleotide frequencies were used for P-value estimation')
-                %th Threshold
-            %tbody
-              - m.standard_thresholds.each do |pvalue, threshold|
-                %tr
-                  %td= pvalue
-                  %td= threshold
-        %tr
-          %td GTEx tissue expression atlas
-          %td= link_to "#{motif.gene_name} expression", motif.gtex_url
-        - if true # motif.species == 'HUMAN'
-          %tr
-            %td ReMap ChIP-seq dataset list
-            %td= link_to "#{motif.gene_name} datasets", motif.remap_url
-        %tr
-          %td Motifs in JASPAR
-          %td
-            - motif.jaspar_links.each do |title, url|
-              .jaspar_link= link_to title, url
+        / = table_info_row motif, :thresholds, header_cell: 'Standard thresholds' do |m|
+        /   %table.thresholds
+        /     %thead
+        /       %tr
+        /         %th
+        /           P-value
+        /           = help_icon(title: 'Genome-wide dinucleotide frequencies were used for P-value estimation')
+        /         %th Threshold
+        /     %tbody
+        /       - m.standard_thresholds.each do |pvalue, threshold|
+        /         %tr
+        /           %td= pvalue
+        /           %td= threshold
+        / %tr
+        /   %td GTEx tissue expression atlas
+        /   %td= link_to "#{motif.gene_name} expression", motif.gtex_url
+        / - if true # motif.species == 'HUMAN'
+        /   %tr
+        /     %td ReMap ChIP-seq dataset list
+        /     %td= link_to "#{motif.gene_name} datasets", motif.remap_url
+        / %tr
+        /   %td Motifs in JASPAR
+        /   %td
+        /     - motif.jaspar_links.each do |title, url|
+        /       .jaspar_link= link_to title, url
         = table_info_row motif, :downloads, header_cell: 'Downloads' do |m|
           = m.download_pcm
           %br
