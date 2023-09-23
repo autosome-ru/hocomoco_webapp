@@ -5,7 +5,7 @@ class MotifsController < ApplicationController
     show_full = true
     if params.fetch('full', 'true').to_s.downcase == 'false'
       show_full = false
-      models = models.reject(&:retracted?).select{|model| model.rank == 0 }
+      models = models.reject(&:retracted?).select{|model| model.motif_subtype == 0 }
     end
 
     respond_to do |format|

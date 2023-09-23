@@ -6,7 +6,7 @@ json.gene_name_mouse  motif.gene_name_mouse
 json.gene_synonyms_human  motif.gene_synonyms_human
 json.gene_synonyms_mouse  motif.gene_synonyms_mouse
 json.model_length  motif.model_length
-json.rank   motif.rank
+json.motif_subtype   motif.motif_subtype
 json.quality   motif.quality
 json.consensus   motif.consensus
 json.data_sources  motif.data_sources

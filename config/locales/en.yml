@@ -44,7 +44,7 @@ en:
         big_logo_revcomp:   'LOGO (reverse complement)'
         model_length:       'Motif length'
         quality:            'Quality'
-        rank:               'Subtype'
+        motif_subtype:      'Motif subtype'
         consensus:          'Consensus'
         release:            'Model release'
         data_sources:       'Data sources'

@@ -13,7 +13,7 @@ module HocomocoSite
   end
 end
 
-Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank,
+Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :motif_subtype,
                           :best_auc_human, :best_auc_mouse,
                           :num_datasets_human, :num_datasets_mouse,
                           :data_sources,
@@ -34,7 +34,6 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :rank
 
   def collection; full_name.split('.')[1]; end
   def bundle_name; collection; end
-  # def rank; full_name.split('.')[2].to_i; end
   # def datatypes; full_name.split('.')[3]; end
   # def quality; full_name.split('.')[4]; end
   def species; 'HUMAN'; end

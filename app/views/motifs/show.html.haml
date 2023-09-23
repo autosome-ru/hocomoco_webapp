@@ -7,11 +7,9 @@
         Do not use this motif!
 .row
   .col-12
-    .table_caption Motif info
-.row
-  .col-12
     %table.key_value_info
       %tbody
+        = table_info_row motif, :full_name
         = table_info_row(motif, :gene_name_human) do |motif|
           = human_gene_name_link(motif.gene_name_human)
         = table_info_row(motif, :gene_synonyms_human) do |motif|
@@ -20,13 +18,17 @@
           = mouse_gene_name_link(motif.gene_name_mouse)
         = table_info_row(motif, :gene_synonyms_mouse) do |motif|
           = motif.gene_synonyms_mouse.join(', ')
-        = table_info_row motif, :full_name
         = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
         = table_info_row motif, :big_logo_revcomp, html_options: {value_column_html: {class: 'sequence_logo'} }
+        = table_info_row motif, :motif_subtype, header_cell: ('Motif subtype' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
+        = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
+%br
+.row
+  .col-12
+    %table.key_value_info
+      %tbody
         = table_info_row motif, :data_sources_full
         = table_info_row motif, :model_length
-        = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
-        = table_info_row motif, :rank, header_cell: ('Motif rank' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
         = table_info_row motif, :consensus
         = table_info_row motif, :best_auc_human #, html_options: {value_column_html: {class: 'AUC'} }, header_cell: ('wAUC' + help_icon(href: help_path(anchor: 'description_auc'), title: 'Weighted Area Under Curve for Receiver Operating Characteristic estimate, click the icon for details on AUC.')).html_safe
         = table_info_row motif, :best_auc_mouse #, html_options: {value_column_html: {class: 'AUC'} }, header_cell: ('wAUC' + help_icon(href: help_path(anchor: 'description_auc'), title: 'Weighted Area Under Curve for Receiver Operating Characteristic estimate, click the icon for details on AUC.')).html_safe
