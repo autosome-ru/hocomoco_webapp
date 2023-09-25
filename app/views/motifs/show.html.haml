@@ -48,7 +48,7 @@
           %tbody
             = table_info_row motif, :model_length
             = table_info_row motif, :consensus
-            = table_info_row motif, :data_sources_full, header_cell: ('Data sources' + help_icon(href: help_path(anchor: 'experimental_data_types'), title: t('tips.data_sources_html'), html: true)).html_safe
+            = table_info_row motif, :data_sources_full
             = table_info_row motif, :num_words_in_alignment
 
   .tab-pane.fade#benchmarksInfo{role: 'tabpanel', aria: {labelledby: 'benchmarks-tab'}}
@@ -80,15 +80,15 @@
           %tbody
             %tr
               %td ChIP-Seq
-              %td #{motif.metrics_summary.dig('ChIP-Seq', 'HUMAN', 'num_datasets')} human, #{motif.metrics_summary.dig('ChIP-Seq', 'MOUSE', 'num_datasets')} mouse
+              %td #{motif.metrics_summary.dig('ChIP-Seq', 'HUMAN', 'num_datasets') || 0} human, #{motif.metrics_summary.dig('ChIP-Seq', 'MOUSE', 'num_datasets') || 0} mouse
               / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'P') || 0
             %tr
               %td HT-SELEX
-              %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'S') || 0
+              %td= motif.metrics_summary.dig('HT-SELEX', 'non-methyl', 'num_datasets') || 0
               / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'S') || 0
             %tr
               %td Methyl-HT-SELEX
-              %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'M') || 0
+              %td= motif.metrics_summary.dig('HT-SELEX', 'methyl', 'num_datasets') || 0
               / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'M') || 0
 
   .tab-pane.fade#downloadsInfo{role: 'tabpanel', aria: {labelledby: 'downloads-tab'}}
