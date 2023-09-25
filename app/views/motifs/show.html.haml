@@ -95,7 +95,7 @@
         %tbody
           %tr
             %th Human
-            %td= chipseq_metrics.dig('HUMAN', 'num_datasets')
+            %td #{chipseq_metrics.dig('HUMAN', 'num_datasets')} / #{chipseq_metrics.dig('HUMAN', 'num_peaksets')}
 
             %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
             %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
@@ -111,7 +111,7 @@
             %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'max')&.round(3)
           %tr
             %th Mouse
-            %td= chipseq_metrics.dig('MOUSE', 'num_datasets')
+            %td #{chipseq_metrics.dig('MOUSE', 'num_datasets')} / #{chipseq_metrics.dig('MOUSE', 'num_peaksets')}
 
             %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
             %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
