@@ -19,38 +19,40 @@
             %th Centrality, median
             %th Centrality, best
         %tbody
-          %tr
-            %th Human
-            %td #{chipseq_metrics.dig('HUMAN', 'num_datasets')} / #{chipseq_metrics.dig('HUMAN', 'num_peaksets')}
+          - if chipseq_metrics['HUMAN']
+            %tr
+              %th Human
+              %td #{chipseq_metrics.dig('HUMAN', 'num_datasets')} / #{chipseq_metrics.dig('HUMAN', 'num_peaksets')}
 
-            %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
+              %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
+              %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
+              %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
+              %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
 
-            %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
+              %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
+              %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
+              %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
+              %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
 
-            %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'max')&.round(3)
-          %tr
-            %th Mouse
-            %td #{chipseq_metrics.dig('MOUSE', 'num_datasets')} / #{chipseq_metrics.dig('MOUSE', 'num_peaksets')}
+              %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'median')&.round(3)
+              %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'max')&.round(3)
+          - if chipseq_metrics['MOUSE']
+            %tr
+              %th Mouse
+              %td #{chipseq_metrics.dig('MOUSE', 'num_datasets')} / #{chipseq_metrics.dig('MOUSE', 'num_peaksets')}
 
-            %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
 
-            %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
 
-            %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'max')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'median')&.round(3)
+              %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'max')&.round(3)
 
 - if motif.metrics_summary['HT-SELEX']
   - selex_metrics = motif.metrics_summary['HT-SELEX']
