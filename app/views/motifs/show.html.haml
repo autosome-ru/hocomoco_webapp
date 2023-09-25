@@ -5,306 +5,141 @@
         Retracted!
         %br
         Do not use this motif!
-.row
-  .col-12
-    %table.key_value_info
-      %tbody
-        = table_info_row motif, :full_name
-        = table_info_row(motif, :gene_name_human) do |motif|
-          = human_gene_name_link(motif.gene_name_human)
-        = table_info_row(motif, :gene_synonyms_human) do |motif|
-          = motif.gene_synonyms_human.join(', ')
-        = table_info_row(motif, :gene_name_mouse) do |motif|
-          = mouse_gene_name_link(motif.gene_name_mouse)
-        = table_info_row(motif, :gene_synonyms_mouse) do |motif|
-          = motif.gene_synonyms_mouse.join(', ')
-        = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
-        = table_info_row motif, :big_logo_revcomp, html_options: {value_column_html: {class: 'sequence_logo'} }
-        = table_info_row motif, :motif_subtype #, header_cell: ('Motif subtype' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
-        = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: t('tips.quality_html'), html: true)).html_safe
-%br
-%h1 Supplementary motif info
-%br
-.row
-  .col-12
-    %table.key_value_info
-      %tbody
-        = table_info_row motif, :model_length
-        = table_info_row motif, :consensus
-        = table_info_row motif, :data_sources_full, header_cell: ('Data sources' + help_icon(href: help_path(anchor: 'experimental_data_types'), title: t('tips.data_sources_html'), html: true)).html_safe
-        = table_info_row motif, :num_words_in_alignment
-%br
-%h1 Subtype-supporting experiments
-%br
-.row
-  .col-12
-    %table.key_value_info
-      %tbody
-        %tr
-          %td ChIP-Seq
-          %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'P') || 0
-        %tr
-          %td HT-SELEX
-          %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'S') || 0
-        %tr
-          %td Methyl-HT-SELEX
-          %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'M') || 0
 
-%br
-%h1 TF info
-%br
-.row
-  .col-12
-    %table.key_value_info
-      %tbody
-        = table_info_row(motif, :tfclass_superclass){|motif| "#{motif.tfclass_superclass} {#{ tfclass_family_inner_link(motif.tfclass_id_part(1)) }}".html_safe }
-        = table_info_row(motif, :tfclass_class){|motif| "#{motif.tfclass_class} {#{ tfclass_family_inner_link(motif.tfclass_id_part(2)) }}".html_safe }
-        = table_info_row(motif, :tfclass_family){|motif| "#{motif.tfclass_family} {#{ tfclass_family_inner_link(motif.tfclass_id_part(3)) }}".html_safe }
-        = table_info_row(motif, :tfclass_subfamily){|motif| "#{motif.tfclass_subfamily} {#{ tfclass_family_inner_link(motif.tfclass_id_part(4)) }}".html_safe }
-        = table_info_row(motif, :tfclass_id){|motif| 'TFClass: '.html_safe + tfclass_family_link(motif.tfclass_id, title: motif.tfclass_id) }
-        = table_info_row(motif, :hgnc_ids){|motif| hgnc_id_links(motif.hgnc_ids) }
-        = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
-        = table_info_row(motif, :entrezgene_ids_human){|motif| gene_id_links(motif.entrezgene_ids_human) }
-        = table_info_row(motif, :entrezgene_ids_mouse){|motif| gene_id_links(motif.entrezgene_ids_mouse) }
-        = table_info_row(motif, :uniprot_id_human){|motif| uniprot_id_link(motif.uniprot_id_human) }
-        = table_info_row(motif, :uniprot_id_mouse){|motif| uniprot_id_link(motif.uniprot_id_mouse) }
-        = table_info_row(motif, :uniprot_ac_human){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_ac_human) }
-        = table_info_row(motif, :uniprot_ac_mouse){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_ac_mouse) }
-        = table_info_row(motif, :greco_db_tf, header_cell: ('GRECO-DB-TF' + help_icon(href: 'https://www.ebi.ac.uk/QuickGO/targetset/dbTF', title: t('tips.greco_db_tf_html'), html: true)).html_safe)
+%ul.nav.nav-tabs#motifTabs{role: 'tablist'}
+  %li.nav-item
+    %a.nav-link.active#main-tab{data: {toggle: 'tab'}, href: '#mainInfo', role: 'tab', aria: {controls: 'mainInfo', selected: 'true'}} Main info
+  %li.nav-item
+    %a.nav-link#motif-tab{href: "#motifInfo", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'motifInfo', selected: 'false'}} Motif info
+  %li.nav-item
+    %a.nav-link#benchmarks-tab{href: "#benchmarksInfo", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'benchmarksInfo', selected: 'false'}} Benchmarks info
+  %li.nav-item
+    %a.nav-link#tf-tab{href: "#tfInfo", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'tfInfo', selected: 'false'}} TF info
+  %li.nav-item
+    %a.nav-link#subtype-tab{href: "#subtypeInfo", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'subtypeInfo', selected: 'false'}} Subtype info
+  %li.nav-item
+    %a.nav-link#matrices-tab{href: "#matricesInfo", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'matricesInfo', selected: 'false'}} Matrices
+  %li.nav-item
+    %a.nav-link#downloads-tab{href: "#downloadsInfo", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'downloadsInfo', selected: 'false'}} Downloads
 
-- if motif.metrics_summary['ChIP-Seq']
-  - chipseq_metrics = motif.metrics_summary['ChIP-Seq']
-  %br
-  .row
-    .col-12
-      %table.benchmarks
-        %thead
-          %tr
-            %th ChIP-Seq benchmarking
-            %th Num. of experiments / peaksets
-            %th auROC, median
-            %th auROC, best
-            %th auPRC, median
-            %th auPRC, best
-            %th pseudo-auROC, median
-            %th pseudo-auROC, best
-            %th pseudo-log-auROC, median
-            %th pseudo-log-auROC, best
-            %th Centrality, median
-            %th Centrality, best
-        %tbody
-          %tr
-            %th Human
-            %td #{chipseq_metrics.dig('HUMAN', 'num_datasets')} / #{chipseq_metrics.dig('HUMAN', 'num_peaksets')}
+.tab-content#motifTabContent
+  .tab-pane.fade.show.active#mainInfo{role: 'tabpanel', aria: {labelledby: 'main-tab'}}
+    .row
+      .col-12
+        %table.key_value_info
+          %tbody
+            = table_info_row motif, :full_name
+            = table_info_row(motif, :gene_name_human) do |motif|
+              = human_gene_name_link(motif.gene_name_human)
+            = table_info_row(motif, :gene_synonyms_human) do |motif|
+              = motif.gene_synonyms_human.join(', ')
+            = table_info_row(motif, :gene_name_mouse) do |motif|
+              = mouse_gene_name_link(motif.gene_name_mouse)
+            = table_info_row(motif, :gene_synonyms_mouse) do |motif|
+              = motif.gene_synonyms_mouse.join(', ')
+            = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
+            = table_info_row motif, :big_logo_revcomp, html_options: {value_column_html: {class: 'sequence_logo'} }
+            = table_info_row motif, :motif_subtype #, header_cell: ('Motif subtype' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
+            = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: t('tips.quality_html'), html: true)).html_safe
+  .tab-pane.fade#motifInfo{role: 'tabpanel', aria: {labelledby: 'motif-tab'}}
+    .row
+      .col-12
+        %table.key_value_info
+          %tbody
+            = table_info_row motif, :model_length
+            = table_info_row motif, :consensus
+            = table_info_row motif, :data_sources_full, header_cell: ('Data sources' + help_icon(href: help_path(anchor: 'experimental_data_types'), title: t('tips.data_sources_html'), html: true)).html_safe
+            = table_info_row motif, :num_words_in_alignment
 
-            %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
+  .tab-pane.fade#benchmarksInfo{role: 'tabpanel', aria: {labelledby: 'benchmarks-tab'}}
+    = render partial: 'benchmarks', locals: {motif: motif}
+  .tab-pane.fade#tfInfo{role: 'tabpanel', aria: {labelledby: 'tf-tab'}}
+    .row
+      .col-12
+        %table.key_value_info
+          %tbody
+            = table_info_row(motif, :tfclass_superclass){|motif| "#{motif.tfclass_superclass} {#{ tfclass_family_inner_link(motif.tfclass_id_part(1)) }}".html_safe }
+            = table_info_row(motif, :tfclass_class){|motif| "#{motif.tfclass_class} {#{ tfclass_family_inner_link(motif.tfclass_id_part(2)) }}".html_safe }
+            = table_info_row(motif, :tfclass_family){|motif| "#{motif.tfclass_family} {#{ tfclass_family_inner_link(motif.tfclass_id_part(3)) }}".html_safe }
+            = table_info_row(motif, :tfclass_subfamily){|motif| "#{motif.tfclass_subfamily} {#{ tfclass_family_inner_link(motif.tfclass_id_part(4)) }}".html_safe }
+            = table_info_row(motif, :tfclass_id){|motif| 'TFClass: '.html_safe + tfclass_family_link(motif.tfclass_id, title: motif.tfclass_id) }
+            = table_info_row(motif, :hgnc_ids){|motif| hgnc_id_links(motif.hgnc_ids) }
+            = table_info_row(motif, :mgi_ids){|motif| mgi_id_links(motif.mgi_ids) }
+            = table_info_row(motif, :entrezgene_ids_human){|motif| gene_id_links(motif.entrezgene_ids_human) }
+            = table_info_row(motif, :entrezgene_ids_mouse){|motif| gene_id_links(motif.entrezgene_ids_mouse) }
+            = table_info_row(motif, :uniprot_id_human){|motif| uniprot_id_link(motif.uniprot_id_human) }
+            = table_info_row(motif, :uniprot_id_mouse){|motif| uniprot_id_link(motif.uniprot_id_mouse) }
+            = table_info_row(motif, :uniprot_ac_human){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_ac_human) }
+            = table_info_row(motif, :uniprot_ac_mouse){|motif| uniprot_ac_and_tfclass_link(motif.uniprot_ac_mouse) }
+            = table_info_row(motif, :greco_db_tf, header_cell: ('GRECO-DB-TF' + help_icon(href: 'https://www.ebi.ac.uk/QuickGO/targetset/dbTF', title: t('tips.greco_db_tf_html'), html: true)).html_safe)
 
-            %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
-
-            %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'median')&.round(3)
-            %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'max')&.round(3)
-          %tr
-            %th Mouse
-            %td #{chipseq_metrics.dig('MOUSE', 'num_datasets')} / #{chipseq_metrics.dig('MOUSE', 'num_peaksets')}
-
-            %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
-
-            %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
-
-            %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'median')&.round(3)
-            %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'max')&.round(3)
-
-- if motif.metrics_summary['HT-SELEX']
-  - selex_metrics = motif.metrics_summary['HT-SELEX']
-  %br
-  .row
-    .col-12
-      %table.benchmarks
-        %thead
-          %tr
-            %th{colspan: 2} HT-SELEX benchmarking
-            %th auROC10
-            %th auPRC10
-            %th auROC25
-            %th auPRC25
-            %th auROC50
-            %th auPRC50
-        %tbody
-          - if motif.metrics_summary.dig('HT-SELEX', 'overall') && selex_metrics.dig('methyl') && selex_metrics.dig('non-methyl')
+  .tab-pane.fade#subtypeInfo{role: 'tabpanel', aria: {labelledby: 'subtype-tab'}}
+    .row
+      .col-12
+        %table.key_value_info
+          %tbody
             %tr
-              %th.half{rowspan: 2}
-                Overall,
-                %span.font-weight-light  #{selex_metrics.dig('overall', 'num_datasets')} experiments
-              %th.half median
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
+              %td ChIP-Seq
+              %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'P') || 0
             %tr
-              %th.half best
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
-
-          - if selex_metrics.dig('methyl')
+              %td HT-SELEX
+              %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'S') || 0
             %tr
-              %th.half{rowspan: 2}
-                Methyl HT-SELEX,
-                %span.font-weight-light #{selex_metrics.dig('methyl', 'num_datasets')} experiments
-              %th.half median
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
-            %tr
-              %th.half best
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
+              %td Methyl-HT-SELEX
+              %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'M') || 0
 
-          - if selex_metrics.dig('non-methyl')
-            %tr
-              %th.half{rowspan: 2}
-                Non-Methyl HT-SELEX,
-                %span.font-weight-light #{selex_metrics.dig('non-methyl', 'num_datasets')} experiments
-              %th.half median
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
-            %tr
-              %th.half best
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
+  .tab-pane.fade#downloadsInfo{role: 'tabpanel', aria: {labelledby: 'downloads-tab'}}
+    .row
+      .col-12
+        %table.key_value_info
+          %tbody
+            = table_info_row motif, :downloads, header_cell: 'Downloads' do |m|
+              = m.download_pcm
+              %br
+              = m.download_pwm
+              %br
+              = m.download_alignment
+              %br
+              = m.download_precalculated_thresholds
 
+  .tab-pane.fade#matricesInfo{role: 'tabpanel', aria: {labelledby: 'matrices-tab'}}
+    .row
+      .col-12
+        .matrix_container.pcm-matrix
+          %span.title PCM
+          = motif.pcm
 
-- if motif.metrics_summary.dig('rSNP', 'adastra')
-  - adastra_metrics = motif.metrics_summary.dig('rSNP', 'adastra')
-  %br
-  .row
-    .col-12
-      %table.benchmarks
-        %thead
-          %tr
-            %th rSNP benchmarking, ADASTRA
-            %th odds-ratio
-            %th -log-Fisher's P
-            %th Pearson r
-            %th Kendall tau
-        %tbody
-          %tr
-            %th #
-            %td= adastra_metrics['odds']&.round(3)
-            %td= adastra_metrics['mlogfip']&.round(3)
-            %td= adastra_metrics['r']&.round(3)
-            %td= adastra_metrics['tau']&.round(3)
+        .matrix_container.pwm-matrix
+          %span.title PWM
+          = motif.pwm
 
-- if motif.metrics_summary.dig('rSNP', 'SNP-SELEX')
-  - snp_selex_metrics = motif.metrics_summary.dig('rSNP', 'SNP-SELEX')
-  %br
-  .row
-    .col-12
-      %table.benchmarks
-        %thead
-          %tr
-            %th rSNP benchmarking, SNP-SELEX
-            %th auROC
-            %th auPRC
-            %th Pearson r
-            %th Kendall tau
-        %tbody
-          - if snp_selex_metrics['batch-1']
-            %tr
-              %th batch 1
-              %td= snp_selex_metrics.dig('batch-1', 'auroc')&.round(3)
-              %td= snp_selex_metrics.dig('batch-1', 'auprc')&.round(3)
-              %td= snp_selex_metrics.dig('batch-1', 'r')&.round(3)
-              %td= snp_selex_metrics.dig('batch-1', 'tau')&.round(3)
-          - if snp_selex_metrics['batch-2']
-            %tr
-              %th batch 2
-              %td= snp_selex_metrics.dig('batch-2', 'auroc')&.round(3)
-              %td= snp_selex_metrics.dig('batch-2', 'auprc')&.round(3)
-              %td= snp_selex_metrics.dig('batch-2', 'r')&.round(3)
-              %td= snp_selex_metrics.dig('batch-2', 'tau')&.round(3)
+/ = table_info_row motif, :comment
+/ = table_info_row motif, :thresholds, header_cell: 'Standard thresholds' do |m|
+/   %table.thresholds
+/     %thead
+/       %tr
+/         %th
+/           P-value
+/           = help_icon(title: 'Genome-wide dinucleotide frequencies were used for P-value estimation')
+/         %th Threshold
+/     %tbody
+/       - m.standard_thresholds.each do |pvalue, threshold|
+/         %tr
+/           %td= pvalue
+/           %td= threshold
+/ %tr
+/   %td GTEx tissue expression atlas
+/   %td= link_to "#{motif.gene_name} expression", motif.gtex_url
+/ - if true # motif.species == 'HUMAN'
+/   %tr
+/     %td ReMap ChIP-Seq dataset list
+/     %td= link_to "#{motif.gene_name} datasets", motif.remap_url
+/ %tr
+/   %td Motifs in JASPAR
+/   %td
+/     - motif.jaspar_links.each do |title, url|
+/       .jaspar_link= link_to title, url
 
-%br
-.row
-  .col-12
-    %table.key_value_info
-      %tbody
-        / = table_info_row motif, :comment
-        / = table_info_row motif, :thresholds, header_cell: 'Standard thresholds' do |m|
-        /   %table.thresholds
-        /     %thead
-        /       %tr
-        /         %th
-        /           P-value
-        /           = help_icon(title: 'Genome-wide dinucleotide frequencies were used for P-value estimation')
-        /         %th Threshold
-        /     %tbody
-        /       - m.standard_thresholds.each do |pvalue, threshold|
-        /         %tr
-        /           %td= pvalue
-        /           %td= threshold
-        / %tr
-        /   %td GTEx tissue expression atlas
-        /   %td= link_to "#{motif.gene_name} expression", motif.gtex_url
-        / - if true # motif.species == 'HUMAN'
-        /   %tr
-        /     %td ReMap ChIP-Seq dataset list
-        /     %td= link_to "#{motif.gene_name} datasets", motif.remap_url
-        / %tr
-        /   %td Motifs in JASPAR
-        /   %td
-        /     - motif.jaspar_links.each do |title, url|
-        /       .jaspar_link= link_to title, url
-        = table_info_row motif, :downloads, header_cell: 'Downloads' do |m|
-          = m.download_pcm
-          %br
-          = m.download_pwm
-          %br
-          = m.download_alignment
-          %br
-          = m.download_precalculated_thresholds
-
-.row
-  .col-12
-    .matrix_container.pcm-matrix
-      %span.title PCM
-      = motif.pcm
-
-    .matrix_container.pwm-matrix
-      %span.title PWM
-      = motif.pwm
 
 - content_for(:meta_description) do
   = "Motif #{motif.object.full_name} for #{motif.gene_name} #{motif.species.downcase} transcription factor (#{motif.uniprot_id_human} in UniProt)"
