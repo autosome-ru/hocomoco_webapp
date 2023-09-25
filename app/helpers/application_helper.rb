@@ -3,7 +3,7 @@ require 'tf_ontology'
 module ApplicationHelper
   def table_info_row(obj, attrib, html_options: {}, header_cell: nil, &block)
     key_column = content_tag(:td, html_options[:key_column_html]) do
-      header_cell || I18n.t("activerecord.attributes.#{ActiveSupport::Inflector.underscore(obj.class.model_name)}.#{attrib}")
+      header_cell || I18n.t("activerecord.attributes.#{ActiveSupport::Inflector.underscore(obj.class.model_name)}.#{attrib}").html_safe
     end
     value_column = content_tag(:td, html_options[:value_column_html]) do
       if block_given?
@@ -27,7 +27,7 @@ module ApplicationHelper
       klasses += options[:class].split(/[\s,]/)  if options[:class].is_a? String
     end
     content_tag :th, options.merge(class: klasses.uniq) do
-      block_given? ? block.call(content) : content
+      (block_given? ? block.call(content) : content).html_safe
     end
   end
 

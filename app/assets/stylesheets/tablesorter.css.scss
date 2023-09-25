@@ -74,6 +74,23 @@ table.key_value_info {
   }
 }
 
+table.benchmarks {
+  width: 100%;
+  font-size: medium;
+  td, th {
+    padding: 5px;
+    border: 1px solid darkgray;
+  }
+  tbody th {
+    width: 25%;
+    font-weight: bolder;
+  }
+  tbody th.half {
+    width: 12.5%;
+    font-weight: bolder;
+  }
+}
+
 // Grouping widget style begin
 tr.group-header td {
   background: #eee;

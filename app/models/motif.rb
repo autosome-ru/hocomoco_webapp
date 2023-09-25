@@ -45,7 +45,10 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   def gene_synonyms_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_synonyms') || []; end
   def entrezgene_ids_human; data.dig('masterlist_info', 'species', 'HUMAN', 'entrez') || []; end
   def entrezgene_ids_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'entrez') || []; end
+  def greco_db_tf; data.dig('masterlist_info', 'greco_db_tf'); end
   def gene_name; gene_name_human.first; end
+
+  def metrics_summary; data['metrics_summary']; end
 
   def arity
     'mono'

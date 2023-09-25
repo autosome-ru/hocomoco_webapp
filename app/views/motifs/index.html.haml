@@ -43,6 +43,7 @@
           = motif_table_header :uniprot_id_mouse, class: 'uniprot_id'
           = motif_table_header :uniprot_ac_human, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
           = motif_table_header :uniprot_ac_mouse, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
+          = motif_table_header(:greco_db_tf, hide_by_default: true){|content| (content + help_icon(title: t('tips.greco_db_tf_html'), html: true, href: 'https://www.ebi.ac.uk/QuickGO/targetset/dbTF')).html_safe }
 
       %tbody
         - models.each do |model|
@@ -72,6 +73,7 @@
             %td= model.uniprot_id_mouse
             %td= model.uniprot_ac_human
             %td= model.uniprot_ac_mouse
+            %td= model.greco_db_tf
 
 - content_for(:title) do
   Motifs - HOmo sapiens COmprehensive MOdel COllection
