@@ -1,4 +1,23 @@
-require 'tf_ontology'
+require 'csv'
+
+def masterlist
+  @cached_masterlist ||= CSV.readlines(Rails.root.join('public/masterlist.tsv'), headers: true, col_sep: "\t").map(&:to_h)
+end
+
+def tfclass_name_by_id
+  @cached_tfclass_name_by_id ||= begin
+    masterlist.flat_map{|d|
+      [
+        [d['tfclass:id'].split('.').first(1).join('.'), {level_name: 'Superclass', name: d['tfclass:superclass']}],
+        [d['tfclass:id'].split('.').first(2).join('.'), {level_name: 'Class', name: d['tfclass:class']}],
+        [d['tfclass:id'].split('.').first(3).join('.'), {level_name: 'Family', name: d['tfclass:family']}],
+        [d['tfclass:id'].split('.').first(4).join('.'), {level_name: 'Subfamily', name: d['tfclass:subfamily']}],
+      ]
+    }.uniq.tap{|pairs|
+      raise unless pairs.map(&:first).uniq.size == pairs.size
+    }.to_h
+  end
+end
 
 module ApplicationHelper
   def table_info_row(obj, attrib, html_options: {}, header_cell: nil, &block)
@@ -40,15 +59,6 @@ module ApplicationHelper
                                           }
   end
 
-# TODO
-  def tfclass_term(family_id, species)
-    return nil  unless family_id && !family_id.blank?
-    return nil  unless species && !species.blank?
-    @tf_ontology ||= {}
-    @tf_ontology[species] ||= TFClassification.from_file(Rails.root.join("db/TFOntologies/TFClass_#{species.downcase}.obo"))
-    return @tf_ontology[species].term(family_id)
-  end
-
   def caption(collection: nil, family_id: nil, full: false, show_full_core_caption: true)
     result = ""
     # result += image_tag("#{species.downcase}_sel.png", class: 'species-indicator')
@@ -59,15 +69,12 @@ module ApplicationHelper
       'H12RSNP' => 'rSNP collection',
     }.fetch(collection, '')
     result += full ? ' (complete)' : ' (primary subtypes)'  if show_full_core_caption
-    term = tfclass_term(family_id, 'HUMAN')
+    term = tfclass_name_by_id[family_id]
     if term
-      tfclass_name = "#{term.level_name.capitalize} {#{family_id}}"
-      tfclass_link = link_to("http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{family_id}", class: 'has-tooltip', data: {toggle: 'tooltip', placement: 'bottom', title: term.name}) do
-        help_icon = content_tag(:div, '', class: ['help-icon'])
-        (tfclass_name + help_icon).html_safe
-      end
+      tfclass_name = "#{term[:level_name]} {#{family_id}}"
+      tfclass_link = link_to(tfclass_name, "http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{family_id}")
 
-      (result + ", #{tfclass_link}").html_safe
+      (result + ", #{tfclass_link}: #{term[:name]}").html_safe
     else
       result.html_safe
     end
