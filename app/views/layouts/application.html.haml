@@ -50,12 +50,13 @@
             %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
               Subcollections
             .dropdown-menu
-              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVIVO'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for use in <i>in vivo</i> data'.html_safe}}
-                In vivo
-              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVITRO'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for use in <i>in vitro</i> data'.html_safe}}
-                In vitro
+              / `'true'` in  `html: 'true'` should be as string, not boolean!
+              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVIVO'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for use in <i>in vivo</i> data', html: 'true'}}
+                HOCOMOCO <i>in vivo</i>
+              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVITRO'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for use in <i>in vitro</i> data', html: 'true'}}
+                HOCOMOCO <i>in vitro</i>
               %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12RSNP'), data: { toggle: 'tooltip', placement: 'right', title: 'Set of binding models best for measuring regulatory SNP effects'}}
-                rSNP
+                HOCOMOCO rSNP
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
               Tools
