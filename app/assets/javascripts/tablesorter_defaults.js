@@ -71,7 +71,6 @@
     theme: 'blue',
     widthFixed : false, // This is default
     ignoreCase: true,
-    // sortList: [[0,0], ],
     // delayInit: false,
     initialized : function(table){
       $('.loading_table').hide();
