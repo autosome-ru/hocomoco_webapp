@@ -51,7 +51,7 @@ module ApplicationHelper
   end
 
   def download_button
-    content_tag :button, 'Get TSV', class: ['btn', 'btn-sm', 'btn-outline-secondary', 'download', 'has-tooltip'],
+    content_tag :button, 'Get TSV', class: ['btn', 'btn-sm', 'btn-outline-secondary', 'download', 'has-tooltip', 'd-none', 'd-md-inline-block'],
                                     type: 'button',
                                     data: { toggle: 'tooltip',
                                             placement: 'right',

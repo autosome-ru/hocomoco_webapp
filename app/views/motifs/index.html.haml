@@ -5,10 +5,10 @@
         - if core_full_url
           %button.work_as_link.full_core_collection.btn.btn-sm.btn-outline-secondary{data: {href: core_full_url} }
             = switch_to_core_full
-        %button.btn.btn-sm.btn-outline-secondary.reset.resetColumns{type: 'button'} Reset
+        %button.btn.btn-sm.btn-outline-secondary.reset.resetColumns.d-none.d-md-inline-block{type: 'button'} Reset
         %button.btn.btn-sm.btn-outline-secondary.select-columns-btn{type: 'button'} Select Columns
         = download_button
-        %input.form-control.form-control-sm.csv-filename{type: "text", value: csv_filename}
+        %input.form-control.form-control-sm.csv-filename.d-none.d-md-inline-block{type: "text", value: csv_filename}
         .loading_table
           .loading_logo
         .caption= caption(collection: collection, family_id: family_id, full: is_full, show_full_core_caption: show_full_core_caption)
