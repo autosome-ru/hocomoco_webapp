@@ -19,7 +19,7 @@ class MotifsController < ApplicationController
           disable_default_filters: false,
           is_full: show_full,
           core_full_url: motifs_path(full: !show_full),
-          switch_to_core_full: show_full ? '🔃 Switch to primary subtypes' : '🔃 Switch to complete collection',
+          switch_to_core_full: show_full ? '🔃 <span class="d-none d-md-inline">Switch to</span><span class="d-inline d-md-none">To</span> primary subtypes'.html_safe : '🔃 <span class="d-none d-md-inline">Switch to</span><span class="d-inline d-md-none">To</span> complete collection',
           show_full_core_caption: true,
         }
       end
