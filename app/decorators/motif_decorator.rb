@@ -99,4 +99,8 @@ class MotifDecorator < ApplicationDecorator
       {'P' => 'ChIP-Seq', 'S' => 'HT-SELEX', 'M' => 'Methyl-HT-SELEX'}.fetch(k){|k| $stderr.puts "Error: datatype `#{k}` unknown" }
     }.join(' + ')
   end
+
+  def gc_content; "#{(object.gc_content * 100).round(2)}%" ; end
+  def information_content_total; object.information_content_total.round(3); end
+  def information_content_per_base; object.information_content_per_base.round(3); end
 end

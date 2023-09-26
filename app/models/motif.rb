@@ -26,6 +26,9 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
 
   def name; full_name; end
   def tf; full_name.split('.')[0]; end
+  def gc_content; data['gc_content']; end
+  def information_content_total; data['information_content_total']; end
+  def information_content_per_base; data['information_content_per_base']; end
 
   def uniprot_id_human; data.dig('masterlist_info', 'species', 'HUMAN', 'uniprot_id'); end
   def uniprot_id_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'uniprot_id'); end

@@ -48,6 +48,8 @@
           %tbody
             = table_info_row motif, :model_length
             = table_info_row motif, :consensus
+            = table_info_row motif, :gc_content
+            = table_info_row(motif, :information_content_both) {|motif| "#{motif.information_content_total} / #{motif.information_content_per_base}" }
             = table_info_row motif, :data_sources_full
             = table_info_row motif, :num_words_in_alignment
 
