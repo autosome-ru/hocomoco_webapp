@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/:species/:arity' => 'motifs#index', constraints: {species: /human|mouse/i, arity: /mono|di/i}, as: 'motifs'
   post '/search_post' => 'hocomoco#searchPost', as: 'search_post'
   get '/search' => 'hocomoco#search', as: 'search'
-  get '/motif/:motif', constraints: {motif: /\w+_(HUMAN|MOUSE).H10(MO|DI).[ABCDS]/i}, to: redirect{|path_params, req|
+  get '/motif/:motif', constraints: {motif: /\w+_(HUMAN|MOUSE)\.H10(MO|DI)\.[ABCDS]/i}, to: redirect{|path_params, req|
     if path_params[:format]
       "#{ENV['HOCOMOCO10_URL']}motif/#{path_params[:motif]}.#{path_params[:format]}"
     else
