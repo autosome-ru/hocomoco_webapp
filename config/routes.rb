@@ -3,13 +3,22 @@ Rails.application.routes.draw do
   get '/:collection' => 'motifs#index', constraints: {collection: /H12(CORE|INVIVO|INVITRO|RSNP)/i}, defaults: {collection: 'H12CORE'}, as: 'motifs'
   post '/search_post' => 'hocomoco#searchPost', as: 'search_post'
   get '/search' => 'hocomoco#search', as: 'search'
-  get '/motif/:motif', constraints: {motif: /\w+_(HUMAN|MOUSE).H10(MO|DI).[ABCDS]/i}, to: redirect{|path_params, req|
+  get '/motif/:motif', constraints: {motif: /\w+_(HUMAN|MOUSE)\.H10(MO|DI)\.[ABCDS]/i}, to: redirect{|path_params, req|
     if path_params[:format]
       "#{ENV['HOCOMOCO10_URL']}motif/#{path_params[:motif]}.#{path_params[:format]}"
     else
       "#{ENV['HOCOMOCO10_URL']}motif/#{path_params[:motif]}"
     end
   }
+
+  get '/motif/:motif', constraints: {motif: /\w+_(HUMAN|MOUSE)\.H11(MO|DI)\.\d.[ABCD]/i}, to: redirect{|path_params, req|
+    if path_params[:format]
+      "#{ENV['HOCOMOCO11_URL']}motif/#{path_params[:motif]}.#{path_params[:format]}"
+    else
+      "#{ENV['HOCOMOCO11_URL']}motif/#{path_params[:motif]}"
+    end
+  }
+
   get '/motif/:motif' => 'motifs#show', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, as: 'motif'
   get '/motif/:motif/pcm' => 'motifs#pcm', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, as: 'motif_pcm'
   get '/motif/:motif/pwm' => 'motifs#pwm', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, as: 'motif_pwm'
