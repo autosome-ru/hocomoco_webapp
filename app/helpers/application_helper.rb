@@ -83,7 +83,7 @@ module ApplicationHelper
   end
 
   def hgnc_id_url(hgnc_id)
-    "http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=#{hgnc_id}"
+    "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=#{hgnc_id}"
   end
   def hgnc_id_link(hgnc_id, name: nil)
     link_to((name || "HGNC:#{hgnc_id}"), hgnc_id_url(hgnc_id))
@@ -93,8 +93,8 @@ module ApplicationHelper
   end
 
   def mgi_url(mgi_id)
-    # "http://www.informatics.jax.org/searchtool/Search.do?query=MGI:#{mgi_id}"
-    "http://www.informatics.jax.org/marker/MGI:#{mgi_id}"
+    # "https://www.informatics.jax.org/searchtool/Search.do?query=MGI:#{mgi_id}"
+    "https://www.informatics.jax.org/marker/MGI:#{mgi_id}"
   end
   def mgi_id_link(mgi_id, name: nil)
     link_to((name || "MGI:#{mgi_id}"), mgi_url(mgi_id))
@@ -104,11 +104,11 @@ module ApplicationHelper
   end
 
   def fantom_sstar_gene_link(gene_id)
-    link_to('SSTAR profile', "http://fantom.gsc.riken.jp/5/sstar/EntrezGene:#{gene_id}")
+    link_to('SSTAR profile', "https://fantom.gsc.riken.jp/5/sstar/EntrezGene:#{gene_id}")
   end
   def gene_id_link(gene_id)
     [
-      link_to("GeneID:#{gene_id}", "http://www.ncbi.nlm.nih.gov/gene/#{gene_id}"),
+      link_to("GeneID:#{gene_id}", "https://www.ncbi.nlm.nih.gov/gene/#{gene_id}"),
       '<br/>',
       "(#{ fantom_sstar_gene_link(gene_id) })"
     ].join.html_safe
@@ -119,10 +119,10 @@ module ApplicationHelper
 
   def human_gene_name_link(gene_name)
     [
-      link_to(gene_name, "http://www.genenames.org/cgi-bin/gene_symbol_report?match=#{gene_name}"),
+      link_to(gene_name, "https://www.genenames.org/cgi-bin/gene_symbol_report?match=#{gene_name}"),
       '<br/>',
       '(',
-      link_to('GeneCards', "http://www.genecards.org/cgi-bin/carddisp.pl?gene=#{gene_name}"),
+      link_to('GeneCards', "https://www.genecards.org/cgi-bin/carddisp.pl?gene=#{gene_name}"),
       ')'
     ].join.html_safe
   end
@@ -132,7 +132,7 @@ module ApplicationHelper
   end
 
   def mouse_gene_name_link(gene_name)
-    link_to(gene_name, "http://www.informatics.jax.org/searchtool/Search.do?query=#{gene_name}")
+    link_to(gene_name, "https://www.informatics.jax.org/marker/summary?nomen=#{gene_name}")
   end
 
   def mouse_gene_name_links(gene_names)
@@ -163,11 +163,11 @@ module ApplicationHelper
   end
 
   def uniprot_id_link(uniprot_id)
-    link_to uniprot_id, "http://www.uniprot.org/uniprot/#{uniprot_id}"
+    link_to uniprot_id, "https://www.uniprot.org/uniprot/#{uniprot_id}"
   end
 
   def uniprot_ac_link(uniprot_ac)
-    link_to(uniprot_ac, "http://www.uniprot.org/uniprot/#{uniprot_ac}")
+    link_to(uniprot_ac, "https://www.uniprot.org/uniprot/#{uniprot_ac}")
   end
 
   def uniprot_ac_and_tfclass_link(uniprot_ac)
