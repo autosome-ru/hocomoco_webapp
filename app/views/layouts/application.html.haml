@@ -7,8 +7,9 @@
 
     %title= content_for?(:title) ? yield(:title) : "HOCOMOCO: HOmo sapiens COmprehensive MOdel COllection"
     - if content_for?(:meta_description)
-      %meta{name: 'description', content: yield(:meta_description)}
-      %meta{name: 'thumbnail', content: yield(:meta_thumbnail)}
+      %meta{name: 'description', content: yield(:meta_description).strip}
+      %meta{name: 'thumbnail', content: yield(:meta_thumbnail).strip}
+    %meta{name: 'keywords', content: ['TFBS', 'TF binding motif collection', 'binding motifs', 'transcription factors', 'TF binding motif database', *(content_for?(:meta_keywords) ? yield(:meta_keywords).strip.split(',') : []) ].map(&:strip).join(', ')}
     = csrf_meta_tags
     :plain
       <!-- Google tag (gtag.js) -->

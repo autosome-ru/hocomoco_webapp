@@ -152,3 +152,5 @@
   = request.base_url + motif.direct_logo_url
 - content_for(:title) do
   = "#{motif.object.full_name} motif - HOmo sapiens COmprehensive MOdel COllection"
+- content_for(:meta_keywords) do
+  = [motif.gene_name_human, motif.gene_name_mouse, motif.uniprot_id_human, motif.uniprot_id_mouse].compact.map(&:strip).join(', ')
