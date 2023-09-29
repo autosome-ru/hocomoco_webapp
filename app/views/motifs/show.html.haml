@@ -40,7 +40,7 @@
             = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
             = table_info_row motif, :big_logo_revcomp, html_options: {value_column_html: {class: 'sequence_logo'} }
             = table_info_row motif, :motif_subtype #, header_cell: ('Motif subtype' + help_icon(href: help_path(anchor: 'description_quality_score'), title: 'Click for details on quality assessment.')).html_safe
-            = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: t('tips.quality_html'), html: true)).html_safe
+            = table_info_row motif, :quality, header_cell: ('Quality' + help_icon(href: help_path(anchor: 'description_quality_score'), title: t((motif.collection == 'H12CORE') ? 'tips.quality_html' : 'tips.quality_html_subcollection'), html: true)).html_safe
   .tab-pane.fade#motifInfo{role: 'tabpanel', aria: {labelledby: 'motif-tab'}}
     .row
       .col-12
