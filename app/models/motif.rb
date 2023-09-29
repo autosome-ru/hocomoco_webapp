@@ -165,35 +165,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     "https://jaspar.genereg.net/api/v1/matrix/?collection=CORE&tax_group=Vertebrates&version=latest&search=#{gene_name}&format=json"
   end
 
-  def self.read_standard_thresholds(filename)
-    lines = File.readlines(filename).map(&:chomp).map{|line| line.split("\t") }
-    pvalues = lines.first.drop(1).map(&:to_f)
-    lines.drop(1).map{|line|
-      motif, *thresholds = *line
-      [motif, pvalues.zip(thresholds).to_h]
-    }.to_h
-  end
-
-  def self.standard_thresholds_by_motif
-    # @standard_thresholds_by_motif ||= Hash.new{|species_hash, species|
-    #   species_hash[species] = Hash.new{|arity_hash, arity|
-    #     standard_thresholds_path = HocomocoSite::path_in_final_bundle("full/#{collection}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_full_standard_thresholds_#{species}_#{arity}.txt")
-    #     retracted_standard_thresholds_path = HocomocoSite::path_in_final_bundle("retracted/#{collection}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_standard_thresholds_#{species}_#{arity}.txt")
-    #     standard_thresholds = read_standard_thresholds(standard_thresholds_path)
-    #     if File.exist?(retracted_standard_thresholds_path)
-    #       retracted_standard_thresholds = read_standard_thresholds(retracted_standard_thresholds_path)
-    #       arity_hash[arity] = standard_thresholds.merge(retracted_standard_thresholds)
-    #     else
-    #       arity_hash[arity] = standard_thresholds
-    #     end
-    #   }
-    # }
-    {}
-  end
-
-  def standard_thresholds
-    self.class.standard_thresholds_by_motif.dig(collection, full_name) || {}
-  end
+  def standard_thresholds; data['standard_thresholds']; end
 
   def precalculated_thresholds_url
     url_in_final_bundle("#{collection}/thresholds/#{full_name}.thr")

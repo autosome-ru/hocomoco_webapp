@@ -90,7 +90,7 @@ footer {
   display: none;
 }
 
-.matrix {
+.matrix, table.thresholds {
   border: 1px solid black;
   thead, tbody tr td:first-child {
     font-weight: bold;
@@ -101,7 +101,7 @@ footer {
   }
 }
 
-.matrix_container {
+.matrix_container, .thresholds-container {
   display: inline-block;
 
   margin-top: 15px;
@@ -111,6 +111,9 @@ footer {
     font-weight: bold;
     font-size: 14px;
   }
+}
+
+.matrix_container {
   .matrix {
     margin-top: 5px;
   }

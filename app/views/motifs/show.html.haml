@@ -118,20 +118,19 @@
           %span.title PWM
           = motif.pwm
 
+        .thresholds-container
+          %span.title Standard thresholds
+          %table.thresholds
+            %thead
+              %tr
+                %th P-value
+                %th Threshold
+            %tbody
+              - motif.standard_thresholds.each do |pvalue, threshold|
+                %tr
+                  %td= pvalue
+                  %td= threshold.round(6)
 / = table_info_row motif, :comment
-/ = table_info_row motif, :thresholds, header_cell: 'Standard thresholds' do |m|
-/   %table.thresholds
-/     %thead
-/       %tr
-/         %th
-/           P-value
-/           = help_icon(title: 'Genome-wide dinucleotide frequencies were used for P-value estimation')
-/         %th Threshold
-/     %tbody
-/       - m.standard_thresholds.each do |pvalue, threshold|
-/         %tr
-/           %td= pvalue
-/           %td= threshold
 / %tr
 /   %td GTEx tissue expression atlas
 /   %td= link_to "#{motif.gene_name} expression", motif.gtex_url
