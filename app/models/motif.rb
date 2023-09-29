@@ -97,7 +97,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
 
   def alignment_url
     ext = model_kind.pwm_extension
-    url_in_final_bundle("#{collection}/words/#{full_name}.words")
+    url_in_final_bundle("#{collection}/words/#{full_name}.words.tsv")
   end
 
   def pcm_path

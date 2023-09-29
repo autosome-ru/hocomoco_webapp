@@ -39,10 +39,12 @@
       - collections.each do |collection|
         %td= link_to "#{collection}_pfm.tar.gz", bundle_url.call("#{collection}/#{collection}_pfm.tar.gz")
 
-    / %tr
-    /   %td.row-hdr{colspan: 2} Alignments
-    /   %td= link_to 'words_HUMAN_mono.tar.gz', bundle_url.call("H12CORE/words_HUMAN_mono.tar.gz")
-    /   %td= link_to 'words_MOUSE_mono.tar.gz', bundle_url.call("H12CORE/words_MOUSE_mono.tar.gz")
+    %tr
+      %td.row-hdr{colspan: 2}
+        Alignments
+      - collections.each do |collection|
+        %td= link_to "#{collection}_words.tar.gz", bundle_url.call("#{collection}/#{collection}_words.tar.gz")
+
     / %tr
     /   %td.row-hdr{colspan: 2} Standard thresholds
     /   %td= link_to 'standard_thresholds_HUMAN_mono.txt', bundle_url.call("H12CORE/standard_thresholds_HUMAN_mono.txt")
