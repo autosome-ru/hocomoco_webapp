@@ -74,7 +74,7 @@ en:
         information_content_total:     'Information content (bits; total)'
         information_content_per_base:  'Information content (bits; per base)'
   tips:
-    quality_html:       "A - found both in ChIP-Seq and HT-SELEX;<br/>B - reproducible in ChIP-Seq or HT-SELEX;<br/>C - found in a single dataset;<br/>D - inherited from v11"
+    quality_html:       "A: found both in ChIP-Seq and HT-SELEX;<br/>B: reproducible in ChIP-Seq or HT-SELEX;<br/>C: found in a single dataset;<br/>D: inherited from HOCOMOCO-v11 and not benchmarked at subcollection-specific data type"
     data_sources_html:  "P: ChI<b>P</b>-Seq,<br/>S: HT-<b>S</b>ELEX,<br/>M: <b>M</b>ethyl-HT-SELEX"
     greco_db_tf_html:   "Genuine DNA-binding transcription factors as annotated by GREEKC"
     hocomoco_invivo:    "Motif optimized for recognition of sites bound <i>in vivo</i>"
