@@ -58,7 +58,7 @@ class MotifDecorator < ApplicationDecorator
 
   def format_matrix_as_table(matrix, round: nil)
     nucleotides = ['A', 'C', 'G', 'T']
-    letters = (arity == 'mono') ? nucleotides : nucleotides.product(nucleotides).map(&:join)
+    letters = nucleotides
     header = helpers.content_tag(:thead){
       helpers.content_tag(:tr){
         [nil, *letters].map{|letter|
@@ -82,15 +82,15 @@ class MotifDecorator < ApplicationDecorator
   end
 
   def pcm
-    format_matrix_as_table(object.pcm.matrix, round: 3)
+    format_matrix_as_table(object.pcm, round: 3)
   end
 
   def pwm
-    format_matrix_as_table(object.pwm.matrix, round: 3)
+    format_matrix_as_table(object.pwm, round: 3)
   end
 
   def pfm
-    format_matrix_as_table(object.pfm.matrix, round: 3)
+    format_matrix_as_table(object.pfm, round: 3)
   end
 
   def full_name(**kwargs)

@@ -1,7 +1,3 @@
-require 'bioinform'
-require 'dipm'
-require 'model_kind'
-
 module HocomocoSite
   def self.url_in_final_bundle(url_part)
     url_base = HocomocoSite::Application.config.relative_url_root || ''
@@ -53,10 +49,6 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   def gene_name; gene_name_human || gene_name_mouse; end
 
   def metrics_summary; data['metrics_summary']; end
-
-  def arity
-    'mono'
-  end
 
   # def subfamily_ids
   #   motif_subfamilies.map{|subfamily| subfamily.match(/\{(.+)\}/)[1] }
@@ -192,10 +184,12 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     url_in_final_bundle("#{collection}/thresholds/#{full_name}.thr")
   end
 
-  def model_kind; ModelKind.get(arity); end
-  def pcm; model_kind.read_pcm(pcm_path); end
-  def pwm; model_kind.read_pwm(pwm_path); end
-  def pfm; model_kind.read_pfm(pfm_path); end
+  def read_matrix(fn)
+    File.readlines(fn).reject{|l| l.start_with?('>') }.map{|l| l.chomp.split("\t").map{|v| Float(v) } }
+  end
+  def pcm; read_matrix(pcm_path); end
+  def pwm; read_matrix(pwm_path); end
+  def pfm; read_matrix(pfm_path); end
   def threshold_pvalue_list
     File.readlines(threshold_pvalue_list_path).map{|line|
       line.chomp.split("\t").map(&:to_f)

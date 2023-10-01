@@ -42,29 +42,15 @@
     %h4 Get motif list
     %p
       One can get a list of all motifs (only MotifIDs) in a collection by sending a request
-      %code #{root_url}{species}/{arity}.json
+      %code #{root_url}{collection}.json
     %p
-      %code species
-      can be either
-      %code human
-      or
-      %code mouse
-      \.
-    %p
-      %code arity
-      can be either
-      %code mono
-      for mononucleotide models
-      or
-      %code di
-      for dinucleotide.
-    %p
+      <code>collection</code> can be one of <code>H12CORE</code>, <code>H12INVIVO</code>, <code>H12INVITRO</code>, <code>H12RSNP</code>.
       By default only core high-quality models are shown. Add 
       %code ?full=true
       if you want D-quality models and alternative binding motifs to be listed.
     %p  
       Request
-      %code #{root_url}{species}/{arity}.json?summary=true
+      %code #{root_url}{collection}.json?summary=true
       gives some additional information which can be useful to organize search through motif and gene names, TF family and subfamily names.
 
 .row
@@ -74,7 +60,7 @@
     %h4 Motif search
     %p
       Use the following request
-      %code #{root_url}search.json?arity={arity}&species={species}&query={query}
+      %code #{root_url}search.json?collection={collection}&query={query}
       to search for a motif across `full_name` (MotifID), `motif_families` and `gene_names` fields.
       Any regexp can be given as a query.
       Add 

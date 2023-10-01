@@ -70,7 +70,7 @@ class MotifsController < ApplicationController
     motif = Motif.by_name(params[:motif])
     respond_to do |format|
       format.json {
-       render json: motif.pwm.model.matrix
+       render json: motif.pwm
       }
     end
   end
@@ -79,7 +79,7 @@ class MotifsController < ApplicationController
     motif = Motif.by_name(params[:motif])
     respond_to do |format|
       format.json {
-       render json: motif.pcm.model.matrix
+       render json: motif.pcm
       }
     end
   end

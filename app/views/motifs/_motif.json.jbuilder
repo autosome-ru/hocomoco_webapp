@@ -38,8 +38,8 @@ json.uniprot_ac_mouse   motif.uniprot_ac_mouse
 json.comment   motif.retracted? ? [motif.comment, "Retracted!"].compact.reject(&:empty?).join("\n") : motif.comment
 
 if with_matrices
-  json.pwm motif.pwm.matrix
-  json.pcm motif.pcm.matrix
+  json.pwm motif.pwm
+  json.pcm motif.pcm
 end
 if with_thresholds
   json.threshold_pvalue_list motif.threshold_pvalue_list
