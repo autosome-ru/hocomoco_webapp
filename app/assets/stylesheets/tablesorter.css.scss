@@ -72,6 +72,10 @@ table.key_value_info {
   td:last-child {
     width: 75%;
   }
+
+  tr.table-separator td {
+    padding: 15px;
+  }
 }
 
 table.benchmarks {
@@ -130,3 +134,29 @@ tr.group-header.collapsed td i {
   margin-right: 10px;
 }
 // Grouping widget style end
+
+
+table.downloads {
+  width: 100%;
+  thead {
+    tr, th, td {
+      font-weight: bold;
+      border: 2px solid black;
+    }
+  }
+  tr td.row-hdr {
+    font-weight: bold;
+    border: 2px solid black;
+  }
+  tr, td, th {
+    border: 1px solid black;
+    padding: 2px 4px;
+    text-align: center;
+  }
+  td.H12CORE {
+    font-weight: bolder;
+  }
+  tr.essential td.H12CORE {
+    background-color: #DDFFDD;
+  }
+}

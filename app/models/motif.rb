@@ -86,26 +86,47 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def pcm_url
-    ext = model_kind.pcm_extension
-    url_in_final_bundle("#{collection}/pcm/#{full_name}.#{ext}")
+    url_in_final_bundle("#{collection}/pcm/#{full_name}.pcm")
   end
 
   def pwm_url
-    ext = model_kind.pwm_extension
-    url_in_final_bundle("#{collection}/pwm/#{full_name}.#{ext}")
+    url_in_final_bundle("#{collection}/pwm/#{full_name}.pwm")
+  end
+
+  def pfm_url
+    url_in_final_bundle("#{collection}/pfm/#{full_name}.pfm")
   end
 
   def alignment_url
-    ext = model_kind.pwm_extension
     url_in_final_bundle("#{collection}/words/#{full_name}.words.tsv")
   end
 
+  def jaspar_url
+    url_in_final_bundle("#{collection}/formatted_motifs/jaspar/#{full_name}_jaspar_format.txt")
+  end
+
+  def transfac_url
+    url_in_final_bundle("#{collection}/formatted_motifs/transfac/#{full_name}_transfac_format.txt")
+  end
+
+  def meme_url
+    url_in_final_bundle("#{collection}/formatted_motifs/meme/#{full_name}_meme_format.meme")
+  end
+
+  def homer_url(pvalue:)
+    url_in_final_bundle("#{collection}/formatted_motifs/homer/pvalue_#{pvalue}/#{full_name}_homer_format_#{pvalue}.motif")
+  end
+
   def pcm_path
-    path_in_final_bundle("#{collection}/pcm/#{full_name}.#{model_kind.pcm_extension}")
+    path_in_final_bundle("#{collection}/pcm/#{full_name}.pcm")
   end
 
   def pwm_path
-    path_in_final_bundle("#{collection}/pwm/#{full_name}.#{model_kind.pwm_extension}")
+    path_in_final_bundle("#{collection}/pwm/#{full_name}.pwm")
+  end
+
+  def pfm_path
+    path_in_final_bundle("#{collection}/pfm/#{full_name}.pfm")
   end
 
   def threshold_pvalue_list_path
@@ -174,6 +195,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   def model_kind; ModelKind.get(arity); end
   def pcm; model_kind.read_pcm(pcm_path); end
   def pwm; model_kind.read_pwm(pwm_path); end
+  def pfm; model_kind.read_pfm(pfm_path); end
   def threshold_pvalue_list
     File.readlines(threshold_pvalue_list_path).map{|line|
       line.chomp.split("\t").map(&:to_f)

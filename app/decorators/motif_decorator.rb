@@ -45,10 +45,16 @@ class MotifDecorator < ApplicationDecorator
       object.revcomp_large_logo_url
     )
   end
-  def download_pcm; helpers.link_to('pcm', object.pcm_url); end
-  def download_pwm; helpers.link_to('pwm', object.pwm_url); end
-  def download_alignment; helpers.link_to('alignment', object.alignment_url); end
-  def download_precalculated_thresholds; helpers.link_to('threshold to P-value grid', object.precalculated_thresholds_url); end
+  def download_pcm; helpers.link_to("#{name}.pcm", object.pcm_url); end
+  def download_pwm; helpers.link_to("#{name}.pwm", object.pwm_url); end
+  def download_pfm; helpers.link_to("#{name}.pfm", object.pfm_url); end
+  def download_alignment; helpers.link_to("#{name}.words.tsv", object.alignment_url); end
+  def download_precalculated_thresholds; helpers.link_to("#{name}.thr", object.precalculated_thresholds_url); end
+
+  def download_jaspar_motif; helpers.link_to("#{name}_jaspar_format.txt", object.jaspar_url); end
+  def download_meme_motif; helpers.link_to("#{name}_meme_format.meme", object.meme_url); end
+  def download_transfac_motif; helpers.link_to("#{name}_transfac_format.txt", object.transfac_url); end
+  def download_homer_motif(pvalue:); helpers.link_to("#{name}_homer_format_#{pvalue}.txt", object.homer_url(pvalue: pvalue)); end
 
   def format_matrix_as_table(matrix, round: nil)
     nucleotides = ['A', 'C', 'G', 'T']
@@ -81,6 +87,10 @@ class MotifDecorator < ApplicationDecorator
 
   def pwm
     format_matrix_as_table(object.pwm.matrix, round: 3)
+  end
+
+  def pfm
+    format_matrix_as_table(object.pfm.matrix, round: 3)
   end
 
   def full_name(**kwargs)

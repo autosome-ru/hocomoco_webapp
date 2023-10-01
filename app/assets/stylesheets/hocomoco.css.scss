@@ -1,22 +1,3 @@
 // Place all the styles related to the hocomoco controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-table.downloads {
-  width: 100%;
-  thead {
-    tr, th, td {
-      font-weight: bold;
-      border: 2px solid black;
-    }
-  }
-  tr td.row-hdr {
-    font-weight: bold;
-    border: 2px solid black;
-  }
-  tr, td, th {
-    border: 1px solid black;
-    padding: 2px 4px;
-    text-align: center;
-  }
-}

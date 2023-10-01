@@ -98,14 +98,39 @@
       .col-12
         %table.key_value_info
           %tbody
-            = table_info_row motif, :downloads, header_cell: 'Downloads' do |m|
-              = m.download_pcm
-              %br
-              = m.download_pwm
-              %br
-              = m.download_alignment
-              %br
-              = m.download_precalculated_thresholds
+            %tr
+              %td.row-hdr PCM
+              %td= motif.download_pcm
+            %tr
+              %td.row-hdr PWM
+              %td= motif.download_pwm
+            %tr
+              %td.row-hdr PFM
+              %td= motif.download_pfm
+            %tr
+              %td.row-hdr Alignment
+              %td= motif.download_alignment
+            %tr
+              %td.row-hdr Threshold to P-value map
+              %td= motif.download_precalculated_thresholds
+
+            %tr.table-separator
+              %td{colspan: 2} Motif in other formats
+
+            %tr
+              %td.row-hdr JASPAR format
+              %td= motif.download_jaspar_motif
+            %tr
+              %td.row-hdr MEME format
+              %td= motif.download_meme_motif
+            %tr
+              %td.row-hdr Transfac format
+              %td= motif.download_transfac_motif
+            %tr
+              %td.row-hdr Homer format
+              %td
+                - ['0.001', '0.0005', '0.0001'].each do |pvalue|
+                  .homer_pvalue= motif.download_homer_motif(pvalue: pvalue)
 
   .tab-pane.fade#matricesInfo{role: 'tabpanel', aria: {labelledby: 'matrices-tab'}}
     .row
@@ -117,6 +142,10 @@
         .matrix_container.pwm-matrix
           %span.title PWM
           = motif.pwm
+
+        .matrix_container.pwm-matrix
+          %span.title PFM
+          = motif.pfm
 
         .thresholds-container
           %span.title Standard thresholds

@@ -8,11 +8,11 @@ module HocomocoHelper
   end
 
   def hocomoco11_url(path)
-    "#{root_path}#{path}"
+    "#{ENV['HOCOMOCO11_URL']}#{path}"
   end
 
   def hocomoco11_bundle_url(path)
-    "#{root_path}final_bundle/hocomoco11/#{path}"
+    "#{ENV['HOCOMOCO11_URL']}final_bundle/hocomoco11/#{path}"
   end
 
   def hocomoco12_bundle_url(path)
