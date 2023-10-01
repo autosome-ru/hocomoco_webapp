@@ -48,7 +48,6 @@ GEM
       tzinfo (~> 1.1)
     arel (9.0.0)
     bindex (0.8.1)
-    bioinform (0.2.2)
     bootsnap (1.10.3)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -211,7 +210,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bioinform (~> 0.2.2)
   bootsnap (>= 1.1.0)
   byebug
   d3-rails (~> 5.7)

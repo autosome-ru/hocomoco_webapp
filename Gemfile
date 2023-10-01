@@ -54,5 +54,5 @@ group :development do
   gem 'listen'
 end
 
-gem 'bioinform', '~>0.2.2'
+#gem 'bioinform', '~>0.2.2'
 #gem 'WingenderTFClass'
