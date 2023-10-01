@@ -1,1 +1,1 @@
-json.array! motifs, partial: 'motifs/motif', as: :motif, locals: {with_matrices: false, with_thresholds: false}
+json.array! motifs, partial: 'motifs/motif', as: :motif, locals: {with_matrices: with_matrices, with_thresholds: with_thresholds}
