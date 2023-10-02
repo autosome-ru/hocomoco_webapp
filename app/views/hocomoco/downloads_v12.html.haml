@@ -1,6 +1,6 @@
 .row
-  .col-1
-  .col-8
+  .col-md-1
+  .col-md-8
     .pageheader Downloads
     .tools
       %b Tools:
@@ -14,15 +14,15 @@
         %li
           PERFECTOS-APE tool for functional annotation of sequence variants overlappint TFBS: #{link_to 'jar', 'https://opera.autosome.org/downloads/ape-3.0.2.jar'}, #{link_to 'manual', 'https://opera.autosome.org/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', ENV['PERFECTOSAPE_URL']}
 
-  .col-3
+  .col-md-3
     .contacts
       %b Contacts
       %ul
         %li Technical questions and suggestions should be addressed to #{link_to 'Ilya Vorontsov', 'mailto:vorontsov.i.e/at/gmail/dot/com'} and #{link_to 'Ivan Kulakovskiy', 'mailto:ivan.kulakovskiy/at/gmail/dot/com'}.
         %li General questions should be addressed to #{link_to 'Ivan Kulakovskiy', 'mailto:ivan.kulakovskiy/at/gmail/dot/com'}, #{link_to 'Yulia Medvedeva', 'mailto:ju.medvedeva/at/gmail/dot/com'} or #{link_to 'Vsevolod Makeev', 'mailto:vsevolod.makeev/at/gmail/dot/com'}.
 .row
-  .col-1
-  .col-7
+  .col-md-1
+  .col-md-7
     .cite
       %b Citation:
       .title
@@ -40,7 +40,7 @@
       If you prefer more standard licenses, feel free to treat WTFPL as CC-BY.
 
 .row
-  .col-12
+  .col-md-12
     %hr
     %h1.downloads_header HOCOMOCO v12 subcollections
     = render partial: 'download_table_v12', locals: {bundle_url: ->(path){ hocomoco12_bundle_url(path) }, collections: ['H12CORE', 'H12INVIVO', 'H12INVITRO', 'H12RSNP'] }
