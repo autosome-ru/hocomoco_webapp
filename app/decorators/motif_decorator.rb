@@ -113,4 +113,7 @@ class MotifDecorator < ApplicationDecorator
   def gc_content; "#{(object.gc_content * 100).round(2)}%" ; end
   def information_content_total; object.information_content_total.round(3); end
   def information_content_per_base; object.information_content_per_base.round(3); end
+
+  def gene_name_human; h.human_gene_name_link(object.gene_name_human); end
+  def gene_name_mouse; h.mouse_gene_name_link(object.gene_name_mouse); end
 end

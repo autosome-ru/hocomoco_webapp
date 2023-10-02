@@ -140,12 +140,12 @@ module ApplicationHelper
     ].join.html_safe
   end
 
-  def human_gene_name_links(gene_names)
-    gene_names.map{|gene_name| human_gene_name_link(gene_name) }.join('<br/>').html_safe
-  end
-
   def mouse_gene_name_link(gene_name)
     link_to(gene_name, "https://www.informatics.jax.org/marker/summary?nomen=#{gene_name}")
+  end
+
+  def human_gene_name_links(gene_names)
+    gene_names.map{|gene_name| human_gene_name_link(gene_name) }.join('<br/>').html_safe
   end
 
   def mouse_gene_name_links(gene_names)

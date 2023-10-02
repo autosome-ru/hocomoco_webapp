@@ -29,12 +29,10 @@
         %table.key_value_info
           %tbody
             = table_info_row motif, :full_name
-            = table_info_row(motif, :gene_name_human) do |motif|
-              = human_gene_name_link(motif.gene_name_human)
+            = table_info_row motif, :gene_name_human
             = table_info_row(motif, :gene_synonyms_human) do |motif|
               = motif.gene_synonyms_human.join(', ')
-            = table_info_row(motif, :gene_name_mouse) do |motif|
-              = mouse_gene_name_link(motif.gene_name_mouse)
+            = table_info_row motif, :gene_name_mouse
             = table_info_row(motif, :gene_synonyms_mouse) do |motif|
               = motif.gene_synonyms_mouse.join(', ')
             = table_info_row motif, :big_logo, html_options: {value_column_html: {class: 'sequence_logo'} }

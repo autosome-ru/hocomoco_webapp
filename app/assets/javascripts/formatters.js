@@ -31,27 +31,6 @@
   };
 
 
-  HocomocoDB.gene_name_link = function(gene_species_name) {
-    let species   = gene_species_name.split(':')[0];
-    let gene_name = gene_species_name.split(':')[1];
-    if (species == 'HUMAN') {
-      return HocomocoDB.human_gene_name_link(gene_name);
-    } else if (species == 'MOUSE') {
-      return HocomocoDB.mouse_gene_name_link(gene_name);
-    } else {
-      return gene_species_name;
-    }
-  };
-
-  HocomocoDB.human_gene_name_link = function(gene_name) {
-    return '<a href="https://www.genenames.org/cgi-bin/gene_symbol_report?match=' + gene_name + '" target="_blank">' + gene_name + '</a>' +
-    '<br/>' + '(<a href="https://www.genecards.org/cgi-bin/carddisp.pl?gene=' + gene_name + '" target="_blank">GeneCards</a>)';
-  };
-
-  HocomocoDB.mouse_gene_name_link = function(gene_name) {
-    return '<a href="https://www.informatics.jax.org/marker/summary?nomen=' + gene_name + '" target="_blank">' + gene_name + '</a>';
-  };
-
   HocomocoDB.mgi_id_link = function(mgi_name) {
     return '<a href="https://www.informatics.jax.org/marker/MGI:' + mgi_name + '" target="_blank">' + mgi_name + '</a>';
   };
@@ -161,9 +140,6 @@
   HocomocoDB.formatters = {
     '.gene_id'         : HocomocoDB.gene_id_link,
     '.AUC'             : HocomocoDB.round,
-    '.gene_name'       : multiterm(HocomocoDB.gene_name_link, '<br/>', '; '),
-    '.human_gene_name' : multiterm(HocomocoDB.human_gene_name_link, '<br/>', '; '),
-    '.mouse_gene_name' : multiterm(HocomocoDB.mouse_gene_name_link, '<br/>', '; '),
     '.hgnc_id'         : HocomocoDB.hgnc_id_link,
     '.mgi_id'          : HocomocoDB.mgi_id_link,
     '.uniprot_ac'      : HocomocoDB.uniprot_ac_link,
