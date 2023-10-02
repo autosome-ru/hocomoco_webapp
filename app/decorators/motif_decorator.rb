@@ -32,7 +32,7 @@ class MotifDecorator < ApplicationDecorator
   def entrezgene_ids_human; object.entrezgene_ids_human.join('; '); end
   def entrezgene_ids_mouse; object.entrezgene_ids_mouse.join('; '); end
   def num_datasets; object.num_datasets == 0 ? nil : object.num_datasets; end
-  def logo(**kwargs); helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_url), **kwargs); end
+  def logo(**kwargs); helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_url), height: 30, width: (object.length <= 20 ? 15 : 10) * motif.length,  **kwargs); end
   def big_logo
     helpers.link_to(
       helpers.image_tag(object.direct_big_logo_url),
