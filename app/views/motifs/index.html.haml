@@ -50,9 +50,9 @@
           %tr
             %td= model.full_name(target: '_blank')
             %td= model.logo(target: '_blank', class: 'inline_sequence_logo')
-            %td #{model.gene_name_human}
+            %td{data: {text: model.object.gene_name_human}} #{model.gene_name_human}
             %td= model.gene_synonyms_human.join(', ')
-            %td #{model.gene_name_mouse}
+            %td{data: {text: model.object.gene_name_mouse}} #{model.gene_name_mouse}
             %td= model.gene_synonyms_mouse.join(', ')
             %td= model.model_length
             %td= model.quality
@@ -60,19 +60,19 @@
             %td= model.consensus
             %td= model.data_sources.chars.join('+')
             %td= model.num_words_in_alignment
-            %td= model.tfclass_superclass
-            %td= model.tfclass_class
-            %td= model.tfclass_family
-            %td= model.tfclass_subfamily
-            %td= model.tfclass_id
+            %td{data: {text: model.tfclass_at_level_text(1) }}= model.tfclass_superclass
+            %td{data: {text: model.tfclass_at_level_text(2) }}= model.tfclass_class
+            %td{data: {text: model.tfclass_at_level_text(3) }}= model.tfclass_family
+            %td{data: {text: model.tfclass_at_level_text(4) }}= model.tfclass_subfamily
+            %td{data: {text: model.object.tfclass_id }}= model.tfclass_id
             %td= model.hgnc_ids
             %td= model.mgi_ids
-            %td= model.entrezgene_ids_human
-            %td= model.entrezgene_ids_mouse
+            %td{data: {text: model.object.entrezgene_ids_human.join(', ')}}= model.entrezgene_ids_human
+            %td{data: {text: model.object.entrezgene_ids_mouse.join(', ')}}= model.entrezgene_ids_mouse
             %td= model.uniprot_id_human
             %td= model.uniprot_id_mouse
-            %td= model.uniprot_ac_human
-            %td= model.uniprot_ac_mouse
+            %td{data: {text: model.object.uniprot_ac_human}}= model.uniprot_ac_human
+            %td{data: {text: model.object.uniprot_ac_mouse}}= model.uniprot_ac_mouse
             %td= model.greco_db_tf
 
 - content_for(:title) do

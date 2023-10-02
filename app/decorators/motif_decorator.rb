@@ -117,6 +117,10 @@ class MotifDecorator < ApplicationDecorator
   def gene_name_human; object.gene_name_human && h.human_gene_name_link(object.gene_name_human); end
   def gene_name_mouse; object.gene_name_mouse && h.mouse_gene_name_link(object.gene_name_mouse); end
 
+  def tfclass_at_level_text(level)
+    tfclass_id = object.tfclass_id_at_level(level)
+    "#{object.tfclass_at_level(level)} {#{tfclass_id}}"
+  end
   def tfclass_at_level(level)
     tfclass_id = object.tfclass_id_at_level(level)
     inner_link = h.tfclass_family_inner_link(tfclass_id)
