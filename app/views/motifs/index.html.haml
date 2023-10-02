@@ -30,19 +30,19 @@
           = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
           = motif_table_header(:data_sources, class: 'source_dataset_type filter-select'){|content| (content + help_icon(title: t('tips.data_sources_html'), html: true, href: help_path(anchor: 'experimental_data_types'))).html_safe }
           = motif_table_header :num_words_in_alignment, hide_by_default: true, class: 'num_words_in_alignment'
-          = motif_table_header :tfclass_superclass, class: 'motif-superclass', hide_by_default: true
-          = motif_table_header :tfclass_class, class: 'motif-class', hide_by_default: true
-          = motif_table_header :tfclass_family, class: 'motif-family'
-          = motif_table_header :tfclass_subfamily, class: 'motif-subfamily', hide_by_default: true
-          = motif_table_header :tfclass_id, class: 'tfclass-id', hide_by_default: true
-          = motif_table_header :hgnc_ids, dont_sort: true, hide_by_default: true, class: 'hgnc_id'
-          = motif_table_header :mgi_ids, dont_sort: true, hide_by_default: true, class: 'mgi_id'
-          = motif_table_header :entrezgene_ids_human, dont_sort: true, hide_by_default: true, class: 'gene_id'
-          = motif_table_header :entrezgene_ids_mouse, dont_sort: true, hide_by_default: true, class: 'gene_id'
-          = motif_table_header :uniprot_id_human, class: 'uniprot_id'
-          = motif_table_header :uniprot_id_mouse, class: 'uniprot_id'
-          = motif_table_header :uniprot_ac_human, hide_by_default: true #, class: 'uniprot_ac_and_tfclass'
-          = motif_table_header :uniprot_ac_mouse, hide_by_default: true #, class: 'uniprot_ac_and_tfclass'
+          = motif_table_header :tfclass_superclass, hide_by_default: true
+          = motif_table_header :tfclass_class, hide_by_default: true
+          = motif_table_header :tfclass_family
+          = motif_table_header :tfclass_subfamily, hide_by_default: true
+          = motif_table_header :tfclass_id, hide_by_default: true
+          = motif_table_header :hgnc_ids, dont_sort: true, hide_by_default: true
+          = motif_table_header :mgi_ids, dont_sort: true, hide_by_default: true
+          = motif_table_header :entrezgene_ids_human, dont_sort: true, hide_by_default: true
+          = motif_table_header :entrezgene_ids_mouse, dont_sort: true, hide_by_default: true
+          = motif_table_header :uniprot_id_human
+          = motif_table_header :uniprot_id_mouse
+          = motif_table_header :uniprot_ac_human, hide_by_default: true
+          = motif_table_header :uniprot_ac_mouse, hide_by_default: true
           = motif_table_header(:greco_db_tf, hide_by_default: true){|content| (content + help_icon(title: t('tips.greco_db_tf_html'), html: true, href: 'https://www.ebi.ac.uk/QuickGO/targetset/dbTF')).html_safe }
 
       %tbody

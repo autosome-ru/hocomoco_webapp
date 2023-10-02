@@ -32,6 +32,5 @@
 //= require jquery-tablesorter/widgets/widget-output
 //= require jquery-tablesorter/widgets/widget-columnSelector
 //= require jquery-tablesorter/widgets/widget-cssStickyHeaders
-//= require jquery-tablesorter/widgets/widget-formatter
 
 //= require_tree .

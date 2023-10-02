@@ -1,5 +1,3 @@
-//= require ./formatters.js
-
 ;(function(HocomocoDB, $, undefined) {
   HocomocoDB.defaultWidgetOptions = {
     filter: {
@@ -20,9 +18,6 @@
       filter_selectSource : {  },
     },
 
-    formatter: {
-      formatter_column: HocomocoDB.tablesorter_formatters,
-    },
     stickyHeaders: {
       stickyHeaders_addResizeEvent : false,
     },

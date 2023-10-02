@@ -27,10 +27,10 @@ class MotifDecorator < ApplicationDecorator
     object.origin_models.join('; <br/>').html_safe
   end
 
-  def hgnc_ids; object.hgnc_ids.join('; '); end
-  def mgi_ids; object.mgi_ids.join('; '); end
-  def entrezgene_ids_human; object.entrezgene_ids_human.join('; '); end
-  def entrezgene_ids_mouse; object.entrezgene_ids_mouse.join('; '); end
+  # def hgnc_ids; object.hgnc_ids.join('; '); end
+  # def mgi_ids; object.mgi_ids.join('; '); end
+  # def entrezgene_ids_human; object.entrezgene_ids_human.join('; '); end
+  # def entrezgene_ids_mouse; object.entrezgene_ids_mouse.join('; '); end
   def num_datasets; object.num_datasets == 0 ? nil : object.num_datasets; end
   def logo(**kwargs); helpers.link_to_motif(object, helpers.image_tag(object.direct_logo_url), height: 30, width: (object.length <= 20 ? 15 : 10) * motif.length,  **kwargs); end
   def big_logo
@@ -132,4 +132,10 @@ class MotifDecorator < ApplicationDecorator
   end
   def uniprot_ac_human; object.uniprot_ac_human && h.uniprot_ac_and_tfclass_link(object.uniprot_ac_human); end
   def uniprot_ac_mouse; object.uniprot_ac_mouse && h.uniprot_ac_and_tfclass_link(object.uniprot_ac_mouse); end
+  def entrezgene_ids_human; h.gene_id_links(object.entrezgene_ids_human); end
+  def entrezgene_ids_mouse; h.gene_id_links(object.entrezgene_ids_mouse); end
+  def hgnc_ids; h.hgnc_id_links(object.hgnc_ids); end
+  def mgi_ids; h.mgi_id_links(object.mgi_ids); end
+  def uniprot_id_human; object.uniprot_id_human && h.uniprot_id_link(object.uniprot_id_human); end
+  def uniprot_id_mouse; object.uniprot_id_mouse && h.uniprot_id_link(object.uniprot_id_mouse); end
 end

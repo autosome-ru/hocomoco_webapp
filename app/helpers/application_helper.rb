@@ -103,7 +103,7 @@ module ApplicationHelper
     link_to((name || "HGNC:#{hgnc_id}"), hgnc_id_url(hgnc_id))
   end
   def hgnc_id_links(hgnc_ids)
-    decorate_list(hgnc_ids){|hgnc_id| hgnc_id_link(hgnc_id) }
+    hgnc_ids.map{|hgnc_id| hgnc_id_link(hgnc_id) }.join('<br/>').html_safe
   end
 
   def mgi_url(mgi_id)
@@ -113,7 +113,7 @@ module ApplicationHelper
     link_to((name || "MGI:#{mgi_id}"), mgi_url(mgi_id))
   end
   def mgi_id_links(mgi_ids)
-    decorate_list(mgi_ids){|mgi_id| mgi_id_link(mgi_id) }
+    mgi_ids.map{|mgi_id| mgi_id_link(mgi_id) }.join('<br/>').html_safe
   end
 
   def fantom_sstar_gene_link(gene_id)
@@ -127,7 +127,7 @@ module ApplicationHelper
     ].join.html_safe
   end
   def gene_id_links(gene_ids)
-    decorate_list(gene_ids){|gene_id| gene_id_link(gene_id) }
+    gene_ids.map{|gene_id| gene_id_link(gene_id) }.join('<br/>').html_safe
   end
 
   def human_gene_name_link(gene_name)
@@ -203,6 +203,11 @@ module ApplicationHelper
   def uniprot_ac_link(uniprot_ac)
     link_to(uniprot_ac, "https://www.uniprot.org/uniprot/#{uniprot_ac}")
   end
+
+  def epifactors_link(gene_id)
+    link_to('EpiFactors', "https://epifactors.autosome.org/genes?search=#{gene_id}&field=gene_id", target: '_blank')
+  end
+
 
   def uniprot_ac_and_tfclass_link(uniprot_ac)
     [
