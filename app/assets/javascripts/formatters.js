@@ -44,34 +44,8 @@
     return '<a href="http://tfclass.bioinf.med.uni-goettingen.de/?uniprot=' + uniprot_ac + '" target="_blank">' + title + '</a>';
   };
 
-  HocomocoDB.tfclass_family_link = function(family_id, title) {
-    if (title === undefined) { title = 'TFClass'; }
-    return '<a href="http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=' + family_id + '" target="_blank">' + title + '</a>';
-  };
-
-  HocomocoDB.tfclass_motif_family_link = function(string) {
-    var motif_family_id = string.match(/\{(.+?)\}/);
-    if (motif_family_id && motif_family_id[1]) {
-      var familySearchURL = '/search?family_id=' + motif_family_id[1];
-      if (getParameterByName('arity')) {
-        familySearchURL += '&arity=' + getParameterByName('arity')
-      }
-      if (getParameterByName('species')) {
-        familySearchURL += '&species=' + getParameterByName('species')
-      }
-      return string.replace(/\{.+?\}/, ' {<a href="' + familySearchURL + '">' + motif_family_id[1] + '</a>}') +
-             ' (' + HocomocoDB.tfclass_family_link(motif_family_id[1], 'TFClass') + ')';
-    } else {
-      return string
-    }
-  };
-
   HocomocoDB.uniprot_ac_link = function(uniprot_ac) {
     return '<a href="https://www.uniprot.org/uniprot/' + uniprot_ac + '" target="_blank">' + uniprot_ac + '</a>';
-  };
-
-  HocomocoDB.uniprot_ac_and_tfclass_link = function(uniprot_ac) {
-    return HocomocoDB.uniprot_ac_link(uniprot_ac) + '<br/>' + '(' + HocomocoDB.tfclass_uniprot_link(uniprot_ac) + ')';
   };
 
   HocomocoDB.motif_link = function(motif_and_optional_comment) {
@@ -143,13 +117,6 @@
     '.hgnc_id'         : HocomocoDB.hgnc_id_link,
     '.mgi_id'          : HocomocoDB.mgi_id_link,
     '.uniprot_ac'      : HocomocoDB.uniprot_ac_link,
-    '.tfclass'         : HocomocoDB.tfclass_link,
-    '.motif-superclass': HocomocoDB.tfclass_motif_family_link,
-    '.motif-class'     : HocomocoDB.tfclass_motif_family_link,
-    '.motif-family'    : HocomocoDB.tfclass_motif_family_link,
-    '.motif-subfamily' : HocomocoDB.tfclass_motif_family_link,
-    '.tfclass-id'      : (tfclass_id) => HocomocoDB.tfclass_family_link(tfclass_id, tfclass_id),
-    '.uniprot_ac_and_tfclass' : HocomocoDB.uniprot_ac_and_tfclass_link,
     '.fantom_sstar_gene' : HocomocoDB.fantom_sstar_gene_link,
     '.uniprot_id'      : multiterm( HocomocoDB.uniprot_id_link ),
   };

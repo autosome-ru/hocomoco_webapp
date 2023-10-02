@@ -41,8 +41,8 @@
           = motif_table_header :entrezgene_ids_mouse, dont_sort: true, hide_by_default: true, class: 'gene_id'
           = motif_table_header :uniprot_id_human, class: 'uniprot_id'
           = motif_table_header :uniprot_id_mouse, class: 'uniprot_id'
-          = motif_table_header :uniprot_ac_human, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
-          = motif_table_header :uniprot_ac_mouse, hide_by_default: true, class: 'uniprot_ac_and_tfclass'
+          = motif_table_header :uniprot_ac_human, hide_by_default: true #, class: 'uniprot_ac_and_tfclass'
+          = motif_table_header :uniprot_ac_mouse, hide_by_default: true #, class: 'uniprot_ac_and_tfclass'
           = motif_table_header(:greco_db_tf, hide_by_default: true){|content| (content + help_icon(title: t('tips.greco_db_tf_html'), html: true, href: 'https://www.ebi.ac.uk/QuickGO/targetset/dbTF')).html_safe }
 
       %tbody
@@ -60,10 +60,10 @@
             %td= model.consensus
             %td= model.data_sources.chars.join('+')
             %td= model.num_words_in_alignment
-            %td= "#{model.tfclass_superclass} {#{ tfclass_family_inner_link(model.tfclass_id_part(1)) }}".html_safe
-            %td= "#{model.tfclass_class} {#{ tfclass_family_inner_link(model.tfclass_id_part(2)) }}".html_safe
-            %td= "#{model.tfclass_family} {#{ tfclass_family_inner_link(model.tfclass_id_part(3)) }}".html_safe
-            %td= "#{model.tfclass_subfamily} {#{ tfclass_family_inner_link(model.tfclass_id_part(4)) }}".html_safe
+            %td= model.tfclass_superclass
+            %td= model.tfclass_class
+            %td= model.tfclass_family
+            %td= model.tfclass_subfamily
             %td= model.tfclass_id
             %td= model.hgnc_ids
             %td= model.mgi_ids

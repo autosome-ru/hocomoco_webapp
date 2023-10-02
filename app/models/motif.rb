@@ -231,12 +231,16 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     }
   end
 
+  def tfclass_at_level(level);
+    levels = [nil, 'tfclass_superclass', 'tfclass_class', 'tfclass_family', 'tfclass_subfamily']
+    data.dig('masterlist_info', levels[level])
+  end
   def tfclass_superclass; data.dig('masterlist_info', 'tfclass_superclass'); end
   def tfclass_class; data.dig('masterlist_info', 'tfclass_class'); end
   def tfclass_family; data.dig('masterlist_info', 'tfclass_family'); end
   def tfclass_subfamily; data.dig('masterlist_info', 'tfclass_subfamily'); end
   def tfclass_id; data.dig('masterlist_info', 'tfclass_id'); end
-  def tfclass_id_part(k); (tfclass_id || '').split('.').first(k).join('.'); end
+  def tfclass_id_at_level(level); (tfclass_id || '').split('.').first(level).join('.'); end
 
   def self.from_json(data, retracted: false)
     full_name = data['name']
