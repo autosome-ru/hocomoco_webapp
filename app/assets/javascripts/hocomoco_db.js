@@ -1,5 +1,6 @@
 //= require ./tablesorter_defaults.js
 //= require ./select_columns.js
+//= require ./motif_families_map.js
 
 var page_ready = function() {
   HocomocoDB.app_prefix = $('body').data('app-prefix');
