@@ -1,6 +1,11 @@
 module MotifsHelper
   def motif_table_header(attr, options = {}, &block)
-    table_header I18n.t("activerecord.attributes.motif.#{attr}"), options, &block
+    basic_options = {data:
+      {
+        text: I18n.t("activerecord.attributes.motif.#{attr}"),
+      }
+    }
+    table_header I18n.t("activerecord.attributes.motif.#{attr}"), basic_options.merge(options), &block
   end
 
   def motif_url(motif)
