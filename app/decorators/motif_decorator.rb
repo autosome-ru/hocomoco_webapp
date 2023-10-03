@@ -48,18 +48,22 @@ class MotifDecorator < ApplicationDecorator
     helpers.link_to(
       helpers.image_tag(
         object.direct_big_logo_url,
+        height: 60,
+        width: 30 * motif.length,
         alt: "#{object.name} motif logo (#{object.gene_name_human} gene, #{object.uniprot_id_human} protein)",
       ),
-      object.direct_large_logo_url
+      object.direct_large_logo_url,
     )
   end
   def big_logo_revcomp
     helpers.link_to(
       helpers.image_tag(
         object.revcomp_big_logo_url,
+        height: 60,
+        width: 30 * motif.length,
         alt: "#{object.name} reverse-complement motif logo (#{object.gene_name_human} gene, #{object.uniprot_id_human} protein)",
       ),
-      object.revcomp_large_logo_url
+      object.revcomp_large_logo_url,
     )
   end
   def download_pcm; helpers.link_to("#{name}.pcm", object.pcm_url); end
