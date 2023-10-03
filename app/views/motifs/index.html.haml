@@ -77,3 +77,8 @@
 
 - content_for(:title) do
   Motifs - HOmo sapiens COmprehensive MOdel COllection
+- content_for(:meta_description) do
+  - if family_id
+    = "Transcription Factor Binding Sites motifs for #{tfclass_name_by_id.dig(family_id, :name)} TF #{tfclass_name_by_id.dig(family_id, :level_name)&.downcase} (TFClass:{#{family_id}}).".html_safe
+  - else
+    HOCOMOCO Database of human and mouse Transcription Factor Binding Sites motifs.
