@@ -175,23 +175,6 @@ module ApplicationHelper
     end
   end
 
-  # def tfclass_motif_family_link(string)
-  #   var motif_family_id = string.match(/\{(.+?)\}/);
-  #   if (motif_family_id && motif_family_id[1]) {
-  #     var familySearchURL = '/search?family_id=' + motif_family_id[1];
-  #     if (getParameterByName('arity')) {
-  #       familySearchURL += '&arity=' + getParameterByName('arity')
-  #     }
-  #     if (getParameterByName('species')) {
-  #       familySearchURL += '&species=' + getParameterByName('species')
-  #     }
-  #     return string.replace(/\{.+?\}/, ' {<a href="' + familySearchURL + '">' + motif_family_id[1] + '</a>}') +
-  #            ' (' + HocomocoDB.tfclass_family_link(motif_family_id[1], 'TFClass') + ')';
-  #   } else {
-  #     return string
-  #   }
-  # end
-
   def tfclass_motif_family_links(families)
     decorate_list(families, splitter: '; <br/>', joiner: '<br/>'){|family| tfclass_motif_family_link(family) }
   end
