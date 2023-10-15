@@ -7,7 +7,7 @@
         %thead
           %tr
             %th ChIP-Seq benchmarking
-            %th Num. of experiments / peaksets
+            %th Num. of experiments (peaksets)
             %th auROC, median
             %th auROC, best
             %th auPRC, median
@@ -22,7 +22,7 @@
           - if chipseq_metrics['HUMAN']
             %tr
               %th Human
-              %td #{chipseq_metrics.dig('HUMAN', 'num_datasets')} / #{chipseq_metrics.dig('HUMAN', 'num_peaksets')}
+              %td #{chipseq_metrics.dig('HUMAN', 'num_datasets')} (#{chipseq_metrics.dig('HUMAN', 'num_peaksets')})
 
               %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
               %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
@@ -39,7 +39,7 @@
           - if chipseq_metrics['MOUSE']
             %tr
               %th Mouse
-              %td #{chipseq_metrics.dig('MOUSE', 'num_datasets')} / #{chipseq_metrics.dig('MOUSE', 'num_peaksets')}
+              %td #{chipseq_metrics.dig('MOUSE', 'num_datasets')} (#{chipseq_metrics.dig('MOUSE', 'num_peaksets')})
 
               %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
               %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
