@@ -32,13 +32,37 @@
         .answer
           <b>A:</b> In this release, we have focused our efforts on expanding the fraction of TFs covered by reliable motifs, rigorous benchmarking, and comprehensive annotation of motif subtypes. Dinucleotide motifs will continue to be available in HOCOMOCO v11.
 
+      / .qa-section
+      /   .question
+      /     <b>Q:</b> There are four motif subcollections, right? Which I am browsing online and which I should use in my analysis?
+      /   .answer
+      /     <b>A:</b> The website catalog is devoted to the primary and the most universal core collection providing the motifs that excel across the whole set of benchmarking protocols and datasets. In case of doubt, you may safely use v12-core collection.
+      /     %br
+      /     However, in particular usage scenarios, you may prefer v12-invivo (for genomic TFBS), v12-invitro (for high-affinity oligos), or v12-rSNP (for analyzing regulatory variation) sets.
+
       .qa-section
         .question
-          <b>Q:</b> There are four motif subcollections, right? Which I am browsing online and which I should use in my analysis?
+          <b>Q:</b> I am a bit lost, which (sub-)collection should I use in my analysis?
         .answer
-          <b>A:</b> The website catalog is devoted to the primary and the most universal core collection providing the motifs that excel across the whole set of benchmarking protocols and datasets. In case of doubt, you may safely use v12-core collection.
+          <b>A:</b> In most of the scenarios, you can safely use the main CORE collection. However, for better results, you may want to consult the following #{link_to 'graphical scheme', asset_path('HOCOMOCO12_usage_guide.png')}.
+
+      .qa-section
+        .question
+          <b>Q:</b> But there are so many extra motif annotations such as subtype or quality, should I somehow pre-filter motifs based on those?
+        .answer
+          <b>A:</b> In the CORE collection all motifs are considered quite reliable. <b>C</b>-quality motifs have only a single supporting experiment but were nonetheless manually curated and benchmarked. Also, in the <tt>CORE</tt> collection, there are only a handful of <b>D</b>-quality motifs representing a few rare subtypes, which were not re-discovered when updating v11 to v12 but kept for consistency.
           %br
-          However, in particular usage scenarios, you may prefer v12-invivo (for genomic TFBS), v12-invitro (for high-affinity oligos), or v12-rSNP (for analyzing regulatory variation) sets.
+          In the sub-collections, <b>D</b> quality denotes non-benchmarked motifs, e.g. in the ‘<tt>invivo</tt>’ sub-collection the <b>D</b> quality motifs were not tested on ChIP-Seq data.
+          %br
+          Don't hesitate to consult the #{link_to 'scheme', asset_path('HOCOMOCO12_usage_guide.png')}.
+
+      .qa-section
+        .question
+          <b>Q:</b> How do I select HOCOMOCO motifs for mouse or other species?
+        .answer
+          <b>A:</b> Please consult the #{link_to 'scheme', asset_path('HOCOMOCO12_usage_guide.png')}.
+
+
 
 - content_for(:title) do
   FAQ - HOmo sapiens COmprehensive MOdel COllection
