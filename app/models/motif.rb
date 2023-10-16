@@ -298,11 +298,11 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
 
   def self.each_in_file(filename, retracted: false, &block)
     @cached_motifs ||= {}
-    @cached_motifs[filename] ||= File.readlines(filename).map{|line| self.from_json(JSON.parse(line)) }.each(&block)
+    @cached_motifs[filename] ||= File.readlines(filename).map{|line| self.from_json(JSON.parse(line)) }.sort_by(&:name).each(&block)
   end
 
   def self.in_bundle(collection: 'H12CORE')
-    result = self.each_in_file(HocomocoSite::path_in_final_bundle("#{collection}/#{collection}_annotation.jsonl")).to_a.sort_by(&:name)
+    result = self.each_in_file(HocomocoSite::path_in_final_bundle("#{collection}/#{collection}_annotation.jsonl")).to_a
     # if File.exist?(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"))
     #   result += self.each_in_file(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
     # end

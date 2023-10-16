@@ -7,6 +7,10 @@
       %th H12INVITRO
       %th H12RSNP
   %tbody
+    %tr
+      %th.row-hdr{colspan: 2} Number of motifs
+      - collections.each do |collection|
+        %td{class: collection}= Motif.in_bundle(collection: collection).size
     %tr.essential
       %th.row-hdr{colspan: 2} Complete model annotation (including gene id mapping)
       - collections.each do |collection|
