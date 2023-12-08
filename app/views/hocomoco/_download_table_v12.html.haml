@@ -10,11 +10,19 @@
     %tr
       %th.row-hdr{colspan: 2} Number of motifs
       - collections.each do |collection|
-        %td{class: collection}= Motif.in_bundle(collection: collection).size
-    %tr.essential
-      %th.row-hdr{colspan: 2} Complete model annotation (including gene id mapping)
+        %td{class: collection}
+          = Motif.in_bundle(collection: collection).size
+          %br
+          (MOUSE subset: #{ Motif.in_bundle(collection: collection).count{|motif| motif.applicable_for?('MOUSE') } } )
+    %tr
+      %th.row-hdr{rowspan: 2} Complete model annotation<br>(including gene id mapping)
+      %th.row-hdr.essential All motifs
       - collections.each do |collection|
         %td{class: collection}= link_to "#{collection}_annotation.jsonl", bundle_url.call("#{collection}/#{collection}_annotation.jsonl")
+    %tr
+      %th.row-hdr MOUSE subset
+      - collections.each do |collection|
+        %td{class: collection}= link_to "#{collection}-MOUSE_annotation.jsonl", bundle_url.call("#{collection}/#{collection}-MOUSE_annotation.jsonl")
 
     %tr.essential
       %th.row-hdr{rowspan: 2}

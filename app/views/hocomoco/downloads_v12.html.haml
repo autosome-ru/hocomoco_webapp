@@ -4,7 +4,9 @@
     .pageheader Downloads
     .zenodo-data
       %b Data:
-      Complete release data including the original motifs are available at #{link_to 'Zenodo', 'https://zenodo.org/records/10012938'}.
+      %ul
+        %li Complete release data including the original motifs are available at #{link_to 'Zenodo', 'https://zenodo.org/records/10012938'}.
+        %li Harmonized list of human transcription factors and respective mouse orthologs based on the TFClass classification: #{link_to 'tf_masterlist.tsv', hocomoco12_bundle_url('tf_masterlist.tsv')}.
     .tools
       %b Tools:
       %ul

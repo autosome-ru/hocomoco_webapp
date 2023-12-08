@@ -296,6 +296,11 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     nil
   end
 
+
+  def applicable_for?(species)
+    data.dig('masterlist_info', 'species').has_key?(species)
+  end
+
   def self.each_in_file(filename, retracted: false, &block)
     @cached_motifs ||= {}
     @cached_motifs[filename] ||= File.readlines(filename).map{|line| self.from_json(JSON.parse(line)) }.sort_by(&:name).each(&block)
