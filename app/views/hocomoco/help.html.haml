@@ -9,6 +9,8 @@
       %p
         HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains transcription factor (TF) binding motifs represented as classic #{link_to 'Position Weight Matrices', 'https://en.wikipedia.org/wiki/Position_weight_matrix'} (PWMs, also known as Position-Specific Scoring Matrices, PSSMs).
       %p
+        The PCM to PWM conversion scheme used in HOCOMOCO follows that of MACRO-APE, see the respective #{link_to 'manual', 'http://opera.autosome.org/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, page 20–21. Uniform background was used in this process, as well as when estimating the downloadable threshold-to-P-value tables.
+      %p
         %a.section_subheader#motif_discovery{href: '#motif_discovery'} [Motif discovery]
       %p
         HOCOMOCO #{link_to 'motifs', 'https://en.wikipedia.org/wiki/Sequence_motif'} were constructed with #{link_to 'ChIPMunk', 'https://autosome.org/ChIPMunk/'} by systematic motif discovery from thousands of ChIP-Seq and HT-SELEX datasets. Please refer to the HOCOMOCO v12 paper for more details on the motif discovery procedure.
