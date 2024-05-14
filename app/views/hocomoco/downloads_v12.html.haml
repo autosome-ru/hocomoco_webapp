@@ -52,6 +52,42 @@
     = render partial: 'download_table_v12', locals: {bundle_url: ->(path){ hocomoco12_bundle_url(path) }, collections: ['H12CORE', 'H12INVIVO', 'H12INVITRO', 'H12RSNP'] }
 
 
+.row
+  .col-md-1
+  .col-md-7
+    %hr
+    %h1.pageheader EXTRA: non-redundant motif subset
+    %p Many practical motif applications require a set of motifs with reduced redundancy i.e. where similar motifs belonging to related transcription factors are grouped together and only a single matrix represents the group. To this end, we have created the non-redundant set of HOCOMOCO v12 motifs, a derivative of the HOCOMOCO v12 CORE collection.
+    %p To this end, we estimated the motif similarities with MacroAPE (see #{link_to 'opera.autosome.org/macroape', 'https://opera.autosome.org/macroape'} and #{link_to 'doi:10.1186/1748-7188-8-23', 'https://doi.org/10.1186/1748-7188-8-23' }) at the motif P-value cutoff of 0.0005 and default matrix discretization of 1 (upscaled to 10 to reach a better precision for the cases when similarity estimates with the default discretization exceeded 0.01).
+    %p Using the pairwise motif similarity matrix, we performed hierarchical clustering using sklearn agglomerative clustering ('average' linkage). The number of clusters was taken to maximize the silhouette score resulting in 523 clusters at the silhouette score of 0.16.
+    %p For each cluster, the single representative motif was taken according to the best average similarity to other motifs in the cluster. The annotation contains a list of motifs that constitute a cluster and the list of respective TFs (UniProt IDs).
+    %ul
+      %li
+        Motifs annotation:
+        #{ link_to 'H12CORE-CLUSTERED_annotation.jsonl', hocomoco12_bundle_url('H12CORE-CLUSTERED/H12CORE-CLUSTERED_annotation.jsonl') }.
+      %li
+        Set of cluster central motifs:
+        %ul
+          %li= link_to 'H12CORE-CLUSTERED_pcm.tar.gz', hocomoco12_bundle_url('H12CORE-CLUSTERED/H12CORE-CLUSTERED_pcm.tar.gz')
+          %li= link_to 'H12CORE-CLUSTERED_pfm.tar.gz', hocomoco12_bundle_url('H12CORE-CLUSTERED/H12CORE-CLUSTERED_pfm.tar.gz')
+          %li= link_to 'H12CORE-CLUSTERED_pwm.tar.gz', hocomoco12_bundle_url('H12CORE-CLUSTERED/H12CORE-CLUSTERED_pwm.tar.gz')
+      %li
+        Alignments:
+        #{ link_to 'H12CORE-CLUSTERED_words.tar.gz', hocomoco12_bundle_url('H12CORE-CLUSTERED/H12CORE-CLUSTERED_words.tar.gz') }.
+      %li
+        Threshold to P-value map:
+        #{link_to 'H12CORE-CLUSTERED_thresholds.tar.gz', hocomoco12_bundle_url('H12CORE-CLUSTERED/H12CORE-CLUSTERED_thresholds.tar.gz') }.
+      %li
+        Cluster compounds:
+        %ul
+          %li= link_to 'cluster_list.html', hocomoco12_bundle_url('H12CORE-CLUSTERED/cluster_list.html')
+          %li= link_to 'cluster_list.tsv', hocomoco12_bundle_url('H12CORE-CLUSTERED/cluster_list.tsv')
+      %li
+        Cluster logos:
+        #{link_to 'H12CORE-CLUSTERED_cluster_logos.tar.gz', hocomoco12_bundle_url('H12CORE-CLUSTERED/H12CORE-CLUSTERED_cluster_logos.tar.gz') }.
+
+
+
 - content_for(:title) do
   HOCOMOCO-v12 Downloads - HOmo sapiens COmprehensive MOdel COllection
 - content_for(:meta_description) do
