@@ -135,8 +135,8 @@ class MotifDecorator < ApplicationDecorator
   def information_content_total; object.information_content_total.round(3); end
   def information_content_per_base; object.information_content_per_base.round(3); end
 
-  def gene_name_human; object.gene_name_human && h.human_gene_name_link(object.gene_name_human); end
-  def gene_name_mouse; object.gene_name_mouse && h.mouse_gene_name_link(object.gene_name_mouse); end
+  # def gene_name_human; object.gene_name_human && h.human_gene_name_link(object.gene_name_human); end
+  # def gene_name_mouse; object.gene_name_mouse && h.mouse_gene_name_link(object.gene_name_mouse); end
 
   def tfclass_at_level_text(level)
     tfclass_id = object.tfclass_id_at_level(level)
@@ -155,12 +155,12 @@ class MotifDecorator < ApplicationDecorator
   def tfclass_id
     "TFClass: #{h.tfclass_family_link(object.tfclass_id, title: object.tfclass_id)}".html_safe
   end
-  def uniprot_ac_human; object.uniprot_ac_human && h.uniprot_ac_and_tfclass_link(object.uniprot_ac_human); end
-  def uniprot_ac_mouse; object.uniprot_ac_mouse && h.uniprot_ac_and_tfclass_link(object.uniprot_ac_mouse); end
-  def entrezgene_ids_human; h.gene_id_links(object.entrezgene_ids_human); end
-  def entrezgene_ids_mouse; h.gene_id_links(object.entrezgene_ids_mouse); end
-  def hgnc_ids; h.hgnc_id_links(object.hgnc_ids); end
-  def mgi_ids; h.mgi_id_links(object.mgi_ids); end
-  def uniprot_id_human; object.uniprot_id_human && h.uniprot_id_link(object.uniprot_id_human); end
-  def uniprot_id_mouse; object.uniprot_id_mouse && h.uniprot_id_link(object.uniprot_id_mouse); end
+  # def uniprot_ac_human; object.uniprot_ac_human && h.uniprot_ac_and_tfclass_link(object.uniprot_ac_human); end
+  # def uniprot_ac_mouse; object.uniprot_ac_mouse && h.uniprot_ac_and_tfclass_link(object.uniprot_ac_mouse); end
+  # def entrezgene_ids_human; h.gene_id_links(object.entrezgene_ids_human); end
+  # def entrezgene_ids_mouse; h.gene_id_links(object.entrezgene_ids_mouse); end
+  # def hgnc_ids; h.hgnc_id_links(object.hgnc_ids); end
+  # def mgi_ids; h.mgi_id_links(object.mgi_ids); end
+  # def uniprot_id_human; object.uniprot_id_human && h.uniprot_id_link(object.uniprot_id_human); end
+  # def uniprot_id_mouse; object.uniprot_id_mouse && h.uniprot_id_link(object.uniprot_id_mouse); end
 end

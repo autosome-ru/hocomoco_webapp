@@ -20,9 +20,9 @@
         %tr
           = motif_table_header :full_name, show_always: true, class: 'motif_name'
           = motif_table_header :logo, dont_sort: true, class: 'sequence_logo filter-false'
-          = motif_table_header :gene_name_human, class: 'gene_name'
+          = motif_table_header :gene_name_human, class: 'human_gene_name'
           = motif_table_header :gene_synonyms_human, hide_by_default: true
-          = motif_table_header :gene_name_mouse, class: 'gene_name'
+          = motif_table_header :gene_name_mouse, class: 'mouse_gene_name'
           = motif_table_header :gene_synonyms_mouse, hide_by_default: true
           = motif_table_header :model_length, data: {placeholder:'>= 20'}, hide_by_default: true
           = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: t((collection == 'H12CORE') ? 'tips.quality_html' : 'tips.quality_html_subcollection'), html: true) ).html_safe }
@@ -50,9 +50,11 @@
           %tr
             %td= model.full_name(target: '_blank')
             %td= model.logo(target: '_blank', class: 'inline_sequence_logo')
-            %td{data: {text: model.object.gene_name_human}} #{model.gene_name_human}
+            %td #{model.gene_name_human}
+            / %td{data: {text: model.object.gene_name_human}} #{model.gene_name_human}
             %td= model.gene_synonyms_human.join(', ')
-            %td{data: {text: model.object.gene_name_mouse}} #{model.gene_name_mouse}
+            %td #{model.gene_name_mouse}
+            / %td{data: {text: model.object.gene_name_mouse}} #{model.gene_name_mouse}
             %td= model.gene_synonyms_mouse.join(', ')
             %td= model.model_length
             %td= model.quality
