@@ -83,7 +83,7 @@ module ApplicationHelper
   end
 
   def hgnc_id_url(hgnc_id)
-    "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=#{hgnc_id}"
+    "https://www.genenames.org/tools/search/#!/?query=hgnc_id:HGNC:#{hgnc_id}"
   end
   def hgnc_id_link(hgnc_id, name: nil)
     link_to((name || "HGNC:#{hgnc_id}"), hgnc_id_url(hgnc_id))
@@ -119,7 +119,7 @@ module ApplicationHelper
 
   def human_gene_name_link(gene_name)
     [
-      link_to(gene_name, "https://www.genenames.org/cgi-bin/gene_symbol_report?match=#{gene_name}"),
+      link_to(gene_name, "https://www.genenames.org/tools/search/#!/?query=gene_symbol:#{gene_name}"),
       '<br/>',
       '(',
       link_to('GeneCards', "https://www.genecards.org/cgi-bin/carddisp.pl?gene=#{gene_name}"),
