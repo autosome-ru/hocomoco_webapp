@@ -27,7 +27,7 @@
   };
 
   HocomocoDB.hgnc_id_link = function(hgnc) {
-    return '<a href="https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '" target="_blank">' + hgnc + '</a>';
+    return '<a href="https://www.genenames.org/tools/search/#!/?query=hgnc_id:HGNC:' + hgnc + '" target="_blank">' + hgnc + '</a>';
   };
 
 
@@ -44,7 +44,7 @@
   };
 
   HocomocoDB.human_gene_name_link = function(gene_name) {
-    return '<a href="https://www.genenames.org/cgi-bin/gene_symbol_report?match=' + gene_name + '" target="_blank">' + gene_name + '</a>' +
+    return '<a href="https://www.genenames.org/tools/search/#!/?query=gene_symbol:' + gene_name + '" target="_blank">' + gene_name + '</a>' +
     '<br/>' + '(<a href="https://www.genecards.org/cgi-bin/carddisp.pl?gene=' + gene_name + '" target="_blank">GeneCards</a>)';
   };
 
