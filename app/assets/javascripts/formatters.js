@@ -16,12 +16,12 @@
   };
 
   HocomocoDB.hgnc_id_link = function(hgnc) {
-    return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=' + hgnc + '">' + hgnc + '</a>';
+    return '<a href="https://www.genenames.org/tools/search/#!/?query=hgnc_id:HGNC:' + hgnc + '">' + hgnc + '</a>';
   };
 
 
   HocomocoDB.human_gene_name_link = function(gene_name) {
-    return '<a href="http://www.genenames.org/cgi-bin/gene_symbol_report?match=' + gene_name + '">' + gene_name + '</a>' +
+    return '<a href="https://www.genenames.org/tools/search/#!/?query=gene_symbol:' + gene_name + '">' + gene_name + '</a>' +
     '<br/>' + '(<a href="http://www.genecards.org/cgi-bin/carddisp.pl?gene=' + gene_name + '">GeneCards</a>)';
   };
 
