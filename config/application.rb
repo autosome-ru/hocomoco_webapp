@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-HOCOMOCO_VERSION_NUMBER = 12
+HOCOMOCO_VERSION_NUMBER = 13
 HOCOMOCO_VERSION = "hocomoco#{HOCOMOCO_VERSION_NUMBER}"
 
 module HocomocoSite

@@ -63,10 +63,10 @@ module ApplicationHelper
     result = ""
     # result += image_tag("#{species.downcase}_sel.png", class: 'species-indicator')
     result += {
-      'H12CORE' => 'v12 Core collection',
-      'H12INVIVO' => 'In vivo collection',
-      'H12INVITRO' => 'In vitro collection',
-      'H12RSNP' => 'rSNP collection',
+      'H13CORE' => 'v13 Core collection',
+      'H13INVIVO' => 'In vivo collection',
+      'H13INVITRO' => 'In vitro collection',
+      'H13RSNP' => 'rSNP collection',
     }.fetch(collection, '')
     result += full ? ' (complete)' : ' (primary subtypes)'  if show_full_core_caption
     term = tfclass_name_by_id[family_id]
@@ -160,7 +160,7 @@ module ApplicationHelper
     link_to(title, "http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{family_id}")
   end
 
-  def tfclass_family_inner_link(family_id, collection: 'H12CORE')
+  def tfclass_family_inner_link(family_id, collection: 'H13CORE')
     link_to("#{family_id}", "/search?collection=#{collection}&family_id=#{family_id}")
   end
 

@@ -1,6 +1,6 @@
 class MotifsController < ApplicationController
   def index
-    collection = params.fetch(:collection, 'H12CORE').upcase
+    collection = params.fetch(:collection, 'H13CORE').upcase
     models = Motif.in_bundle(collection: collection).reject(&:retracted?)
     show_full = true
     if params.fetch('full', 'true').to_s.downcase == 'false'

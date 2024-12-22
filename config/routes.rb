@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root 'hocomoco#home'
-  get '/:collection' => 'motifs#index', constraints: {collection: /H12(CORE|INVIVO|INVITRO|RSNP)/i}, defaults: {collection: 'H12CORE'}, as: 'motifs'
+  get '/:collection' => 'motifs#index', constraints: {collection: /H12(CORE|INVIVO|INVITRO|RSNP)/i}, to: redirect{|path_params, req|
+    if path_params[:format]
+      "#{ENV['HOCOMOCO12_URL']}#{path_params[:collection]}.#{path_params[:format]}"
+    else
+      "#{ENV['HOCOMOCO12_URL']}#{path_params[:collection]}"
+    end
+  }
+  get '/:collection' => 'motifs#index', constraints: {collection: /H13(CORE|INVIVO|INVITRO|RSNP)/i}, defaults: {collection: 'H13CORE'}, as: 'motifs'
   post '/search_post' => 'hocomoco#searchPost', as: 'search_post'
   get '/search' => 'hocomoco#search', as: 'search'
   get '/motif/:motif', constraints: {motif: /\w+_(HUMAN|MOUSE)\.H10(MO|DI)\.[ABCDS]/i}, to: redirect{|path_params, req|
@@ -19,16 +26,49 @@ Rails.application.routes.draw do
     end
   }
 
-  get '/motif/:motif' => 'motifs#show', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, as: 'motif'
-  get '/motif/:motif/pcm' => 'motifs#pcm', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, as: 'motif_pcm'
-  get '/motif/:motif/pwm' => 'motifs#pwm', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, as: 'motif_pwm'
-  get '/motif/:motif/thresholds' => 'motifs#thresholds', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, as: 'motif_thresholds'
+  get '/motif/:motif' => 'motifs#show', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, to: redirect{|path_params, req|
+    if path_params[:format]
+      "#{ENV['HOCOMOCO12_URL']}motif/#{path_params[:motif]}.#{path_params[:format]}"
+    else
+      "#{ENV['HOCOMOCO12_URL']}motif/#{path_params[:motif]}"
+    end
+  }
+
+  get '/motif/:motif/pcm' => 'motifs#pcm', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, to: redirect{|path_params, req|
+    if path_params[:format]
+      "#{ENV['HOCOMOCO12_URL']}motif/#{path_params[:motif]}/pcm.#{path_params[:format]}"
+    else
+      "#{ENV['HOCOMOCO12_URL']}motif/#{path_params[:motif]}/pcm"
+    end
+  }
+
+  get '/motif/:motif/pwm' => 'motifs#pwm', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, to: redirect{|path_params, req|
+    if path_params[:format]
+      "#{ENV['HOCOMOCO12_URL']}motif/#{path_params[:motif]}/pwm.#{path_params[:format]}"
+    else
+      "#{ENV['HOCOMOCO12_URL']}motif/#{path_params[:motif]}/pwm"
+    end
+  }
+
+  get '/motif/:motif/thresholds' => 'motifs#thresholds', constraints: {motif: /\w+\.H12(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?.[ABCD]/i}, to: redirect{|path_params, req|
+    if path_params[:format]
+      "#{ENV['HOCOMOCO12_URL']}motif/#{path_params[:motif]}/thresholds.#{path_params[:format]}"
+    else
+      "#{ENV['HOCOMOCO12_URL']}motif/#{path_params[:motif]}/thresholds"
+    end
+  }
+
+  get '/motif/:motif' => 'motifs#show', constraints: {motif: /\w+\.H13(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?G?I?B?.[ABCD]/i}, as: 'motif'
+  get '/motif/:motif/pcm' => 'motifs#pcm', constraints: {motif: /\w+\.H13(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?G?I?B?.[ABCD]/i}, as: 'motif_pcm'
+  get '/motif/:motif/pwm' => 'motifs#pwm', constraints: {motif: /\w+\.H13(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?G?I?B?.[ABCD]/i}, as: 'motif_pwm'
+  get '/motif/:motif/thresholds' => 'motifs#thresholds', constraints: {motif: /\w+\.H13(CORE|INVIVO|INVITRO|RSNP)\.\d.P?S?M?G?I?B?.[ABCD]/i}, as: 'motif_thresholds'
 
   get '/downloads_v10' => 'hocomoco#downloads_v10', as: 'downloads_v10'
   get '/downloads_v11' => 'hocomoco#downloads_v11', as: 'downloads_v11'
   get '/downloads_v12' => 'hocomoco#downloads_v12', as: 'downloads_v12'
-  get '/downloads', to: redirect('/downloads_v12'), as: 'downloads'
-  get '/download', to: redirect('/downloads_v12')
+  get '/downloads_v13' => 'hocomoco#downloads_v13', as: 'downloads_v13'
+  get '/downloads', to: redirect('/downloads_v13'), as: 'downloads'
+  get '/download', to: redirect('/downloads_v13')
 
   get '/help' => 'hocomoco#help', as: 'help'
   get '/faq' => 'hocomoco#faq', as: 'faq'

@@ -306,7 +306,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     @cached_motifs[filename] ||= File.readlines(filename).map{|line| self.from_json(JSON.parse(line)) }.sort_by(&:name).each(&block)
   end
 
-  def self.in_bundle(collection: 'H12CORE')
+  def self.in_bundle(collection: 'H13CORE')
     result = self.each_in_file(HocomocoSite::path_in_final_bundle("#{collection}/#{collection}_annotation.jsonl")).to_a
     # if File.exist?(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"))
     #   result += self.each_in_file(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
@@ -315,7 +315,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def self.all
-    ['H12CORE', 'H12INVIVO', 'H12INVITRO', 'H12RSNP'].flat_map{|collection|
+    ['H13CORE', 'H13INVIVO', 'H13INVITRO', 'H13RSNP'].flat_map{|collection|
       self.in_bundle(collection: collection)
     }
   end

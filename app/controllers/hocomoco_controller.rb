@@ -6,7 +6,7 @@ class HocomocoController < ApplicationController
 
   def search
     models = Motif.all
-    collection = params.fetch(:collection, 'H12CORE').upcase
+    collection = params.fetch(:collection, 'H13CORE').upcase
     models = models.select{|model| model.collection == collection }
 
     if params[:family_id] && !params[:family_id].blank?
@@ -66,6 +66,7 @@ class HocomocoController < ApplicationController
   def downloads_v10; end
   def downloads_v11; end
   def downloads_v12; end
+  def downloads_v13; end
   def help; end
   def faq; end
   def api_description; end

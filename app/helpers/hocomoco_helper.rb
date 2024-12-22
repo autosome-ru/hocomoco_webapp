@@ -16,6 +16,10 @@ module HocomocoHelper
   end
 
   def hocomoco12_bundle_url(path)
-    "#{root_path}final_bundle/hocomoco12/#{path}"
+    "#{ENV['HOCOMOCO12_URL']}final_bundle/hocomoco12/#{path}"
+  end
+
+  def hocomoco13_bundle_url(path)
+    "#{root_path}final_bundle/hocomoco13/#{path}"
   end
 end

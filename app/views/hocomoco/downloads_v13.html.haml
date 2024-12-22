@@ -1,0 +1,96 @@
+.row
+  .col-md-1
+  .col-md-8
+    .pageheader Downloads
+    .zenodo-data
+      %b Data:
+      %ul
+        %li Complete release data including the original motifs are available at #{link_to 'Zenodo', 'https://zenodo.org/records/10012938'}.
+        %li Harmonized list of human transcription factors and respective mouse orthologs based on the TFClass classification: #{link_to 'tf_masterlist.tsv', hocomoco13_bundle_url('tf_masterlist.tsv')}.
+    .tools
+      %b Tools:
+      %ul
+        %li
+          MoLoTool - #{link_to 'web interface', 'https://molotool.autosome.org'} for motif finding.
+        %li
+          SPRY-SARUS tool for motif finding (Java): #{link_to 'jar', 'https://raw.githubusercontent.com/autosome-ru/sarus/master/releases/sarus-2.0.1.jar'}, #{link_to 'readme', 'https://github.com/autosome-ru/sarus'}
+        %li
+          MACRO-APE tool for motif comparison, P-value and threshold estimation: #{link_to 'jar', 'https://opera.autosome.org/downloads/ape-3.0.2.jar'}, #{link_to 'manual', 'https://opera.autosome.org/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', ENV['MACROAPE_URL'] }
+        %li
+          PERFECTOS-APE tool for functional annotation of sequence variants overlappint TFBS: #{link_to 'jar', 'https://opera.autosome.org/downloads/ape-3.0.2.jar'}, #{link_to 'manual', 'https://opera.autosome.org/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', ENV['PERFECTOSAPE_URL']}
+
+  .col-md-3
+    .contacts
+      %b Contacts
+      %ul
+        %li Technical questions and suggestions should be addressed to #{link_to 'Ilya Vorontsov', 'mailto:vorontsov.i.e/at/gmail/dot/com'} and #{link_to 'Ivan Kulakovskiy', 'mailto:ivan.kulakovskiy/at/gmail/dot/com'}.
+        %li General questions should be addressed to #{link_to 'Ivan Kulakovskiy', 'mailto:ivan.kulakovskiy/at/gmail/dot/com'}, #{link_to 'Yulia Medvedeva', 'mailto:ju.medvedeva/at/gmail/dot/com'} or #{link_to 'Vsevolod Makeev', 'mailto:vsevolod.makeev/at/gmail/dot/com'}.
+.row
+  .col-md-1
+  .col-md-7
+    .cite
+      %b Citation:
+      .title
+        = link_to 'https://doi.org/10.1093/nar/gkad1077' do
+          HOCOMOCO in 2024: a rebuild of the curated collection of binding models for human and mouse transcription factors
+      .authors
+        Ilya E Vorontsov, Irina A Eliseeva, Arsenii Zinkevich, Mikhail Nikonov, Sergey Abramov, Alexandr Boytsov, Vasily Kamenets, Alexandra Kasianova, Semyon Kolmykov, Ivan S Yevshin, Alexander Favorov, Yulia A Medvedeva, Arttu Jolma, Fedor Kolpakov, Vsevolod J Makeev, Ivan V Kulakovskiy
+      .journal Nucleic Acids Research, gkad1077 (16 November 2023)
+      .doi doi: 10.1093/nar/gkad1077
+
+    .license
+      %b License:
+      HOCOMOCO motif collection is distributed under #{link_to 'WTFPL', 'https://en.wikipedia.org/wiki/WTFPL'}.
+      If you prefer more standard licenses, feel free to treat WTFPL as CC-BY.
+
+.row
+  .col-md-1
+  .col-md-7
+    %hr
+    .accordion#section-clustering
+      .card
+        .card-header#section-clustering-header
+          %button.accordion-button.collapsed.btn.btn-link.btn-block.text-left{"type" => "button", "data-toggle" => "collapse", "data-target" => "#section-clustering-body", "aria-expanded" => "false", "aria-controls" => "section-clustering-body"}
+            〉EXTRA: non-redundant motif subset
+        #section-clustering-body.collapse{"aria-labelledby" => "section-clustering-header", "data-parent" => "#section-clustering"}
+          .card-body
+            %p Many practical motif applications require a set of motifs with reduced redundancy i.e. where similar motifs belonging to related transcription factors are grouped together and only a single matrix represents the group. To this end, we have created the non-redundant set of HOCOMOCO v13 motifs, a derivative of the HOCOMOCO v13 CORE collection.
+            %p To this end, we estimated the motif similarities with MacroAPE (see #{link_to 'opera.autosome.org/macroape', 'https://opera.autosome.org/macroape'} and #{link_to 'doi:10.1186/1748-7188-8-23', 'https://doi.org/10.1186/1748-7188-8-23' }) at the motif P-value cutoff of 0.0005 and default matrix discretization of 1 (upscaled to 10 to reach a better precision for the cases when similarity estimates with the default discretization exceeded 0.01).
+            %p Using the pairwise motif similarity matrix, we performed hierarchical clustering using sklearn agglomerative clustering ('average' linkage). The number of clusters was taken to maximize the silhouette score resulting in 523 clusters at the silhouette score of 0.16.
+            %p For each cluster, the single representative motif was taken according to the best average similarity to other motifs in the cluster. The annotation contains a list of motifs that constitute a cluster and the list of respective TFs (UniProt IDs).
+            %ul
+              %li
+                Motifs annotation:
+                #{ link_to 'H13CORE-CLUSTERED_annotation.jsonl', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_annotation.jsonl') }.
+              %li
+                Set of cluster central motifs:
+                %ul
+                  %li= link_to 'H13CORE-CLUSTERED_pcm.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_pcm.tar.gz')
+                  %li= link_to 'H13CORE-CLUSTERED_pfm.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_pfm.tar.gz')
+                  %li= link_to 'H13CORE-CLUSTERED_pwm.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_pwm.tar.gz')
+              %li
+                Alignments:
+                #{ link_to 'H13CORE-CLUSTERED_words.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_words.tar.gz') }.
+              %li
+                Threshold to P-value map:
+                #{link_to 'H13CORE-CLUSTERED_thresholds.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_thresholds.tar.gz') }.
+              %li
+                Cluster contents:
+                %ul
+                  %li= link_to 'cluster_list.html', hocomoco13_bundle_url('H13CORE-CLUSTERED/cluster_list.html')
+                  %li= link_to 'cluster_list.tsv', hocomoco13_bundle_url('H13CORE-CLUSTERED/cluster_list.tsv')
+              %li
+                Cluster logos:
+                #{link_to 'H13CORE-CLUSTERED_cluster_logos.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_cluster_logos.tar.gz') }.
+
+.row
+  .col-md-12
+    %hr
+    %h1.downloads_header HOCOMOCO v13 subcollections
+    = render partial: 'download_table_v13', locals: {bundle_url: ->(path){ hocomoco13_bundle_url(path) }, collections: ['H13CORE', 'H13INVIVO', 'H13INVITRO', 'H13RSNP'] }
+
+- content_for(:title) do
+  HOCOMOCO-v13 Downloads - HOmo sapiens COmprehensive MOdel COllection
+- content_for(:meta_description) do
+  Download HOCOMOCO TFBS motif collection and supplementary data.
+/ - content_for(:canonical_url, "https://hocomoco13.autosome.org/downloads_v13")

@@ -4,7 +4,7 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
-    %link{rel:'canonical', href: (content_for?(:canonical_url) ? yield(:canonical_url) : "https://hocomoco12.autosome.org#{request.original_fullpath}") }/
+    %link{rel:'canonical', href: (content_for?(:canonical_url) ? yield(:canonical_url) : "https://hocomoco13.autosome.org#{request.original_fullpath}") }/
 
     %title= content_for?(:title) ? yield(:title) : "HOCOMOCO: HOmo sapiens COmprehensive MOdel COllection"
     - if content_for?(:meta_description)
@@ -39,25 +39,25 @@
     /   We express our condolences to all affected people and sincerely hope for a prompt transition to peace.
     %nav.navbar.navbar-light.bg-gray.navbar-expand-lg.py-0
       %a.navbar-brand.ml-0.mr-2{href: root_path}
-        %img.hocologo.d-inline-block{src: asset_url("hocomoco_logo_big.png"), alt: 'HOCOMOCO-v12'}
-        %span.d-inline-block HOCOMOCO v12
+        %img.hocologo.d-inline-block{src: asset_url("hocomoco_logo_big.png"), alt: 'HOCOMOCO-v13'}
+        %span.d-inline-block HOCOMOCO v13
       %button.navbar-toggler{type: 'button', data: {toggle: 'collapse', target: "#navbarNav"}}
         / aria: {controls: 'navbarTogglerDemo03' expanded: 'false', label: 'Toggle navigation'}
         %span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarNav
         %ul.navbar-nav.px-1.d-flex.align-items-end
           %li.nav-item
-            %a.nav-link{href: motifs_path(collection: 'H12CORE')} Browse
+            %a.nav-link{href: motifs_path(collection: 'H13CORE')} Browse
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
               Subcollections
             .dropdown-menu
               / `'true'` in  `html: 'true'` should be as string, not boolean!
-              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVIVO'), data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_invivo'), html: 'true'}}
+              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H13INVIVO'), data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_invivo'), html: 'true'}}
                 HOCOMOCO-invivo
-              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12INVITRO'), data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_invitro'), html: 'true'}}
+              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H13INVITRO'), data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_invitro'), html: 'true'}}
                 HOCOMOCO-invitro
-              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H12RSNP'), data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_rsnp')}}
+              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H13RSNP'), data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_rsnp')}}
                 HOCOMOCO-rSNP
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
@@ -73,6 +73,7 @@
             %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
               Downloads
             .dropdown-menu
+              %a.dropdown-item{href: downloads_v13_path} HOCOMOCO v13
               %a.dropdown-item{href: downloads_v12_path} HOCOMOCO v12
               %a.dropdown-item{href: downloads_v11_path} HOCOMOCO v11
               %a.dropdown-item{href: downloads_v10_path} HOCOMOCO v10
@@ -89,8 +90,8 @@
           %li.nav-item{class: @collection ? '' : 'ml-auto'}
             %form.form-inline.navbar-search.align-items-end{action: search_post_path, method: 'POST'}
               %input.form-control.mr-sm-2{type:"search", placeholder: "Search", name: 'query', value: params[:query]}
-              %input{type: 'hidden', name: 'collection', value: 'H12CORE'}
-              / = select_tag 'collection', options_for_select({'Core' => 'H12CORE', 'In vivo' => 'H12INVIVO', 'In vitro' => 'H12INVITRO', 'rSNP' => 'H12RSNP'},  params.fetch(:collection, 'H12CORE')), {class: 'custom-select mr-2'}
+              %input{type: 'hidden', name: 'collection', value: 'H13CORE'}
+              / = select_tag 'collection', options_for_select({'Core' => 'H13CORE', 'In vivo' => 'H13INVIVO', 'In vitro' => 'H13INVITRO', 'rSNP' => 'H13RSNP'},  params.fetch(:collection, 'H13CORE')), {class: 'custom-select mr-2'}
               %button.btn.btn-hocomoco-search.btn-outline-secondary{type: "submit"} Search
 
     %div{class: ['container-fluid', "controller-#{params[:controller]}", "action-#{params[:action]}"] }

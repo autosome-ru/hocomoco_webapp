@@ -153,10 +153,10 @@ table.downloads {
     padding: 2px 4px;
     text-align: center;
   }
-  td.H12CORE {
+  td.H12CORE, td.H13CORE {
     font-weight: bolder;
   }
-  tr.essential td.H12CORE {
+  tr.essential td.H12CORE, tr.essential td.H13CORE {
     background-color: #DDFFDD;
   }
 }
