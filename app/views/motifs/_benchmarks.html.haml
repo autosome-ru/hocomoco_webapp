@@ -4,55 +4,85 @@
   .row
     .col-12
       %table.benchmarks
-        %thead
-          %tr
-            %th ChIP-Seq benchmarking
-            %th Num. of experiments (peaksets)
-            %th auROC, median
-            %th auROC, best
-            %th auPRC, median
-            %th auPRC, best
-            %th pseudo-auROC, median
-            %th pseudo-auROC, best
-            %th pseudo-log-auROC, median
-            %th pseudo-log-auROC, best
-            %th Centrality, median
-            %th Centrality, best
-        %tbody
-          - if chipseq_metrics['HUMAN']
+        - if motif.from_hocomoco12?
+          %thead
             %tr
-              %th Human
-              %td #{chipseq_metrics.dig('HUMAN', 'num_datasets')} (#{chipseq_metrics.dig('HUMAN', 'num_peaksets')})
+              %th ChIP-Seq benchmarking
+              %th Num. of experiments (peaksets)
+              %th auROC, median
+              %th auROC, best
+              %th auPRC, median
+              %th auPRC, best
+              %th pseudo-auROC, median
+              %th pseudo-auROC, best
+              %th pseudo-log-auROC, median
+              %th pseudo-log-auROC, best
+              %th Centrality, median
+              %th Centrality, best
+          %tbody
+            - if chipseq_metrics['HUMAN']
+              %tr
+                %th Human
+                %td #{chipseq_metrics.dig('HUMAN', 'num_datasets')} (#{chipseq_metrics.dig('HUMAN', 'num_peaksets')})
 
-              %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
-              %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
-              %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
-              %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
+                %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
+                %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('HUMAN', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
 
-              %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
-              %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
-              %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
-              %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
+                %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
+                %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('HUMAN', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
 
-              %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'median')&.round(3)
-              %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'max')&.round(3)
-          - if chipseq_metrics['MOUSE']
+                %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'median')&.round(3)
+                %td= chipseq_metrics.dig('HUMAN', 'centrimo', 'log_evalue', 'max')&.round(3)
+            - if chipseq_metrics['MOUSE']
+              %tr
+                %th Mouse
+                %td #{chipseq_metrics.dig('MOUSE', 'num_datasets')} (#{chipseq_metrics.dig('MOUSE', 'num_peaksets')})
+
+                %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
+                %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
+
+                %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
+                %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
+
+                %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'median')&.round(3)
+                %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'max')&.round(3)
+        - else
+          %thead
             %tr
-              %th Mouse
-              %td #{chipseq_metrics.dig('MOUSE', 'num_datasets')} (#{chipseq_metrics.dig('MOUSE', 'num_peaksets')})
+              %th ChIP-Seq benchmarking
+              %th Num. of experiments (peaksets)
+              %th auROC, median
+              %th auROC, best
+              %th auPRC, median
+              %th auPRC, best
+              %th pseudo-auROC, median
+              %th pseudo-auROC, best
+              %th Centrality, median
+              %th Centrality, best
+          %tbody        
+            - if chipseq_metrics['overall']
+              %tr
+                %th overall
+                %td #{chipseq_metrics.dig('overall', 'num_datasets')} (#{chipseq_metrics.dig('overall', 'num_peaksets')})
 
-              %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'median')&.round(3)
-              %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'roc_auc', 'max')&.round(3)
-              %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'median')&.round(3)
-              %td= chipseq_metrics.dig('MOUSE', 'pwmeval_chipseq', 'pr_auc', 'max')&.round(3)
+                %td= chipseq_metrics.dig('overall', 'pwmeval', 'roc_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('overall', 'pwmeval', 'roc_auc', 'max')&.round(3)
+                %td= chipseq_metrics.dig('overall', 'pwmeval', 'pr_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('overall', 'pwmeval', 'pr_auc', 'max')&.round(3)
 
-              %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'median')&.round(3)
-              %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_roc_auc', 'max')&.round(3)
-              %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'median')&.round(3)
-              %td= chipseq_metrics.dig('MOUSE', 'viggroc', 'vigg_logroc_auc', 'max')&.round(3)
+                %td= chipseq_metrics.dig('overall', 'vigg', 'roc_auc', 'median')&.round(3)
+                %td= chipseq_metrics.dig('overall', 'vigg', 'roc_auc', 'max')&.round(3)
 
-              %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'median')&.round(3)
-              %td= chipseq_metrics.dig('MOUSE', 'centrimo', 'log_evalue', 'max')&.round(3)
+                %td= chipseq_metrics.dig('overall', 'centrimo', 'neglog_evalue', 'median')&.round(3)
+                %td= chipseq_metrics.dig('overall', 'centrimo', 'neglog_evalue', 'max')&.round(3)
 
 - if motif.metrics_summary['HT-SELEX']
   - selex_metrics = motif.metrics_summary['HT-SELEX']
@@ -70,68 +100,202 @@
             %th auROC50
             %th auPRC50
         %tbody
-          - if motif.metrics_summary.dig('HT-SELEX', 'overall') && selex_metrics.dig('methyl') && selex_metrics.dig('non-methyl')
-            %tr
-              %th.half{rowspan: 2}
-                Overall,
-                %span.font-weight-light  #{selex_metrics.dig('overall', 'num_datasets')} experiments
-              %th.half median
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
-            %tr
-              %th.half best
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
+          - if motif.from_hocomoco12?
+            - if selex_metrics['overall'] && selex_metrics['methyl'] && selex_metrics['non-methyl']
+              %tr
+                %th.half{rowspan: 2}
+                  Overall,
+                  %span.font-weight-light  #{selex_metrics.dig('overall', 'num_datasets')} experiments
+                %th.half median
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
+              %tr
+                %th.half best
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
+                %td= selex_metrics.dig('overall', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
 
-          - if selex_metrics.dig('methyl')
-            %tr
-              %th.half{rowspan: 2}
-                Methyl HT-SELEX,
-                %span.font-weight-light #{selex_metrics.dig('methyl', 'num_datasets')} experiments
-              %th.half median
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
-            %tr
-              %th.half best
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
+            - if selex_metrics.dig('methyl')
+              %tr
+                %th.half{rowspan: 2}
+                  Methyl HT-SELEX,
+                  %span.font-weight-light #{selex_metrics.dig('methyl', 'num_datasets')} experiments
+                %th.half median
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
+              %tr
+                %th.half best
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
+                %td= selex_metrics.dig('methyl', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
 
-          - if selex_metrics.dig('non-methyl')
+            - if selex_metrics.dig('non-methyl')
+              %tr
+                %th.half{rowspan: 2}
+                  Non-Methyl HT-SELEX,
+                  %span.font-weight-light #{selex_metrics.dig('non-methyl', 'num_datasets')} experiments
+                %th.half median
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
+              %tr
+                %th.half best
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
+                %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
+          - else
+            - possible_subtypes = ['Lysate', 'IVT', 'GFPIVT']
+            - num_subtypes = possible_subtypes.count{|subtype| selex_metrics.dig(subtype) }
+            - subtypes = possible_subtypes.dup
+            - if num_subtypes > 1
+              - subtypes.unshift('overall')
+            - subtypes.each do |subtype|
+              - if selex_metrics.dig(subtype)
+                %tr
+                  %th.half{rowspan: 2}
+                    #{subtype},
+                    %span.font-weight-light #{selex_metrics.dig(subtype, 'num_datasets')} experiments
+                  %th.half median
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
+                %tr
+                  %th.half best
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
+                  %td= selex_metrics.dig(subtype, 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
+
+- if motif.metrics_summary['Genomic-HT-SELEX']
+  - ght_selex_metrics = motif.metrics_summary['Genomic-HT-SELEX']
+  %br
+  .row
+    .col-12
+      %table.benchmarks
+        %thead
+          %tr
+            %th{colspan: 2} Genomic HT-SELEX benchmarking
+            %th Centrality
+            %th pseudo-auROC
+            %th auROC
+            %th auPR
+        %tbody
+          - possible_subtypes = ['Lysate', 'IVT', 'GFPIVT']
+          - num_subtypes = possible_subtypes.count{|subtype| ght_selex_metrics.dig(subtype) }
+          - subtypes = possible_subtypes.dup
+          - if num_subtypes > 1
+            - subtypes.unshift('overall')
+          - subtypes.each do |subtype|
+            - if ght_selex_metrics.dig(subtype)
+              %tr
+                %th.half{rowspan: 2}
+                  #{subtype},
+                  %span.font-weight-light #{ght_selex_metrics.dig(subtype, 'num_datasets')} experiments
+                %th.half median
+                %td= ght_selex_metrics.dig(subtype, 'centrimo', 'neglog_evalue', 'median')&.round(3)
+                %td= ght_selex_metrics.dig(subtype, 'vigg', 'roc_auc',  'median')&.round(3)
+                %td= ght_selex_metrics.dig(subtype, 'pwmeval', 'roc_auc', 'median')&.round(3)
+                %td= ght_selex_metrics.dig(subtype, 'pwmeval', 'pr_auc', 'median')&.round(3)
+              %tr
+                %th.half best
+                %td= ght_selex_metrics.dig(subtype, 'centrimo', 'neglog_evalue', 'max')&.round(3)
+                %td= ght_selex_metrics.dig(subtype, 'vigg', 'roc_auc',  'max')&.round(3)
+                %td= ght_selex_metrics.dig(subtype, 'pwmeval', 'roc_auc', 'max')&.round(3)
+                %td= ght_selex_metrics.dig(subtype, 'pwmeval', 'pr_auc',  'max')&.round(3)
+
+- if motif.metrics_summary['SMiLE-Seq']
+  - smileseq_metrics = motif.metrics_summary['SMiLE-Seq']
+  %br
+  .row
+    .col-12
+      %table.benchmarks
+        %thead
+          %tr
+            %th{colspan: 2} SMiLE-Seq benchmarking
+            %th auROC10
+            %th auPRC10
+            %th auROC25
+            %th auPRC25
+            %th auROC50
+            %th auPRC50
+        %tbody
+          - if smileseq_metrics['overall']
             %tr
               %th.half{rowspan: 2}
-                Non-Methyl HT-SELEX,
-                %span.font-weight-light #{selex_metrics.dig('non-methyl', 'num_datasets')} experiments
+                overall,
+                %span.font-weight-light  #{smileseq_metrics.dig('overall', 'num_datasets')} experiments
               %th.half median
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_10', 'pr_auc',  'median')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_25', 'roc_auc', 'median')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_25', 'pr_auc',  'median')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_50', 'roc_auc', 'median')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_50', 'pr_auc',  'median')&.round(3)
             %tr
               %th.half best
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
-              %td= selex_metrics.dig('non-methyl', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_10', 'roc_auc', 'max')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_10', 'pr_auc',  'max')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_25', 'roc_auc', 'max')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_25', 'pr_auc',  'max')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_50', 'roc_auc', 'max')&.round(3)
+              %td= smileseq_metrics.dig('overall', 'pwmeval_selex_50', 'pr_auc',  'max')&.round(3)
+
+- if motif.metrics_summary['PBM']
+  - pbm_metrics = motif.metrics_summary['PBM']
+  %br
+  .row
+    .col-12
+      %table.benchmarks
+        %thead
+          %tr
+            %th{colspan: 2} PBM benchmarking
+            %th auROC, QNZS
+            %th auPR, QNZS
+            %th auROC, SD
+            %th auPR, SD
+        %tbody
+          - if pbm_metrics['overall']
+            %tr
+              %th.half{rowspan: 2}
+                overall,
+                %span.font-weight-light #{pbm_metrics.dig('overall', 'num_datasets')} experiments
+              %th.half median
+              %td= pbm_metrics.dig('overall', 'pbm_qnzs', 'roc_auc', 'median')&.round(3)
+              %td= pbm_metrics.dig('overall', 'pbm_qnzs', 'pr_auc',  'median')&.round(3)
+              %td= pbm_metrics.dig('overall', 'pbm_sd', 'roc_auc', 'median')&.round(3)
+              %td= pbm_metrics.dig('overall', 'pbm_sd', 'pr_auc',  'median')&.round(3)
+            %tr
+              %th.half best
+              %td= pbm_metrics.dig('overall', 'pbm_qnzs', 'roc_auc', 'max')&.round(3)
+              %td= pbm_metrics.dig('overall', 'pbm_qnzs', 'pr_auc',  'max')&.round(3)
+              %td= pbm_metrics.dig('overall', 'pbm_sd', 'roc_auc', 'max')&.round(3)
+              %td= pbm_metrics.dig('overall', 'pbm_sd', 'pr_auc',  'max')&.round(3)
+
 
 
 - if motif.metrics_summary.dig('rSNP', 'adastra')

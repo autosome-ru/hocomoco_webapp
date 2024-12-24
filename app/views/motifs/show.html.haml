@@ -84,22 +84,24 @@
                 #{motif.metrics_summary.dig('ChIP-Seq', 'HUMAN', 'num_datasets') || 0} human,
                 #{motif.metrics_summary.dig('ChIP-Seq', 'MOUSE', 'num_datasets') || 0} mouse
               / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'P') || 0
-            %tr
-              %td HT-SELEX
-              %td= motif.metrics_summary.dig('HT-SELEX', 'non-methyl', 'num_datasets') || 0
-              / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'S') || 0
-            %tr
-              %td Methyl-HT-SELEX
-              %td= motif.metrics_summary.dig('HT-SELEX', 'methyl', 'num_datasets') || 0
-              / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'M') || 0
-            %tr
-              %td HT-SELEX
-              %td
-                #{motif.metrics_summary.dig('HT-SELEX', 'overall', 'num_datasets') || 0} overall:
-                #{motif.metrics_summary.dig('HT-SELEX', 'Lysate', 'num_datasets') || 0} Lysate,
-                #{motif.metrics_summary.dig('HT-SELEX', 'IVT', 'num_datasets') || 0} IVT,
-                #{motif.metrics_summary.dig('HT-SELEX', 'GFPIVT', 'num_datasets') || 0} GFPIVT
-              / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'S') || 0
+            - if motif.from_hocomoco12?
+              %tr
+                %td HT-SELEX
+                %td= motif.metrics_summary.dig('HT-SELEX', 'non-methyl', 'num_datasets') || 0
+                / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'S') || 0
+              %tr
+                %td Methyl-HT-SELEX
+                %td= motif.metrics_summary.dig('HT-SELEX', 'methyl', 'num_datasets') || 0
+                / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'M') || 0
+            - else
+              %tr
+                %td HT-SELEX
+                %td
+                  #{motif.metrics_summary.dig('HT-SELEX', 'overall', 'num_datasets') || 0} overall:
+                  #{motif.metrics_summary.dig('HT-SELEX', 'Lysate', 'num_datasets') || 0} Lysate,
+                  #{motif.metrics_summary.dig('HT-SELEX', 'IVT', 'num_datasets') || 0} IVT,
+                  #{motif.metrics_summary.dig('HT-SELEX', 'GFPIVT', 'num_datasets') || 0} GFPIVT
+                / %td= motif.data.dig('original_motif', 'subtype_info', 'datatype_counts', 'S') || 0
             %tr
               %td Genomic HT-SELEX
               %td
