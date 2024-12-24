@@ -126,8 +126,12 @@ class MotifDecorator < ApplicationDecorator
   def best_auc_mouse; object.best_auc_mouse&.round(3); end
 
   def data_sources_full
+    datatypes_full_names = {
+      'P' => 'ChIP-Seq', 'S' => 'HT-SELEX', 'M' => 'Methyl-HT-SELEX',
+      'G' => 'Genomic HT-SELEX', 'I' => 'SMiLe-Seq', 'B' => 'PBM',
+    }
     object.data_sources.each_char.map{|k|
-      {'P' => 'ChIP-Seq', 'S' => 'HT-SELEX', 'M' => 'Methyl-HT-SELEX'}.fetch(k){|k| $stderr.puts "Error: datatype `#{k}` unknown" }
+      datatypes_full_names.fetch(k){|k| $stderr.puts "Error: datatype `#{k}` unknown" }
     }.join(' + ')
   end
 
