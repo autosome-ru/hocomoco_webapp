@@ -87,7 +87,7 @@
   .col-md-12
     %hr
     %h1.downloads_header HOCOMOCO v13 subcollections
-    = render partial: 'download_table_v13', locals: {bundle_url: ->(path){ hocomoco13_bundle_url(path) }, collections: ['H13CORE', 'H13INVIVO', 'H13INVITRO', 'H13RSNP'] }
+    = render partial: 'download_table_v12_13', locals: {bundle_url: ->(path){ hocomoco13_bundle_url(path) }, collections: ['H13CORE', 'H13INVIVO', 'H13INVITRO', 'H13RSNP'] }
 
 - content_for(:title) do
   HOCOMOCO-v13 Downloads - HOmo sapiens COmprehensive MOdel COllection

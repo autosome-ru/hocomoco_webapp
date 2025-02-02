@@ -2,10 +2,8 @@
   %thead
     %tr
       %th{colspan: 2}
-      %th H12CORE
-      %th H12INVIVO
-      %th H12INVITRO
-      %th H12RSNP
+      - collections.each do |collection|
+        %th collection
   %tbody
     %tr
       %th.row-hdr{colspan: 2} Number of motifs
