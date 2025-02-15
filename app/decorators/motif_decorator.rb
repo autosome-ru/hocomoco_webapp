@@ -69,7 +69,6 @@ class MotifDecorator < ApplicationDecorator
   def download_pcm; helpers.link_to("#{name}.pcm", object.pcm_url, rel: 'nofollow'); end
   def download_pwm; helpers.link_to("#{name}.pwm", object.pwm_url, rel: 'nofollow'); end
   def download_pfm; helpers.link_to("#{name}.pfm", object.pfm_url, rel: 'nofollow'); end
-  def download_alignment; helpers.link_to("#{name}.words.tsv", object.alignment_url, rel: 'nofollow'); end
   def download_precalculated_thresholds; helpers.link_to("#{name}.thr", object.precalculated_thresholds_url, rel: 'nofollow'); end
 
   def download_jaspar_motif; helpers.link_to("#{name}_jaspar_format.txt", object.jaspar_url, rel: 'nofollow'); end
