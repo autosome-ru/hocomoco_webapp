@@ -43,8 +43,14 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 0.0.9.0.7	Yet undefined DNA-binding domains	Uncharacterized	Unannotated		Q9QX66	manual	DPF1_MOUSE	Zinc finger protein neuro-d4	Dpf1	Baf45b Neud4		1352748;	29861;	no
 0.0.9.0.8	Yet undefined DNA-binding domains	Uncharacterized	Unannotated		Q9BZB8	manual	CPEB1_HUMAN	Cytoplasmic polyadenylation element-binding protein 1	CPEB1	CPEB	21744;		64506;	no
 0.0.9.0.8	Yet undefined DNA-binding domains	Uncharacterized	Unannotated		P70166	manual	CPEB1_MOUSE	Cytoplasmic polyadenylation element-binding protein 1	Cpeb1			108442;	12912;	no
-0.0.9.0.9	Yet undefined DNA-binding domains	Uncharacterized	Unannotated		P07199	manual	CENPB_HUMAN	Major centromere autoantigen B	CENPB		1852;		1059;	no
-0.0.9.0.9	Yet undefined DNA-binding domains	Uncharacterized	Unannotated		P27790	manual	CENPB_MOUSE	Major centromere autoantigen B	Cenpb	Cenp-b		88376;	12616;	no
+0.0.9.0.255	Yet undefined DNA-binding domains	Uncharacterized	Unannotated		Q9UFW8	manual	CGBP1_HUMAN		CGGBP1					no
+0.0.9.0.255	Yet undefined DNA-binding domains	Uncharacterized	Unannotated		Q8BHG9	manual	CGBP1_MOUSE		Cggbp1					no
+0.0.9.0.256	Yet undefined DNA-binding domains	Uncharacterized	Unannotated		Q9UGU0	manual	TCF20_HUMAN		TCF20					no
+0.0.9.0.256	Yet undefined DNA-binding domains	Uncharacterized	Unannotated		Q9EPQ8	manual	TCF20_MOUSE		Tcf20					no
+0.0.9.1.1	Yet undefined DNA-binding domains	Uncharacterized	Unannotated	DACH	Q9UI36	manual	DACH1_HUMAN		DACH1					yes
+0.0.9.1.1	Yet undefined DNA-binding domains	Uncharacterized	Unannotated	DACH	Q9QYB2	manual	DACH1_MOUSE		Dach1					yes
+0.0.9.1.2	Yet undefined DNA-binding domains	Uncharacterized	Unannotated	DACH	Q96NX9	manual	DACH2_HUMAN		DACH2					yes
+0.0.9.1.2	Yet undefined DNA-binding domains	Uncharacterized	Unannotated	DACH	Q925Q8	manual	DACH2_MOUSE		Dach2					yes
 0.1.1.0.1	Yet undefined DNA-binding domains	AXUD/CSRNP domain factors	CSRNP		Q96S65	http://tfclass.bioinf.med.uni-goettingen.de/	CSRN1_HUMAN	Cysteine/serine-rich nuclear protein 1 (CSRNP-1) (Axin-1 up-regulated gene 1 protein) (Protein URAX1) (TGF-beta-induced apoptosis protein 3) (TAIP-3)	CSRNP1	AXUD1 TAIP3	14300;		64651;	yes
 0.1.1.0.1	Yet undefined DNA-binding domains	AXUD/CSRNP domain factors	CSRNP		P59054	http://tfclass.bioinf.med.uni-goettingen.de/	CSRN1_MOUSE	Cysteine/serine-rich nuclear protein 1 (CSRNP-1) (Axin-1 up-regulated gene 1 protein) (TGF-beta-induced apoptosis protein 3) (TAIP-3)	Csrnp1	Axud1 Taip3		2387989;	215418;	yes
 0.1.1.0.2	Yet undefined DNA-binding domains	AXUD/CSRNP domain factors	CSRNP		Q9H175	http://tfclass.bioinf.med.uni-goettingen.de/	CSRN2_HUMAN	Cysteine/serine-rich nuclear protein 2 (CSRNP-2) (Protein FAM130A1) (TGF-beta-induced apoptosis protein 12) (TAIP-12)	CSRNP2	C12orf22 FAM130A1 TAIP12	16006;		81566;	yes
@@ -636,6 +642,8 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 2.3.2.1.7	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	BTB-POZ	Q9JKD9	http://tfclass.bioinf.med.uni-goettingen.de/	ZBT32_MOUSE	Zinc finger and BTB domain-containing protein 32 (Repressor of GATA) (Testis zinc finger protein)	Zbtb32	Rog Tzfp		1891838;	58206;	yes
 2.3.2.1.8	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	BTB-POZ	Q8NCN2	http://tfclass.bioinf.med.uni-goettingen.de/	ZBT34_HUMAN	Zinc finger and BTB domain-containing protein 34	ZBTB34	KIAA1993	31446;		403341;	yes
 2.3.2.1.9	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	BTB-POZ	Q5TC79	http://tfclass.bioinf.med.uni-goettingen.de/	ZBT37_HUMAN	Zinc finger and BTB domain-containing protein 37	ZBTB37		28365;		84614;	yes
+2.3.2.1.255	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	BTB-POZ	Q96BR9	manual	ZBT8A_HUMAN		ZBTB8A					yes
+2.3.2.1.255	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	BTB-POZ	Q9CWH1	manual	ZBT8A_MOUSE		Zbtb8a					yes
 2.3.2.2.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	KRAB	B1APH4	http://tfclass.bioinf.med.uni-goettingen.de/	ZN487_HUMAN	Putative zinc finger protein 487 (KRAB domain only protein 1)	ZNF487	KRBO1 ZNF487P	23488;			yes
 2.3.2.2.2	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	KRAB	Q5EBM4	http://genexplain.com/tfclass/huTF_classification.html	ZN542_HUMAN	Putative zinc finger protein 542 (Zinc finger protein 542 pseudogene)	ZNF542P	ZNF542	25393;			yes
 2.3.2.2.3	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	KRAB	Q6ZN79	http://tfclass.bioinf.med.uni-goettingen.de/	Z705A_HUMAN	Zinc finger protein 705A	ZNF705A		32281;		440077;	yes
@@ -658,6 +666,17 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 2.3.2.4.8	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Other	D3YYM0	http://genexplain.com/tfclass/huTF_classification.html	OVOL3_MOUSE	Putative transcription factor ovo-like protein 3	Ovol3			2388075;	381867;	yes
 2.3.2.4.9	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Other	Q6ZN18	http://tfclass.bioinf.med.uni-goettingen.de/	AEBP2_HUMAN	Zinc finger protein AEBP2 (Adipocyte enhancer-binding protein 2) (AE-binding protein 2)	AEBP2		24051;		121536;	no
 2.3.2.4.9	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Other	Q9Z248	http://tfclass.bioinf.med.uni-goettingen.de/	AEBP2_MOUSE	Zinc finger protein AEBP2 (Adipocyte enhancer-binding protein 2) (AE-binding protein 2)	Aebp2			1338038;	11569;	no
+2.3.2.4.255	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Other	Q8N123	manual	CPXCR_HUMAN		CPXCR1					no
+2.3.2.4.255	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Other	Q3V0P1	manual	CPXCR_MOUSE		Cpxcr1					no
+2.3.2.4.256	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Other	Q7RTV3	manual	ZN367_HUMAN		ZNF367					yes
+2.3.2.4.256	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Other	Q0VDT2	manual	ZN367_MOUSE		Znf367					yes
+2.3.2.4.257	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Other	Q5JPB2	manual	ZN831_HUMAN		ZNF831					no
+2.3.2.255.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	CR1-CR2	Q9NR83	https://www.ebi.ac.uk/interpro/entry/InterPro/IPR052253/protein/reviewed/#table	S2A4R_HUMAN		SLC2A4RG					yes
+2.3.2.255.2	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	CR1-CR2	Q9H8N7	https://www.ebi.ac.uk/interpro/entry/InterPro/IPR052253/protein/reviewed/#table	ZN395_HUMAN		ZNF395					yes
+2.3.2.256.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Elbow-Noc	Q96F45	https://www.ebi.ac.uk/interpro/entry/InterPro/IPR051520/	ZN503_HUMAN		ZNF503					no
+2.3.2.256.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Elbow-Noc	Q7TMA2	https://www.ebi.ac.uk/interpro/entry/InterPro/IPR051520/	ZN503_MOUSE		Znf503					no
+2.3.2.256.2	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Elbow-Noc	Q9H7S9	https://www.ebi.ac.uk/interpro/entry/InterPro/IPR051520/	ZN703_HUMAN		ZNF703					no
+2.3.2.256.2	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Other with up to three adjacent zinc fingers	Elbow-Noc	P0CL69	https://www.ebi.ac.uk/interpro/entry/InterPro/IPR051520/	ZN703_MOUSE		Znf703					no
 2.3.3.0.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	O43829	http://tfclass.bioinf.med.uni-goettingen.de/	ZBT14_HUMAN	Zinc finger and BTB domain-containing protein 14 (Zinc finger protein 161 homolog) (Zfp-161) (Zinc finger protein 478) (Zinc finger protein 5 homolog) (ZF5) (Zfp-5) (hZF5)	ZBTB14	ZFP161 ZNF478	12860;		7541;	yes
 2.3.3.0.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q08376	http://tfclass.bioinf.med.uni-goettingen.de/	ZBT14_MOUSE	Zinc finger and BTB domain-containing protein 14 (Zinc finger protein 161) (Zfp-161) (Zinc finger protein 5) (ZF5)	Zbtb14	Zfp-5 Zfp161 Zfp5		1195345;	22666;	yes
 2.3.3.0.10	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q8N8C0	http://tfclass.bioinf.med.uni-goettingen.de/	ZN781_HUMAN	Zinc finger protein 781	ZNF781		26745;		163115;	yes
@@ -822,6 +841,11 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 2.3.3.0.25	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q8BZ34	http://tfclass.bioinf.med.uni-goettingen.de/	ZN641_MOUSE	Zinc finger protein 641	Znf641	Zfp641		2442788;	239652;	yes
 2.3.3.0.255	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q921B4	http://tfclass.bioinf.med.uni-goettingen.de/	NRIF2_MOUSE	Neurotrophin receptor-interacting factor 2 (Zinc finger protein 369)	Nrif2	Zfp369		2176229;		no
 2.3.3.0.256	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q923B3	http://tfclass.bioinf.med.uni-goettingen.de/	NRIF1_MOUSE	Neurotrophin receptor-interacting factor 1 (Neurotrophin receptor-interacting factor) (Zinc finger protein 110)	Nrif1	Nrif Zfp110		1890378;	65020;	no
+2.3.3.0.257	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	O43313	manual	ATMIN_HUMAN		ATMIN					no
+2.3.3.0.257	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q6P9S1	manual	ATMIN_MOUSE		Atmin					no
+2.3.3.0.258	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	A8MQ14	manual	ZN850_HUMAN		ZNF850					yes
+2.3.3.0.259	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	P0CJ78	manual	ZN865_HUMAN		ZNF865					yes
+2.3.3.0.259	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q3U3I9	manual	ZN865_MOUSE		Znf865					yes
 2.3.3.0.26	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q6NUN9	http://tfclass.bioinf.med.uni-goettingen.de/	ZN746_HUMAN	Zinc finger protein 746 (Parkin-interacting substrate) (PARIS)	ZNF746	PARIS	21948;		155061;	yes
 2.3.3.0.26	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q3U133	http://tfclass.bioinf.med.uni-goettingen.de/	ZN746_MOUSE	Zinc finger protein 746	Znf746	Zfp746		1916478;	69228;	yes
 2.3.3.0.27	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	Unclassified	Q9NZV7	http://tfclass.bioinf.med.uni-goettingen.de/	ZIM2_HUMAN	Zinc finger imprinted 2 (Zinc finger protein 656)	ZIM2	ZNF656	12875;		23619;	yes
@@ -1242,7 +1266,7 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 2.3.3.7.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF705	P0CH99	http://tfclass.bioinf.med.uni-goettingen.de/	Z705D_HUMAN	Zinc finger protein 705D	ZNF705D		33202;		728957;	yes
 2.3.3.7.2	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF705	A8MVS1	http://genexplain.com/tfclass/huTF_classification.html	Z705F_HUMAN	Zinc finger protein 705F	ZNF705F		33204;			no
 2.3.3.7.3	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF705	A8MUZ8	http://tfclass.bioinf.med.uni-goettingen.de/	Z705G_HUMAN	Putative zinc finger protein 705G	ZNF705G		37134;		100131980;	yes
-2.3.3.7.4	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF705	A8MWA4	http://tfclass.bioinf.med.uni-goettingen.de/	Z705E_HUMAN	Putative zinc finger protein 705E	ZNF705E		33203;		100131539;	yes
+2.3.3.7.4	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF705	A8MWA4	http://tfclass.bioinf.med.uni-goettingen.de/	Z705E_HUMAN	Putative zinc finger protein 705E	ZNF705EP	ZNF705E	33203;		100131539;	yes
 2.3.3.70.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF26-like	P17031	http://tfclass.bioinf.med.uni-goettingen.de/	ZNF26_HUMAN	Zinc finger protein 26 (Zinc finger protein KOX20)	ZNF26	KOX20	13053;		7574;	yes
 2.3.3.70.2	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF26-like	Q14587	http://tfclass.bioinf.med.uni-goettingen.de/	ZN268_HUMAN	Zinc finger protein 268 (Zinc finger protein HZF3)	ZNF268		13061;		10795;	yes
 2.3.3.71.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF300-like	Q96RE9	http://tfclass.bioinf.med.uni-goettingen.de/	ZN300_HUMAN	Zinc finger protein 300	ZNF300		13091;		91975;	yes
@@ -1254,6 +1278,7 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 2.3.3.72.5	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF813-like	Q8N4W9	http://tfclass.bioinf.med.uni-goettingen.de/	ZN808_HUMAN	Zinc finger protein 808	ZNF808		33230;		388558;	yes
 2.3.3.72.6	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF813-like	Q86XN6	http://genexplain.com/tfclass/huTF_classification.html	ZN761_HUMAN	Zinc finger protein 761	ZNF761	KIAA2033	23179;		388561;	yes
 2.3.3.72.7	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF813-like	Q96IR2	http://tfclass.bioinf.med.uni-goettingen.de/	ZN845_HUMAN	Zinc finger protein 845	ZNF845		25112;		91664;	yes
+2.3.3.72.255	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF813-like	P0CJ79	manual	ZN888_HUMAN		ZNF888					yes
 2.3.3.73.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF816A-like	Q0VGE8	http://tfclass.bioinf.med.uni-goettingen.de/	ZN816_HUMAN	Zinc finger protein 816	ZNF816	ZNF816A	26995;		125893;	yes
 2.3.3.73.2	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF816A-like	P17035	http://tfclass.bioinf.med.uni-goettingen.de/	ZNF28_HUMAN	Zinc finger protein 28 (Zinc finger protein KOX24)	ZNF28	KOX24	13073;		7576;	yes
 2.3.3.74.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	More than 3 adjacent zinc fingers	ZNF442-like	Q9H7R0	http://tfclass.bioinf.med.uni-goettingen.de/	ZN442_HUMAN	Zinc finger protein 442	ZNF442		20877;		79973;	yes
@@ -1525,6 +1550,8 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 2.3.4.9.2	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Multiple dispersed zinc fingers	ZNF532-like	Q8BHZ4	http://tfclass.bioinf.med.uni-goettingen.de/	ZN592_MOUSE	Zinc finger protein 592 (Zfp-592)	Znf592	Kiaa0211 Zfp592		2443541;	233410;	yes
 2.3.4.9.3	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Multiple dispersed zinc fingers	ZNF532-like	Q8N1G0	http://tfclass.bioinf.med.uni-goettingen.de/	ZN687_HUMAN	Zinc finger protein 687	ZNF687	KIAA1441	29277;		57592;	yes
 2.3.4.9.3	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Multiple dispersed zinc fingers	ZNF532-like	Q9D2D7	http://tfclass.bioinf.med.uni-goettingen.de/	ZN687_MOUSE	Zinc finger protein 687	Znf687	Kiaa1441 Zfp687		1925516;	78266;	yes
+2.3.4.255.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Multiple dispersed zinc fingers	FLYWCH	Q4VC44	manual	FWCH1_HUMAN		FLYWCH1					no
+2.3.4.255.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	Multiple dispersed zinc fingers	FLYWCH	Q8CI03	manual	FWCH1_MOUSE		Flywch1					no
 2.3.5.0.1	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		O96006	http://tfclass.bioinf.med.uni-goettingen.de/	ZBED1_HUMAN	E3 SUMO-protein ligase ZBED1 (EC 2.3.2.-) (DNA replication-related element-binding factor) (Putative Ac-like transposable element) (Zinc finger BED domain-containing protein 1) (dREF homolog)	ZBED1	ALTE DREF hDREF KIAA0785 TRAMP	447;		9189;	yes
 2.3.5.0.2	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		Q9BTP6	http://tfclass.bioinf.med.uni-goettingen.de/	ZBED2_HUMAN	Zinc finger BED domain-containing protein 2	ZBED2		20710;		79413;	yes
 2.3.5.0.3	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		Q96IU2	http://tfclass.bioinf.med.uni-goettingen.de/	ZBED3_HUMAN	Zinc finger BED domain-containing protein 3 (Axin-interacting protein)	ZBED3		20711;		84327;	yes
@@ -1534,6 +1561,10 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 2.3.5.0.5	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		Q49AG3	http://tfclass.bioinf.med.uni-goettingen.de/	ZBED5_HUMAN	Zinc finger BED domain-containing protein 5 (Transposon-derived Buster1 transposase-like protein)	ZBED5	Buster1	30803;		58486;	no
 2.3.5.0.6	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		P86452	http://tfclass.bioinf.med.uni-goettingen.de/	ZBED6_HUMAN	Zinc finger BED domain-containing protein 6	ZBED6		33273;		100381270;	yes
 2.3.5.0.6	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		D2EAC2	http://tfclass.bioinf.med.uni-goettingen.de/	ZBED6_MOUSE	Zinc finger BED domain-containing protein 6 (Muscle growth regulator) (MGR)	Zbed6			3828086;	667118;	yes
+2.3.5.0.255	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		P0CF97	manual	F200B_HUMAN		FAM200B					no
+2.3.5.0.256	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		Q6R2W3	manual	SCND3_HUMAN		SCAND3					no
+2.3.5.0.257	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		C9JLR9	manual	ZFTA_HUMAN		ZFTA					no
+2.3.5.0.257	Zinc-coordinating DNA-binding domains	C2H2 zinc finger factors	BED zinc finger		Q4VA45	manual	ZFTA_MOUSE		Zfta					no
 2.5.1.0.1	Zinc-coordinating DNA-binding domains	DM-type intertwined zinc finger factors	DMRT		Q9Y5R6	http://tfclass.bioinf.med.uni-goettingen.de/	DMRT1_HUMAN	Doublesex- and mab-3-related transcription factor 1 (DM domain expressed in testis protein 1)	DMRT1	DMT1	2934;		1761;	yes
 2.5.1.0.1	Zinc-coordinating DNA-binding domains	DM-type intertwined zinc finger factors	DMRT		Q9QZ59	http://tfclass.bioinf.med.uni-goettingen.de/	DMRT1_MOUSE	Doublesex- and mab-3-related transcription factor 1	Dmrt1			1354733;	50796;	yes
 2.5.1.0.2	Zinc-coordinating DNA-binding domains	DM-type intertwined zinc finger factors	DMRT		Q9Y5R5	http://tfclass.bioinf.med.uni-goettingen.de/	DMRT2_HUMAN	Doublesex- and mab-3-related transcription factor 2 (Doublesex-like 2 protein) (DSXL-2)	DMRT2	DSXL2	2935;		10655;	yes
@@ -1566,6 +1597,10 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 2.6.1.0.7	Zinc-coordinating DNA-binding domains	CXXC zinc finger factors	CpG-binding		O08550	http://tfclass.bioinf.med.uni-goettingen.de/	KMT2B_MOUSE	Histone-lysine N-methyltransferase 2B (Lysine N-methyltransferase 2B) (EC 2.1.1.354) (Myeloid/lymphoid or mixed-lineage leukemia protein 4 homolog) (Trithorax homolog 2) (WW domain-binding protein 7) (WBP-7)	Kmt2b	Mll2 Trx2 Wbp7		109565;	75410;	no
 2.6.1.0.8	Zinc-coordinating DNA-binding domains	CXXC zinc finger factors	CpG-binding		O43151	http://tfclass.bioinf.med.uni-goettingen.de/	TET3_HUMAN	Methylcytosine dioxygenase TET3 (EC 1.14.11.n2)	TET3	KIAA0401	28313;		200424;	no
 2.6.1.0.8	Zinc-coordinating DNA-binding domains	CXXC zinc finger factors	CpG-binding		Q8BG87	http://tfclass.bioinf.med.uni-goettingen.de/	TET3_MOUSE	Methylcytosine dioxygenase TET3 (EC 1.14.11.n2)	Tet3			2446229;	194388;	no
+2.6.1.0.255	Zinc-coordinating DNA-binding domains	CXXC zinc finger factors	CpG-binding		Q9H2H0	manual	CXXC4_HUMAN		CXXC4					no
+2.6.1.0.255	Zinc-coordinating DNA-binding domains	CXXC zinc finger factors	CpG-binding		Q6NXI8	manual	CXXC4_MOUSE		Cxxc4					no
+2.6.1.0.256	Zinc-coordinating DNA-binding domains	CXXC zinc finger factors	CpG-binding		Q6PCT2	manual	FXL19_HUMAN		FBXL19					no
+2.6.1.0.256	Zinc-coordinating DNA-binding domains	CXXC zinc finger factors	CpG-binding		Q6PB97	manual	FXL19_MOUSE		Fbxl19					no
 2.7.1.0.1	Zinc-coordinating DNA-binding domains	C2HC zinc finger factors	MYT		Q01538	http://tfclass.bioinf.med.uni-goettingen.de/	MYT1_HUMAN	Myelin transcription factor 1 (MyT1) (Myelin transcription factor I) (MyTI) (PLPB1) (Proteolipid protein-binding protein)	MYT1	KIAA0835 KIAA1050 MTF1 MYTI PLPB1	7622;		4661;	yes
 2.7.1.0.1	Zinc-coordinating DNA-binding domains	C2HC zinc finger factors	MYT		Q8CFC2	http://tfclass.bioinf.med.uni-goettingen.de/	MYT1_MOUSE	Myelin transcription factor 1 (MyT1) (Neural zinc finger factor 2) (NZF-2)	Myt1	Kiaa0835 Nzf2		1100535;	17932;	yes
 2.7.1.0.2	Zinc-coordinating DNA-binding domains	C2HC zinc finger factors	MYT		Q9UL68	http://tfclass.bioinf.med.uni-goettingen.de/	MYT1L_HUMAN	Myelin transcription factor 1-like protein (MyT1-L) (MyT1L)	MYT1L	KIAA1106	7623;		23040;	yes
@@ -2237,6 +2272,12 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 3.5.1.0.4	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Other Myb-like	Q91YU3	http://genexplain.com/tfclass/huTF_classification.html	MSD4_MOUSE	Myb/SANT-like DNA-binding domain-containing protein 4	Msantd4			1925350;	78100;	no
 3.5.1.0.5	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Other Myb-like	Q86VE0	http://genexplain.com/tfclass/huTF_classification.html	MYPOP_HUMAN	Myb-related transcription factor, partner of profilin (Myb-related protein p42POP) (Partner of profilin)	MYPOP	P42POP	20178;		339344;	yes
 3.5.1.0.5	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Other Myb-like	Q8R4U1	http://genexplain.com/tfclass/huTF_classification.html	MYPOP_MOUSE	Myb-related transcription factor, partner of profilin (Myb-related protein p42POP) (Partner of profilin)	Mypop	P42pop		2446472;	232934;	yes
+3.5.1.0.255	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Other Myb-like	Q5VVJ2	manual	MYSM1_HUMAN		MYSM1					no
+3.5.1.0.255	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Other Myb-like	Q69Z66	manual	MYSM1_MOUSE		Mysm1					no
+3.5.1.0.256	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Other Myb-like	P54274	manual	TERF1_HUMAN		TERF1					no
+3.5.1.0.256	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Other Myb-like	P70371	manual	TERF1_MOUSE		Terf1					no
+3.5.1.0.257	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Other Myb-like	Q15361	manual	TTF1_HUMAN		TTF1					no
+3.5.1.0.257	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Other Myb-like	Q62187	manual	TTF1_MOUSE		Ttf1					no
 3.5.1.1.1	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Myb-like	P10242	http://tfclass.bioinf.med.uni-goettingen.de/	MYB_HUMAN	Transcriptional activator Myb (Proto-oncogene c-Myb)	MYB		7545;		4602;	yes
 3.5.1.1.1	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Myb-like	P06876	http://tfclass.bioinf.med.uni-goettingen.de/	MYB_MOUSE	Transcriptional activator Myb (Proto-oncogene c-Myb)	Myb			97249;	17863;	yes
 3.5.1.1.2	Helix-turn-helix domains	Tryptophan cluster factors	Myb/SANT domain	Myb-like	P10243	http://tfclass.bioinf.med.uni-goettingen.de/	MYBA_HUMAN	Myb-related protein A (A-Myb) (Myb-like protein 1)	MYBL1	AMYB	7547;		4603;	yes
@@ -2399,6 +2440,21 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 3.7.1.6.4	Helix-turn-helix domains	ARID domain factors	ARID-related	JARID1	Q62240	http://tfclass.bioinf.med.uni-goettingen.de/	KDM5D_MOUSE	Lysine-specific demethylase 5D (EC 1.14.11.67) (Histocompatibility Y antigen) (H-Y) (Histone demethylase JARID1D) (Jumonji/ARID domain-containing protein 1D) (Protein SmcY) ([histone H3]-trimethyl-L-lysine (4) demethylase 5D)	Kdm5d	Hya Jarid1d Smcy		99780;	20592;	no
 3.7.1.7.1	Helix-turn-helix domains	ARID domain factors	ARID-related	JARID2	Q92833	http://tfclass.bioinf.med.uni-goettingen.de/	JARD2_HUMAN	Protein Jumonji (Jumonji/ARID domain-containing protein 2)	JARID2	JMJ	6196;		3720;	no
 3.7.1.7.1	Helix-turn-helix domains	ARID domain factors	ARID-related	JARID2	Q62315	http://tfclass.bioinf.med.uni-goettingen.de/	JARD2_MOUSE	Protein Jumonji (Jumonji/ARID domain-containing protein 2)	Jarid2	Jmj		104813;	16468;	no
+3.0.255.0.1	Helix-turn-helix domains	Other	Brinker		Q9P215	manual	POGK_HUMAN		POGK					no
+3.0.255.0.1	Helix-turn-helix domains	Other	Brinker		Q80TC5	manual	POGK_MOUSE		Pogk					no
+3.0.256.0.1	Helix-turn-helix domains	Other	CENPB		O75564	manual	JERKY_HUMAN		JRK					no
+3.0.256.0.1	Helix-turn-helix domains	Other	CENPB		Q60976	manual	JERKY_MOUSE		Jrk					no
+3.0.256.0.2	Helix-turn-helix domains	Other	CENPB		Q6B0B8	manual	TIGD3_HUMAN		TIGD3					no
+3.0.256.0.2	Helix-turn-helix domains	Other	CENPB		Q7TM95	manual	TIGD3_MOUSE		Tigd3					no
+3.0.256.0.3	Helix-turn-helix domains	Other	CENPB		Q8IY51	manual	TIGD4_HUMAN		TIGD4					no
+3.0.256.0.3	Helix-turn-helix domains	Other	CENPB		Q8BUZ3	manual	TIGD4_MOUSE		Tigd4					no
+3.0.256.0.4	Helix-turn-helix domains	Other	CENPB		Q53EQ6	manual	TIGD5_HUMAN		TIGD5					no
+3.0.256.0.4	Helix-turn-helix domains	Other	CENPB		Q499M4	manual	TIGD5_MOUSE		Tigd5					no
+3.0.256.0.5	Helix-turn-helix domains	Other	CENPB		Q6NT04	manual	TIGD7_HUMAN		TIGD7					no
+3.0.256.0.6	Helix-turn-helix domains	Other	CENPB		P07199	manual	CENPB_HUMAN	Major centromere autoantigen B	CENPB		1852;		1059;	no
+3.0.256.0.6	Helix-turn-helix domains	Other	CENPB		P27790	manual	CENPB_MOUSE	Major centromere autoantigen B	Cenpb	Cenp-b		88376;	12616;	no
+3.0.257.0.1	Helix-turn-helix domains	Other	BEN		Q96BF6	manual	NACC2_HUMAN		NACC2					yes
+3.0.257.0.1	Helix-turn-helix domains	Other	BEN		Q9DCM7	manual	NACC2_MOUSE		Nacc2					yes
 4.1.1.1.1	Other all-alpha-helical DNA-binding domains	High-mobility group (HMG) domain factors	SOX-related	Group A	Q05066	http://tfclass.bioinf.med.uni-goettingen.de/	SRY_HUMAN	Sex-determining region Y protein (Testis-determining factor)	SRY	TDF	11311;		6736;	yes
 4.1.1.1.1	Other all-alpha-helical DNA-binding domains	High-mobility group (HMG) domain factors	SOX-related	Group A	Q05738	http://tfclass.bioinf.med.uni-goettingen.de/	SRY_MOUSE	Sex-determining region Y protein (Testis-determining factor)	Sry	Tdf Tdy		98660;	21674;	yes
 4.1.1.2.1	Other all-alpha-helical DNA-binding domains	High-mobility group (HMG) domain factors	SOX-related	Group B	O00570	http://tfclass.bioinf.med.uni-goettingen.de/	SOX1_HUMAN	Transcription factor SOX-1	SOX1		11189;		6656;	yes
@@ -2624,6 +2680,8 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 6.5.5.0.1	Immunoglobulin fold	T-Box factors	TBX6-related		P70327	http://tfclass.bioinf.med.uni-goettingen.de/	TBX6_MOUSE	T-box transcription factor TBX6 (T-box protein 6)	Tbx6			102539;	21389;	yes
 6.6.1.0.1	Immunoglobulin fold	NDT80 domain factors	MYRF-related		Q9Y2G1	http://tfclass.bioinf.med.uni-goettingen.de/	MYRF_HUMAN	Myelin regulatory factor (EC 3.4.-.-) (Myelin gene regulatory factor) [Cleaved into: Myelin regulatory factor, N-terminal; Myelin regulatory factor, C-terminal]	MYRF	C11orf9 KIAA0954 MRF	1181;		745;	yes
 6.6.1.0.1	Immunoglobulin fold	NDT80 domain factors	MYRF-related		Q3UR85	http://tfclass.bioinf.med.uni-goettingen.de/	MYRF_MOUSE	Myelin regulatory factor (EC 3.4.-.-) (Myelin gene regulatory factor) [Cleaved into: Myelin regulatory factor, N-terminal; Myelin regulatory factor, C-terminal]	Myrf	Gm1804 Gm98 Mrf		2684944;	225908;	yes
+6.6.1.0.255	Immunoglobulin fold	NDT80 domain factors	MYRF-related		Q96LU7	manual	MRFL_HUMAN		MYRFL					yes
+6.6.1.0.255	Immunoglobulin fold	NDT80 domain factors	MYRF-related		Q3UN70	manual	MRFL_MOUSE		Myrfl					yes
 6.7.1.1.1	Immunoglobulin fold	Grainyhead domain factors	Grainyhead-related	GRH-like	Q9NZI5	http://tfclass.bioinf.med.uni-goettingen.de/	GRHL1_HUMAN	Grainyhead-like protein 1 homolog (Mammalian grainyhead) (NH32) (Transcription factor CP2-like 2) (Transcription factor LBP-32)	GRHL1	LBP32 MGR TFCP2L2	17923;		29841;	yes
 6.7.1.1.1	Immunoglobulin fold	Grainyhead domain factors	Grainyhead-related	GRH-like	Q921D9	http://tfclass.bioinf.med.uni-goettingen.de/	GRHL1_MOUSE	Grainyhead-like protein 1 homolog (Transcription factor CP2-like 2) (Transcription factor LBP-32)	Grhl1	Mgr Tcfcp2l2		2182540;	195733;	yes
 6.7.1.1.2	Immunoglobulin fold	Grainyhead domain factors	Grainyhead-related	GRH-like	Q6ISB3	http://tfclass.bioinf.med.uni-goettingen.de/	GRHL2_HUMAN	Grainyhead-like protein 2 homolog (Brother of mammalian grainyhead) (Transcription factor CP2-like 3)	GRHL2	BOM TFCP2L3	2799;		79977;	yes
@@ -2674,6 +2732,16 @@ tfclass:id	tfclass:superclass	tfclass:class	tfclass:family	tfclass:subfamily	cur
 8.2.1.0.1	beta-Sheet binding to DNA	A.T hook factors	HMGA		P17095	http://genexplain.com/tfclass/huTF_classification.html	HMGA1_MOUSE	High mobility group protein HMG-I/HMG-Y (HMG-I (Y)) (High mobility group AT-hook protein 1) (High mobility group protein A1)	Hmga1	Hmgi Hmgiy		96160;	111241;15361;	no
 8.2.1.0.2	beta-Sheet binding to DNA	A.T hook factors	HMGA		P52926	http://tfclass.bioinf.med.uni-goettingen.de/	HMGA2_HUMAN	High mobility group protein HMGI-C (High mobility group AT-hook protein 2)	HMGA2	HMGIC	5009;		8091;	no
 8.2.1.0.2	beta-Sheet binding to DNA	A.T hook factors	HMGA		P52927	http://tfclass.bioinf.med.uni-goettingen.de/	HMGA2_MOUSE	High mobility group protein HMGI-C (High mobility group AT-hook protein 2)	Hmga2	Hmgic		101761;	15364;	no
+8.2.255.0.1	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q8WYP5	manual	ELYS_HUMAN		AHCTF1					no
+8.2.255.0.1	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q8CJF7	manual	ELYS_MOUSE		Ahctf1					no
+8.2.255.0.2	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q9H147	manual	TDIF1_HUMAN		DNTTIP1					no
+8.2.255.0.2	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q99LB0	manual	TDIF1_MOUSE		Dnttip1					no
+8.2.255.0.3	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q49A26	manual	GLYR1_HUMAN		GLYR1					no
+8.2.255.0.3	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q922P9	manual	GLYR1_MOUSE		Glyr1					no
+8.2.255.0.4	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q96BD5	manual	PF21A_HUMAN		PHF21A					no
+8.2.255.0.4	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q6ZPK0	manual	PF21A_MOUSE		Phf21a					no
+8.2.255.0.5	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q9Y6X0	manual	SETBP_HUMAN		SETBP1					no
+8.2.255.0.5	beta-Sheet binding to DNA	A.T hook factors	Unannotated		Q9Z180	manual	SETBP_MOUSE		Setbp1					no
 9.1.1.1.1	beta-Barrel DNA-binding domains	Cold-shock domain factors	Dbp	A	P16989	http://tfclass.bioinf.med.uni-goettingen.de/	YBOX3_HUMAN	Y-box-binding protein 3 (Cold shock domain-containing protein A) (DNA-binding protein A) (Single-strand DNA-binding protein NF-GMB)	YBX3	CSDA DBPA	2428;		8531;	no
 9.1.1.1.1	beta-Barrel DNA-binding domains	Cold-shock domain factors	Dbp	A	Q9JKB3	http://tfclass.bioinf.med.uni-goettingen.de/	YBOX3_MOUSE	Y-box-binding protein 3 (Cold shock domain-containing protein A) (DNA-binding protein A) (Y-box protein 3)	Ybx3	Csda Msy4		2137670;	56449;	no
 9.1.1.2.1	beta-Barrel DNA-binding domains	Cold-shock domain factors	Dbp	B	P67809	http://tfclass.bioinf.med.uni-goettingen.de/	YBOX1_HUMAN	Y-box-binding protein 1 (YB-1) (CCAAT-binding transcription factor I subunit A) (CBF-A) (DNA-binding protein B) (DBPB) (Enhancer factor I subunit A) (EFI-A) (Nuclease-sensitive element-binding protein 1) (Y-box transcription factor)	YBX1	NSEP1 YB1	8014;		4904;	no
