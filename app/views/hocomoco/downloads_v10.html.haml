@@ -51,7 +51,7 @@
     %h4
       TFBS models (#{link_to 'Technical notes', hocomoco10_url('technical_notes.txt'), class: 'tech_notes'})
 
-    = render partial: 'download_table', locals: {bundle_url: method(:hocomoco10_bundle_url), technical_notes_url: hocomoco10_url('technical_notes.txt'), hocomoco_prefix: 'HOCOMOCOv10_', hocomoco_version_number: 10, skip_dinucleotide: false }
+    = render partial: 'download_table_v10_11', locals: {bundle_url: method(:hocomoco10_bundle_url), technical_notes_url: hocomoco10_url('technical_notes.txt'), hocomoco_prefix: 'HOCOMOCOv10_', hocomoco_version_number: 10, skip_dinucleotide: false }
 
 .row
   .col-12
