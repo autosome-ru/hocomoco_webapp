@@ -1,7 +1,15 @@
 .row
+  .col-3
+  .col-6
+    .attention-box.downloads-page
+      %p
+        %b Attention!
+      %p HOCOMOCO v11 is outdated. Please use the latest HOCOMOCO #{link_to 'release', downloads_path}.
+      %p Though #{link_to 'HOCOMOCO-11 website', ENV['HOCOMOCO11_URL'] } is still available.
+.row
   .col-1
   .col-8
-    .pageheader Downloads
+    .pageheader Downloads (HOCOMOCO-11)
     %h2 Tools
     %ul
       %li

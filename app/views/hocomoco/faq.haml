@@ -14,7 +14,7 @@
         .question
           <b>Q:</b> But there are so many extra motif annotations such as subtype or quality, should I somehow pre-filter motifs based on those?
         .answer
-          <b>A:</b> In the CORE collection all motifs are considered quite reliable. <b>C</b>-quality motifs have only a single supporting experiment but were nonetheless manually curated and benchmarked. Also, in the <tt>CORE</tt> collection, there are only a handful of <b>D</b>-quality motifs representing a few rare subtypes, which were not re-discovered when updating v11 to v12 but kept for consistency.
+          <b>A:</b> In the CORE collection all motifs are considered quite reliable. <b>C</b>-quality motifs have only a single supporting experiment but were nonetheless manually curated and benchmarked. Also, in the <tt>CORE</tt> collection, there are only a handful of <b>D</b>-quality motifs representing a few rare subtypes, which were not re-discovered when updating v11 to v12 and later to v13 but kept for consistency.
           %br
           In the sub-collections, <b>D</b> quality denotes non-benchmarked motifs, e.g. in the ‘<tt>invivo</tt>’ sub-collection the <b>D</b> quality motifs were not tested on ChIP-Seq data.
           %br
@@ -33,9 +33,9 @@
           %br
           <u>0</u> is the subtype number, where 0 denotes the most common motifs scoring the best across all benchmarking datasets.
           %br
-          <u>P</u> is the type of the experiment that yielded motifs that were assigned to the subtype during expert curation. Can be P (ChI<b>P</b>-Seq), S (HT-<b>S</b>ELEX), or M (<b>M</b>ethyl-HT-SELEX), or any combination of those three for motifs found in several types of experiments. 
+          <u>P</u> is the type of the experiment that yielded motifs that were assigned to the subtype during expert curation. <b>P</b> means that this motif was found in ChI<b>P</b>-Seq experiments. See details in a section of help page devoted to #{link_to 'Experimental data types', help_path(anchor: 'experimental_data_types')}.
           %br
-          <u>B</u> is the motif quality on the ABCD scale, see below.
+          <u>B</u> is the motif quality on the ABCD scale, see help page section #{link_to 'Quality ratings', help_path(anchor: 'description_quality_score')} .
 
       .qa-section
         .question
@@ -54,6 +54,12 @@
           <b>Q:</b> Where is the dinucleotide motif collection of HOCOMOCO v11?
         .answer
           <b>A:</b> In this release, we have focused our efforts on expanding the fraction of TFs covered by reliable motifs, rigorous benchmarking, and comprehensive annotation of motif subtypes. Dinucleotide motifs will continue to be available in HOCOMOCO v11.
+
+      .qa-section
+        .question
+          <b>Q:</b> Where are alignments constituting motifs?
+        .answer
+          <b>A:</b> We decided not to maintain information about alignments as it is of small interest. You can still obtain that information for older motifs on websites of previous HOCOMOCO versions.
 
 
 - content_for(:title) do
