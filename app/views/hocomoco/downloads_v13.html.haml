@@ -6,19 +6,7 @@
       %b Data:
       %ul
         %li Complete release data is available at #{link_to 'Zenodo', 'https://zenodo.org/records/10012938'}.
-        %li Harmonized list of human transcription factors and respective mouse orthologs based on the TFClass classification: #{link_to 'tf_masterlist.tsv', hocomoco13_bundle_url('tf_masterlist.tsv')}.
-    .tools
-      %b Tools:
-      %ul
-        %li
-          MoLoTool - #{link_to 'web interface', 'https://molotool.autosome.org'} for motif finding.
-        %li
-          SPRY-SARUS tool for motif finding (Java): #{link_to 'jar', 'https://raw.githubusercontent.com/autosome-ru/sarus/master/releases/sarus-2.1.0.jar'}, #{link_to 'readme', 'https://github.com/autosome-ru/sarus'}
-        %li
-          MACRO-APE tool for motif comparison, P-value and threshold estimation: #{link_to 'jar', 'https://raw.githubusercontent.com/autosome-ru/macro-perfectos-ape/master/releases/ape-3.0.6.jar'}, #{link_to 'manual', 'https://opera.autosome.org/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', ENV['MACROAPE_URL'] }
-        %li
-          PERFECTOS-APE tool for functional annotation of sequence variants overlappint TFBS: #{link_to 'jar', 'https://raw.githubusercontent.com/autosome-ru/macro-perfectos-ape/master/releases/ape-3.0.6.jar'}, #{link_to 'manual', 'https://opera.autosome.org/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', ENV['PERFECTOSAPE_URL']}
-
+        %li Harmonized list of human transcription factors and respective mouse orthologs based on the TFClass classification (Extended with Codebook TFs for v13): #{link_to 'tf_masterlist.tsv', hocomoco13_bundle_url('tf_masterlist.tsv')}.
   .col-md-3
     .contacts
       %b Contacts
@@ -28,30 +16,12 @@
 .row
   .col-md-1
   .col-md-7
-    .cite
-      %b Citation:
-      .title
-        = link_to 'https://doi.org/10.1093/nar/gkad1077' do
-          HOCOMOCO in 2024: a rebuild of the curated collection of binding models for human and mouse transcription factors
-      .authors
-        Ilya E Vorontsov, Irina A Eliseeva, Arsenii Zinkevich, Mikhail Nikonov, Sergey Abramov, Alexandr Boytsov, Vasily Kamenets, Alexandra Kasianova, Semyon Kolmykov, Ivan S Yevshin, Alexander Favorov, Yulia A Medvedeva, Arttu Jolma, Fedor Kolpakov, Vsevolod J Makeev, Ivan V Kulakovskiy
-      .journal Nucleic Acids Research, gkad1077 (16 November 2023)
-      .doi doi: 10.1093/nar/gkad1077
-
-    .license
-      %b License:
-      HOCOMOCO motif collection is distributed under #{link_to 'WTFPL', 'https://en.wikipedia.org/wiki/WTFPL'}.
-      If you prefer more standard licenses, feel free to treat WTFPL as CC-BY.
-
-.row
-  .col-md-1
-  .col-md-7
     %hr
     .accordion#section-clustering
       .card
         .card-header#section-clustering-header
           %button.accordion-button.collapsed.btn.btn-link.btn-block.text-left{"type" => "button", "data-toggle" => "collapse", "data-target" => "#section-clustering-body", "aria-expanded" => "false", "aria-controls" => "section-clustering-body"}
-            〉EXTRA: non-redundant motif subset
+            〉NEW since v11: non-redundant motif subset
         #section-clustering-body.collapse{"aria-labelledby" => "section-clustering-header", "data-parent" => "#section-clustering"}
           .card-body
             %p Many practical motif applications require a set of motifs with reduced redundancy i.e. where similar motifs belonging to related transcription factors are grouped together and only a single matrix represents the group. To this end, we have created the non-redundant set of HOCOMOCO v13 motifs, a derivative of the HOCOMOCO v13 CORE collection.
@@ -82,6 +52,39 @@
               %li
                 Cluster logos:
                 #{link_to 'H13CORE-CLUSTERED_cluster_logos.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_cluster_logos.tar.gz') }.
+
+.row
+  .col-md-1
+  .col-md-8
+    .tools
+      %b Tools:
+      %ul
+        %li
+          MoLoTool - #{link_to 'web interface', 'https://molotool.autosome.org'} for motif finding.
+        %li
+          SPRY-SARUS tool for motif finding (Java): #{link_to 'jar', 'https://raw.githubusercontent.com/autosome-ru/sarus/master/releases/sarus-2.1.0.jar'}, #{link_to 'readme', 'https://github.com/autosome-ru/sarus'}
+        %li
+          MACRO-APE tool for motif comparison, P-value and threshold estimation: #{link_to 'jar', 'https://raw.githubusercontent.com/autosome-ru/macro-perfectos-ape/master/releases/ape-3.0.6.jar'}, #{link_to 'manual', 'https://opera.autosome.org/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', ENV['MACROAPE_URL'] }
+        %li
+          PERFECTOS-APE tool for functional annotation of sequence variants overlappint TFBS: #{link_to 'jar', 'https://raw.githubusercontent.com/autosome-ru/macro-perfectos-ape/master/releases/ape-3.0.6.jar'}, #{link_to 'manual', 'https://opera.autosome.org/downloads/MACRO-PERFECTOS-APE_manual.pdf'}, #{link_to 'website', ENV['PERFECTOSAPE_URL']}
+.row
+  .col-md-1
+  .col-md-7
+    .cite
+      %b Citation:
+      .title
+        = link_to 'https://doi.org/10.1093/nar/gkad1077' do
+          HOCOMOCO in 2024: a rebuild of the curated collection of binding models for human and mouse transcription factors
+      .authors
+        Ilya E Vorontsov, Irina A Eliseeva, Arsenii Zinkevich, Mikhail Nikonov, Sergey Abramov, Alexandr Boytsov, Vasily Kamenets, Alexandra Kasianova, Semyon Kolmykov, Ivan S Yevshin, Alexander Favorov, Yulia A Medvedeva, Arttu Jolma, Fedor Kolpakov, Vsevolod J Makeev, Ivan V Kulakovskiy
+      .journal Nucleic Acids Research, gkad1077 (16 November 2023)
+      .doi doi: 10.1093/nar/gkad1077
+
+    .license
+      %b License:
+      HOCOMOCO motif collection is distributed under #{link_to 'WTFPL', 'https://en.wikipedia.org/wiki/WTFPL'}.
+      If you prefer more standard licenses, feel free to treat WTFPL as CC-BY.
+
 
 .row
   .col-md-12

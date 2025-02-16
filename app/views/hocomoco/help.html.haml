@@ -22,7 +22,7 @@
       %p
         %a.section_subheader#motif_benchmarking{href: '#motif_benchmarking'} [Motif benchmarking; Performance metrics]
       %p
-        To assemble the motif collection of HOCOMOCO v13 we have used multiple benchmarking protocols evaluating the motif performance for TFBS recognition in genomic regions (<i>in vivo</i> data: ChIP-Seq), in artificial oligonucleotides (<i>in vitro</i> data: HT-SELEX, GHT-SELEX, SMiLE-Seq and PBM), and for predicting regulatory single-nucleotide variants and polymorphisms (rSNPs). Please refer to the HOCOMOCO v12 and Codebook MEX papers, and <a href="https://mex.autosome.org/">Codebook MEX website</a> for more details on benchmarking protocols and resulting performance metrics.
+        To assemble the motif collection of HOCOMOCO v13 we have used multiple benchmarking protocols evaluating the motif performance for TFBS recognition in genomic regions (<i>in vivo</i> data: ChIP-Seq), in artificial oligonucleotides (<i>in vitro</i> data: HT-SELEX, GHT-SELEX, SMiLE-Seq and PBM), and for predicting regulatory single-nucleotide variants and polymorphisms (rSNPs). Please refer to the #{link_to 'HOCOMOCO v12 paper', 'https://doi.org/10.1093/nar/gkad1077'} and #{link_to 'Codebook MEX paper', 'https://doi.org/10.1101/2024.11.11.619379'}, and <a href="https://mex.autosome.org/">Codebook MEX website</a> for more details on benchmarking protocols and resulting performance metrics.
       %p
         %a.section_subheader#description_quality_score{href: '#description_quality_score'} [Quality ratings]
       %p
@@ -30,7 +30,7 @@
       %p
         %a.section_subheader#motif_subtypes{href: '#motif_subtypes'} [Motif subtypes]
       %p
-        Since v11 the alternative binding motifs of a particular TF are ranked from 0 (the primary model) to 1,2,.. (the alternative motifs). The motifs of 0 rank are the most 'general' variants with the best performance across available data in the benchmark (see the HOCOMOCO v12 paper for details).
+        Since v11 the alternative binding motifs of a particular TF are ranked from 0 (the primary model) to 1,2,.. (the alternative motifs). The motifs of 0 rank are the most 'general' variants with the best performance across available data in the benchmark (see the #{link_to 'HOCOMOCO v12 paper', 'https://doi.org/10.1093/nar/gkad1077'} for details).
       %p
         %a.section_subheader#experimental_data_types{href: '#experimental_data_types'} [Experimental data types]
       %p
@@ -38,7 +38,7 @@
         In HOCOMOCO v13 three additional data types were used: GHT-SELEX (HT-SELEX analogue with input library collected from random genomic sequences), SMiLE-Seq, and PBM.
         Additionally, in benchmarking, we used information on differential transcription factor binding to single-nucleotide variants obtained in SNP-SELEX and identified from ChIP-Seq (the allele-specific binding, see #{link_to 'ADASTRA', 'https://adastra.autosome.org/'}).
 
-        Motif name encodes experiment types that yielded motifs assigned to the same subtype during expert curation. We use the following abbreviations of experiment types: P (ChI<b>P</b>-Seq), S (HT-<b>S</b>ELEX), M (<b>M</b>ethyl-HT-SELEX), G (<b>G</b>enomic HT-SELEX), I (SM<b>i</b>Le-Seq), and B (P<b>B</b>M). Motif name can represent any combination of those six (PSMGIB) for motifs found in several types of experiments.
+        Motif name encodes experiment types that yielded motifs assigned to the same subtype during expert curation. We use the following abbreviations of experiment types: P (ChI<b>P</b>-Seq), S (HT-<b>S</b>ELEX), M (<b>M</b>ethyl-HT-SELEX), G (<b>G</b>enomic HT-SELEX), I (SM<b>i</b>LE-Seq), and B (P<b>B</b>M). Motif name can represent any combination of those six (PSMGIB) for motifs found in several types of experiments.
 
       / %p
       /   %a.section_subheader{href: '#api_description'} [API description]
