@@ -70,7 +70,7 @@
           %tbody        
             - if chipseq_metrics['overall']
               %tr
-                %th overall
+                %th Overall
                 %td #{chipseq_metrics.dig('overall', 'num_datasets')} (#{chipseq_metrics.dig('overall', 'num_peaksets')})
 
                 %td= chipseq_metrics.dig('overall', 'pwmeval', 'roc_auc', 'median')&.round(3)
@@ -247,7 +247,7 @@
           - if smileseq_metrics['overall']
             %tr
               %th.half{rowspan: 2}
-                overall,
+                Overall,
                 %span.font-weight-light  #{smileseq_metrics.dig('overall', 'num_datasets')} experiments
               %th.half median
               %td= smileseq_metrics.dig('overall', 'pwmeval_selex_10', 'roc_auc', 'median')&.round(3)
@@ -282,7 +282,7 @@
           - if pbm_metrics['overall']
             %tr
               %th.half{rowspan: 2}
-                overall,
+                Overall,
                 %span.font-weight-light #{pbm_metrics.dig('overall', 'num_datasets')} experiments
               %th.half median
               %td= pbm_metrics.dig('overall', 'pbm_qnzs', 'roc_auc', 'median')&.round(3)
