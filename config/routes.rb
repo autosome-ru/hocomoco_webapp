@@ -65,7 +65,7 @@ Rails.application.routes.draw do
 
   get '/downloads_v10' => 'hocomoco#downloads_v10', as: 'downloads_v10'
   get '/downloads_v11' => 'hocomoco#downloads_v11', as: 'downloads_v11'
-  get '/downloads_v12' => 'hocomoco#downloads_v12', as: 'downloads_v12'
+  get '/downloads_v12', as: 'downloads_v12', to: redirect('https://hocomoco12.autosome.org/downloads_v12')
   get '/downloads_v13' => 'hocomoco#downloads_v13', as: 'downloads_v13'
   get '/downloads', to: redirect('/downloads_v13'), as: 'downloads'
   get '/download', to: redirect('/downloads_v13')
