@@ -39,6 +39,11 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   def species; 'HUMAN'; end
   def to_s; full_name; end
   def retracted?; !! retracted; end
+  def previous_names; [hocomoco11_name, hocomoco12_name].compact; end
+  def hocomoco11_name
+    original_name = data.dig('original_motif', 'name')
+    (original_name.split('@')[1] == 'H') ? original_name.split('@').last : nil
+  end
   def hocomoco12_name; data.dig('original_motif', 'hocomoco12_name'); end
   def from_hocomoco12?; !!hocomoco12_name; end
   def gene_name_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_symbol') ; end

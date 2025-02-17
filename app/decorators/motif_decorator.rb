@@ -134,6 +134,18 @@ class MotifDecorator < ApplicationDecorator
     }.join(' + ')
   end
 
+  def previous_names
+    object.previous_names.map{|motif|
+      if motif.match?(/\.H12(CORE|INVIVO|INVITRO|RSNP)\./)
+        helpers.link_to(motif, ENV['HOCOMOCO12_URL'] + "motif/#{motif}")
+      elsif motif.match?(/\.H11(MO|DI)\./)
+        helpers.link_to(motif, ENV['HOCOMOCO11_URL'] + "motif/#{motif}")
+      else
+        motif
+      end
+    }.join('; ').html_safe
+  end
+
   def gc_content; "#{(object.gc_content * 100).round(2)}%" ; end
   def information_content_total; object.information_content_total.round(3); end
   def information_content_per_base; object.information_content_per_base.round(3); end

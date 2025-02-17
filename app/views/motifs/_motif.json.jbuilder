@@ -15,6 +15,7 @@ json.best_auc_mouse   motif.best_auc_mouse
 json.num_datasets_human  motif.num_datasets_human
 json.num_datasets_mouse  motif.num_datasets_mouse
 json.num_words_in_alignment  motif.num_words_in_alignment
+json.previous_names motif.previous_names
 json.tfclass do
   json.superclass  motif.tfclass_superclass
   json.class  motif.tfclass_class

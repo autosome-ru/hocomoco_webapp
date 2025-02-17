@@ -50,6 +50,7 @@
             = table_info_row(motif, :information_content_both) {|motif| "#{motif.information_content_total} / #{motif.information_content_per_base}" }
             = table_info_row motif, :data_sources_full
             = table_info_row motif, :num_words_in_alignment
+            = table_info_row motif, :previous_names
 
   .tab-pane.fade#benchmarksInfo{role: 'tabpanel', aria: {labelledby: 'benchmarks-tab'}}
     = render partial: 'benchmarks', locals: {motif: motif}

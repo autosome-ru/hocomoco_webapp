@@ -68,6 +68,7 @@ en:
         uniprot_ac_mouse:   'UniProt AC (mouse)'
         comment:            'Comment'
         num_words_in_alignment: 'Aligned words'
+        previous_names:     'Previous names'
         greco_db_tf:        'GRECO-DB-TF'
         gc_content:         'GC content'
         information_content_both:      'Information content (bits; total / per base)'
