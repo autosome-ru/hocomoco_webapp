@@ -85,8 +85,8 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   def hocomoco10_name
     return nil  unless hocomoco11_name
     original_name = HocomocoSite::bundle_v11[hocomoco11_name]['original_motif']
-    chunks = original_name.split('~')
-    ['HL', 'DIHL'].include?(chunks[1]) ? chunks.last : nil
+    motif_name = original_name.split('~').last
+    motif_name.match?(/\.H10(MO|DI)\./) ? motif_name : nil
   end
 
   def hocomoco9_names
