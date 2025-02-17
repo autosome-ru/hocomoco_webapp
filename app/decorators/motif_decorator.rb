@@ -140,6 +140,10 @@ class MotifDecorator < ApplicationDecorator
         helpers.link_to(motif, ENV['HOCOMOCO12_URL'] + "motif/#{motif}")
       elsif motif.match?(/\.H11(MO|DI)\./)
         helpers.link_to(motif, ENV['HOCOMOCO11_URL'] + "motif/#{motif}")
+      elsif motif.match?(/\.H10(MO|DI)\./)
+        helpers.link_to(motif, ENV['HOCOMOCO10_URL'] + "motif/#{motif}")
+      elsif motif.match?(/_(f1|f2|si|do)$/)
+        helpers.link_to(motif, ENV['HOCOMOCO9_URL'] + "hocomoco_ad/motif_details/#{motif}.html")
       else
         motif
       end

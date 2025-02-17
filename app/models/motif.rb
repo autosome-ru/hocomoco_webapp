@@ -64,7 +64,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   def to_s; full_name; end
   def retracted?; !! retracted; end
 
-  def previous_names; [*hocomoco9_names, hocomoco10_name, hocomoco11_name, hocomoco12_name].compact; end
+  def previous_names; [hocomoco12_name, hocomoco11_name, hocomoco10_name, *hocomoco9_names].compact; end
 
   def hocomoco11_name_version_2
     original_name = data.dig('original_motif', 'name')
