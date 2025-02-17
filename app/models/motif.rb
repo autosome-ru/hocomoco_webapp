@@ -11,6 +11,26 @@ module HocomocoSite
   def self.data_path(path_part, retracted: false)
     Rails.root.join("public/final_bundle/#{path_part}")
   end
+
+  def self.indexed_by_motif_from_jsonl(filename)
+    File.readlines(filename).map{|l|
+      JSON.parse(l)
+    }.map{|data|
+      [data['name'], data]
+    }.to_h
+  end
+
+  def self.bundle_v12
+    @cache_v12_bundle ||= indexed_by_motif_from_jsonl(HocomocoSite::data_path('hocomoco12_bundle.jsonl'))
+  end
+
+  def self.bundle_v11
+    @cache_v11_bundle ||= indexed_by_motif_from_jsonl(HocomocoSite::data_path('hocomoco11_bundle.jsonl'))
+  end
+
+  def self.bundle_v10
+    @cache_v10_bundle ||= indexed_by_motif_from_jsonl(HocomocoSite::data_path('hocomoco10_bundle.jsonl'))
+  end
 end
 
 Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :motif_subtype,
@@ -55,37 +75,23 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
 
   def from_hocomoco12?; !!hocomoco12_name; end
 
-  def indexed_by_motif_from_jsonl(filename)
-    File.readlines(filename).map{|l|
-      JSON.parse(l)
-    }.map{|data|
-      [data['name'], data]
-    }.to_h
-  end
-
   def hocomoco11_name
     return nil  unless hocomoco12_name
-    @cache_v12_bundle ||= indexed_by_motif_from_jsonl(HocomocoSite::data_path('hocomoco12_bundle.jsonl'))
-
-    original_name = @cache_v12_bundle[hocomoco12_name].dig('original_motif', 'name')
+    original_name = HocomocoSite::bundle_v12[hocomoco12_name].dig('original_motif', 'name')
     chunks = original_name.split('@')
     (chunks[1] == 'H') ? chunks.last : nil
   end
 
   def hocomoco10_name
     return nil  unless hocomoco11_name
-    @cache_v11_bundle ||= indexed_by_motif_from_jsonl(HocomocoSite::data_path('hocomoco11_bundle.jsonl'))
-
-    original_name = @cache_v11_bundle[hocomoco11_name]['original_motif']
+    original_name = HocomocoSite::bundle_v11[hocomoco11_name]['original_motif']
     chunks = original_name.split('~')
     ['HL', 'DIHL'].include?(chunks[1]) ? chunks.last : nil
   end
 
   def hocomoco9_names
     return nil  unless hocomoco10_name
-    @cache_v10_bundle ||= indexed_by_motif_from_jsonl(HocomocoSite::data_path('hocomoco10_bundle.jsonl'))
-
-    original_names = @cache_v10_bundle[hocomoco10_name]['original_motifs']
+    original_names = HocomocoSite::bundle_v10[hocomoco10_name]['original_motifs']
     original_names.map{|original_name|
       chunks = original_name.split('~')
       (chunks[1] == 'HL') ? chunks.last : nil
