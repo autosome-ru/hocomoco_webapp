@@ -29,9 +29,6 @@
                   %li= link_to 'H13CORE-CLUSTERED_pcm.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_pcm.tar.gz')
                   %li= link_to 'H13CORE-CLUSTERED_pfm.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_pfm.tar.gz')
                   %li= link_to 'H13CORE-CLUSTERED_pwm.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_pwm.tar.gz')
-              / %li
-              /   Alignments:
-              /   #{ link_to 'H13CORE-CLUSTERED_words.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_words.tar.gz') }.
               %li
                 Threshold to P-value map:
                 #{link_to 'H13CORE-CLUSTERED_thresholds.tar.gz', hocomoco13_bundle_url('H13CORE-CLUSTERED/H13CORE-CLUSTERED_thresholds.tar.gz') }.
@@ -91,7 +88,7 @@
   .col-md-12
     %hr
     %h1.downloads_header HOCOMOCO v13 subcollections
-    = render partial: 'download_table_v12_13', locals: {bundle_url: ->(path){ hocomoco13_bundle_url(path) }, collections: ['H13CORE', 'H13INVIVO', 'H13INVITRO', 'H13RSNP'], skip_alignments: true }
+    = render partial: 'download_table', locals: {bundle_url: ->(path){ hocomoco13_bundle_url(path) }, collections: ['H13CORE', 'H13INVIVO', 'H13INVITRO', 'H13RSNP'] }
 
 - content_for(:title) do
   HOCOMOCO-v13 Downloads - HOmo sapiens COmprehensive MOdel COllection
