@@ -63,9 +63,6 @@ class HocomocoController < ApplicationController
       @full_or_core = 'full'
     end
   end
-  def downloads_v10; end
-  def downloads_v11; end
-  def downloads_v12; end
   def downloads_v13; end
   def help; end
   def faq; end
