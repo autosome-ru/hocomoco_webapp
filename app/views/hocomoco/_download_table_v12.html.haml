@@ -11,9 +11,9 @@
       %th.row-hdr{colspan: 2} Number of motifs
       - collections.each do |collection|
         %td{class: collection}
-          = Motif.in_bundle(collection: collection).size
+          = Motif.in_bundle(collection: collection, hocomoco_version: "hocomoco12").size
           %br
-          (MOUSE subset: #{ Motif.in_bundle(collection: collection).count{|motif| motif.applicable_for?('MOUSE') } })
+          (MOUSE subset: #{ Motif.in_bundle(collection: collection, hocomoco_version: "hocomoco12").count{|motif| motif.applicable_for?('MOUSE') } })
     %tr
       %th.row-hdr{rowspan: 2} Complete model annotation<br>(including gene id mapping)
       %th.row-hdr.essential All motifs
