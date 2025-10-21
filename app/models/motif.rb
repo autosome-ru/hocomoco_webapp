@@ -4,8 +4,8 @@ module HocomocoSite
     "#{url_base}/final_bundle/#{HOCOMOCO_VERSION}/#{url_part}"
   end
 
-  def self.path_in_final_bundle(path_part, retracted: false)
-    Rails.root.join("public/final_bundle/#{HOCOMOCO_VERSION}/#{path_part}")
+  def self.path_in_final_bundle(path_part, hocomoco_version: HOCOMOCO_VERSION, retracted: false)
+    Rails.root.join("public/final_bundle/#{hocomoco_version}/#{path_part}")
   end
 
   def self.data_path(path_part, retracted: false)
@@ -365,8 +365,8 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     @cached_motifs[filename] ||= File.readlines(filename).map{|line| self.from_json(JSON.parse(line)) }.sort_by(&:name).each(&block)
   end
 
-  def self.in_bundle(collection: 'H14CORE')
-    result = self.each_in_file(HocomocoSite::path_in_final_bundle("#{collection}/#{collection}_annotation.jsonl")).to_a
+  def self.in_bundle(collection: 'H14CORE', hocomoco_version: HOCOMOCO_VERSION)
+    result = self.each_in_file(HocomocoSite::path_in_final_bundle("#{collection}/#{collection}_annotation.jsonl"), hocomoco_version: hocomoco_version).to_a
     # if File.exist?(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"))
     #   result += self.each_in_file(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
     # end
