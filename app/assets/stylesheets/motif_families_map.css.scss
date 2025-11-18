@@ -5,24 +5,24 @@ span.family_name {
 span.total_tfs {
   font-weight: bolder;
   font-family: sans-serif;
-  color: #fa3ef2;
+  color: #0071fd;
 }
 
 span.covered_tfs {
   font-weight: bolder;
   font-family: sans-serif;
-  color: #44eeaa;
+  color: #ff5a1f;
 }
 
 .node circle {
   stroke-width: 0;
   &.total_tfs {
-    fill: #fa3ef2;
+    fill: #0071fd;
     border: none;
     box-sizing: content-box;
   }
   &.covered_tfs {
-    fill: #44eeaa;
+    fill: #ff5a1f;
     border: none;
     box-sizing: content-box;
   }
@@ -52,9 +52,4 @@ div.map-tooltip {
     a, a:visited, a:hover {
       color: red;
     }
-    span.covered_tfs {
-    font-weight: bolder;
-    font-family: sans-serif;
-    color: #53b38c;
-  }
 }
