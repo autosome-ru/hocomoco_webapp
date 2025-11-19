@@ -6,12 +6,19 @@
         %th= collection
   %tbody
     %tr
+      %th.row-hdr{colspan: 2} Number of TFs
+      - collections.each do |collection|
+        %td{class: collection}
+          = Motif.in_bundle(collection: collection, hocomoco_version: hocomoco_version).map(&:tf).uniq.size
+          %br
+          (MOUSE subset: #{ Motif.in_bundle(collection: collection, hocomoco_version: hocomoco_version).select{|motif| motif.applicable_for?('MOUSE') }.map(&:tf).uniq.size })
+    %tr
       %th.row-hdr{colspan: 2} Number of motifs
       - collections.each do |collection|
         %td{class: collection}
           = Motif.in_bundle(collection: collection, hocomoco_version: hocomoco_version).size
           %br
-          (MOUSE subset: #{ Motif.in_bundle(collection: collection, hocomoco_version: hocomoco_version).count{|motif| motif.applicable_for?('MOUSE') } })
+          (MOUSE subset: #{ Motif.in_bundle(collection: collection, hocomoco_version: hocomoco_version).select{|motif| motif.applicable_for?('MOUSE') }.size })
     %tr
       %th.row-hdr{rowspan: 2} Complete model annotation<br>(including gene id mapping)
       %th.row-hdr.essential All motifs
