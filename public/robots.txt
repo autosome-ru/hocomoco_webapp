@@ -6,11 +6,12 @@
 
 User-agent: *
 Allow: /
-Host: https://hocomoco13.autosome.org
-sitemap: https://hocomoco13.autosome.org/sitemap.txt
+Host: https://hocomoco14.autosome.org
+sitemap: https://hocomoco14.autosome.org/sitemap.txt
 Disallow: *.pcm
 Disallow: *.pwm
 Disallow: *.dpcm
 Disallow: *.dpwm
 Disallow: *.thr
 Disallow: *.words
+Disallow: *.tar.gz
