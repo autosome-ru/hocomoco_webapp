@@ -11,7 +11,7 @@ span.total_tfs {
 span.covered_tfs {
   font-weight: bolder;
   font-family: sans-serif;
-  color: #ff5a1f;
+  color: #fa9643;
 }
 
 .node circle {
@@ -22,7 +22,7 @@ span.covered_tfs {
     box-sizing: content-box;
   }
   &.covered_tfs {
-    fill: #ff5a1f;
+    fill: #fa9643;
     border: none;
     box-sizing: content-box;
   }
