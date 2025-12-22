@@ -1,7 +1,7 @@
 json.name  motif_cluster.name
-json.representative_motif  motif_cluster.representative_motif
+json.representative_motif  motif_cluster.representative_motif.name
 json.representative_motif_gene_symbol  motif_cluster.representative_motif_gene_symbol
-json.clustered_motifs  motif_cluster.clustered_motifs
+json.clustered_motifs  motif_cluster.clustered_motifs.map(&:name)
 json.clustered_motifs_gene_symbols  motif_cluster.clustered_motifs_gene_symbols
 json.cluster_size  motif_cluster.cluster_size
 json.average_similarity  motif_cluster.average_similarity
@@ -9,3 +9,4 @@ json.min_similarity  motif_cluster.min_similarity
 json.primary_family  motif_cluster.primary_family
 json.primary_subfamily  motif_cluster.primary_subfamily
 json.clustered_motifs_gene_symbols_plus_families  motif_cluster.clustered_motifs_gene_symbols_plus_families
+json.logo motif_cluster.direct_cluster_logo_url

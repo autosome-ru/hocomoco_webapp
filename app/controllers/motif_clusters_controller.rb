@@ -1,9 +1,9 @@
 class MotifClustersController < ApplicationController
   def index
     models = MotifCluster.all
-    models = MotifClusterDecorator.decorate_collection(models)
     respond_to do |format|
       format.html do
+        models = MotifClusterDecorator.decorate_collection(models)
         render(locals: {
           models: models,
           csv_filename: "motif_clusters.tsv",
