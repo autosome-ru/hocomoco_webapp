@@ -55,27 +55,48 @@
   .col-md-12
     %hr
       %h1.non_redundant_header Non-redundant motif subset
-      %ul
-        %li
-          Motifs annotation:
-          #{ link_to 'H14CORE-CLUSTERED_annotation.jsonl', hocomoco14_bundle_url('H14CORE-CLUSTERED/H14CORE-CLUSTERED_annotation.jsonl') }.
-        %li
-          Set of cluster central motifs:
-          %ul
-            %li= link_to 'H14CORE-CLUSTERED_pcm.tar.gz', hocomoco14_bundle_url('H14CORE-CLUSTERED/H14CORE-CLUSTERED_pcm.tar.gz')
-            %li= link_to 'H14CORE-CLUSTERED_pfm.tar.gz', hocomoco14_bundle_url('H14CORE-CLUSTERED/H14CORE-CLUSTERED_pfm.tar.gz')
-            %li= link_to 'H14CORE-CLUSTERED_pwm.tar.gz', hocomoco14_bundle_url('H14CORE-CLUSTERED/H14CORE-CLUSTERED_pwm.tar.gz')
-        %li
-          Threshold to P-value map:
-          #{link_to 'H14CORE-CLUSTERED_thresholds.tar.gz', hocomoco14_bundle_url('H14CORE-CLUSTERED/H14CORE-CLUSTERED_thresholds.tar.gz') }.
-        %li
-          Cluster contents:
-          %ul
-            %li= link_to 'cluster_list.html', hocomoco14_bundle_url('H14CORE-CLUSTERED/cluster_list.html')
-            %li= link_to 'cluster_list.tsv', hocomoco14_bundle_url('H14CORE-CLUSTERED/cluster_list.tsv')
-        %li
-          Cluster logos:
-          #{link_to 'H14CORE-CLUSTERED_cluster_logos.tar.gz', hocomoco14_bundle_url('H14CORE-CLUSTERED/H14CORE-CLUSTERED_cluster_logos.tar.gz') }.
+
+      %table.table-responsive-lg.downloads-non-redundant
+        %thead
+          %tr
+            %th
+            %th H14CORE-CLUSTERED
+        %tbody
+          %tr
+            %th.row-hdr Number of motif clusters
+            %td{class: 'H14CORE-CLUSTERED'}= MotifCluster.all.size
+          %tr
+            %th.row-hdr
+              Clusters annotation
+            %td{class: 'H14CORE-CLUSTERED'}= link_to 'cluster_list.tsv', hocomoco14_bundle_url('H14CORE-CLUSTERED/cluster_list.tsv')
+          %tr
+            %th.row-hdr Representative motifs annotation
+            %td{class: collection}= link_to "H14CORE-CLUSTERED_annotation.jsonl", bundle_url.call("H14CORE-CLUSTERED/H14CORE-CLUSTERED_annotation.jsonl")
+
+          %tr
+            %th.row-hdr
+              PWM
+              = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
+            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_pwm.tar.gz", bundle_url.call("H14CORE-CLUSTERED/H14CORE-CLUSTERED_pwm.tar.gz")
+          %tr
+            %th.row-hdr
+              PWM
+              = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
+            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_pfm.tar.gz", bundle_url.call("H14CORE-CLUSTERED/H14CORE-CLUSTERED_pfm.tar.gz")
+          %tr
+            %th.row-hdr
+              PWM
+              = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
+            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_pcm.tar.gz", bundle_url.call("H14CORE-CLUSTERED/H14CORE-CLUSTERED_pcm.tar.gz")
+          %tr
+            %th.row-hdr
+              Threshold to P-value map
+              = help_icon(title: 'Precalculated thresholds to be utilized by PERFECTOS-APE (uniform nucleotide frequencies were used for P-value estimation)')
+            %td{class: 'H14CORE-CLUSTERED'}= link_to 'H14CORE-CLUSTERED_thresholds.tar.gz', hocomoco14_bundle_url('H14CORE-CLUSTERED/H14CORE-CLUSTERED_thresholds.tar.gz')
+          %tr
+            %th.row-hdr
+              Cluster logos
+            %td{class: 'H14CORE-CLUSTERED'}= link_to 'H14CORE-CLUSTERED_cluster_logos.tar.gz', hocomoco14_bundle_url('H14CORE-CLUSTERED/H14CORE-CLUSTERED_cluster_logos.tar.gz')
 
 - content_for(:title) do
   HOCOMOCO-v14 Downloads - HOmo sapiens COmprehensive MOdel COllection
