@@ -15,7 +15,7 @@
         #hidden_select_columns
 .row
   .col-12
-    %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2023-09-21-00-26', table_page: "hocomoco-motifs-#{collection}-index-2023-09-21-00-26"}}
+    %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-motifs-2025-12-22-14-39', table_page: "hocomoco-motifs-#{collection}-index-2025-12-22-14-39"}}
       %thead
         %tr
           = motif_table_header :full_name, show_always: true, class: 'motif_name'
@@ -43,6 +43,9 @@
           = motif_table_header :uniprot_id_mouse
           = motif_table_header :uniprot_ac_human, hide_by_default: true
           = motif_table_header :uniprot_ac_mouse, hide_by_default: true
+          - if collection == 'H14CORE'
+            = motif_table_header :motif_cluster
+          = motif_table_header :motif_cluster, hide_by_default: true
           = motif_table_header(:greco_db_tf, hide_by_default: true){|content| (content + help_icon(title: t('tips.greco_db_tf_html'), html: true, href: 'https://www.ebi.ac.uk/QuickGO/targetset/dbTF')).html_safe }
 
       %tbody
@@ -73,6 +76,8 @@
             %td= model.uniprot_id_mouse
             %td{data: {text: model.object.uniprot_ac_human}}= model.uniprot_ac_human
             %td{data: {text: model.object.uniprot_ac_mouse}}= model.uniprot_ac_mouse
+            - if collection == 'H14CORE'
+              %td= model.motif_cluster
             %td= model.greco_db_tf
 
 - content_for(:title) do
