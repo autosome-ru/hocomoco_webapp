@@ -57,10 +57,4 @@ MotifCluster = Struct.new(
   def url_in_final_bundle(url_part)
     HocomocoSite::url_in_final_bundle("#{url_part}")
   end
-  
-  def primary_family_tfclass_id; HocomocoUtils::parse_tfclass_id(primary_family); end
-  def primary_family_tfclass_name; HocomocoUtils::parse_tfclass_name(primary_family); end
-  
-  def primary_subfamily_tfclass_id; HocomocoUtils::parse_tfclass_id(primary_subfamily); end
-  def primary_subfamily_tfclass_name; HocomocoUtils::parse_tfclass_name(primary_subfamily); end
-end
+  end

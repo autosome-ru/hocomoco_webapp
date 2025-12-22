@@ -38,19 +38,16 @@ class MotifClusterDecorator < ApplicationDecorator
   end
 
   def primary_family
-    h.tfclass_link(object.primary_family_tfclass_name, object.primary_family_tfclass_id)
+    h.tfclass_link_from_string_w_family(object.primary_family)
   end
 
   def primary_subfamily
-    h.tfclass_link(object.primary_subfamily_tfclass_name, object.primary_subfamily_tfclass_id)
+    h.tfclass_link_from_string_w_family(object.primary_subfamily)
   end
 
   def clustered_motifs_gene_symbols_plus_families
     object.clustered_motifs_gene_symbols_plus_families.map{|motif_w_family|
-      h.tfclass_link(
-        HocomocoUtils::parse_tfclass_name(motif_w_family),
-        HocomocoUtils::parse_tfclass_id(motif_w_family)
-      )
+      h.tfclass_link_from_string_w_family(motif_w_family)
     }.join(',<br/>').html_safe
   end
 end

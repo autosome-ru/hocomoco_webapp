@@ -199,4 +199,11 @@ module ApplicationHelper
       '(' + tfclass_uniprot_link(uniprot_ac) + ')'
     ].join.html_safe
   end
+
+  def tfclass_link_from_string_w_family(txt_w_family)
+    tfclass_id = HocomocoUtils::parse_tfclass_id(txt_w_family)
+    return txt_w_family  unless tfclass_id
+    title = HocomocoUtils::parse_tfclass_name(txt_w_family)
+    tfclass_link(title, tfclass_id)
+  end
 end
