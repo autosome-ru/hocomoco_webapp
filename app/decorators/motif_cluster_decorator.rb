@@ -4,7 +4,6 @@ class MotifClusterDecorator < ApplicationDecorator
   def representative_motif
     object.representative_motif.then{|m| h.link_to_motif(m, m.name) }
   end
-  def representative_motif_uniprot; object.representative_motif_uniprot.join(', '); end
 
   def clustered_motifs
     object.clustered_motifs.map{|m| h.link_to_motif(m, m.name) }.join(',<br/>').html_safe
@@ -18,6 +17,19 @@ class MotifClusterDecorator < ApplicationDecorator
       *object.clustered_motifs_gene_symbols,
       *object.clustered_motifs_uniprots
     ].compact.map(&:strip).join(', ')
+  end
+
+def direct_representative_logo(**kwargs)
+    helpers.link_to_motif_cluster(
+      object,
+      helpers.image_tag(
+        object.direct_representative_logo_url,
+        # height: 30,
+        width: (object.cluster_length <= 20 ? 15 : 10) * object.representative_length,
+        alt: "#{object.name} motif cluster representative logo (#{self.representative_motif_gene_symbol} gene, #{self.representative_motif_uniprot} protein)",
+      ),
+      **kwargs,
+    )
   end
 
   def direct_cluster_logo(**kwargs)

@@ -12,11 +12,12 @@
         #hidden_select_columns
 .row
   .col-12
-    %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-clusters-2025-12-20', table_page: "hocomoco-clusters-2025-12-20"}}
+    %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-clusters-2025-12-22', table_page: "hocomoco-clusters-2025-12-22"}}
       %thead
         %tr
           = motif_cluster_table_header :name
-          = motif_cluster_table_header :direct_cluster_logo
+          = motif_cluster_table_header :direct_representative_logo, dont_sort: true, class: 'sequence_logo filter-false'
+          / = motif_cluster_table_header :direct_cluster_logo, dont_sort: true, class: 'filter-false'
           = motif_cluster_table_header :representative_motif
           = motif_cluster_table_header :representative_motif_gene_symbol, hide_by_default: true
           = motif_cluster_table_header :clustered_motifs, hide_by_default: true
@@ -32,11 +33,12 @@
         - models.each do |model|
           %tr
             %td= model.name
-            %td= model.direct_cluster_logo
+            %td= model.direct_representative_logo(target: '_blank', class: 'inline_sequence_logo')
+            / %td= model.direct_cluster_logo
             %td= model.representative_motif
             %td= model.representative_motif_gene_symbol
             %td= model.clustered_motifs
-            %td= model.clustered_motifs_gene_symbols
+            %td.clustered-motifs-gene-symbols= model.clustered_motifs_gene_symbols
             %td= model.primary_family
             %td= model.primary_subfamily
             / %td= model.clustered_motifs_gene_symbols_plus_families

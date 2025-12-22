@@ -29,6 +29,10 @@ table.tablesorter {
         min-width: 170px;
         max-width: 170px;
       }
+      &.clustered-motifs-gene-symbols {
+        min-width: 170px;
+        max-width: 170px;
+      }
       &:not(.comment):not(.sequence_logo) {
         // min-width: 150px;
         // max-width: 300px;

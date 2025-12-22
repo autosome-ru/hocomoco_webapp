@@ -4,6 +4,7 @@
       %tbody
         = table_info_row motif_cluster, :name
         = table_info_row motif_cluster, :direct_cluster_logo
+        = table_info_row motif_cluster, :direct_representative_logo, html_options: {value_column_html: {class: 'sequence_logo'} }
         = table_info_row motif_cluster, :representative_motif
         = table_info_row motif_cluster, :representative_motif_gene_symbol
         = table_info_row motif_cluster, :clustered_motifs
@@ -17,7 +18,7 @@
 - content_for(:meta_description) do
   = "Cluster of motifs for #{motif_cluster.clustered_motifs_gene_symbols} transcription factors (uniprots: #{motif_cluster.clustered_motifs_uniprots})"
 - content_for(:meta_thumbnail) do
-  = request.base_url + motif_cluster.direct_logo_url
+  = request.base_url + motif_cluster.direct_cluster_logo_url
 - content_for(:title) do
   = "Cluster #{motif_cluster.name} - HOmo sapiens COmprehensive MOdel COllection"
 - content_for(:meta_keywords) do

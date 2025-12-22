@@ -9,4 +9,5 @@ json.min_similarity  motif_cluster.min_similarity
 json.primary_family  motif_cluster.primary_family
 json.primary_subfamily  motif_cluster.primary_subfamily
 json.clustered_motifs_gene_symbols_plus_families  motif_cluster.clustered_motifs_gene_symbols_plus_families
-json.logo motif_cluster.direct_cluster_logo_url
+json.cluster_logo motif_cluster.direct_cluster_logo_url
+json.representative_logo motif_cluster.direct_representative_logo_url

@@ -46,7 +46,7 @@ MotifCluster = Struct.new(
 
   def representative_motif_uniprot; self['representative_motif'].split('.').first + '_HUMAN'; end
   def clustered_motifs_uniprots; self['clustered_motifs'].map{|motif| motif.split('.').first + '_HUMAN' }.uniq; end
-  def direct_logo_url; self.representative_motif.direct_logo_url; end # ToDo: use joint cluster logo
+  def direct_representative_logo_url; self.representative_motif.direct_logo_url; end # ToDo: use joint cluster logo
 
   def direct_cluster_logo_url
     url_in_final_bundle("H14CORE-CLUSTERED/cluster_logos/cluster@#{name}.png")
