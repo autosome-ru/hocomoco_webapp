@@ -52,11 +52,11 @@
     = render partial: 'download_table_v13_14', locals: {bundle_url: ->(path){ hocomoco14_bundle_url(path) }, collections: ['H14CORE', 'H14INVIVO', 'H14INVITRO', 'H14RSNP'], hocomoco_version: 'hocomoco14' }
 
 .row
-  .col-md-12
+  .col-md-6
     %hr
       %h1.non_redundant_header Non-redundant motif subset
 
-      %table.table-responsive-lg.downloads-non-redundant
+      %table.table-responsive-lg.downloads.download-non-redundant
         %thead
           %tr
             %th
@@ -71,23 +71,23 @@
             %td{class: 'H14CORE-CLUSTERED'}= link_to 'cluster_list.tsv', hocomoco14_bundle_url('H14CORE-CLUSTERED/cluster_list.tsv')
           %tr
             %th.row-hdr Representative motifs annotation
-            %td{class: collection}= link_to "H14CORE-CLUSTERED_annotation.jsonl", bundle_url.call("H14CORE-CLUSTERED/H14CORE-CLUSTERED_annotation.jsonl")
+            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_annotation.jsonl", hocomoco14_bundle_url("H14CORE-CLUSTERED/H14CORE-CLUSTERED_annotation.jsonl")
 
           %tr
             %th.row-hdr
               PWM
               = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
-            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_pwm.tar.gz", bundle_url.call("H14CORE-CLUSTERED/H14CORE-CLUSTERED_pwm.tar.gz")
+            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_pwm.tar.gz", hocomoco14_bundle_url("H14CORE-CLUSTERED/H14CORE-CLUSTERED_pwm.tar.gz")
           %tr
             %th.row-hdr
-              PWM
+              PCM
               = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
-            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_pfm.tar.gz", bundle_url.call("H14CORE-CLUSTERED/H14CORE-CLUSTERED_pfm.tar.gz")
+            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_pcm.tar.gz", hocomoco14_bundle_url("H14CORE-CLUSTERED/H14CORE-CLUSTERED_pcm.tar.gz")
           %tr
             %th.row-hdr
-              PWM
+              PFM
               = help_icon(title: 'MACRO-PERFECTOS-APE compatible format')
-            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_pcm.tar.gz", bundle_url.call("H14CORE-CLUSTERED/H14CORE-CLUSTERED_pcm.tar.gz")
+            %td{class: 'H14CORE-CLUSTERED'}= link_to "H14CORE-CLUSTERED_pfm.tar.gz", hocomoco14_bundle_url("H14CORE-CLUSTERED/H14CORE-CLUSTERED_pfm.tar.gz")
           %tr
             %th.row-hdr
               Threshold to P-value map
