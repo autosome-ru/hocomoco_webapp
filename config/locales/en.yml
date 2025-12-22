@@ -96,7 +96,7 @@ en:
     hocomoco_invivo:    "Motif optimized for recognition of sites bound <i>in vivo</i>"
     hocomoco_invitro:   "Motif optimized for recognition of sites bound <i>in vitro</i>"
     hocomoco_rsnp:      "Motifs optimized for detection of altered TF binding at regulatory single-nucleotide variants"
-    hocomoco_clustered: "Motif clusters constructed from CORE collection"
+    hocomoco_clustered: "Non-redundant motif set consisting of clusters constructed from CORE collection motifs"
   buttons:
     switch_to_core:     '🔃 <span class="d-none d-md-inline">Switch to</span><span class="d-inline d-md-none">To</span> primary subtypes'
     switch_to_full:     '🔃 <span class="d-none d-md-inline">Switch to</span><span class="d-inline d-md-none">To</span> complete collection'

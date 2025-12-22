@@ -1,13 +1,25 @@
 .row
   .col-12
+    .table-actions
+      .form-inline.motif-table-controls
+        %button.btn.btn-sm.btn-outline-secondary.reset.resetColumns.d-none.d-md-inline-block{type: 'button'} Reset
+        %button.btn.btn-sm.btn-outline-secondary.select-columns-btn{type: 'button'} Select Columns
+        = download_button
+        %input.form-control.form-control-sm.csv-filename.d-none.d-md-inline-block{type: "text", value: csv_filename}
+        .loading_table
+          .loading_logo
+        .caption Motif clusters
+        #hidden_select_columns
+.row
+  .col-12
     %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-clusters-2025-12-20', table_page: "hocomoco-clusters-2025-12-20"}}
       %thead
         %tr
           = motif_cluster_table_header :name
           = motif_cluster_table_header :direct_cluster_logo
           = motif_cluster_table_header :representative_motif
-          = motif_cluster_table_header :representative_motif_gene_symbol
-          = motif_cluster_table_header :clustered_motifs
+          = motif_cluster_table_header :representative_motif_gene_symbol, hide_by_default: true
+          = motif_cluster_table_header :clustered_motifs, hide_by_default: true
           = motif_cluster_table_header :clustered_motifs_gene_symbols
           = motif_cluster_table_header :primary_family
           = motif_cluster_table_header :primary_subfamily
