@@ -1,0 +1,38 @@
+.row
+  .col-12
+    %table#motifs.tablesorter.attach-column-selector{data: {table_group: 'hocomoco-clusters-2025-12-20', table_page: "hocomoco-clusters-2025-12-20"}}
+      %thead
+        %tr
+          = motif_cluster_table_header :name
+          = motif_cluster_table_header :direct_cluster_logo
+          = motif_cluster_table_header :representative_motif
+          = motif_cluster_table_header :representative_motif_gene_symbol
+          = motif_cluster_table_header :clustered_motifs
+          = motif_cluster_table_header :clustered_motifs_gene_symbols
+          = motif_cluster_table_header :primary_family
+          = motif_cluster_table_header :primary_subfamily
+          / = motif_cluster_table_header :clustered_motifs_gene_symbols_plus_families
+          = motif_cluster_table_header :cluster_size
+          = motif_cluster_table_header :average_similarity
+          = motif_cluster_table_header :min_similarity
+
+      %tbody
+        - models.each do |model|
+          %tr
+            %td= model.name
+            %td= model.direct_cluster_logo
+            %td= model.representative_motif
+            %td= model.representative_motif_gene_symbol
+            %td= model.clustered_motifs
+            %td= model.clustered_motifs_gene_symbols
+            %td= model.primary_family
+            %td= model.primary_subfamily
+            / %td= model.clustered_motifs_gene_symbols_plus_families
+            %td= model.cluster_size
+            %td= model.average_similarity
+            %td= model.min_similarity
+
+- content_for(:title) do
+  Clusters - HOmo sapiens COmprehensive MOdel COllection
+- content_for(:meta_description) do
+  HOCOMOCO Database of human and mouse Transcription Factor Binding Sites motif clusters.

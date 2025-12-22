@@ -51,6 +51,7 @@
             = table_info_row motif, :data_sources_full
             = table_info_row motif, :num_words_in_alignment
             = table_info_row motif, :previous_names
+            = table_info_row motif, :motif_cluster
 
   .tab-pane.fade#benchmarksInfo{role: 'tabpanel', aria: {labelledby: 'benchmarks-tab'}}
     = render partial: 'benchmarks', locals: {motif: motif}

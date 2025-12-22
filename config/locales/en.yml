@@ -74,6 +74,20 @@ en:
         information_content_both:      'Information content (bits; total / per base)'
         information_content_total:     'Information content (bits; total)'
         information_content_per_base:  'Information content (bits; per base)'
+        motif_cluster: 'Motif cluster'
+      motif_cluster:
+        name:                               'name'
+        representative_motif:               'Representative motif'
+        representative_motif_gene_symbol:   'Representative motif gene symbol'
+        clustered_motifs:                   'Clustered motifs'
+        clustered_motifs_gene_symbols:      'Clustered motifs gene symbols'
+        cluster_size:                       'Cluster size'
+        average_similarity:                 'Average similarity'
+        min_similarity:                     'Min similarity'
+        primary_family:                     'Primary family'
+        primary_subfamily:                  'Primary subfamily'
+        clustered_motifs_gene_symbols_plus_families:  'Clustered motifs gene symbols plus families'
+        direct_cluster_logo:                'Logo'
   tips:
     quality_html:       "<b>A:</b> found both in ChIP-Seq and HT-SELEX;<br/><b>B:</b> reproducible in ChIP-Seq or HT-SELEX;<br/><b>C:</b> found in a single dataset;<br/><b>D:</b> subtypes built from motifs exclusively inherited from HOCOMOCO-v11"
     quality_html_subcollection:       "<b>A:</b> found both in ChIP-Seq and HT-SELEX;<br/><b>B:</b> reproducible in ChIP-Seq or HT-SELEX;<br/><b>C:</b> found in a single dataset;<br/><b>D:</b> subtypes not benchmarked on the target data type"
@@ -82,6 +96,7 @@ en:
     hocomoco_invivo:    "Motif optimized for recognition of sites bound <i>in vivo</i>"
     hocomoco_invitro:   "Motif optimized for recognition of sites bound <i>in vitro</i>"
     hocomoco_rsnp:      "Motifs optimized for detection of altered TF binding at regulatory single-nucleotide variants"
+    hocomoco_clustered: "Motif clusters constructed from CORE collection"
   buttons:
     switch_to_core:     '🔃 <span class="d-none d-md-inline">Switch to</span><span class="d-inline d-md-none">To</span> primary subtypes'
     switch_to_full:     '🔃 <span class="d-none d-md-inline">Switch to</span><span class="d-inline d-md-none">To</span> complete collection'

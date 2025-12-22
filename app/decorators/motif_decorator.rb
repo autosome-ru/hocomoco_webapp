@@ -182,4 +182,5 @@ class MotifDecorator < ApplicationDecorator
   def mgi_ids; h.mgi_id_links(object.mgi_ids); end
   def uniprot_id_human; object.uniprot_id_human && h.uniprot_id_link(object.uniprot_id_human); end
   def uniprot_id_mouse; object.uniprot_id_mouse && h.uniprot_id_link(object.uniprot_id_mouse); end
+  def motif_cluster; MotifClusterDecorator.decorate(object.motif_cluster).name; end
 end
