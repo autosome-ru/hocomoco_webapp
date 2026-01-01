@@ -42,21 +42,21 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
 
   def hocomoco11_name
     return nil  unless hocomoco12_name
-    original_name = HocomocoSite::bundle_v12[hocomoco12_name].dig('original_motif', 'name')
+    original_name = HocomocoSiteUtils.bundle_v12[hocomoco12_name].dig('original_motif', 'name')
     chunks = original_name.split('@')
     (chunks[1] == 'H') ? chunks.last : nil
   end
 
   def hocomoco10_name
     return nil  unless hocomoco11_name
-    original_name = HocomocoSite::bundle_v11[hocomoco11_name]['original_motif']
+    original_name = HocomocoSiteUtils.bundle_v11[hocomoco11_name]['original_motif']
     motif_name = original_name.split('~').last
     motif_name.match?(/\.H10(MO|DI)\./) ? motif_name : nil
   end
 
   def hocomoco9_names
     return nil  unless hocomoco10_name
-    original_names = HocomocoSite::bundle_v10[hocomoco10_name]['original_motifs']
+    original_names = HocomocoSiteUtils.bundle_v10[hocomoco10_name]['original_motifs']
     original_names.map{|original_name|
       chunks = original_name.split('~')
       (chunks[1] == 'HL') ? chunks.last : nil
@@ -87,17 +87,17 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
 
   def url_in_final_bundle(url_part)
     if retracted?
-      HocomocoSite::url_in_final_bundle("retracted/#{url_part}")
+      HocomocoSiteUtils.url_in_final_bundle("retracted/#{url_part}")
     else
-      HocomocoSite::url_in_final_bundle("#{url_part}")
+      HocomocoSiteUtils.url_in_final_bundle("#{url_part}")
     end
   end
 
   def path_in_final_bundle(path_part);
     if retracted?
-      HocomocoSite::path_in_final_bundle("retracted/#{path_part}")
+      HocomocoSiteUtils.path_in_final_bundle("retracted/#{path_part}")
     else
-      HocomocoSite::path_in_final_bundle("#{path_part}")
+      HocomocoSiteUtils.path_in_final_bundle("#{path_part}")
     end
   end
 
@@ -334,9 +334,9 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def self.in_bundle(collection: 'H14CORE', hocomoco_version: HOCOMOCO_VERSION)
-    result = self.each_in_file( HocomocoSite::path_in_final_bundle("#{collection}/#{collection}_annotation.jsonl", hocomoco_version: hocomoco_version) ).to_a
-    # if File.exist?(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"))
-    #   result += self.each_in_file(HocomocoSite::path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
+    result = self.each_in_file( HocomocoSiteUtils.path_in_final_bundle("#{collection}/#{collection}_annotation.jsonl", hocomoco_version: hocomoco_version) ).to_a
+    # if File.exist?(HocomocoSiteUtils.path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"))
+    #   result += self.each_in_file(HocomocoSiteUtils.path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
     # end
     result
   end

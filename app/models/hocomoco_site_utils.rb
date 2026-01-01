@@ -1,4 +1,4 @@
-module HocomocoSite
+module HocomocoSiteUtils
   def self.url_in_final_bundle(url_part)
     url_base = HocomocoSite::Application.config.relative_url_root || ''
     "#{url_base}/final_bundle/#{HOCOMOCO_VERSION}/#{url_part}"
@@ -21,14 +21,14 @@ module HocomocoSite
   end
 
   def self.bundle_v12
-    @cache_v12_bundle ||= indexed_by_motif_from_jsonl(HocomocoSite::data_path('hocomoco12_bundle.jsonl'))
+    @cache_v12_bundle ||= indexed_by_motif_from_jsonl(HocomocoSiteUtils.data_path('hocomoco12_bundle.jsonl'))
   end
 
   def self.bundle_v11
-    @cache_v11_bundle ||= indexed_by_motif_from_jsonl(HocomocoSite::data_path('hocomoco11_bundle.jsonl'))
+    @cache_v11_bundle ||= indexed_by_motif_from_jsonl(HocomocoSiteUtils.data_path('hocomoco11_bundle.jsonl'))
   end
 
   def self.bundle_v10
-    @cache_v10_bundle ||= indexed_by_motif_from_jsonl(HocomocoSite::data_path('hocomoco10_bundle.jsonl'))
+    @cache_v10_bundle ||= indexed_by_motif_from_jsonl(HocomocoSiteUtils.data_path('hocomoco10_bundle.jsonl'))
   end
 end

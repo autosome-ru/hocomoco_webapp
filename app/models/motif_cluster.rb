@@ -55,6 +55,6 @@ MotifCluster = Struct.new(
   def cluster_length; self.clustered_motifs.map(&:length).max; end
 
   def url_in_final_bundle(url_part)
-    HocomocoSite::url_in_final_bundle("#{url_part}")
+    HocomocoSiteUtils.url_in_final_bundle("#{url_part}")
   end
   end

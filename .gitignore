@@ -17,3 +17,10 @@
 /tmp
 /public/final_bundle/
 /public/final_bundle.tar.gz
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
