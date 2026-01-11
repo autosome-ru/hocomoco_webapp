@@ -334,11 +334,19 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def self.in_bundle(collection: 'H14CORE', hocomoco_version: HOCOMOCO_VERSION)
-    result = self.each_in_file( HocomocoSiteUtils.path_in_final_bundle("#{collection}/#{collection}_annotation.jsonl", hocomoco_version: hocomoco_version) ).to_a
-    # if File.exist?(HocomocoSiteUtils.path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"))
-    #   result += self.each_in_file(HocomocoSiteUtils.path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"), retracted: true).to_a
-    # end
-    result
+    @cached_bundle ||= {}
+    @cached_bundle[hocomoco_version] ||= {}
+    @cached_bundle[hocomoco_version][collection] ||= begin
+      filename = "#{collection}/#{collection}_annotation.jsonl"
+      full_filename = HocomocoSiteUtils.path_in_final_bundle(filename, hocomoco_version: hocomoco_version)
+      result = self.each_in_file(full_filename).to_a
+      # retracted_filename = HocomocoSiteUtils.path_in_final_bundle("retracted/#{species.upcase}/#{arity}/HOCOMOCOv#{HOCOMOCO_VERSION_NUMBER}_retracted_final_collection_#{species.upcase}_#{arity}.tsv"
+      # if File.exist?(retracted_filename))
+      #   result += self.each_in_file(retracted_filename), retracted: true).to_a
+      # end
+      result
+    end
+    @cached_bundle[hocomoco_version][collection]
   end
 
   def self.all
@@ -348,9 +356,13 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def self.by_name(motif_name)
-    collection = motif_name.split('.')[1]
-    Motif.in_bundle(collection: collection).detect{|motif|
-      motif.full_name == motif_name
+    # collection = motif_name.split('.')[1]
+    # Motif.in_bundle(collection: collection).detect{|motif|
+    #   motif.full_name == motif_name
+    # }
+    @cache_by_name ||= Motif.all.each_with_object(Hash.new){|motif, result|
+      result[motif.full_name] = motif
     }
+    @cache_by_name[motif_name]
   end
 end

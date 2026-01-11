@@ -41,8 +41,8 @@ MotifCluster = Struct.new(
   end
 
   def name; self['representative_motif']; end
-  def representative_motif; Motif.by_name(self['representative_motif']); end
-  def clustered_motifs; self['clustered_motifs'].map{|motif| Motif.by_name(motif) }; end
+  def representative_motif; @cache_representative_motif ||= Motif.by_name(self['representative_motif']); end
+  def clustered_motifs; @cache_clustered_motifs ||= self['clustered_motifs'].map{|motif| Motif.by_name(motif) }; end
 
   def representative_motif_uniprot; self['representative_motif'].split('.').first + '_HUMAN'; end
   def clustered_motifs_uniprots; self['clustered_motifs'].map{|motif| motif.split('.').first + '_HUMAN' }.uniq; end
