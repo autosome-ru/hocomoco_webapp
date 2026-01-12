@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MotifDecorator < ApplicationDecorator
   delegate_all
 
@@ -20,11 +22,11 @@ class MotifDecorator < ApplicationDecorator
   # end
 
   def datasets
-    object.datasets.join('; <br/>').html_safe
+    h.safe_join(object.datasets, '; <br/>')
   end
 
   def origin_models
-    object.origin_models.join('; <br/>').html_safe
+    h.safe_join(object.origin_models, '; <br/>')
   end
 
   # def hgnc_ids; object.hgnc_ids.join('; '); end
@@ -81,21 +83,27 @@ class MotifDecorator < ApplicationDecorator
     letters = nucleotides
     header = helpers.content_tag(:thead){
       helpers.content_tag(:tr){
-        [nil, *letters].map{|letter|
-          helpers.content_tag(:th, letter)
-        }.join.html_safe
+        h.safe_join(
+          [nil, *letters].map{|letter|
+            helpers.content_tag(:th, letter)
+          }
+        )
       }
     }
 
     body = helpers.content_tag(:tbody){
-      matrix.each_with_index.map{|pos, index|
-        helpers.content_tag(:tr){
-          pos_rounded = pos.map{|el| round ? el.round(round) : el}
-          ['%02d' % (index + 1), *pos_rounded].map{|cell|
-            helpers.content_tag(:td, cell)
-          }.join.html_safe
+      h.safe_join(
+        matrix.each_with_index.map{|pos, index|
+          helpers.content_tag(:tr){
+            pos_rounded = pos.map{|el| round ? el.round(round) : el}
+            h.safe_join(
+              ['%02d' % (index + 1), *pos_rounded].map{|cell|
+                helpers.content_tag(:td, cell)
+              }
+            )
+          }
         }
-      }.join.html_safe
+      )
     }
 
     helpers.content_tag(:table, (header + body).html_safe, class: 'matrix')
@@ -135,7 +143,7 @@ class MotifDecorator < ApplicationDecorator
   end
 
   def previous_names
-    object.previous_names.map{|motif|
+    previous_names_links = object.previous_names.map{|motif|
       if motif.match?(/\.H12(CORE|INVIVO|INVITRO|RSNP)\./)
         helpers.link_to(motif, ENV['HOCOMOCO12_URL'] + "motif/#{motif}")
       elsif motif.match?(/\.H11(MO|DI)\./)
@@ -147,7 +155,8 @@ class MotifDecorator < ApplicationDecorator
       else
         motif
       end
-    }.join('; ').html_safe
+    }
+    h.safe_join(previous_names_links, '; ')
   end
 
   def gc_content; "#{(object.gc_content * 100).round(2)}%" ; end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MotifClustersHelper
   def motif_cluster_table_header(attr, options = {}, &block)
     basic_options = {data:

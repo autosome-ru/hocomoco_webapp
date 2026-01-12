@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # 1 Representative_Motif  GABPA.H14CORE.0.PSM.A
 # 2 Average_Similarity  0.444
 # 3 Min_Similarity  0.207

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :motif_subtype,
                           :best_auc_human, :best_auc_mouse,
                           :num_datasets_human, :num_datasets_mouse,
