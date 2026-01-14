@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~>6.0.0'
+gem 'rails', '~> 6.1.0'
 gem 'concurrent-ruby', '1.3.4'
 
 # Use sqlite3 as the database for Active Record
@@ -33,7 +33,6 @@ gem 'draper'
 gem 'haml-rails'
 
 gem 'jquery-tablesorter'
-gem 'd3-rails', '>=5.7'
 
 gem 'webpacker'
 
