@@ -22,4 +22,6 @@ window.jQuery = $
 import * as d3 from "d3";
 window.d3 = d3;
 
+import "../styles/styles";
+
 console.log('Hello World from Webpacker')
