@@ -15,4 +15,11 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import $ from 'jquery'
+window.$ = $
+window.jQuery = $
+
+import * as d3 from "d3";
+window.d3 = d3;
+
 console.log('Hello World from Webpacker')
