@@ -133,13 +133,7 @@ class MotifDecorator < ApplicationDecorator
   def best_auc_mouse; object.best_auc_mouse&.round(3); end
 
   def data_sources_full
-    datatypes_full_names = {
-      'P' => 'ChIP-Seq', 'S' => 'HT-SELEX', 'M' => 'Methyl-HT-SELEX',
-      'G' => 'Genomic HT-SELEX', 'I' => 'SMiLe-Seq', 'B' => 'PBM',
-    }
-    object.data_sources.each_char.map{|k|
-      datatypes_full_names.fetch(k){|k| $stderr.puts "Error: datatype `#{k}` unknown" }
-    }.join(' + ')
+    object.data_sources_formatted_full
   end
 
   def previous_names
@@ -191,5 +185,5 @@ class MotifDecorator < ApplicationDecorator
   def mgi_ids; h.mgi_id_links(object.mgi_ids); end
   def uniprot_id_human; object.uniprot_id_human && h.uniprot_id_link(object.uniprot_id_human); end
   def uniprot_id_mouse; object.uniprot_id_mouse && h.uniprot_id_link(object.uniprot_id_mouse); end
-  def motif_cluster; MotifClusterDecorator.decorate(object.motif_cluster).name; end
+  def motif_cluster; @cached_motif_cluster_link ||= helpers.link_to_motif_cluster(object.motif_cluster, "cluster:#{object.motif_cluster.name}"); end
 end

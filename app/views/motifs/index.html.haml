@@ -61,7 +61,7 @@
             %td= model.quality
             %td= model.motif_subtype
             %td= model.consensus
-            %td= model.data_sources.chars.join('+')
+            %td= model.data_sources_formatted_short
             %td= model.num_words_in_alignment
             %td{data: {text: model.tfclass_at_level_text(1) }}= model.tfclass_superclass
             %td{data: {text: model.tfclass_at_level_text(2) }}= model.tfclass_class

@@ -268,7 +268,10 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   def tfclass_family; data.dig('masterlist_info', 'tfclass_family'); end
   def tfclass_subfamily; data.dig('masterlist_info', 'tfclass_subfamily'); end
   def tfclass_id; data.dig('masterlist_info', 'tfclass_id'); end
-  def tfclass_id_at_level(level); (tfclass_id || '').split('.').first(level).join('.'); end
+  def tfclass_id_at_level(level)
+    @cached_tfclass_id_at_level ||= {}
+    @cached_tfclass_id_at_level[level] ||= (tfclass_id || '').split('.').first(level).join('.')
+  end
   def motif_cluster; MotifCluster.by_name(full_name); end
 
   def self.from_json(data, retracted: false)
@@ -325,6 +328,21 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     nil
   end
 
+  def data_sources_formatted_short
+    @cached_data_sources_formatted_short ||= data_sources.chars.join('+')
+  end
+
+  def data_sources_formatted_full
+    @cached_data_sources_formatted_full ||= begin
+      datatypes_full_names = {
+        'P' => 'ChIP-Seq', 'S' => 'HT-SELEX', 'M' => 'Methyl-HT-SELEX',
+        'G' => 'Genomic HT-SELEX', 'I' => 'SMiLe-Seq', 'B' => 'PBM',
+      }
+      data_sources.each_char.map{|k|
+        datatypes_full_names.fetch(k){|k| $stderr.puts "Error: datatype `#{k}` unknown" }
+      }.join(' + ')
+    end
+  end
 
   def applicable_for?(species)
     data.dig('masterlist_info', 'species').has_key?(species)
