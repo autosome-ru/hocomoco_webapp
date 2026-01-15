@@ -1,11 +1,11 @@
 class MotifsController < ApplicationController
   def index
     collection = params.fetch(:collection, 'H14CORE').upcase
-    models = Motif.in_bundle(collection: collection).reject(&:retracted?)
+    models = Motif.in_bundle_no_retracted(collection: collection)
     show_full = true
     if params.fetch('full', 'true').to_s.downcase == 'false'
       show_full = false
-      models = models.reject(&:retracted?).select{|model| model.motif_subtype == 0 }
+      models = models.select{|model| model.motif_subtype == 0 }
     end
 
     respond_to do |format|
@@ -24,7 +24,6 @@ class MotifsController < ApplicationController
         }
       end
       format.json do
-        models = models.reject(&:retracted?)
         if params[:detailed]
           infos = {
             motifs: models,

@@ -364,9 +364,15 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
       # if File.exist?(retracted_filename))
       #   result += self.each_in_file(retracted_filename), retracted: true).to_a
       # end
-      result
+      result.freeze
     end
-    @cached_bundle[hocomoco_version][collection]
+  end
+
+  def self.in_bundle_no_retracted(collection: 'H14CORE', hocomoco_version: HOCOMOCO_VERSION)
+    @cached_bundle_no_retracted ||= {}
+    @cached_bundle_no_retracted[hocomoco_version] ||= {}
+    @cached_bundle_no_retracted[hocomoco_version][collection] ||= \
+        self.in_bundle(collection: collection, hocomoco_version: hocomoco_version).reject(&:retracted?).freeze
   end
 
   def self.all
