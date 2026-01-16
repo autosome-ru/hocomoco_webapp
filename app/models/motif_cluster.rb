@@ -29,8 +29,10 @@ MotifCluster = Struct.new(
   end
 
   def self.all
-    filename = 'public/final_bundle/hocomoco14/H14CORE-CLUSTERED/cluster_list.tsv'
-    @clusters_cache ||= File.readlines(filename).drop(1).map{|l| self.from_string(l) }
+    @clusters_cache ||= begin
+      filename = 'public/final_bundle/hocomoco14/H14CORE-CLUSTERED/cluster_list.tsv'
+      File.readlines(filename).drop(1).map{|l| self.from_string(l) }
+    end
   end
 
   def self.by_name(motif)
@@ -46,15 +48,15 @@ MotifCluster = Struct.new(
   def representative_motif; @cache_representative_motif ||= Motif.by_name(self['representative_motif']); end
   def clustered_motifs; @cache_clustered_motifs ||= self['clustered_motifs'].map{|motif| Motif.by_name(motif) }; end
 
-  def representative_motif_uniprot; self['representative_motif'].split('.').first + '_HUMAN'; end
-  def clustered_motifs_uniprots; self['clustered_motifs'].map{|motif| motif.split('.').first + '_HUMAN' }.uniq; end
-  def direct_representative_logo_url; self.representative_motif.direct_logo_url; end # ToDo: use joint cluster logo
+  def representative_motif_uniprot; @cache_representative_motif_uniprot ||= self['representative_motif'].split('.').first + '_HUMAN'; end
+  def clustered_motifs_uniprots; @cache_clustered_motifs_uniprots ||= self['clustered_motifs'].map{|motif| motif.split('.').first + '_HUMAN' }.uniq; end
+  def direct_representative_logo_url; @cache_direct_representative_logo_url ||= self.representative_motif.direct_logo_url; end # ToDo: use joint cluster logo
 
   def direct_cluster_logo_url
-    url_in_final_bundle("H14CORE-CLUSTERED/cluster_logos/cluster@#{name}.png")
+    @cache_direct_cluster_logo_url ||= url_in_final_bundle("H14CORE-CLUSTERED/cluster_logos/cluster@#{name}.png")
   end
-  def representative_length; self.representative_motif.length; end
-  def cluster_length; self.clustered_motifs.map(&:length).max; end
+  def representative_length; @cache_representative_length ||= self.representative_motif.length; end
+  def cluster_length; @cache_cluster_length ||= self.clustered_motifs.map(&:length).max; end
 
   def url_in_final_bundle(url_part)
     HocomocoSiteUtils.url_in_final_bundle("#{url_part}")

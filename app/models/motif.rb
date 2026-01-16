@@ -12,18 +12,18 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   def self.model_name; 'Motif'; end
 
   def name; full_name; end
-  def tf; full_name.split('.')[0]; end
+  def tf; @cached_tf ||= full_name.split('.')[0]; end
   def gc_content; data['gc_content']; end
   def information_content_total; data['information_content_total']; end
   def information_content_per_base; data['information_content_per_base']; end
 
-  def uniprot_id_human; data.dig('masterlist_info', 'species', 'HUMAN', 'uniprot_id'); end
-  def uniprot_id_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'uniprot_id'); end
+  def uniprot_id_human; @cached_uniprot_id_human ||= data.dig('masterlist_info', 'species', 'HUMAN', 'uniprot_id'); end
+  def uniprot_id_mouse; @cached_uniprot_id_mouse ||= data.dig('masterlist_info', 'species', 'MOUSE', 'uniprot_id'); end
 
-  def uniprot_ac_human; data.dig('masterlist_info', 'species', 'HUMAN', 'uniprot_ac'); end
-  def uniprot_ac_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'uniprot_ac'); end
+  def uniprot_ac_human; @cached_uniprot_ac_human ||= data.dig('masterlist_info', 'species', 'HUMAN', 'uniprot_ac'); end
+  def uniprot_ac_mouse; @cached_uniprot_ac_mouse ||= data.dig('masterlist_info', 'species', 'MOUSE', 'uniprot_ac'); end
 
-  def collection; full_name.split('.')[1]; end
+  def collection; @cached_collection ||= full_name.split('.')[1]; end
   def bundle_name; collection; end
   # def datatypes; full_name.split('.')[3]; end
   # def quality; full_name.split('.')[4]; end
@@ -38,41 +38,47 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     (original_name.split('@')[1] == 'H') ? original_name.split('@').last : nil
   end
 
-  def hocomoco12_name; data.dig('original_motif', 'hocomoco12_name'); end
+  def hocomoco12_name; @cached_hocomoco12_name ||= data.dig('original_motif', 'hocomoco12_name'); end
 
   def from_hocomoco12?; !!hocomoco12_name; end
 
   def hocomoco11_name
-    return nil  unless hocomoco12_name
-    original_name = HocomocoSiteUtils.bundle_v12_original_motif_names[hocomoco12_name]
-    chunks = original_name.split('@')
-    (chunks[1] == 'H') ? chunks.last : nil
+    @cached_hocomoco11_name ||= begin
+      return nil  unless hocomoco12_name
+      original_name = HocomocoSiteUtils.bundle_v12_original_motif_names[hocomoco12_name]
+      chunks = original_name.split('@')
+      (chunks[1] == 'H') ? chunks.last : nil
+    end
   end
 
   def hocomoco10_name
-    return nil  unless hocomoco11_name
-    original_name = HocomocoSiteUtils.bundle_v11_original_motif_names[hocomoco11_name]
-    motif_name = original_name.split('~').last
-    motif_name.match?(/\.H10(MO|DI)\./) ? motif_name : nil
+    @cached_hocomoco10_name ||= begin
+      return nil  unless hocomoco11_name
+      original_name = HocomocoSiteUtils.bundle_v11_original_motif_names[hocomoco11_name]
+      motif_name = original_name.split('~').last
+      motif_name.match?(/\.H10(MO|DI)\./) ? motif_name : nil
+    end
   end
 
   def hocomoco9_names
-    return nil  unless hocomoco10_name
-    original_names = HocomocoSiteUtils.bundle_v10_original_motif_names[hocomoco10_name]
-    original_names.map{|original_name|
-      chunks = original_name.split('~')
-      (chunks[1] == 'HL') ? chunks.last : nil
-    }.compact
+    @cached_hocomoco9_name ||= begin
+      return nil  unless hocomoco10_name
+      original_names = HocomocoSiteUtils.bundle_v10_original_motif_names[hocomoco10_name]
+      original_names.map{|original_name|
+        chunks = original_name.split('~')
+        (chunks[1] == 'HL') ? chunks.last : nil
+      }.compact
+    end
   end
 
-  def gene_name_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_symbol') ; end
-  def gene_synonyms_human; data.dig('masterlist_info', 'species', 'HUMAN', 'gene_synonyms') || []; end
-  def gene_name_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_symbol') ; end
-  def gene_synonyms_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'gene_synonyms') || []; end
-  def entrezgene_ids_human; data.dig('masterlist_info', 'species', 'HUMAN', 'entrez') || []; end
-  def entrezgene_ids_mouse; data.dig('masterlist_info', 'species', 'MOUSE', 'entrez') || []; end
-  def greco_db_tf; data.dig('masterlist_info', 'greco_db_tf'); end
-  def gene_name; gene_name_human || gene_name_mouse; end
+  def gene_name_human; @cached_gene_name_human ||= data.dig('masterlist_info', 'species', 'HUMAN', 'gene_symbol') ; end
+  def gene_synonyms_human; @cached_gene_synonyms_human ||= data.dig('masterlist_info', 'species', 'HUMAN', 'gene_synonyms') || []; end
+  def gene_name_mouse; @cached_gene_name_mouse ||= data.dig('masterlist_info', 'species', 'MOUSE', 'gene_symbol') ; end
+  def gene_synonyms_mouse; @cached_gene_synonyms_mouse ||= data.dig('masterlist_info', 'species', 'MOUSE', 'gene_synonyms') || []; end
+  def entrezgene_ids_human; @cached_entrezgene_ids_human ||= data.dig('masterlist_info', 'species', 'HUMAN', 'entrez') || []; end
+  def entrezgene_ids_mouse; @cached_entrezgene_ids_mouse ||= data.dig('masterlist_info', 'species', 'MOUSE', 'entrez') || []; end
+  def greco_db_tf; @cached_greco_db_tf ||= data.dig('masterlist_info', 'greco_db_tf'); end
+  def gene_name; @cached_gene_name ||= gene_name_human || gene_name_mouse; end
 
   def metrics_summary; data['metrics_summary']; end
 
@@ -81,7 +87,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   # end
 
   def is_a_subfamily_member?(subfamily_id_query)
-    "#{tfclass_id}.".start_with?("#{subfamily_id_query}.")
+    @cached_is_a_subfamily_member ||= "#{tfclass_id}.".start_with?("#{subfamily_id_query}.")
     # subfamily_ids.any?{|subfamily_id|
       # subfamily_id == subfamily_id_query || subfamily_id.start_with?(subfamily_id_query)
     # }
@@ -104,51 +110,51 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def pcm_url
-    url_in_final_bundle("#{collection}/pcm/#{full_name}.pcm")
+    @cached_pcm_url ||= url_in_final_bundle("#{collection}/pcm/#{full_name}.pcm")
   end
 
   def pwm_url
-    url_in_final_bundle("#{collection}/pwm/#{full_name}.pwm")
+    @cached_pwm_url ||= url_in_final_bundle("#{collection}/pwm/#{full_name}.pwm")
   end
 
   def pfm_url
-    url_in_final_bundle("#{collection}/pfm/#{full_name}.pfm")
+    @cached_pfm_url ||= url_in_final_bundle("#{collection}/pfm/#{full_name}.pfm")
   end
 
   def alignment_url
-    url_in_final_bundle("#{collection}/words/#{full_name}.words.tsv")
+    @cached_alignment_url ||= url_in_final_bundle("#{collection}/words/#{full_name}.words.tsv")
   end
 
   def jaspar_url
-    url_in_final_bundle("#{collection}/formatted_motifs/jaspar/#{full_name}_jaspar_format.txt")
+    @cached_jaspar_url ||= url_in_final_bundle("#{collection}/formatted_motifs/jaspar/#{full_name}_jaspar_format.txt")
   end
 
   def transfac_url
-    url_in_final_bundle("#{collection}/formatted_motifs/transfac/#{full_name}_transfac_format.txt")
+    @cached_transfac_url ||= url_in_final_bundle("#{collection}/formatted_motifs/transfac/#{full_name}_transfac_format.txt")
   end
 
   def meme_url
-    url_in_final_bundle("#{collection}/formatted_motifs/meme/#{full_name}_meme_format.meme")
+    @cached_meme_url ||= url_in_final_bundle("#{collection}/formatted_motifs/meme/#{full_name}_meme_format.meme")
   end
 
   def homer_url(pvalue:)
-    url_in_final_bundle("#{collection}/formatted_motifs/homer/pvalue_#{pvalue}/#{full_name}_homer_format_#{pvalue}.motif")
+    @cached_homer_url ||= url_in_final_bundle("#{collection}/formatted_motifs/homer/pvalue_#{pvalue}/#{full_name}_homer_format_#{pvalue}.motif")
   end
 
   def pcm_path
-    path_in_final_bundle("#{collection}/pcm/#{full_name}.pcm")
+    @cached_pcm_path ||= path_in_final_bundle("#{collection}/pcm/#{full_name}.pcm")
   end
 
   def pwm_path
-    path_in_final_bundle("#{collection}/pwm/#{full_name}.pwm")
+    @cached_pwm_path ||= path_in_final_bundle("#{collection}/pwm/#{full_name}.pwm")
   end
 
   def pfm_path
-    path_in_final_bundle("#{collection}/pfm/#{full_name}.pfm")
+    @cached_pfm_path ||= path_in_final_bundle("#{collection}/pfm/#{full_name}.pfm")
   end
 
   def threshold_pvalue_list_path
-    path_in_final_bundle("#{collection}/thresholds/#{full_name}.thr")
+    @cached_threshold_p ||= path_in_final_bundle("#{collection}/thresholds/#{full_name}.thr")
   end
 
   def remap_url
@@ -207,7 +213,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   def standard_thresholds; data['standard_thresholds']; end
 
   def precalculated_thresholds_url
-    url_in_final_bundle("#{collection}/thresholds/#{full_name}.thr")
+    @cached_precalculated_thresholds_url ||= url_in_final_bundle("#{collection}/thresholds/#{full_name}.thr")
   end
 
   def read_matrix(fn)
@@ -223,24 +229,24 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def direct_logo_url
-    url_in_final_bundle("#{collection}/logo_small/#{full_name}_direct.png")
+    @cached_direct_logo_url ||= url_in_final_bundle("#{collection}/logo_small/#{full_name}_direct.png")
   end
 
   # big logo is normal size, large logo is bigger than big and acceptable to insert logo in papers etc
   def direct_big_logo_url
-    url_in_final_bundle("#{collection}/logo/#{full_name}_direct.png")
+    @cached_direct_big_logo_url ||= url_in_final_bundle("#{collection}/logo/#{full_name}_direct.png")
   end
 
   def revcomp_big_logo_url
-    url_in_final_bundle("#{collection}/logo/#{full_name}_revcomp.png")
+    @cached_revcomp_big_logo_url ||= url_in_final_bundle("#{collection}/logo/#{full_name}_revcomp.png")
   end
 
   def direct_large_logo_url
-    url_in_final_bundle("#{collection}/logo_large/#{full_name}_direct.png")
+    @cached_direct_large_logo_url ||= url_in_final_bundle("#{collection}/logo_large/#{full_name}_direct.png")
   end
 
   def revcomp_large_logo_url
-    url_in_final_bundle("#{collection}/logo_large/#{full_name}_revcomp.png")
+    @cached_revcomp_large_logo_url ||= url_in_final_bundle("#{collection}/logo_large/#{full_name}_revcomp.png")
   end
 
   # def motif_subfamily_ids
@@ -251,7 +257,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   # end
 
   def motif_families_links
-    motif_families.map{|fam|
+    @cached_motif_families_links ||= motif_families.map{|fam|
       match = fam.match(/^(?<name>.+)\{(?<family_id>[\d.]+)\}$/)
       [fam, "http://tfclass.bioinf.med.uni-goettingen.de/?tfclass=#{match[:family_id]}"]
     }
@@ -259,15 +265,15 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
 
   def motif_cluster; @cached_motif_cluster ||= MotifCluster.by_name(full_name); end
 
+  LEVELS = [nil, 'tfclass_superclass', 'tfclass_class', 'tfclass_family', 'tfclass_subfamily'].freeze
   def tfclass_at_level(level);
-    levels = [nil, 'tfclass_superclass', 'tfclass_class', 'tfclass_family', 'tfclass_subfamily']
-    data.dig('masterlist_info', levels[level])
+    data.dig('masterlist_info', LEVELS[level])
   end
-  def tfclass_superclass; data.dig('masterlist_info', 'tfclass_superclass'); end
-  def tfclass_class; data.dig('masterlist_info', 'tfclass_class'); end
-  def tfclass_family; data.dig('masterlist_info', 'tfclass_family'); end
-  def tfclass_subfamily; data.dig('masterlist_info', 'tfclass_subfamily'); end
-  def tfclass_id; data.dig('masterlist_info', 'tfclass_id'); end
+  def tfclass_superclass; @cached_tfclass_superclass ||= data.dig('masterlist_info', 'tfclass_superclass'); end
+  def tfclass_class; @cached_tfclass_class ||= data.dig('masterlist_info', 'tfclass_class'); end
+  def tfclass_family; @cached_tfclass_family ||= data.dig('masterlist_info', 'tfclass_family'); end
+  def tfclass_subfamily; @cached_tfclass_subfamily ||= data.dig('masterlist_info', 'tfclass_subfamily'); end
+  def tfclass_id; @cached_tfclass_id ||= data.dig('masterlist_info', 'tfclass_id'); end
   def tfclass_id_at_level(level)
     @cached_tfclass_id_at_level ||= {}
     @cached_tfclass_id_at_level[level] ||= (tfclass_id || '').split('.').first(level).join('.')
@@ -348,8 +354,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def self.each_in_file(filename, retracted: false, &block)
-    @cached_motifs ||= {}
-    @cached_motifs[filename] ||= File.readlines(filename).map{|line| self.from_json(JSON.parse(line)) }.sort_by(&:name).each(&block)
+    File.readlines(filename).map{|line| self.from_json(JSON.parse(line)) }.sort_by(&:name).each(&block)
   end
 
   def self.in_bundle(collection: 'H14CORE', hocomoco_version: HOCOMOCO_VERSION)
