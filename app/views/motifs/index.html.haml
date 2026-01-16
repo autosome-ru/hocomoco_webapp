@@ -44,8 +44,7 @@
           = motif_table_header :uniprot_ac_human, hide_by_default: true
           = motif_table_header :uniprot_ac_mouse, hide_by_default: true
           - if collection == 'H14CORE'
-            = motif_table_header :motif_cluster
-          = motif_table_header :motif_cluster, hide_by_default: true
+            = motif_table_header :motif_cluster, hide_by_default: true
           = motif_table_header(:greco_db_tf, hide_by_default: true){|content| (content + help_icon(title: t('tips.greco_db_tf_html'), html: true, href: 'https://www.ebi.ac.uk/QuickGO/targetset/dbTF')).html_safe }
 
       %tbody
