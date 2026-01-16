@@ -257,7 +257,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     }
   end
 
-  def motif_cluster; MotifCluster.by_name(self.name); end
+  def motif_cluster; @cached_motif_cluster ||= MotifCluster.by_name(full_name); end
 
   def tfclass_at_level(level);
     levels = [nil, 'tfclass_superclass', 'tfclass_class', 'tfclass_family', 'tfclass_subfamily']
@@ -272,7 +272,6 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     @cached_tfclass_id_at_level ||= {}
     @cached_tfclass_id_at_level[level] ||= (tfclass_id || '').split('.').first(level).join('.')
   end
-  def motif_cluster; MotifCluster.by_name(full_name); end
 
   def self.from_json(data, retracted: false)
     full_name = data['name']

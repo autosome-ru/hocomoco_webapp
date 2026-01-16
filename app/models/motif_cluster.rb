@@ -59,4 +59,4 @@ MotifCluster = Struct.new(
   def url_in_final_bundle(url_part)
     HocomocoSiteUtils.url_in_final_bundle("#{url_part}")
   end
-  end
+end
