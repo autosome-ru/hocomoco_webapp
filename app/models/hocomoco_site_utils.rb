@@ -20,15 +20,18 @@ module HocomocoSiteUtils
     }.to_h
   end
 
-  def self.bundle_v12
-    @cache_v12_bundle ||= indexed_by_motif_from_jsonl(HocomocoSiteUtils.data_path('hocomoco12_bundle.jsonl'))
+  def self.bundle_v12_original_motif_names
+    @cache_v12_bundle ||= indexed_by_motif_from_jsonl(HocomocoSiteUtils.data_path('hocomoco12_bundle.jsonl')) \
+                            .transform_values{|d| d.dig('original_motif', 'name') }
   end
 
-  def self.bundle_v11
-    @cache_v11_bundle ||= indexed_by_motif_from_jsonl(HocomocoSiteUtils.data_path('hocomoco11_bundle.jsonl'))
+  def self.bundle_v11_original_motif_names
+    @cache_v11_bundle ||= indexed_by_motif_from_jsonl(HocomocoSiteUtils.data_path('hocomoco11_bundle.jsonl')) \
+                            .transform_values{|d| d['original_motif'] }
   end
 
-  def self.bundle_v10
-    @cache_v10_bundle ||= indexed_by_motif_from_jsonl(HocomocoSiteUtils.data_path('hocomoco10_bundle.jsonl'))
+  def self.bundle_v10_original_motif_names
+    @cache_v10_bundle ||= indexed_by_motif_from_jsonl(HocomocoSiteUtils.data_path('hocomoco10_bundle.jsonl')) \
+                            .transform_values{|d| d['original_motifs'] }
   end
 end

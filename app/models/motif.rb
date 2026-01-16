@@ -44,21 +44,21 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
 
   def hocomoco11_name
     return nil  unless hocomoco12_name
-    original_name = HocomocoSiteUtils.bundle_v12[hocomoco12_name].dig('original_motif', 'name')
+    original_name = HocomocoSiteUtils.bundle_v12_original_motif_names[hocomoco12_name]
     chunks = original_name.split('@')
     (chunks[1] == 'H') ? chunks.last : nil
   end
 
   def hocomoco10_name
     return nil  unless hocomoco11_name
-    original_name = HocomocoSiteUtils.bundle_v11[hocomoco11_name]['original_motif']
+    original_name = HocomocoSiteUtils.bundle_v11_original_motif_names[hocomoco11_name]
     motif_name = original_name.split('~').last
     motif_name.match?(/\.H10(MO|DI)\./) ? motif_name : nil
   end
 
   def hocomoco9_names
     return nil  unless hocomoco10_name
-    original_names = HocomocoSiteUtils.bundle_v10[hocomoco10_name]['original_motifs']
+    original_names = HocomocoSiteUtils.bundle_v10_original_motif_names[hocomoco10_name]
     original_names.map{|original_name|
       chunks = original_name.split('~')
       (chunks[1] == 'HL') ? chunks.last : nil
