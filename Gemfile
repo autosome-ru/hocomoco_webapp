@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
+gem "sprockets-rails"
 gem 'concurrent-ruby', '1.3.4'
 
 # Use sqlite3 as the database for Active Record
@@ -51,7 +52,7 @@ group :development do
   gem 'web-console'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-#  gem 'spring'
+  # gem 'spring', '>= 3.0.0'
   gem 'listen'
 end
 
