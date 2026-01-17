@@ -13,7 +13,7 @@ module HocomocoSite
   class Application < Rails::Application
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'env.yaml')
-      next  unless File.exists?(env_file)
+      next  unless File.exist?(env_file)
       YAML.load_file(env_file).each{|k,v| ENV[k] ||= v }
     end
 
