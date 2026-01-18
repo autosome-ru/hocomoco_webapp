@@ -56,6 +56,9 @@ end
 run_once = true
 
 before_fork do |server, worker|
+  Motif.prepare_caches
+  MotifCluster.prepare_caches
+
   # Disconnect from DB before creating the first worker
   defined?(ActiveRecord::Base) && ActiveRecord::Base.connection.disconnect!
 

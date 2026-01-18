@@ -28,19 +28,33 @@ MotifCluster = Struct.new(
       clustered_motifs_gene_symbols_plus_families.split(';').map(&:strip).uniq)
   end
 
-  def self.all
+  def self.prepare_cache_by_name
+    @cluster_by_motif_cache ||= self.all.each_with_object(Hash.new){|cluster, hsh|
+      cluster.clustered_motifs.each{|motif|
+        hsh[motif.full_name] = cluster
+      }
+    }
+  end
+
+  def self.prepare_cache_clusters
     @clusters_cache ||= begin
       filename = 'public/final_bundle/hocomoco14/H14CORE-CLUSTERED/cluster_list.tsv'
       File.readlines(filename).drop(1).map{|l| self.from_string(l) }
     end
   end
 
+  def self.prepare_caches
+    prepare_cache_clusters
+    prepare_cache_by_name
+  end
+
+  def self.all
+    prepare_cache_clusters
+    @clusters_cache
+  end
+
   def self.by_name(motif)
-    @cluster_by_motif_cache ||= self.all.each_with_object(Hash.new){|cluster, hsh|
-      cluster.clustered_motifs.each{|motif|
-        hsh[motif.full_name] = cluster
-      }
-    }
+    prepare_cache_by_name
     @cluster_by_motif_cache[motif]
   end
 

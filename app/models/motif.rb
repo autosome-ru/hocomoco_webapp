@@ -359,6 +359,17 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def self.in_bundle(collection: 'H14CORE', hocomoco_version: HOCOMOCO_VERSION)
+    prepare_bundle_cache(collection: collection, hocomoco_version: hocomoco_version)
+    @cached_bundle[hocomoco_version][collection]
+  end
+
+  def self.prepare_cache_by_name
+    @cache_by_name ||= Motif.all.each_with_object(Hash.new){|motif, result|
+      result[motif.full_name] = motif
+    }
+  end
+
+  def self.prepare_bundle_cache(collection:, hocomoco_version:)
     @cached_bundle ||= {}
     @cached_bundle[hocomoco_version] ||= {}
     @cached_bundle[hocomoco_version][collection] ||= begin
@@ -371,6 +382,21 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
       # end
       result.freeze
     end
+  end
+
+  def self.prepare_bundle_no_retracted_cache(collection:, hocomoco_version:)
+    @cached_bundle_no_retracted ||= {}
+    @cached_bundle_no_retracted[hocomoco_version] ||= {}
+    @cached_bundle_no_retracted[hocomoco_version][collection] ||= \
+      self.in_bundle(collection: collection, hocomoco_version: hocomoco_version).reject(&:retracted?).freeze
+  end
+
+  def self.prepare_caches
+    ['H14CORE', 'H14INVIVO', 'H14INVITRO', 'H14RSNP'].each{|collection|
+      self.prepare_bundle_cache(collection: collection, hocomoco_version: HOCOMOCO_VERSION)
+      self.prepare_bundle_no_retracted_cache(collection: collection, hocomoco_version: HOCOMOCO_VERSION)
+    }
+    self.prepare_cache_by_name
   end
 
   def self.in_bundle_no_retracted(collection: 'H14CORE', hocomoco_version: HOCOMOCO_VERSION)
@@ -391,9 +417,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
     # Motif.in_bundle(collection: collection).detect{|motif|
     #   motif.full_name == motif_name
     # }
-    @cache_by_name ||= Motif.all.each_with_object(Hash.new){|motif, result|
-      result[motif.full_name] = motif
-    }
+    self.prepare_cache_by_name
     @cache_by_name[motif_name]
   end
 end
