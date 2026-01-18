@@ -87,7 +87,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   # end
 
   def is_a_subfamily_member?(subfamily_id_query)
-    @cached_is_a_subfamily_member ||= "#{tfclass_id}.".start_with?("#{subfamily_id_query}.")
+    "#{tfclass_id}.".start_with?("#{subfamily_id_query}.")
     # subfamily_ids.any?{|subfamily_id|
       # subfamily_id == subfamily_id_query || subfamily_id.start_with?(subfamily_id_query)
     # }
@@ -138,7 +138,8 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def homer_url(pvalue:)
-    @cached_homer_url ||= url_in_final_bundle("#{collection}/formatted_motifs/homer/pvalue_#{pvalue}/#{full_name}_homer_format_#{pvalue}.motif")
+    @cached_homer_url ||= {}
+    @cached_homer_url[pvalue] ||= url_in_final_bundle("#{collection}/formatted_motifs/homer/pvalue_#{pvalue}/#{full_name}_homer_format_#{pvalue}.motif")
   end
 
   def pcm_path
