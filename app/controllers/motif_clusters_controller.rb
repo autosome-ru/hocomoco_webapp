@@ -12,7 +12,7 @@ class MotifClustersController < ApplicationController
       end
       format.json do
         if params[:detailed]
-          render(locals: { motif_clusters: models }, template: 'motif_clusters/detailed.json')
+          render(locals: { motif_clusters: models }, template: 'motif_clusters/detailed')
         else
           render(json: models.map(&:name))
         end

@@ -30,12 +30,12 @@ class MotifsController < ApplicationController
             with_thresholds: params[:with_thresholds],
             with_matrices: params[:with_matrices],
           }
-          render locals: infos, template: 'motifs/detailed_collection.json'
+          render locals: infos, template: 'motifs/detailed_collection'
         elsif params[:summary]
           infos = {
             motifs: models,
           }
-          render locals: infos, template: 'motifs/summaries.json'
+          render locals: infos, template: 'motifs/summaries'
         else
           render json: models.map(&:full_name)
         end
