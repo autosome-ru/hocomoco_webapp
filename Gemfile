@@ -28,7 +28,8 @@ gem 'sdoc', '>= 0.4.0', group: :doc
 gem "rack", "~> 2.2"
 gem "rack-session", "~> 1.0"
 gem "rackup", "~> 1.0"
-gem 'unicorn'
+#gem 'unicorn'
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
