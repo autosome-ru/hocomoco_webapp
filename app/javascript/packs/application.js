@@ -19,6 +19,9 @@ import $ from 'jquery'
 window.$ = $
 window.jQuery = $
 
+import 'popper.js'
+import 'bootstrap'
+
 import * as d3 from "d3";
 window.d3 = d3;
 
