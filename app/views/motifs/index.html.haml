@@ -1,7 +1,7 @@
 .row
   .col-12
     .table-actions
-      .form-inline.motif-table-controls
+      .motif-table-controls.d-flex.flex-column.flex-md-row.align-items-start.align-items-md-center.gap-2
         - if core_full_url
           %button.work_as_link.full_core_collection.btn.btn-sm.btn-outline-secondary{data: {href: core_full_url} }
             = switch_to_core_full
@@ -25,10 +25,10 @@
           = motif_table_header :gene_name_mouse, class: 'gene_name'
           = motif_table_header :gene_synonyms_mouse, hide_by_default: true
           = motif_table_header :model_length, data: {placeholder:'>= 20'}, hide_by_default: true
-          = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: t((collection == 'H14CORE') ? 'tips.quality_html' : 'tips.quality_html_subcollection'), html: true) ).html_safe }
+          = motif_table_header(:quality, class: 'filter-match') {|content| (content + help_icon(href: help_path(anchor: 'description_quality_score'), title: t((collection == 'H14CORE') ? 'tips.quality_html' : 'tips.quality_html_subcollection')) ).html_safe }
           = motif_table_header :motif_subtype, class: 'motif_subtype'
           = motif_table_header :consensus, dont_sort: true, hide_by_default: true, data: {placeholder: 'CA??TG'}
-          = motif_table_header(:data_sources, class: 'source_dataset_type filter-select', data: {text: t('tips.quality')}){|content| (content + help_icon(title: t('tips.data_sources_html'), html: true, href: help_path(anchor: 'experimental_data_types'))).html_safe }
+          = motif_table_header(:data_sources, class: 'source_dataset_type filter-select', data: {text: t('tips.quality')}){|content| (content + help_icon(title: t('tips.data_sources_html'), href: help_path(anchor: 'experimental_data_types'))).html_safe }
           = motif_table_header :num_words_in_alignment, hide_by_default: true, class: 'num_words_in_alignment'
           = motif_table_header :tfclass_superclass, hide_by_default: true
           = motif_table_header :tfclass_class, hide_by_default: true
@@ -45,7 +45,7 @@
           = motif_table_header :uniprot_ac_mouse, hide_by_default: true
           - if collection == 'H14CORE'
             = motif_table_header :motif_cluster, hide_by_default: true
-          = motif_table_header(:greco_db_tf, hide_by_default: true){|content| (content + help_icon(title: t('tips.greco_db_tf_html'), html: true, href: 'https://www.ebi.ac.uk/QuickGO/targetset/dbTF')).html_safe }
+          = motif_table_header(:greco_db_tf, hide_by_default: true){|content| (content + help_icon(title: t('tips.greco_db_tf_html'), href: 'https://www.ebi.ac.uk/QuickGO/targetset/dbTF')).html_safe }
 
       %tbody
         - models.each do |model|

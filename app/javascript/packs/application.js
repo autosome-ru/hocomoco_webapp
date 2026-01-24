@@ -19,8 +19,26 @@ import $ from 'jquery'
 window.$ = $
 window.jQuery = $
 
-import 'popper.js'
-import 'bootstrap'
+import * as bootstrap from "bootstrap"
+
+window.bootstrap ||= {}
+window.bootstrap.Tooltip = bootstrap.Tooltip
+window.bootstrap.Popover = bootstrap.Popover
+window.bootstrap.Tab = bootstrap.Tab
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('[data-bs-toggle="popover"]').forEach((el) => {
+    bootstrap.Popover.getOrCreateInstance(el)
+  })
+
+  document.querySelectorAll("a[rel~=popover], .has-popover").forEach((el) => {
+    bootstrap.Popover.getOrCreateInstance(el)
+  })
+
+  document.querySelectorAll("a[rel~=tooltip], .has-tooltip").forEach((el) => {
+    bootstrap.Tooltip.getOrCreateInstance(el)
+  })
+})
 
 import * as d3 from "d3";
 window.d3 = d3;

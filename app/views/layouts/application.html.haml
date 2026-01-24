@@ -41,39 +41,38 @@
       %a.navbar-brand.ml-0.mr-2{href: root_path}
         %img.hocologo.d-inline-block{src: asset_url("hocomoco_logo_big.png"), alt: 'HOCOMOCO-v14'}
         %span.d-inline-block HOCOMOCO v14
-      %button.navbar-toggler{type: 'button', data: {toggle: 'collapse', target: "#navbarNav"}}
-        / aria: {controls: 'navbarTogglerDemo03' expanded: 'false', label: 'Toggle navigation'}
+      %button.navbar-toggler{type: 'button', data: {'bs-toggle': 'collapse', 'bs-target': "#navbarNav"}, aria: { controls: "navbarNav", expanded: "false", label: "Toggle navigation" }}
         %span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarNav
-        %ul.navbar-nav.px-1.d-flex.align-items-end
+        %ul.navbar-nav.px-1.mb-2.mb-lg-0.align-items-lg-end
           %li.nav-item
             %a.nav-link{href: motifs_path(collection: 'H14CORE')} Browse
           %li.nav-item.dropdown
-            %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
+            %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {'bs-toggle': "dropdown"}}
               Subcollections
             .dropdown-menu
               / `'true'` in  `html: 'true'` should be as string, not boolean!
-              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H14INVIVO'), data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_invivo'), html: 'true'}}
+              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H14INVIVO'), data: { 'bs-toggle': 'tooltip', 'bs-placement': 'right', 'bs-title': t('tips.hocomoco_invivo'), 'bs-html': 'true'}}
                 HOCOMOCO-invivo
-              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H14INVITRO'), data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_invitro'), html: 'true'}}
+              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H14INVITRO'), data: { 'bs-toggle': 'tooltip', 'bs-placement': 'right', 'bs-title': t('tips.hocomoco_invitro'), 'bs-html': 'true'}}
                 HOCOMOCO-invitro
-              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H14RSNP'), data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_rsnp')}}
+              %a.dropdown-item.has-tooltip{href: motifs_path(collection: 'H14RSNP'), data: { 'bs-toggle': 'tooltip', 'bs-placement': 'right', 'bs-title': t('tips.hocomoco_rsnp')}}
                 HOCOMOCO-rSNP
               .dropdown-divider
-              %a.dropdown-item.has-tooltip{href: motif_clusters_path, data: { toggle: 'tooltip', placement: 'right', title: t('tips.hocomoco_clustered')}}
+              %a.dropdown-item.has-tooltip{href: motif_clusters_path, data: { 'bs-toggle': 'tooltip', 'bs-placement': 'right', 'bs-title': t('tips.hocomoco_clustered')}}
                 HOCOMOCO non-redundant
           %li.nav-item.dropdown
-            %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
+            %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {'bs-toggle': "dropdown"}}
               Tools
             .dropdown-menu
-              %a.dropdown-item.has-tooltip{href: ENV['MOLOTOOL_URL'], data: { toggle: 'tooltip', placement: 'right', title: 'MoLoTool: visual motif finding in short sequences'}}
+              %a.dropdown-item.has-tooltip{href: ENV['MOLOTOOL_URL'], data: { 'bs-toggle': 'tooltip', 'bs-placement': 'right', 'bs-title': 'MoLoTool: visual motif finding in short sequences'}}
                 MoLoTool
-              %a.dropdown-item.has-tooltip{href: ENV['MACROAPE_URL'], data: { toggle: 'tooltip', placement: 'right', title: 'MACRO-APE: model comparison and search for similar motifs'}}
+              %a.dropdown-item.has-tooltip{href: ENV['MACROAPE_URL'], data: { 'bs-toggle': 'tooltip', 'bs-placement': 'right', 'bs-title': 'MACRO-APE: model comparison and search for similar motifs'}}
                 MACRO-APE
-              %a.dropdown-item.has-tooltip{href: ENV['PERFECTOSAPE_URL'], data: { toggle: 'tooltip', placement: 'right', title: 'PERFECTOS-APE: functional annotation of rSNPs'}}
+              %a.dropdown-item.has-tooltip{href: ENV['PERFECTOSAPE_URL'], data: { 'bs-toggle': 'tooltip', 'bs-placement': 'right', 'bs-title': 'PERFECTOS-APE: functional annotation of rSNPs'}}
                 PERFECTOS-APE
           %li.nav-item.dropdown
-            %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {toggle:"dropdown"}}
+            %a.nav-link.dropdown-toggle.text-right{href:"#", role: "button", data: {'bs-toggle': "dropdown"}}
               Downloads
             .dropdown-menu
               %a.dropdown-item{href: downloads_v14_path} HOCOMOCO v14
@@ -91,11 +90,11 @@
           /   %li.nav-item.ml-auto
           /     %img.species-indicator.mr-2{src: asset_url("#{@collection}_sel.png")}
 
-          %li.nav-item{class: @collection ? '' : 'ml-auto'}
-            %form.form-inline.navbar-search.align-items-end{action: search_post_path, method: 'POST'}
-              %input.form-control.mr-sm-2{type:"search", placeholder: "Search", name: 'query', value: params[:query]}
+          %li.nav-item{class: @collection ? '' : 'ms-auto'}
+            %form.navbar-search.align-items-end.d-flex.gap-2{action: search_post_path, method: 'POST'}
+              %input.form-control{type:"search", placeholder: "Search", name: 'query', value: params[:query]}
               %input{type: 'hidden', name: 'collection', value: 'H14CORE'}
-              / = select_tag 'collection', options_for_select({'Core' => 'H14CORE', 'In vivo' => 'H14INVIVO', 'In vitro' => 'H14INVITRO', 'rSNP' => 'H14RSNP'},  params.fetch(:collection, 'H14CORE')), {class: 'custom-select mr-2'}
+              / = select_tag 'collection', options_for_select({'Core' => 'H14CORE', 'In vivo' => 'H14INVIVO', 'In vitro' => 'H14INVITRO', 'rSNP' => 'H14RSNP'},  params.fetch(:collection, 'H14CORE')), {class: 'form-select mr-2'}
               %button.btn.btn-hocomoco-search.btn-outline-secondary{type: "submit"} Search
 
     %div{class: ['container-fluid', "controller-#{params[:controller]}", "action-#{params[:action]}"] }

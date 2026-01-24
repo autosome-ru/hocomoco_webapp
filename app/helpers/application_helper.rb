@@ -87,7 +87,7 @@ module ApplicationHelper
   end
 
   def help_icon(title:, href: nil, **options)
-    data_options = options.merge({toggle: 'tooltip', placement: 'bottom', title: title})
+    data_options = options.merge({'bs-toggle': 'tooltip', 'bs-placement': 'bottom', 'bs-title': title, 'bs-html': true})
     data_options[:href] = href  if href
     content_tag(:div, '', class: ['help-icon', 'has-tooltip'], data: data_options)
   end

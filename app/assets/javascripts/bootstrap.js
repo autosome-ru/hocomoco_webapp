@@ -1,8 +1,5 @@
 $(function() {
-  $("a[rel~=popover], .has-popover").popover()
-  $("a[rel~=tooltip], .has-tooltip").tooltip()
-
-  $(document).on('show.bs.tab', '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]', function(event) {
+  $(document).on('show.bs.tab', '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]', function(event) {
     let targetAnchor = $(event.target).attr("href")
     document.location.href = targetAnchor;
   });
@@ -11,9 +8,12 @@ $(function() {
     let urlHashPos = url.indexOf('#');
     if (urlHashPos != -1) {
       let urlHash = url.slice(urlHashPos);
-      $(`a[data-toggle="tab"][href="${urlHash}"]`).trigger('click');
+      let tabToShow = document.querySelector(`a[data-bs-toggle="tab"][href="${urlHash}"]`);
+      if (tabToShow) {
+        bootstrap.Tab.getOrCreateInstance(tabToShow).show();
+      }
     } else {
-      let defaultTab = $('a.default-tab[data-toggle="tab"]')
+      let defaultTab = $('a.default-tab[data-bs-toggle="tab"]')
       if (defaultTab.attr('href')) {
         document.location.href = defaultTab.attr('href');
       }

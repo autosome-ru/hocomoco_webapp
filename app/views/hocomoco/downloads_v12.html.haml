@@ -60,9 +60,9 @@
     .accordion#section-clustering
       .card
         .card-header#section-clustering-header
-          %button.accordion-button.collapsed.btn.btn-link.btn-block.text-left{"type" => "button", "data-toggle" => "collapse", "data-target" => "#section-clustering-body", "aria-expanded" => "false", "aria-controls" => "section-clustering-body"}
+          %button.accordion-button.collapsed.btn.btn-link.btn-block.text-left{"type" => "button", "data-bs-toggle" => "collapse", "data-bs-target" => "#section-clustering-body", "aria-expanded" => "false", "aria-controls" => "section-clustering-body"}
             〉EXTRA: non-redundant motif subset
-        #section-clustering-body.collapse{"aria-labelledby" => "section-clustering-header", "data-parent" => "#section-clustering"}
+        #section-clustering-body.collapse{"aria-labelledby" => "section-clustering-header", "data-bs-parent" => "#section-clustering"}
           .card-body
             %p Many practical motif applications require a set of motifs with reduced redundancy i.e. where similar motifs belonging to related transcription factors are grouped together and only a single matrix represents the group. To this end, we have created the non-redundant set of HOCOMOCO v12 motifs, a derivative of the HOCOMOCO v12 CORE collection.
             %p To this end, we estimated the motif similarities with MacroAPE (see #{link_to 'opera.autosome.org/macroape', 'https://opera.autosome.org/macroape'} and #{link_to 'doi:10.1186/1748-7188-8-23', 'https://doi.org/10.1186/1748-7188-8-23' }) at the motif P-value cutoff of 0.0005 and default matrix discretization of 1 (upscaled to 10 to reach a better precision for the cases when similarity estimates with the default discretization exceeded 0.01).

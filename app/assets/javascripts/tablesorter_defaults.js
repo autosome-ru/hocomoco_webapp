@@ -71,7 +71,10 @@
       $('.loading_table').hide();
     },
     onRenderHeader: function(index){
-      $(this).find('.has-tooltip').tooltip(); // As headers can be rerendered, collective .tooltip() call doesn't work
+      // As headers can be rerendered, collective .tooltip() call doesn't work
+      const root = this instanceof HTMLElement ? this : this[0]; // this = HTMLElement или jQuery-объект
+      if (!root) return;
+      root.querySelectorAll('.has-tooltip').forEach((el) => bootstrap.Tooltip.getOrCreateInstance(el));
     }
   }
 })(window.HocomocoDB = window.HocomocoDB || {}, jQuery);
