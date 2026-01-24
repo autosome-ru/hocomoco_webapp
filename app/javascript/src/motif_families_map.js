@@ -1,4 +1,4 @@
-draw_families_tree = function(tree_url, svg_container){
+const draw_families_tree = function(tree_url, svg_container){
   var width = 730,
       height = 700;
 
@@ -99,3 +99,5 @@ draw_families_tree = function(tree_url, svg_container){
 
   d3.select(self.frameElement).style("height", height + "px");
 };
+
+export {draw_families_tree};
