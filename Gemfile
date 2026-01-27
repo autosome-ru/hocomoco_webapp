@@ -8,9 +8,6 @@ gem 'concurrent-ruby', '1.3.4'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-# Use SCSS for stylesheets
-gem 'sass-rails', '>= 5.0'
-gem 'sassc'
 # Use Terser as compressor for JavaScript assets
 gem 'terser'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -61,3 +58,5 @@ end
 
 #gem 'bioinform', '~>0.2.2'
 #gem 'WingenderTFClass'
+
+gem "dartsass-rails", "~> 0.5.1"

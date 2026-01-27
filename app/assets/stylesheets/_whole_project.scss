@@ -53,7 +53,7 @@ footer {
   $size: 34px;
   height: $size;
   width: $size;
-  background-image: image-url("loading.gif");
+  background-image: url("loading.gif");
   background-size: $size $size;
 }
 
@@ -63,7 +63,7 @@ footer {
   background-size: 16px 16px;
   margin-left: 5px;
   vertical-align: bottom;
-  background-image: image-url("uniprot_favicon.ico");
+  background-image: url("uniprot_favicon.ico");
   display: inline-block;
   &:hover {
     cursor: pointer;
@@ -76,7 +76,7 @@ footer {
   background-size: 16px 16px;
   margin-left: 5px;
   vertical-align: bottom;
-  background-image: image-url("help-icon.png");
+  background-image: url("help-icon.png");
   display: inline-block;
   &:hover {
     cursor: pointer;
