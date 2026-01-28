@@ -218,7 +218,7 @@ Motif = Struct.new(:data, :full_name, :model_length, :consensus, :quality, :moti
   end
 
   def read_matrix(fn)
-    File.readlines(fn).reject{|l| l.start_with?('>') }.map{|l| l.chomp.split("\t").map{|v| Float(v) } }
+    File.readlines(fn).reject{|l| l.start_with?('>') }.map{|l| l.chomp.split("\t").map{|v| Float(v) } }  rescue nil
   end
   def pcm; read_matrix(pcm_path); end
   def pwm; read_matrix(pwm_path); end

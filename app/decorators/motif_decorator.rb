@@ -79,6 +79,7 @@ class MotifDecorator < ApplicationDecorator
   def download_homer_motif(pvalue:); helpers.link_to("#{name}_homer_format_#{pvalue}.txt", object.homer_url(pvalue: pvalue), rel: 'nofollow'); end
 
   def format_matrix_as_table(matrix, round: nil)
+    return helpers.content_tag(:div, 'Missing matrix file', class: 'matrix-missing') unless matrix
     nucleotides = ['A', 'C', 'G', 'T']
     letters = nucleotides
     header = helpers.content_tag(:thead){
