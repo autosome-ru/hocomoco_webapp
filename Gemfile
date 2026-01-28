@@ -21,10 +21,6 @@ gem 'sdoc', '>= 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-gem "rack", "~> 2.2"
-gem "rack-session", "~> 1.0"
-gem "rackup", "~> 1.0"
 gem 'puma'
 
 # Use Capistrano for deployment
@@ -59,6 +55,6 @@ end
 #gem 'bioinform', '~>0.2.2'
 #gem 'WingenderTFClass'
 
-gem "dartsass-rails", "~> 0.5.1"
+gem "dartsass-rails", ">= 0.5.1"
 
-gem "csv", "~> 3.3"
+gem "csv", ">= 3.3"
