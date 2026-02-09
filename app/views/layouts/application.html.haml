@@ -24,9 +24,8 @@
       </script>
 
     = stylesheet_link_tag 'application', media: 'all' # sprockets
-    = stylesheet_pack_tag 'application', media: 'all' # webpack
-    = javascript_pack_tag 'application', defer: true  # webpack
-    = javascript_include_tag 'application', defer: true # sprockets (after webpack)
+    = javascript_include_tag 'application', defer: true, type: "module" # sprockets (after webpack)
+    = javascript_include_tag 'legacy', defer: true
 
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
 

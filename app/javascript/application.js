@@ -43,9 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 import * as d3 from "d3";
 window.d3 = d3;
 
-import {draw_families_tree} from '../src/motif_families_map.js'
+import {draw_families_tree} from './src/motif_families_map.js'
 window.draw_families_tree = draw_families_tree;
 
-import "../styles/styles";
+import "./styles/styles";
 
 console.log('Hello World from Webpacker')
