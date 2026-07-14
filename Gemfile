@@ -30,7 +30,6 @@ gem 'haml-rails'
 
 gem 'jquery-tablesorter'
 
-gem 'webpacker'
 gem "jsbundling-rails"
 
 # Reduces boot times through caching; required in config/boot.rb

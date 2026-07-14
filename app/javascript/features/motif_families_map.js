@@ -1,8 +1,10 @@
-const draw_families_tree = function(tree_url, svg_container){
-  var width = 730,
+import * as d3 from "d3";
+
+function draw_families_tree(tree_url, container) {
+  const width = 730,
       height = 700;
 
-  var treeLayout = d3.tree()
+  const treeLayout = d3.tree()
       .size([height, width - 270])
       .separation(function(a,b){
         if (Math.max( Math.sqrt(a.data.total_tfs), Math.sqrt(b.data.total_tfs) ) > 10) {
@@ -12,28 +14,29 @@ const draw_families_tree = function(tree_url, svg_container){
         }
       });
 
-  var diagonal = d3.linkHorizontal()
+  const diagonal = d3.linkHorizontal()
     .x(function(d) { return d.y; })
     .y(function(d) { return d.x; });
 
-  var svg = svg_container.append("svg")
+  const svg_container = d3.select(container);
+  const svg = svg_container.append("svg")
       .attr("viewBox", [0, 0, width, height].join(' ') )
     .append("g")
       .attr("transform", "translate(40,0)");
 
   d3.json(tree_url).then(function(data) {
-    var root = d3.hierarchy(data);
-    var nodes = root.descendants(),
+    const root = d3.hierarchy(data);
+    const nodes = root.descendants(),
         links = root.links();
     treeLayout(root);
 
-    var link = svg.selectAll(".link")
+    const link = svg.selectAll(".link")
         .data(links)
       .enter().append("path")
         .attr("class", "link")
         .attr("d", diagonal);
 
-    var node = svg.selectAll(".node")
+    const node = svg.selectAll(".node")
         .data(nodes)
       .enter()
         .append("svg:a")
@@ -42,15 +45,15 @@ const draw_families_tree = function(tree_url, svg_container){
           .attr("class", "node")
           .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
-    var tooltip_div = d3.select("body").append("div")
+    const tooltip_div = d3.select("body").append("div")
       .attr("class", "map-tooltip")
       .style("opacity", 0);
 
     node
       .on("mouseover", function(event, d) {
-        var info_text = '';
+        let info_text = '';
         if (d.data.name.length > 0) {
-          var family_name
+          let family_name
           if (String(d.data.family_id).length > 0) {
             family_name = '<span class="family_name">' + d.data.name + '{' + d.data.family_id + '}</span>';
           } else {
@@ -89,7 +92,7 @@ const draw_families_tree = function(tree_url, svg_container){
 
     node.append("text")
         .attr("dx", function(d) {
-          var radius = Math.pow(d.data.total_tfs, 0.5) + 1;
+          const radius = Math.pow(d.data.total_tfs, 0.5) + 1;
           return d.children ? -(radius + 5) : (radius + 5); }
         )
         .attr("dy", 3)

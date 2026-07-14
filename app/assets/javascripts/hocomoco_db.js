@@ -27,11 +27,6 @@ var page_ready = function() {
     var href = $(e.target).data('href');
     if (href) window.location = href;
   });
-
-  if ($('#motif_families_map').length > 0) {
-    var family_tree_data_url = $('#motif_families_map').data('url');
-    draw_families_tree(family_tree_data_url, d3.select("#motif_families_map"));
-  }
 };
 
 $(document).ready(page_ready);
