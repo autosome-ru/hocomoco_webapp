@@ -160,6 +160,8 @@ GEM
       activesupport (>= 7.0.0)
     jquery-tablesorter (1.28.0)
       railties (>= 3.2)
+    jsbundling-rails (1.3.1)
+      railties (>= 6.0.0)
     listen (3.10.0)
       logger
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -356,6 +358,7 @@ DEPENDENCIES
   haml-rails
   jbuilder (>= 2.0)
   jquery-tablesorter
+  jsbundling-rails
   listen
   net-http
   puma
