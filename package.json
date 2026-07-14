@@ -6,17 +6,15 @@
     "bootstrap": "5",
     "d3": "^7.9.0",
     "jquery": "^3.7.1",
-    "webpack": "^5.108.4",
-    "webpack-cli": "^7.2.1",
+    "tablesorter": "2.31.3",
     "yarn": "^1.22.22"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.6",
-    "@babel/plugin-transform-class-properties": "^7.27.1",
-    "@babel/plugin-transform-for-of": "^7.27.1",
-    "@babel/plugin-transform-optional-chaining": "^7.28.6",
-    "@babel/plugin-transform-private-methods": "^7.27.1",
-    "@babel/plugin-transform-private-property-in-object": "^7.27.1"
+    "webpack": "^5.108.4",
+    "webpack-cli": "^7.2.1"
+  },
+  "resolutions": {
+    "jquery": "3.7.1"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js --mode production",

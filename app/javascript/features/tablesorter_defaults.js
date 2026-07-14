@@ -1,3 +1,5 @@
+import { initBootstrapWidgets } from "../initializers/bootstrap";
+
 ;(function(HocomocoDB, $, undefined) {
   HocomocoDB.defaultWidgetOptions = {
     filter: {
@@ -52,7 +54,7 @@
   //               {my: 'own configuration options', }
   //         )
   HocomocoDB.configForWidgets = function(widgetList) {
-    var widgetConfig = {};
+    const widgetConfig = {};
     $.each(widgetList, function(i, widgetName){
       return $.extend(widgetConfig, HocomocoDB.defaultWidgetOptions[widgetName] || {});
     });
@@ -72,9 +74,7 @@
     },
     onRenderHeader: function(index){
       // As headers can be rerendered, collective .tooltip() call doesn't work
-      const root = this instanceof HTMLElement ? this : this[0]; // this = HTMLElement или jQuery-объект
-      if (!root) return;
-      root.querySelectorAll('.has-tooltip').forEach((el) => bootstrap.Tooltip.getOrCreateInstance(el));
+      initBootstrapWidgets(this);  // As headers can be rerendered, collective .tooltip() call doesn't work
     }
   }
 })(window.HocomocoDB = window.HocomocoDB || {}, jQuery);

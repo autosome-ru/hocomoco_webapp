@@ -1,7 +1,7 @@
-//= require ./tablesorter_defaults.js
-//= require ./select_columns.js
+import "./tablesorter_defaults"
+import "./select_columns"
 
-var page_ready = function() {
+const page_ready = function() {
   HocomocoDB.app_prefix = $('body').data('app-prefix');
 
   $('.download').click(function(){
@@ -24,7 +24,7 @@ var page_ready = function() {
   });
   $('.help-icon, button.work_as_link').click(function(e){
     e.stopPropagation();
-    var href = $(e.target).data('href');
+    const href = $(e.target).data('href');
     if (href) window.location = href;
   });
 };

@@ -28,8 +28,6 @@ gem 'puma'
 gem 'draper'
 gem 'haml-rails'
 
-gem 'jquery-tablesorter'
-
 gem "jsbundling-rails"
 
 # Reduces boot times through caching; required in config/boot.rb
