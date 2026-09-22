@@ -55,3 +55,4 @@ end
 gem "dartsass-rails", ">= 0.5.1"
 
 gem "csv", ">= 3.3"
+gem "json", "< 3"
