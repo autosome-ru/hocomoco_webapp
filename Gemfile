@@ -27,6 +27,7 @@ gem 'puma'
 
 gem 'draper'
 gem 'haml-rails'
+gem 'prism', ['>= 1.9.0', '<2.0']
 
 gem "jsbundling-rails"
 
